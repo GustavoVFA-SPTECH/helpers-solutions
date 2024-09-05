@@ -6,31 +6,49 @@
     <title>Simulador Financeiro</title>
 </head>
 <body>
-    <h2>Simulador Financeiro Helpers Solutions</h2><br>
+    <center>
+        <h2>Simulador Financeiro Helpers Solutions</h2><br>
+        <!--
+        <b>Informe o tempo de inatividade hipotético de uma máquina em horas no dia</b><br>
+        <select style="height:30px;font-size: 15px;border-radius: 5px;" name="Select" id="">
+            <option value="1">Bomba Centrífuga</option>
+            <option value="2" selected>Maquina Aí</option>
+        </select>
+        <br><br>
+        <b>Informe a temperatura média em graus Celsius que esta máquina costuma operar</b><br>
+        <input style="height:30px;font-size: 15px;border-radius: 5px;" id="iptTempoInatividade" type="number" placeholder="Exemplo: 170" required>
+        <br><br>
+        -->
+        <b>Informe o tempo de inatividade hipotético de uma máquina em horas no dia</b><br>
+        <input style="height:30px;font-size: 15px;border-radius: 5px;" id="iptTempoInatividade" type="number" placeholder="Exemplo: 10" required>
+        <br><br>
+        <b>Informe o custo p/ Hora em dólares que você tem por ela estar inativa</b><br>
+        <input style="height:30px;font-size: 15px;border-radius: 5px;" id="iptCustoHora" type="number" placeholder="Exemplo: 20000" required>
+        <br><br>
+        <b>Informe o tempo total de operação desta máquina no dia</b><br>
+        <input style="height:30px;font-size: 15px;border-radius: 5px;" id="iptTotalTempoOperacao" type="number" placeholder="Exemplo: 15" required>
+        <br><br>
 
-    <b>Informe o tempo de inatividade hipotético de uma máquina em horas</b><br>
-    <input style="height:30px;font-size: 15px;border-radius: 5px;" id="iptTempoInatividade" type="number" placeholder="Exemplo: 15" required>
-    <br><br>
-    <b>Informe o custo p/ Hora em dólares que você tem por ela estar inativa</b><br>
-    <input style="height:30px;font-size: 15px;border-radius: 5px;" id="iptCustoHora" type="number" placeholder="Exemplo: 20000.00" required>
-    <br><br>
-    <b>Informe o tempo total de operação desta máquina no mês</b><br>
-    <input style="height:30px;font-size: 15px;border-radius: 5px;" id="iptTotalTempoOperacao" type="number" placeholder="Exemplo: 640" required>
-    <br><br>
-
-    <button style="height:30px;font-size: 15px;" onclick="calcularPrejuizo()">Calcular Prejuízos</button>
+        <button style="height:30px;font-size: 15px;" onclick="calcularPrejuizo()">Calcular Prejuízos</button>
+        
+        <div id="divOutput"></div>
+    </center>
     
-    <div id="divOutput"></div>
     <script>
         function calcularPrejuizo(){
             var custoHora = Number(iptCustoHora.value);
             var tempoInativo = Number(iptTempoInatividade.value);
             var tempoTotalOperacao = Number(iptTotalTempoOperacao.value);
-            var downtimeSemSolucao = (tempoInativo/tempoTotalOperacao)*100;
-            var custoSemSolucao = (tempoInativo*custoHora);
 
-            var downtimeComSolucao = ((tempoInativo-(tempoInativo*0.3))/tempoTotalOperacao)*100;
-            var custoComSolucao = ((tempoInativo-(tempoInativo*0.3))*custoHora);
+            // Downtime = Tempo Inatividade / tempo total de operação da máquina
+            var downtimeSemSolucao = Math.round((tempoInativo/tempoTotalOperacao)*100);
+            var custoSemSolucaoDia = (tempoInativo*custoHora);
+            var custoSemSolucaoAno = (tempoInativo*custoHora)*5;
+
+
+            var downtimeComSolucao = Math.round(((tempoInativo-(tempoInativo*0.3))/tempoTotalOperacao)*100);
+            var custoComSolucaoDia = ((tempoInativo-(tempoInativo*0.3))*custoHora);
+            var custoComSolucaoAno = ((tempoInativo-(tempoInativo*0.3))*custoHora)*10;
 
             if(custoHora==0 || tempoInativo==0 || tempoTotalOperacao==0){
                 divOutput.innerHTML = `
@@ -39,12 +57,14 @@
             } else {
                 divOutput.innerHTML = `
                     <h2>Prejuízos sem a Nossa Solução:</h2>
-                    <h4>Porcentagem do Downtime da máquina em 1 mês: <b style="color: red;">${downtimeSemSolucao}%</b></h4>
-                    <h4>Custo das Horas inativas da máquina sem nossa solução: <b style="color: red;">US$${custoSemSolucao}</b></h4>
+                    <h4>Porcentagem do Downtime da máquina em 1 dia: <b style="color: red;">${downtimeSemSolucao}%</b></h4>
+                    <h4>Custo das horas inativas da máquina: <b style="color: red;">US$${custoSemSolucaoDia}</b></h4>
+                    <h4>Caso essa situação se repita mais 10 vezes no ano o prejuízo será de: <b style="color: red;">US$${custoSemSolucaoAno}</b></h4>
                     <br>
                     <h2>Prejuízos com a Nossa Solução:</h2>
-                    <h4>Porcentagem do Downtime da máquina em 1 mês: <b style="color: green;">${downtimeComSolucao}%</b></h4>
-                    <h4>Custo das Horas inativas da máquina sem nossa solução: <b style="color: green;">US$${custoComSolucao}</b></h4>
+                    <h4>Porcentagem do Downtime da máquina em 1 dia: <b style="color: green;">${downtimeComSolucao}%</b></h4>
+                    <h4>Custo das horas inativas da máquina: <b style="color: green;">US$${custoComSolucaoDia}</b></h4>
+                    <h4>Caso essa situação se repita mais 10 vezes no ano o prejuízo será: <b style="color: green;">US$${custoComSolucaoAno}</b></h4>
                 `;
             }
         }
