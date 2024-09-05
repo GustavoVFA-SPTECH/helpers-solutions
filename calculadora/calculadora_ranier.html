@@ -44,20 +44,22 @@
     
     <script>
         function calcularPrejuizo(){
-            if(custoHora==0 || tempoInativo==0 || tempoTotalOperacao==0){
+            // Captação dos Inputs
+            var nomeMaquina = selectMaquina.options[selectMaquina.selectedIndex].text;
+            var tipoMaquina = Number(selectMaquina.value);
+            var temperaturaMedia = Number(iptTemperaturaMedia.value);
+            var custoHora = Number(iptCustoHora.value);
+            var tempoInativo = Number(iptTempoInatividade.value);
+            var tempoTotalOperacao = Number(iptTotalTempoOperacao.value);
+            var incidencia = Number(iptIncidencia.value);
+
+            // Verificar se os inputs estão preenchidos de forma correta
+            if(temperaturaMedia==0 || custoHora==0 || tempoInativo==0 || tempoTotalOperacao==0){
+                // Manda uma mensagem para o User
                 divOutput.innerHTML = `
                     <h2>Preencha todos os campos corretamente por favor!</h2>
                 `;
             } else {
-                // Captação dos Inputs
-                var nomeMaquina = selectMaquina.options[selectMaquina.selectedIndex].text;
-                var tipoMaquina = Number(selectMaquina.value);
-                var temperaturaMedia = Number(iptTemperaturaMedia.value);
-                var custoHora = Number(iptCustoHora.value);
-                var tempoInativo = Number(iptTempoInatividade.value);
-                var tempoTotalOperacao = Number(iptTotalTempoOperacao.value);
-                var incidencia = Number(iptIncidencia.value);
-
                 // Parte do processamento das informações 
                 var temperaturaIdeal = 0;
                 // Realizar os cálculos de prejuízos sem a nossa solução (Downtime em %, custo por dia, e custo anual)
