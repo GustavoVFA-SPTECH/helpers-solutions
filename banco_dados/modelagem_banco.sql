@@ -5,15 +5,11 @@ USE dbPMS;
 CREATE TABLE tbCliente(
 idCliente INT PRIMARY KEY auto_increment,
 nome VARCHAR(50) NOT NULL,
+email VARCHAR(45) NOT NULL,
 cnpj VARCHAR(14) NOT NULL,
+logradouro VARCHAR(60) NOT NULL,
+numLogradouro VARCHAR(60) NOT NULL,
 senha VARCHAR(20) NOT NULL
-);
-
--- TABELA PARA GUARDAR OS DADOS DOS SENSORES 
-CREATE TABLE tbDadosTemperatura(
-idDado INT PRIMARY KEY auto_increment,
-dtColeta DATETIME NOT NULL,
-temperatura DECIMAL(5,2) NOT NULL
 );
 
 -- TABELA SOBRE OS DADOS DAS MAQUINAS ANALISADAS/MONITORADAS
@@ -23,7 +19,19 @@ nome VARCHAR(50) NOT NULL,
 tipo VARCHAR(50),
 fabricante VARCHAR(78),
 ambienteInstalado VARCHAR(78) NOT NULL,
-maxTemperatura DECIMAL(5,2) NOT NULL
+maxTemperatura DECIMAL(5,2) NOT NULL,
+fkCliente INT NOT NULL,
+CONSTRAINT fkClienteMaquina FOREIGN KEY (fkCliente) REFERENCES tbCliente(idCliente)
+);
+
+-- TABELA PARA GUARDAR OS DADOS DOS SENSORES 
+CREATE TABLE tbDadosTemperatura(
+idDado INT PRIMARY KEY auto_increment,
+hrColeta TIME NOT NULL,
+dtColeta DATE NOT NULL,
+temperatura DECIMAL(5,2) NOT NULL,
+fkMaquina INT NOT NULL,
+CONSTRAINT fkMaquinaDadosColetados FOREIGN KEY (fkMaquina) REFERENCES tbMaquina(idMaquina)
 );
 
 -- DADOS PARA EXEMPLIFICAR NOSSO PENSAMENTO
