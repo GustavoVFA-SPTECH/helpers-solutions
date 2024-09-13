@@ -61,7 +61,7 @@
         vidaUtilGeral = (vidaUtilGeral - (temperaturaMedia - temperaturaIdeal)) / 365;
         var vidaPerdidaAnoAnual = Math.round(((Math.round(365 * (Math.round(vidaUtilGeral) - vidaUtilGeral)))*tempoOperacaoAnualEstimado)/365);
         var vidaPerdidaAnoAnualComSolucao = vidaPerdidaAnoAnual - (vidaPerdidaAnoAnual*0.5);
-        var tempoPrimeiraQuebra =Math.round(vidaUtil / vidaPerdidaAnoAnual);
+        var tempoPrimeiraQuebra = Math.round(vidaUtil / vidaPerdidaAnoAnual);
         var tempoPrimeiraQuebraComSolucao =Math.round(vidaUtil / vidaPerdidaAnoAnualComSolucao);
 
         // plota as informações sobre a temperatura na div de output

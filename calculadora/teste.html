@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulador Financeiro</title>
+  </head>
+  <body>
+    <h2>Simulador Financeiro Helpers Solutions</h2>
+    <br/>
+
+    <b>Com qual máquina você deseja simular? ("bomba centrifuga","bomba axial", "bomba deslocamento positivo")</b><br />
+    <input id="iptMaquina" type="text" />
+    <br /><br />
+
+    <b>Qual a temperatura média, em graus Celsius, cujo esta máquina costuma operar?</b><br />
+    <input id="iptTemperaturaMedia" type="number" />
+    <br /><br />
+
+    <b>Quanto você ganha por hora, em doláres, com essa máquina?</b><br />
+    <input id="iptCustoHora" type="number" />
+    <br /><br />
+
+    <button onclick="calcularPrejuizo()">Calcular Prejuízos</button>
+
+    <div id="divOutput"></div>
+
+    <script>
+      // Variavel global para definir as horas anuais em media que as maquinas ficam inativas
+      var HORAS_INATIVAS_ANUAL = 323;
+      function calcularPrejuizo() {
+        // Captação dos Inputs
+        var tipoMaquina = iptMaquina.value;
+        var temperaturaMedia = Number(iptTemperaturaMedia.value);
+        var custoHora = Number(iptCustoHora.value);
+
+        // Parte do processamento das informações
+        var temperaturaIdeal = 0;
+        var tempoOperacaoAnualEstimado = 10*30;
+        // Realizar os cálculos de prejuízos sem a nossa solução (Downtime em %, custo por dia, e custo anual)
+        var gastoAnualSemSolucao = HORAS_INATIVAS_ANUAL * custoHora;
+        // Realizar os cálculos de o quanto a empresa economiazaria com a nossa solução (Downtime em %, custo por dia, e custo anual)
+        var gastoAnualComSolucao = Math.round((HORAS_INATIVAS_ANUAL - HORAS_INATIVAS_ANUAL * 0.3) * custoHora);
+        var diferencaGastoAnual = Math.round(gastoAnualSemSolucao - gastoAnualComSolucao);
+
+        // Define as características para cada tipo de máquina
+        if (tipoMaquina == "bomba centrifuga") {
+          temperaturaIdeal = 150;
+          vidaUtilGeral = 15;
+        } else if (tipoMaquina == "bomba axial") {
+          temperaturaIdeal = 300;
+          vidaUtilGeral = 20;
+        } else if (tipoMaquina == "bomba deslocamento positivo") {
+          temperaturaIdeal = 100;
+          vidaUtilGeral = 15;
+        }
+
+        var vidaUtil = vidaUtilGeral;
+        // Parte final do processamento e Output
+
+        // Caso esteja vai fazer um cálculo onde descobriremos a quantidade de dias onde de vida útil a menos que a máquina terá com a temperatura
+        vidaUtilGeral = (vidaUtil - (temperaturaMedia - temperaturaIdeal)) / 365;
+
+        var vidaPerdidaAnoAnual = Math.round(((Math.round(365 * (Math.round(vidaUtilGeral) - vidaUtilGeral)))*tempoOperacaoAnualEstimado)/365);
+
+        var tempoPrimeiraQuebra = Math.round(vidaUtil / vidaPerdidaAnoAnual);
+
+        // plota as informações sobre a temperatura na div de output
+        divOutput.innerHTML = `
+          <br>
+          <h2>Prejuízos sem a Nossa Solução:</h2>
+    
+          <h4>Se a ${tipoMaquina} operasse a temperatura de ${temperaturaIdeal}ºC, sua vida útil seria de ${vidaUtil} anos</h4>
+          <h4>Porém, operando com a temperatura de ${temperaturaMedia}ºC, gera uma <b style="color: red;">perda de ${vidaPerdidaAnoAnual} anos de sua vida util por ano</b>.</h4>
+          <h4>Assim, sua máquina teria problema depois de <b style="color: red;">${tempoPrimeiraQuebra} anos</b>.</h4>
+          <h4>Supondo uma média de ${HORAS_INATIVAS_ANUAL} horas em que a planta fica inativa por ano, o prejuízo será de: <b style="color: red;">US$${gastoAnualSemSolucao}</b></h4>
+          <br>
+          
+          <h2>Melhorias com a Nossa Solução:</h2>
+          <h4>Com nossa solução, o problema de perda de vida útil ao ano do maquinário seria quase nula</h4>
+          <h4>Assim, sua máquina teria problema depois de <b style="color: green;">13 anos pelo menos</b>.</h4>
+          <h4>Com a média de ${HORAS_INATIVAS_ANUAL} horas em que a planta fica inativa por ano, terá um prejuízo de: <b style="color: green;">US$${gastoAnualComSolucao}</b>, <b style="color: black;">economizando</b> um total de: <b style="color: green;">US$${diferencaGastoAnual}</b></h4> 
+        `;
+      }
+    </script>
+  </body>
+</html> 
