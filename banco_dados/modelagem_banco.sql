@@ -8,3 +8,26 @@ CREATE TABLE empresa(
     email VARCHAR(70) NOT NULL,
     responsavel VARCHAR(45) NOT NULL
 );
+
+CREATE TABLE login(
+	idLogin INT PRIMARY KEY AUTO_INCREMENT,
+    userName VARCHAR(45),
+	senha VARCHAR(45) NOT NULL,
+	fKEmpresa INT,
+    CONSTRAINT fkEmpresa FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
+);
+
+CREATE TABLE endereco(
+	idEndereco INT PRIMARY KEY AUTO_INCREMENT,
+	CEP CHAR(14),
+	numero VARCHAR(45),
+	fkEmpresaEnd INT,
+	CONSTRAINT fkEmpresaEnd FOREIGN KEY (fkEmpresaEnd) REFERENCES empresa(idEmpresa)
+);
+
+CREATE TABLE acesso(
+	idAcesso INT PRIMARY KEY AUTO_INCREMENT,
+	dataHora DATETIME DEFAULT CURRENT_TIMESTAMP,
+	fkLogin INT,
+	CONSTRAINT fkLogin FOREIGN KEY (fkLogin) REFERENCES login(idLogin)
+);
