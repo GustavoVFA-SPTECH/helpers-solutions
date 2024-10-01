@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Helpers | Login</title></title>
+
+</head>
+
+<body>
+
+<!-- Header -->
+
+<div class="header">  
+    <h1 class="titulo">
+         <a href="paginicio.html">Helpers</a>
+    </h1>
+</div>
+
+<!-- Campo Login -->
+    <div class="login">
+        <h2>Login</h2>
+
+        <div class="campo">
+            <span>Digite o usuário:</span>
+            <input id="iptusuario" type="text" placeholder="Login"><br>
+        </div>
+
+        <div class="campo">
+            <span>Digite a senha:</span>
+            <input id="iptsenha" type="password" placeholder="********"><br>
+        </div>
+
+        <div class="botao">
+            <button onclick="logar()">Login</button><br><br>
+        </div>
+
+        <div id="divmsg"></div>
+    <br>
+        <div class="campo">
+            <span>Não possui cadastro?</span><br>
+        </div>
+        <li class="licadastro">
+            <a href="pagcadastro.html">Clique aqui para se cadastrar</a>
+        </li>
+
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    function logar(){
+        var usuario = iptusuario.value;
+        var senha = iptsenha.value;
+        var mensagem = ``;
+
+         // Validação usuário
+         if (usuario.length == 0) {
+            mensagem += `O nome de usuário não pode estar vazio.<br>`;
+        }
+        if (usuario.includes(' ')) {
+             mensagem += `O nome de usuário não pode conter espaços.<br>`;
+        }
+
+         // Validação Senha
+         if (senha.includes(' ')) {
+        mensagem += `A senha não pode conter espaços.<br>`;
+        }
+        if (senha.length < 8){
+            mensagem += `Senha inválida.<br>`
+        }
+
+        if (mensagem.length == 0) {
+                mensagem = `Login realizado.`;
+            }
+        divmsg.innerHTML = mensagem;
+
+
+    }
+
+</script>

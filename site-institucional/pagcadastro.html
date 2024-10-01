@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Helpers | Cadastro</title>
+
+</head>
+<body>
+    
+    <!-- Header -->
+
+<div class="header">
+    <h1 class="titulo">
+        <a href="paginicio.html">Helpers</a>
+    </h1>
+</div>
+
+<!-- Campo Cadastro -->
+<div class="cadastro">
+    <h2>Cadastrar</h2>
+
+    <div class="campo">
+        <span>Digite o usuário:</span>
+        <input id="iptusuario" type="text"><br>
+    </div>
+
+    <div class="campo">
+        <span>Informe seu email:</span>
+        <input id="iptemail" type="text"><br>
+    </div>
+
+    <div class="campo">
+        <span>Informe a senha:</span>
+        <input id="iptsenha" type="password" placeholder="********"><br>
+    </div>
+
+    <div class="campo"></div>
+        <span>Confirme a senha:</span>
+        <input id="iptconfirmacaosenha" type="password" placeholder="********"><br>
+</div>
+
+
+    <div class="botao">
+        <button onclick="cadastrar()">Cadastrar</button><br><br>
+    </div>
+    
+    <div id="divmsg"></div>
+<br>
+    <div class="campo">
+        <span>Já possui um cadastro?</span><br>
+    </div>
+    <li class="licadastro">
+        <a href="paglogin.html">Clique aqui para fazer o login</a>
+    </li>
+
+
+
+</body>
+</html>
+<script>
+
+    function cadastrar(){
+        var usuario = iptusuario.value;
+        var email = iptemail.value;
+        var senha = iptsenha.value;
+        var confirmacao = iptconfirmacaosenha.value;
+        var mensagem = ``;
+
+        // Validação usuário
+        if (usuario.length == 0) {
+            mensagem += `O nome de usuário não pode estar vazio.<br>`;
+        }
+        if (usuario.includes(' ')) {
+             mensagem += `O nome de usuário não pode conter espaços.<br>`;
+        }
+
+
+
+        // Validação E-mail
+        if (email.indexOf('@') == -1 || (email.indexOf('.com') == -1 && email.indexOf('.com.br') == -1)) {
+            mensagem += `E-mail inválido.<br>`;
+        }
+        
+
+        // Validação Senha
+        if (senha.includes(' ')) {
+        mensagem += `A senha não pode conter espaços.<br>`;
+        }
+        if (senha.length < 8){
+            mensagem += `A senha precisa ter no mínimo 8 (oito) caracteres.<br>`
+        }
+        else if (confirmacao != senha){
+            mensagem += `As senhas não coincidem.<br>`;
+        }
+        if (mensagem.length == 0) {
+                mensagem = `Cadastro realizado com sucesso!`;
+            }
+        divmsg.innerHTML = mensagem;
+    }
+
+
+
+</script>

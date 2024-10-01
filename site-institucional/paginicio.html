@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Helpers | Página Inicial</title>
+
+</head>
+<style>
+    html {
+    scroll-behavior:smooth; /*Rolagem suave da página ao clicar no botão*/
+}
+</style>
+<body>
+
+     <!-- Header -->
+
+ <div class="header">  
+    <h1 class="titulo">
+        <a href="paginicio.html">Helpers</a>
+    </h1>
+<nav>
+    <li>
+        <a href="#Sobrenos">Sobre Nós</a>
+    </li>
+
+    <li>
+        <a href="#Nossasolucao">Nossa Solução</a>
+    </li>
+
+    <li>
+        <a href="#Simulador">Simulador</a>
+    </li>
+
+    <li>
+        <a href="#Contate-nos">Contate-nos</a>
+    </li>
+
+    <li>
+        <a href="pagcadastro.html">Cadastrar</a>
+    </li>
+
+    <li>
+        <a href="paglogin.html">Login</a>
+    </li>
+<nav>
+</div>
+
+<!-- Campo Inicial -->
+
+<div class="inicio">
+    <p>O FUTURO COMEÇA AQUI</p><br><br>
+    <p>SOLUÇÕES IOT QUE VÃO SALVAR SUA EMPRESA</p><br><br>
+</div>
+<div class="botao">
+<button onclick="saber()">Saiba Mais</button>
+</div>
+
+<br><br>
+
+<!-- Campo sobre nós -->
+
+
+<section id="Sobrenos">
+    <h2>Sobre Nós</h2>
+    <p>
+    A Helpers Solutions nasceu da necessidade de otimizar processos industriais complexos. Somos um grupo de estudantes de tecnologia, com foco em soluções práticas e escaláveis, para desenvolver ferramentas que aumentassem a eficiência e a segurança nas operações industriais usando IoT.
+    </p><br>
+
+    <h3>Missão</h3>
+    <p>
+    Promover a digitalização de nossos clientes através de soluções tecnológicas inteligentes e intuitivas, contribuindo com a eficiência e a segurança em diversos setores.</p>
+
+    <h3>Valores</h3>
+    <p>
+    Sermos reconhecidos nacionalmente como uma exelente empresa de soluções de IoT, impactando positivamente a indústria e a sociedade como um todo.</p>
+
+    <h3>Visão</h3>
+    <p>
+    Inovação Contínua, Abstração, Integridade e Foco no Cliente.</p>
+    <br><br>
+</section>
+
+<!-- Campo nossa solução -->
+
+<section id="Nossasolucao">
+    <h2>Nossa Solução</h2>
+    <h3>Preditive Maintenance System</h3>
+    <p>
+    A Predictive Maintenance System, ou como apelidamos, PMS, é a primeira solução IIoT da Helpers Solutions para um problema crônico na indústria: falhas inesperadas de equipamentos. Através da coleta e análise de dados em tempo real, o PMS permite prever quando uma máquina está prestes a falhar, possibilitando intervenções preventivas antes que a produção seja interrompida. 
+    </p><br>
+
+    <h3>Calculadora Financeira</h3>
+    <p>
+    SIMULAÇÃO DE ECÔNOMIA INDUSTRIAL<br>
+
+    COM HELPERS SULTIONS<br>
+
+    SEM HELPERS SOLUTIONS
+    </p>
+
+    <h3>Máquinas que trabalhamos</h3>
+    <p>
+    TIPOS DE MÁQUINAS QUE NOSSAS<br>
+    SOLUÇÕES ATENDEM<br>
+    OUTROS  
+    </p>
+    <br><br>
+</section>
+
+<!-- Campo simulador -->
+<section id="Simulador"></section>
+    <h3>SIMULE AQUI</h3>
+    <br><br>
+
+    Com qual máquina você deseja simular?<br>
+    <input id="iptmaquina"><br>
+
+    Qual o tempo total de operação desta máquina, em horas, no dia?<br>
+    <input id="ipttempo"><br>
+
+    Qual a temperatura média, em graus Celsius, cujo esta máquina costuma operar?<br>
+    <input id="ipttemperatura"><br>
+
+    Quanto você ganha por hora, em dólares, com essa máquina?<br>
+    <input id="iptganhos"><br>
+
+    Agora, informe um tempo, em horas, o qual esta máquina ficará inativa no dia<br>
+    <input id="iptinativa"><br> 
+
+    <button onclick="gerar()">Gerar Prejuízo</button>
+    <br><br>
+
+</section>
+
+<!-- Campo contate-nos -->
+
+<section id="Contate-nos">
+    <h2>Contate-nos</h2>
+    <br>
+    Informe o nome da sua empresa:<br>
+    <input id="iptempresa"><br>
+    
+    Informe o email:<br>
+    <input id="iptemail"><br>
+    
+    Digite o texto da mensagem:<br>
+    <input id="iptmensagem"><br>
+    
+    <button onclick="enviar()">Enviar Mensagem</button>
+
+
+</section>
+
+<!-- Footer Papai -->
+
+<div class="footer">
+<h4>Helpers Solutions LTDA © 2024 - Todos os direitos reservados</h4>
+</div>
+
+</body>
+</html>
