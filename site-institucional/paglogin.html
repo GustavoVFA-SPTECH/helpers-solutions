@@ -5,50 +5,54 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="style.css">
     <title>Helpers | Login</title></title>
 
 </head>
 
-<body>
+<body class="body_login">
 
-<!-- Header -->
-
-<div class="header">  
-    <h1 class="titulo">
-         <a href="paginicio.html">Helpers</a>
-    </h1>
-</div>
-
-<!-- Campo Login -->
-    <div class="login">
-        <h2>Login</h2>
-
-        <div class="campo">
-            <span>Digite o usuário:</span>
-            <input id="iptusuario" type="text" placeholder="Login"><br>
-        </div>
-
-        <div class="campo">
-            <span>Digite a senha:</span>
-            <input id="iptsenha" type="password" placeholder="********"><br>
-        </div>
-
-        <div class="botao">
-            <button onclick="logar()">Login</button><br><br>
-        </div>
-
-        <div id="divmsg"></div>
-    <br>
-        <div class="campo">
-            <span>Não possui cadastro?</span><br>
-        </div>
-        <li class="licadastro">
-            <a href="pagcadastro.html">Clique aqui para se cadastrar</a>
-        </li>
-
-
+<main class="main_login">
+    <!-- Header -->
+    <div class="header">  
+        <h1 class="titulo">
+             <a class="helpers" href="paginicio.html">Helpers</a>
+        </h1>
     </div>
+
+    
+    <!-- Campo Login -->
+    <div class="login">
+            <div class="box1">
+                <h2>Login</h2>
+    
+                <div class="campo">
+                    <span>Digite o usuário:</span>
+                    <input id="iptusuario" type="text" placeholder="Login"><br>
+                </div>
+        
+                <div class="campo">
+                    <span>Digite a senha:</span>
+                    <input id="iptsenha" type="password" placeholder="********"><br>
+                </div>
+        
+                <div class="botao">
+                    <button onclick="logar()">Login</button><br><br>
+                </div>
+        
+                <div id="divmsg"></div>
+            <br>
+            <br>
+                <div class="campo_cad">
+                    <span class="span_cad">Não possui cadastro?</span><br>
+                </div>
+                <li class="licadastro">
+                    <a class="link_cad" href="pagcadastro.html">Clique aqui para se cadastrar</a>
+                </li></div>
+                
+            </div>
+        </main>
+        <div class="box2"></div>
 </body>
 
 </html>

@@ -1,67 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Helpers | Cadastro</title>
-  </head>
-  <body>
-    <main class="main_cadastro">
-      <header>
-        <h1 class="titulo">
-          <a href="paginicio.html">Helpers</a>
-        </h1>
-      </header>
-      <div class="cadastro">
-        <!-- Header -->
-        <!-- Campo Cadastro -->
-        <div class="box_cadastro">
-          <div class="side_img">a</div>
-          <div class="side_forms">
-            <div class="forms">
-                <h2>Cadastrar</h2>
-    
-                <div class="campo">
-                  <span>Digite o usuário:</span>
-                  <input id="iptusuario" type="text" />
-                </div>
-    
-                <div class="campo">
-                  <span>Informe seu email:</span>
-                  <input id="iptemail" type="text" />
-                </div>
-    
-                <div class="campo">
-                  <span>Informe a senha:</span>
-                  <input id="iptsenha" type="password" placeholder="********" />
-    
-                  <div class="campo"></div>
-                  <span>Confirme a senha:</span>
-                  <input
-                    id="iptconfirmacaosenha"
-                    type="password"
-                    placeholder="********"
-                  />
-                </div>
-    
-                <!-- <br /> -->
-                <div class="botao">
-                  <button onclick="cadastrar()">Cadastrar</button>
-                </div>
-    
-                <!-- <div id="divmsg"></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Helpers | Cadastro</title>
+</head>
+
+<body>
+  <main class="main_cadastro">
+    <header>
+      <h1 class="titulo">
+        <a href="paginicio.html">Helpers</a>
+      </h1>
+    </header>
+    <div class="cadastro">
+      <!-- Header -->
+      <!-- Campo Cadastro -->
+      <div class="box_cadastro">
+        <div class="side_img">a</div>
+        <div class="side_forms">
+          <div class="forms">
+            <h2>Cadastrar</h2>
+
+            <div class="campo">
+              <span>Digite o usuário:</span>
+              <input id="iptusuario" type="text" />
+            </div>
+
+            <div class="campo">
+              <span>Informe seu email:</span>
+              <input id="iptemail" type="text" />
+            </div>
+
+            <div class="campo">
+              <span>Informe a senha:</span>
+              <input id="iptsenha" type="password" placeholder="********" />
+
+              <div class="campo"></div>
+              <span>Confirme a senha:</span>
+              <input id="iptconfirmacaosenha" type="password" placeholder="********" />
+            </div>
+
+            <!-- <br /> -->
+            <div class="botao">
+              <button onclick="cadastrar()">Cadastrar</button>
+            </div>
+
+            <!-- <div id="divmsg"></div>
                       <br /> -->
-                <div class="campo"><span>Já possui um cadastro?</span><br /></div>
-                <li class="licadastro">
-                  <a href="paglogin.html">Clique aqui para fazer o login</a>
-                </li>
-              </div>
+            <div class="campo"><span>Já possui um cadastro?</span><br /></div>
+            <li class="licadastro">
+              <a href="paglogin.html">Clique aqui para fazer o login</a>
+            </li>
           </div>
         </div>
       </div>
-    </main>
-  </body>
+    </div>
+  </main>
+</body>
+
 </html>
 <script>
   function cadastrar() {

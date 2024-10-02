@@ -105,3 +105,119 @@ h2 {
   margin: 0;
   padding: 0;
 }
+
+
+/* LOGIN */
+
+.header {
+  width: 100%;
+  /* border: solid yellow; */
+}
+
+.body_login {
+  background-color: #112b3c;
+  display: flex;
+  color: white;
+}
+
+.main_login {
+  height: 100vh;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  /* border: solid; */
+}
+
+.login {
+  height: 94vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.box1 {
+  display: flex;
+  height: 70%;
+  width: 100%;
+  /* border: solid; */
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.campo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+  width: 250px;
+}
+
+.campo_cad {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 260px;
+  margin-top: 240px;
+  position: absolute;
+}
+
+span {
+  padding: 15px 10px 3px 2px;
+  /* border: solid; */
+}
+
+.span_cad {
+  padding: 0;
+  font-size: small;
+}
+
+.box2 {
+  background-image: url('Modificar/assets/bg.png');
+  /* border: solid red; */
+  width: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.login .box2 img {
+  height: 100%;
+  width: 50%;
+  border: solid;
+}
+
+button {
+  background-color: orangered;
+  border-radius: 8px;
+  height: 25px;
+  width: 240px;
+  font-family: Archivo, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+li {
+  list-style-type: none;
+  color: orangered;
+}
+
+.link_cad {
+  color: orangered;
+  text-decoration: none;
+  font-size: small;
+}
+
+input {
+  height: 20px;
+  border-radius: 8px;
+}
+
+.helpers {
+  text-decoration: none;
+  color: white;
+}
