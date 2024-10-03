@@ -1,103 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <main class="main_cadastro">
+      <div class="container">
+        <div class="box_img">
+          <img src="Modificar/assets/bg.png" alt="Imagem sobre tecnologia" />
+        </div>
+        <div class="box_cadastro">
+          <div class="form">
+            <h1>Cadastro</h1>
+            <div class="campos">
+              <div class="campo">
+                <span></span>
+              </div>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Helpers | Cadastro</title>
-</head>
+              <div class="campo">
+                <span>Razão Social:</span>
+                <input type="text" />
+              </div>
 
-<body>
-  <main class="main_cadastro">
-    <header>
-      <h1 class="titulo">
-        <a href="paginicio.html">Helpers</a>
-      </h1>
-    </header>
-    <div class="cadastro">
-      <!-- Header -->
-      <!-- Campo Cadastro -->
-      <div class="box_cadastro">
-        <div class="side_img">a</div>
-        <div class="side_forms">
-          <div class="forms">
-            <h2>Cadastrar</h2>
+              <div class="campo">
+                <span>CNPJ:</span>
+                <input type="text" />
+              </div>
 
-            <div class="campo">
-              <span>Digite o usuário:</span>
-              <input id="iptusuario" type="text" />
+              <div class="campo">
+                <span>Email:</span>
+                <input type="text" />
+              </div>
+
+              <div class="campo">
+                <span>Telefone:</span>
+                <input type="text" />
+              </div>
+
+              <div class="campo">
+                <span>Responsável:</span>
+                <input type="text" />
+              </div>
+              <button>Prosseguir</button>
             </div>
-
-            <div class="campo">
-              <span>Informe seu email:</span>
-              <input id="iptemail" type="text" />
+            <div class="link_login">
+              <a href="paglogin.html"
+                >Já possui um cadastro?<br /><span style="color: #f66b0e"
+                  >Clique aqui para fazer login</span
+                ></a
+              >
             </div>
-
-            <div class="campo">
-              <span>Informe a senha:</span>
-              <input id="iptsenha" type="password" placeholder="********" />
-
-              <div class="campo"></div>
-              <span>Confirme a senha:</span>
-              <input id="iptconfirmacaosenha" type="password" placeholder="********" />
-            </div>
-
-            <!-- <br /> -->
-            <div class="botao">
-              <button onclick="cadastrar()">Cadastrar</button>
-            </div>
-
-            <!-- <div id="divmsg"></div>
-                      <br /> -->
-            <div class="campo"><span>Já possui um cadastro?</span><br /></div>
-            <li class="licadastro">
-              <a href="paglogin.html">Clique aqui para fazer o login</a>
-            </li>
           </div>
         </div>
       </div>
-    </div>
-  </main>
-</body>
-
+    </main>
+  </body>
 </html>
-<script>
-  function cadastrar() {
-    var usuario = iptusuario.value;
-    var email = iptemail.value;
-    var senha = iptsenha.value;
-    var confirmacao = iptconfirmacaosenha.value;
-    var mensagem = ``;
-
-    // Validação usuário
-    if (usuario.length == 0) {
-      mensagem += `O nome de usuário não pode estar vazio.<br>`;
-    }
-    if (usuario.includes(" ")) {
-      mensagem += `O nome de usuário não pode conter espaços.<br>`;
-    }
-
-    // Validação E-mail
-    if (
-      email.indexOf("@") == -1 ||
-      (email.indexOf(".com") == -1 && email.indexOf(".com.br") == -1)
-    ) {
-      mensagem += `E-mail inválido.<br>`;
-    }
-
-    // Validação Senha
-    if (senha.includes(" ")) {
-      mensagem += `A senha não pode conter espaços.<br>`;
-    }
-    if (senha.length < 8) {
-      mensagem += `A senha precisa ter no mínimo 8 (oito) caracteres.<br>`;
-    } else if (confirmacao != senha) {
-      mensagem += `As senhas não coincidem.<br>`;
-    }
-    if (mensagem.length == 0) {
-      mensagem = `Cadastro realizado com sucesso!`;
-    }
-    divmsg.innerHTML = mensagem;
-  }
-</script>

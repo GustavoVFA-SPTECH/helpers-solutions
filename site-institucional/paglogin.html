@@ -1,90 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <main class="main_login">
+      <div class="container">
+        <div class="box_login">
+          <div class="form">
+            <h1>Entrar</h1>
+            <div class="campos">
+              <div class="campo">
+                <span></span>
+              </div>
 
-    <meta charset="UTF-8">
+              <div class="campo">
+                <span>Digite seu usuário:</span>
+                <input type="text" />
+              </div>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Helpers | Login</title></title>
+              <div class="campo">
+                <span>Digite sua senha:</span>
+                <input type="password" />
+              </div>
 
-</head>
-
-<body class="body_login">
-
-<main class="main_login">
-    <!-- Header -->
-    <div class="header">  
-        <h1 class="titulo">
-             <a class="helpers" href="paginicio.html">Helpers</a>
-        </h1>
-    </div>
-
-    
-    <!-- Campo Login -->
-    <div class="login">
-            <div class="box1">
-                <h2>Login</h2>
-    
-                <div class="campo">
-                    <span>Digite o usuário:</span>
-                    <input id="iptusuario" type="text" placeholder="Login"><br>
-                </div>
-        
-                <div class="campo">
-                    <span>Digite a senha:</span>
-                    <input id="iptsenha" type="password" placeholder="********"><br>
-                </div>
-        
-                <div class="botao">
-                    <button onclick="logar()">Login</button><br><br>
-                </div>
-        
-                <div id="divmsg"></div>
-            <br>
-            <br>
-                <div class="campo_cad">
-                    <span class="span_cad">Não possui cadastro?</span><br>
-                </div>
-                <li class="licadastro">
-                    <a class="link_cad" href="pagcadastro.html">Clique aqui para se cadastrar</a>
-                </li></div>
-                
+              <button>Prosseguir</button>
             </div>
-        </main>
-        <div class="box2"></div>
-</body>
-
+            <div class="link_login">
+              <a href="pagcadastro.html"
+                >Ainda não possui uma conta?<br /><span style="color: #f66b0e"
+                  >Clique aqui para fazer o cadastro</span
+                ></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="box_img">
+          <img src="Modificar/assets/bg.png" alt="Imagem sobre tecnologia" />
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
-
-<script>
-    function logar(){
-        var usuario = iptusuario.value;
-        var senha = iptsenha.value;
-        var mensagem = ``;
-
-         // Validação usuário
-         if (usuario.length == 0) {
-            mensagem += `O nome de usuário não pode estar vazio.<br>`;
-        }
-        if (usuario.includes(' ')) {
-             mensagem += `O nome de usuário não pode conter espaços.<br>`;
-        }
-
-         // Validação Senha
-         if (senha.includes(' ')) {
-        mensagem += `A senha não pode conter espaços.<br>`;
-        }
-        if (senha.length < 8){
-            mensagem += `Senha inválida.<br>`
-        }
-
-        if (mensagem.length == 0) {
-                mensagem = `Login realizado.`;
-            }
-        divmsg.innerHTML = mensagem;
-
-
-    }
-
-</script>
