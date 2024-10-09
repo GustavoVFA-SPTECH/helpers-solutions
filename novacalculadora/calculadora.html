@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulador Financeiro</title>
+  </head>
+  <body>
+
+    <h2>Simulador Financeiro Helpers Solutions</h2>
+<br>
+
+    <b>Qual máquina você deseja simular?
+
+<br>
+
+    <select id="maquinas">
+        <option value="">Por favor, selecione uma máquina</option>
+        <option value="centrifuga">Bomba Centrífuga</option>
+        <option value="axial">Bomba Axial</option>
+        <option value="deslocamentopositivo">Bomba de Deslocamento Positivo</option>
+    </select>
+    
+<br><br>
+
+    Qual o tempo total de operação desta máquina, em horas, no dia?<br>
+    <input id="iptTotalTempoOperacao" type="number">
+
+<br><br>
+
+    Qual a temperatura média, em graus Celsius, cujo esta máquina costuma operar?<br>
+    <input id="iptTemperaturaMedia" type="number">
+
+<br><br>
+
+    <button onclick="calcularPrejuizo()">Calcular Prejuízos</button>
+
+    <div id="divOutput"></div>
+
+<script>
+
+function calcularPrejuizo() {
+
+    var tipoMaquina = maquinas.value;
+    var temperaturaMedia = Number(iptTemperaturaMedia.value);
+    var tempoTotalOperacao = Number(iptTotalTempoOperacao.value);
+    var tempoInativo = 24 - tempoTotalOperacao;
+    var custoHora = 50;
+
+    var temperaturaIdeal = 0;
+
+    var downtimeSemSolucao = Math.round((tempoInativo / tempoTotalOperacao) * 100);
+    var custoSemSolucaoDia = tempoInativo * custoHora;
+    var custoSemSolucaoAnual = custoSemSolucaoDia * 365;
+
+    var downtimeComSolucao = Math.round(((tempoInativo - tempoInativo * 0.3) / tempoTotalOperacao) * 100);
+
+    var custoComSolucaoDia = (tempoInativo - tempoInativo * 0.3) * custoHora;
+    var custoComSolucaoAnual = custoComSolucaoDia * 365;
+    var vidaUtilGeral = 0;
+
+    if (!tipoMaquina) {
+        alert("Por favor, selecione uma máquina.");
+        return;
+    }
+    if (!tempoTotalOperacao) {
+        alert("Por favor, informe um tempo total de operação válido (em horas).");
+        return;
+    }
+    if (!temperaturaMedia) {
+        alert("Por favor, informe uma temperatura válida.");
+        return;
+    }
+
+    if (tempoTotalOperacao < 0 || tempoTotalOperacao > 24) {
+        alert("O tempo total de operação deve ser um valor entre 0 e 24 horas.");
+        return;
+    }
+
+    if (temperaturaMedia < 0) {
+    alert("A temperatura média não pode ser negativa.");
+    return;
+    
+    }   
+
+    if (tipoMaquina == "centrifuga") {
+          temperaturaIdeal = 150;
+          vidaUtilGeral = 15;
+        } else if (tipoMaquina == "axial") {
+          temperaturaIdeal = 300;
+          vidaUtilGeral = 20;
+        } else if (tipoMaquina == "deslocamentopositivo") {
+          temperaturaIdeal = 100;
+          vidaUtilGeral = 15;
+        }
+
+        var vidaUtil = vidaUtilGeral;
+
+        divOutput.innerHTML = `
+            <br>
+            <h2>Prejuízos sem a Nossa Solução:</h2>
+        `;
+        if (temperaturaMedia > temperaturaIdeal) {
+            // Caso esteja vai fazer um cálculo onde descobriremos a quantidade de dias onde de vida útil a menos que a máquina terá com a temperatura
+            vidaUtilGeral = vidaUtilGeral - (temperaturaMedia - temperaturaIdeal) / 365;
+
+            // plota as informações sobre a temperatura na div de output
+            divOutput.innerHTML += `
+                <h4>Se a ${tipoMaquina} operasse a temperatura de ${temperaturaIdeal}ºC, sua vida útil seria de ${vidaUtil} anos</h4>
+                <h4>Porém, operando com a temperatura de ${temperaturaMedia}ºC, gera uma <b style="color: red;">perda de ${Math.round(365 * (Math.round(vidaUtilGeral) - vidaUtilGeral))} dias de sua vida util por hora</b>.</h4>
+            `;
+        }
+          // Plota o resto das informações e cálculos complementares
+          divOutput.innerHTML += `
+            <h4>Porcentagem do Downtime da máquina em 1 dia: <b style="color: red;">${downtimeSemSolucao}%</b></h4>
+            <h4>Custo das horas inativas da máquina: <b style="color: red;">US$${custoSemSolucaoDia}</b></h4>
+            <h4>Supondo uma média em que a planta fica inativa por ano, o prejuízo será de: <b style="color: red;">US$${custoSemSolucaoAnual}</b></h4>
+            <br>
+            <h2>Melhorias com a Nossa Solução:</h2>
+            <h4>Porcentagem do Downtime da máquina em 1 dia: <b style="color: green;">${downtimeComSolucao}%,<b style="color:black"> reduzindo em</b> ${downtimeSemSolucao-downtimeComSolucao}%</b></h4>
+            <h4>O novo custo com a inatividade da máquina será de: <b style="color: green;">US$${custoComSolucaoDia}</b>, <b style="color: black;">economizando</b> um total de <b style="color: green;">US$${custoSemSolucaoDia - custoComSolucaoDia}</b></h4><b style="color: black;">economizando</b> um total de: <b style="color: green;">US$${Math.round(custoSemSolucaoAnual - custoComSolucaoAnual)}</b></h4> 
+        `;
+      
+
+
+
+
+
+
+}
+
+</script>
