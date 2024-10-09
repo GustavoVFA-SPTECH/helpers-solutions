@@ -84,7 +84,7 @@ input {
   border: none;
   background-color: #efefef;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-  text-align: center;
+  /* text-align: center; */
   outline-color: #f66b0e;
 }
 
@@ -178,24 +178,6 @@ a {
 .main_login .container .box_login .campos .campo span {
   font-weight: bolder;
   /* padding: 0 0 0 1.2rem; */
-}
-
-input {
-  opacity: 0.7;
-  font-family: Archivo, Arial, Helvetica, sans-serif;
-  font-size: large;
-  height: 2rem;
-  margin: 0.2rem 0 1rem;
-  border-radius: 8px;
-  border: none;
-  background-color: #efefef;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  outline-color: #f66b0e;
-}
-
-input:hover {
-  opacity: 1;
 }
 
 .main_login .container .box_login .campos .btns {
