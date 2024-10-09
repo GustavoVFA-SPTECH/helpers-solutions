@@ -14,12 +14,9 @@
           <img src="../assets/bg.png" alt="Imagem sobre tecnologia" />
         </div>
         <div class="box_cadastro">
-          <div class="form">
+          <div class="form" style="display: block" id="form_1">
             <h1>Cadastro</h1>
             <div class="campos">
-              <div class="campo">
-                <span></span>
-              </div>
               <div class="campo">
                 <span>Razão Social:</span>
                 <input type="text" />
@@ -42,7 +39,78 @@
               </div>
               <div class="btns">
                 <a href="../index.html">Voltar</a>
-                <a>Prosseguir</a>
+                <button onclick="step_01()">Prosseguir</button>
+              </div>
+            </div>
+            <div class="link_login">
+              <a href="paglogin.html"
+                >Já possui um cadastro?<br /><span style="color: #f66b0e"
+                  >Clique aqui para fazer login</span
+                ></a
+              >
+            </div>
+          </div>
+
+          <!-- SEGUNDA ETAPA ----------------------------------------------------------- -->
+          <div class="form" style="display: none" id="form_2">
+            <h1>Cadastro</h1>
+            <div class="campos">
+              <div class="campo">
+                <span>CEP:</span>
+                <input type="text" />
+              </div>
+              <div class="campo">
+                <span>Logradouro:</span>
+                <input type="text" />
+              </div>
+              <div class="campo">
+                <span>Número do logradouro:</span>
+                <input type="text" />
+              </div>
+              <div class="campo">
+                <span>Bairro:</span>
+                <input type="text" />
+              </div>
+              <div class="campo">
+                <span>Complemento:</span>
+                <input type="text" />
+              </div>
+              <div class="btns">
+                <button onclick="retornar_tela_01()">Voltar</button>
+                <button onclick="step_02()">Prosseguir</button>
+              </div>
+            </div>
+            <div class="link_login">
+              <a href="paglogin.html"
+                >Já possui um cadastro?<br /><span style="color: #f66b0e"
+                  >Clique aqui para fazer login</span
+                ></a
+              >
+            </div>
+          </div>
+          <!-- ETAPA 03 ----------------------------------------------------------------------------------------- -->
+          <div class="form" style="display: none" id="form_3">
+            <h1>Cadastro</h1>
+            <div class="campos">
+              <div class="campo">
+                <span>Nome de usuário:</span>
+                <input type="text" />
+              </div>
+              <div class="campo">
+                <span>Email:</span>
+                <input type="text" />
+              </div>
+              <div class="campo">
+                <span>Senha:</span>
+                <input type="text" />
+              </div>
+              <div class="campo">
+                <span>Confirme a senha:</span>
+                <input type="text" />
+              </div>
+              <div class="btns">
+                <button onclick="retornar_tela_02()">Voltar</button>
+                <button onclick="step_03()">Finalizar</button>
               </div>
             </div>
             <div class="link_login">

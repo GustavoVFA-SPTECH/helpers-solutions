@@ -92,7 +92,8 @@ input:hover {
   opacity: 1;
 }
 
-.main_cadastro .container .box_cadastro .campos a {
+.main_cadastro .container .box_cadastro .campos a,
+.main_cadastro .container .box_cadastro .campos button {
   display: flex;
   align-self: center;
   justify-content: center;
