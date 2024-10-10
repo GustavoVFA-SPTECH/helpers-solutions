@@ -23,6 +23,78 @@ body {
   height: 100vh;
 }
 
+
+.main_cadastro .modal {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.main_cadastro .modal .box_modal {
+  position: absolute;
+  width: 500px;
+  height: 320px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.main_cadastro .modal .box_modal .titulo {
+  display: flex;
+  justify-content: center;
+}
+
+.main_cadastro .modal .box_modal .icon {
+  /* border: solid; */
+  display: flex;
+  justify-content: center;  
+}
+
+.main_cadastro .modal .box_modal .info {
+  display: flex;
+  justify-content: center;
+}
+
+.main_cadastro .modal .box_modal .btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.main_cadastro .modal .box_modal .btn a{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  background-color: #f66b0e;
+  width: 200px;
+  box-shadow: 0 4px 0 #a54809;
+  border: none;
+  color: white;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+  font-size: x-large;
+  border-radius: 12px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.main_cadastro .modal .box_modal .btn a:hover {
+  opacity: 1;
+}
+
+.main_cadastro .container {
+  display: flex;
+  background-color: white;
+  width: 1000px;
+  height: 600px;
+  border-radius: 12px;
+}
+
 .main_cadastro .container {
   display: flex;
   background-color: white;
