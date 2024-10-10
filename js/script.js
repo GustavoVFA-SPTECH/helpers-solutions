@@ -7,7 +7,7 @@ function valSenha() {
   var min = false;
   var max = false;
   var validos = "!@#$%&?";
-  validacao.innerHTML = '';
+  validacao.innerHTML = "";
 
   for (var i = 0; i < tamanho; i++) {
     for (var j = 0; j < validos.length; j++) {
@@ -26,33 +26,42 @@ function valSenha() {
     }
   }
 
-  if (tamanho < 8 || tamanho > 30) validacao.innerHTML += `A senha deve conter entre 8 e 30 caracteres <br>`;
+  if (tamanho < 8 || tamanho > 30)
+    validacao.innerHTML += `A senha deve conter entre 8 e 30 caracteres <br>`;
 
   if (!num) validacao.innerHTML += `A senha deve conter 1 número <br>`;
 
-  if (!esp) validacao.innerHTML += `A senha deve conter 1 caracter especial: '!@#$%&?' <br>`;
+  if (!esp)
+    validacao.innerHTML += `A senha deve conter 1 caracter especial: '!@#$%&?' <br>`;
 
-  if(!min) validacao.innerHTML += `A senha deve conter 1 letra minúscula`
-  
-  if(!max) validacao.innerHTML += `A senha deve conter 1 letra maiúscula`
+  if (!min) validacao.innerHTML += `A senha deve conter 1 letra minúscula`;
 
-  
+  if (!max) validacao.innerHTML += `A senha deve conter 1 letra maiúscula`;
+
   //  validacao.innerHTML += `A senha deve conter 1 letra minúscula`
 
   // Senha Vazia
-  if (senha == '') validacao.innerHTML = '';
-
+  // if (senha == '') validacao.innerHTML = '';
+  if (senha == "") validacao.innerHTML = `Preencha o campo para continuar`;
+  input_senha.style.outline = "none";
+  input_senha.style.border = "solid red 2px";
+  if (num && esp && min && max) {
+    input_senha.style.outline = "solid #22c55e 2px";
+    input_senha.style.border = "#22c55e";
+  }
 }
 
 function valRazaoSocial() {
   var razao = document.getElementById("ipt_razao");
   var termina =
     razao.endsWith("ME") ||
-      razao.endsWith("S.A") ||
-      razao.endsWith("LTDA") ||
-      razao.endsWith("EPP") ? true : false;
+    razao.endsWith("S.A") ||
+    razao.endsWith("LTDA") ||
+    razao.endsWith("EPP")
+      ? true
+      : false;
 
-  console.log(termina)
+  console.log(termina);
 }
 
 //Troca de pagina de cadastro
