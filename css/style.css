@@ -58,6 +58,10 @@ body {
   padding: 2rem;
 }
 
+.main_cadastro .container .box_cadastro .campos .validacao {
+  font-size: small;
+}
+
 .main_cadastro .container .box_cadastro .campos .campo {
   display: flex;
   flex-direction: column;
@@ -217,6 +221,11 @@ a {
 .main_login .container .box_login .form .link_login {
   height: 100%;
 }
+
+.main_cadastro .container .box_cadastro .form .campos .validacao{
+  color: red;
+}
+
 
 .main_login .container .box_login .form {
   height: 100%;

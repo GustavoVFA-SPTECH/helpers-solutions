@@ -5,6 +5,7 @@ function valSenha() {
   var esp = false;
   var num = false;
   var validos = "!@#$%&?";
+  var nao_validou = 0;
 
 
   for (var i = 0; i < tamanho; i++) {
@@ -18,21 +19,50 @@ function valSenha() {
     }
   }
 
+  var mensagem = "Sua senha não cumpre os requisitos. Ela precisa:<br>";
+
   if (tamanho < 8) {
+    nao_validou++
     // Mensagem caso a senha seja muito curta
-    alert('Senha muito curta')
-  } else if (!esp) {
-    // Mensagem caso a senha não tenha caracteres especiais
-  } else if (tamanho > 30) {
-    // mensagem caso a senha seja muito longa
-  } else if (senha.toUpperCase() != senha) {
-    //mensagem caso senha seja minuscula
-  } else if (senha.toLowerCase() != senha) {
-    //mensagem caso senha seja maiuscula
-  } else if (!num) {
-    //mensagem caso senha não tenha números
+    // alert('Senha muito curta')
+    mensagem += `Conter pelo menos 8 dígitos<br>`;
   }
 
+  if (!esp) {
+    nao_validou++
+    // Mensagem caso a senha não tenha caracteres especiais
+    mensagem += `Conter pelo menos 1 caractere especial (ex: !@#$%&?)<br>`;
+  }
+  
+  if (tamanho > 30) {
+    nao_validou++
+    // mensagem caso a senha seja muito longa
+    mensagem = `Senha muito grande! Sua senha precisa conter no máximo 30 caracteres<br>`;
+  }
+
+  if (senha.toLowerCase() != senha || senha == '') {
+    //mensagem caso senha seja minuscula
+    mensagem += `Conter pelo menos 1 letra minúscula<br>`
+  }
+  
+  if (senha.toUpperCase() != senha || senha == '') {
+    //mensagem caso senha seja maiuscula
+    mensagem += `Conter pelo menos 1 letra maiúscula<br>`
+  }
+  
+  if (!num) {
+    nao_validou++
+    //mensagem caso senha não tenha números
+    mensagem += `Conter pelo menos 1 número<br>`
+  }
+
+
+  if(nao_validou > 0) {
+    validacao.innerHTML = `<span>${mensagem}</span>`;
+  } else {
+    validacao.innerHTML = ``;
+  }
+  // alert(mensagem)
 }
 
 function valRazaoSocial() {
@@ -64,12 +94,6 @@ function step_02() {
   box_form_1.style.display = "none";
   box_form_2.style.display = "none";
   box_form_3.style.display = "block";
-}
-
-function step_03(valSenha) {
-  if(valSenha != true) {
-    alert(valSenha)
-  }
 }
 
 function retornar_tela_01() {
