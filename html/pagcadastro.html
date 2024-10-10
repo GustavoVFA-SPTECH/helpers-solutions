@@ -14,6 +14,7 @@
           <img src="../assets/bg.png" alt="Imagem sobre tecnologia" />
         </div>
         <div class="box_cadastro">
+          <!-- PRIMEIRA ETAPA ----------------------------------------------------------- -->
           <div class="form" style="display: block" id="form_1">
             <h1>Cadastro</h1>
             <div class="campos">
@@ -88,7 +89,8 @@
               >
             </div>
           </div>
-          <!-- ETAPA 03 ----------------------------------------------------------------------------------------- -->
+
+          <!-- TERCEIRA ETAPA ---------------------------------------------------------- -->
           <div class="form" style="display: none" id="form_3">
             <h1>Cadastro</h1>
             <div class="campos">
@@ -102,15 +104,15 @@
               </div>
               <div class="campo">
                 <span>Senha:</span>
-                <input type="text" />
+                <input id="ipt_senha" type="text" />
               </div>
               <div class="campo">
                 <span>Confirme a senha:</span>
-                <input type="text" />
+                <input id="ipt_confirmar_senha" type="text" />
               </div>
               <div class="btns">
                 <button onclick="retornar_tela_02()">Voltar</button>
-                <button onclick="step_03()">Finalizar</button>
+                <button onclick="valSenha()">Finalizar</button>
               </div>
             </div>
             <div class="link_login">

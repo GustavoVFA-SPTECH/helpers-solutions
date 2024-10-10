@@ -1,9 +1,11 @@
 function valSenha() {
-  var senha = document.getElementById("ipt_senha");
+  var input_senha = document.getElementById("ipt_senha");
+  var senha = input_senha.value;
   var tamanho = senha.length;
   var esp = false;
   var num = false;
   var validos = "!@#$%&?";
+
 
   for (var i = 0; i < tamanho; i++) {
     for (var j = 0; j < validos.length; j++) {
@@ -18,6 +20,7 @@ function valSenha() {
 
   if (tamanho < 8) {
     // Mensagem caso a senha seja muito curta
+    alert('Senha muito curta')
   } else if (!esp) {
     // Mensagem caso a senha não tenha caracteres especiais
   } else if (tamanho > 30) {
@@ -29,6 +32,7 @@ function valSenha() {
   } else if (!num) {
     //mensagem caso senha não tenha números
   }
+
 }
 
 function valRazaoSocial() {
@@ -40,7 +44,6 @@ function valRazaoSocial() {
     razao.endsWith("EPP") ? true : false;
     
     console.log(termina)
-
 }
 
 function step_01() {
@@ -61,6 +64,12 @@ function step_02() {
   box_form_1.style.display = "none";
   box_form_2.style.display = "none";
   box_form_3.style.display = "block";
+}
+
+function step_03(valSenha) {
+  if(valSenha != true) {
+    alert(valSenha)
+  }
 }
 
 function retornar_tela_01() {
