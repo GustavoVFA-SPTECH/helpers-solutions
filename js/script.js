@@ -4,9 +4,10 @@ function valSenha() {
   var tamanho = senha.length;
   var esp = false;
   var num = false;
+  var min = false;
+  var max = false;
   var validos = "!@#$%&?";
-  var nao_validou = 0;
-
+  validacao.innerHTML = '';
 
   for (var i = 0; i < tamanho; i++) {
     for (var j = 0; j < validos.length; j++) {
@@ -17,64 +18,44 @@ function valSenha() {
         num = true;
       }
     }
+    if (senha[i].toUpperCase() != senha[i]) {
+      min = true;
+    }
+    if (senha[i].toLowerCase() != senha[i]) {
+      max = true;
+    }
   }
 
-  var mensagem = "Sua senha não cumpre os requisitos. Ela precisa:<br>";
+  if (tamanho < 8 || tamanho > 30) validacao.innerHTML += `A senha deve conter entre 8 e 30 caracteres <br>`;
 
-  if (tamanho < 8) {
-    nao_validou++
-    // Mensagem caso a senha seja muito curta
-    // alert('Senha muito curta')
-    mensagem += `Conter pelo menos 8 dígitos<br>`;
-  }
+  if (!num) validacao.innerHTML += `A senha deve conter 1 número <br>`;
 
-  if (!esp) {
-    nao_validou++
-    // Mensagem caso a senha não tenha caracteres especiais
-    mensagem += `Conter pelo menos 1 caractere especial (ex: !@#$%&?)<br>`;
-  }
+  if (!esp) validacao.innerHTML += `A senha deve conter 1 caracter especial: '!@#$%&?' <br>`;
+
+  if(!min) validacao.innerHTML += `A senha deve conter 1 letra minúscula`
   
-  if (tamanho > 30) {
-    nao_validou++
-    // mensagem caso a senha seja muito longa
-    mensagem = `Senha muito grande! Sua senha precisa conter no máximo 30 caracteres<br>`;
-  }
+  if(!max) validacao.innerHTML += `A senha deve conter 1 letra maiúscula`
 
-  if (senha.toLowerCase() != senha || senha == '') {
-    //mensagem caso senha seja minuscula
-    mensagem += `Conter pelo menos 1 letra minúscula<br>`
-  }
   
-  if (senha.toUpperCase() != senha || senha == '') {
-    //mensagem caso senha seja maiuscula
-    mensagem += `Conter pelo menos 1 letra maiúscula<br>`
-  }
-  
-  if (!num) {
-    nao_validou++
-    //mensagem caso senha não tenha números
-    mensagem += `Conter pelo menos 1 número<br>`
-  }
+  //  validacao.innerHTML += `A senha deve conter 1 letra minúscula`
 
+  // Senha Vazia
+  if (senha == '') validacao.innerHTML = '';
 
-  if(nao_validou > 0) {
-    validacao.innerHTML = `<span>${mensagem}</span>`;
-  } else {
-    validacao.innerHTML = ``;
-  }
-  // alert(mensagem)
 }
 
 function valRazaoSocial() {
   var razao = document.getElementById("ipt_razao");
   var termina =
     razao.endsWith("ME") ||
-    razao.endsWith("S.A") ||
-    razao.endsWith("LTDA") ||
-    razao.endsWith("EPP") ? true : false;
-    
-    console.log(termina)
+      razao.endsWith("S.A") ||
+      razao.endsWith("LTDA") ||
+      razao.endsWith("EPP") ? true : false;
+
+  console.log(termina)
 }
+
+//Troca de pagina de cadastro
 
 function step_01() {
   var box_form_1 = document.getElementById("form_1");
