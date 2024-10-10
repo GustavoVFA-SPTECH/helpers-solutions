@@ -1,16 +1,8 @@
 var guardarSenha = "";
 var validouSenha = false;
-// var validouSenha =
+var validouSenha = ''
 function valSenha() {
-<<<<<<< HEAD
   var senha = document.getElementById("ipt_senha").value;
-=======
-  validouSenha = false;
-  var input_senha = document.getElementById("ipt_senha");
-  var input_confirmar_senha = document.getElementById("ipt_confirmar_senha");
-  var senha = input_senha.value;
-  var confirmar_senha = input_confirmar_senha.value;
->>>>>>> c3547567de7aebe800623373a77ecb64fd4fbc36
   var tamanho = senha.length;
   var esp = false;
   var num = false;
@@ -50,10 +42,6 @@ function valSenha() {
 
   if (!max) mensagem += `A senha deve conter 1 letra maiúscula <br>`;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> c3547567de7aebe800623373a77ecb64fd4fbc36
   //  validacao.innerHTML += `A senha deve conter 1 letra minúscula`
 
   // Senha Vazia
@@ -69,56 +57,24 @@ function valSenha() {
     validouSenha = true;
   }
 
-<<<<<<< HEAD
   var confirmSenha = ipt_confirmar_senha.value
   var senhasIguais = confirmSenha == senha;
-if(!confirmSenha == ''){
-  if(senhasIguais){
-  }else{
-    validacao.innerHTML += `As senhas não batem`
+  if (!confirmSenha == '') {
+    if (senhasIguais) {
+    } else {
+      validacao.innerHTML += `As senhas não batem`
+    }
   }
-}
 
-=======
-  validacao.innerHTML = mensagem;
-}
-
-function continuar() {
-  var alert_modal = document.getElementById("modal");
-
-  if (validouSenha) {
-    alert_modal.style.display = "flex";
-    alert_modal.innerHTML = `
-            <div class="box_modal">
-          <div class="icon">
-            <img
-              height="140px"
-              src="../assets/verified_high_quality.gif"
-              alt="Imagem de verificação aprovada"
-            />
-          </div>
-          <div class="titulo">
-            <h2>Cadastro efetuado com sucesso!</h2>
-          </div>
-          <div class="info">
-            <span>Clique no botão de continuar para ir para a tela de login</span>
-          </div>
-          <div class="btn">
-            <a href="paglogin.html">Continuar</a>
-          </div>
-        </div>
-    `;
-  }
->>>>>>> c3547567de7aebe800623373a77ecb64fd4fbc36
 }
 
 function valRazaoSocial() {
   var razao = document.getElementById("ipt_razao");
   var termina =
     razao.endsWith("ME") ||
-    razao.endsWith("S.A") ||
-    razao.endsWith("LTDA") ||
-    razao.endsWith("EPP")
+      razao.endsWith("S.A") ||
+      razao.endsWith("LTDA") ||
+      razao.endsWith("EPP")
       ? true
       : false;
 
