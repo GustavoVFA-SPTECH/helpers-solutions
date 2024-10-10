@@ -1,6 +1,5 @@
 function valSenha() {
-  var input_senha = document.getElementById("ipt_senha");
-  var senha = input_senha.value;
+  var senha = document.getElementById("ipt_senha").value;
   var tamanho = senha.length;
   var esp = false;
   var num = false;
@@ -36,11 +35,20 @@ function valSenha() {
   
   if(!max) validacao.innerHTML += `A senha deve conter 1 letra maiúscula`
 
-  
+
   //  validacao.innerHTML += `A senha deve conter 1 letra minúscula`
 
   // Senha Vazia
   if (senha == '') validacao.innerHTML = '';
+
+  var confirmSenha = ipt_confirmar_senha.value
+  var senhasIguais = confirmSenha == senha;
+if(!confirmSenha == ''){
+  if(senhasIguais){
+  }else{
+    validacao.innerHTML += `As senhas não batem`
+  }
+}
 
 }
 
