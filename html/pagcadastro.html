@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/script.js"></script>
+    <script src="../js/validacao.js"></script>
   </head>
   <body>
     <main class="main_cadastro">
@@ -21,7 +22,7 @@
             <div class="campos">
               <div class="campo">
                 <span>Razão Social:</span>
-                <input type="text" />
+                <input type="text" oninput="valRazaoSocial()" id="ipt_razao" />
               </div>
               <div class="campo">
                 <span>CNPJ:</span>
@@ -39,6 +40,7 @@
                 <span>Responsável:</span>
                 <input type="text" />
               </div>
+              <div id="validacao" class="validacao"></div>
               <div class="btns">
                 <a href="../index.html">Voltar</a>
                 <button onclick="step_01()">Prosseguir</button>
@@ -109,10 +111,14 @@
               </div>
               <div class="campo">
                 <span>Confirme a senha:</span>
-                <input id="ipt_confirmar_senha" oninput="valSenha()" type="password" />
+                <input
+                  id="ipt_confirmar_senha"
+                  oninput="valSenha()"
+                  type="password"
+                />
               </div>
 
-              <div id="validacao" class="validacao"></div>
+              <span id="validacao" class="validacao"></span>
               <div class="btns">
                 <button onclick="retornar_tela_02()">Voltar</button>
                 <button onclick="continuar()">Finalizar</button>
