@@ -33,6 +33,11 @@
 
 <br><br>
 
+    Qual o lucro médio por hora que a máquina te dá<br>
+    <input id="iptCustoHora" type="number">
+
+<br><br>
+
     <button onclick="calcularPrejuizo()">Calcular Prejuízos</button>
 
     <div id="divOutput"></div>
@@ -45,7 +50,7 @@ function calcularPrejuizo() {
     var temperaturaMedia = Number(iptTemperaturaMedia.value);
     var tempoTotalOperacao = Number(iptTotalTempoOperacao.value);
     var tempoInativo = 24 - tempoTotalOperacao;
-    var custoHora = 50;
+    var custoHora = Number(iptCustoHora.value);
 
     var temperaturaIdeal = 0;
 
@@ -78,8 +83,8 @@ function calcularPrejuizo() {
     }
 
     if (temperaturaMedia < 0) {
-    alert("A temperatura média não pode ser negativa.");
-    return;
+        alert("A temperatura média não pode ser negativa.");
+        return;
     
     }   
 
@@ -87,7 +92,7 @@ function calcularPrejuizo() {
           temperaturaIdeal = 150;
           vidaUtilGeral = 15;
         } else if (tipoMaquina == "axial") {
-          temperaturaIdeal = 300;
+          temperaturaIdeal = 200;
           vidaUtilGeral = 20;
         } else if (tipoMaquina == "deslocamentopositivo") {
           temperaturaIdeal = 100;
@@ -112,13 +117,21 @@ function calcularPrejuizo() {
         }
           // Plota o resto das informações e cálculos complementares
           divOutput.innerHTML += `
-            <h4>Porcentagem do Downtime da máquina em 1 dia: <b style="color: red;">${downtimeSemSolucao}%</b></h4>
+            <h4>Porcentagem do tempo de inatividade da máquina em 1 dia: <b style="color: red;">${downtimeSemSolucao}%</b></h4>
+
             <h4>Custo das horas inativas da máquina: <b style="color: red;">US$${custoSemSolucaoDia}</b></h4>
+
             <h4>Supondo uma média em que a planta fica inativa por ano, o prejuízo será de: <b style="color: red;">US$${custoSemSolucaoAnual}</b></h4>
+
             <br>
+
             <h2>Melhorias com a Nossa Solução:</h2>
-            <h4>Porcentagem do Downtime da máquina em 1 dia: <b style="color: green;">${downtimeComSolucao}%,<b style="color:black"> reduzindo em</b> ${downtimeSemSolucao-downtimeComSolucao}%</b></h4>
-            <h4>O novo custo com a inatividade da máquina será de: <b style="color: green;">US$${custoComSolucaoDia}</b>, <b style="color: black;">economizando</b> um total de <b style="color: green;">US$${custoSemSolucaoDia - custoComSolucaoDia}</b></h4><b style="color: black;">economizando</b> um total de: <b style="color: green;">US$${Math.round(custoSemSolucaoAnual - custoComSolucaoAnual)}</b></h4> 
+
+            <h4>Porcentagem do tempo de inatividade da máquina em 1 dia: <b style="color: green;">${downtimeComSolucao}%,<b style="color:black"> reduzindo em</b> ${downtimeSemSolucao-downtimeComSolucao}%</b></h4>
+
+            <h4>O novo custo com a inatividade da máquina será de: <b style="color: green;">US$${custoComSolucaoDia}</b>, <b style="color: black;">economizando</b> um total de <b style="color: green;">US$${custoSemSolucaoDia - custoComSolucaoDia}</b></h4>
+            
+            <b style="color: black;">economizando</b> um total de: <b style="color: green;">US$${Math.round(custoSemSolucaoAnual - custoComSolucaoAnual)}</b></h4> 
         `;
       
 
