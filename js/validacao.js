@@ -10,7 +10,12 @@ function valRazaoSocial() {
       : false;
 
   if (!termina) {
-    val1.innerHTML = `A razão social deve conter o Pós-fixo 'ME, S.A, LTDA, EPP'`;
+    val1.innerHTML += `A razão social deve conter o Pós-fixo 'ME, S.A, LTDA, EPP'`;
+    ipt_razao.style.outline = "none";
+    ipt_razao.style.border = "solid red 2px";
+  } else {
+    ipt_razao.style.outline = "solid #22c55e 2px";
+    ipt_razao.style.border = "#22c55e";
   }
 }
 
@@ -87,7 +92,7 @@ function valSenha() {
 function valCNPJ() {
   var cnpj = document.getElementById("ipt_cnpj").value;
   val1.innerHTML = "";
-  var mensagem = '';
+  var mensagem = "";
   var tamanho = cnpj.length;
   var tam = false;
 
@@ -111,8 +116,33 @@ function valCNPJ() {
 
   val1.innerHTML = mensagem;
 
-  if(tam){
+  if (tam) {
     ipt_cnpj.style.outline = "solid #22c55e 2px";
     ipt_cnpj.style.border = "#22c55e";
+  }
+}
+
+function valEmail() {
+  var email = document.getElementById("ipt_email").value;
+  val1.innerHTML = "";
+
+  var arroba = email.includes("@");
+  var ponto = email.includes(".");
+
+  if (!arroba) {
+    val1.innerHTML += "Email inválido. O email deve conter '@'<br>";
+    ipt_email.style.outline = "none";
+    ipt_email.style.border = "solid red 2px";
+  }
+
+  if (!ponto) {
+    val1.innerHTML += "Email inválido. O email deve conter '.'<br>";
+    ipt_email.style.outline = "none";
+    ipt_email.style.border = "solid red 2px";
+  }
+
+  if (ponto && arroba) {
+    ipt_email.style.outline = "solid #22c55e 2px";
+    ipt_email.style.border = "#22c55e";
   }
 }
