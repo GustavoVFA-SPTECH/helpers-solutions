@@ -125,18 +125,19 @@ function valCNPJ() {
 function valEmail() {
   var email = document.getElementById("ipt_email").value;
   val1.innerHTML = "";
+  var mensagem = "";
 
   var arroba = email.includes("@");
   var ponto = email.includes(".");
 
   if (!arroba) {
-    val1.innerHTML += "Email inválido. O email deve conter '@'<br>";
+    mensagem += "Email inválido. O email deve conter '@'<br>";
     ipt_email.style.outline = "none";
     ipt_email.style.border = "solid red 2px";
   }
 
   if (!ponto) {
-    val1.innerHTML += "Email inválido. O email deve conter '.'<br>";
+    mensagem += "Email inválido. O email deve conter '.'<br>";
     ipt_email.style.outline = "none";
     ipt_email.style.border = "solid red 2px";
   }
@@ -145,4 +146,30 @@ function valEmail() {
     ipt_email.style.outline = "solid #22c55e 2px";
     ipt_email.style.border = "#22c55e";
   }
+
+  val1.innerHTML = mensagem;
+}
+
+function valTelefone() {
+  var telefone = document.getElementById("ipt_telefone").value;
+  val1.innerHTML = "";
+  var tamanho = telefone.length;
+  var tam = false;
+  var mensagem = "";
+
+  telefone = telefone.replace(/[^\d]/g, "");
+
+  document.getElementById("ipt_telefone").value = telefone;
+
+  if (tamanho != 10) {
+    mensagem += `O telefone deve conter 11 numeros incluindo o DDD`;
+    ipt_telefone.style.outline = "none";
+    ipt_telefone.style.border = "solid red 2px";
+  } else {
+    tam = true;
+    ipt_telefone.style.outline = "solid #22c55e 2px";
+    ipt_telefone.style.border = "#22c55e";
+  }
+
+  val1.innerHTML = mensagem;
 }
