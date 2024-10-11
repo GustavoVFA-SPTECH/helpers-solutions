@@ -1,6 +1,3 @@
-var guardarSenha = "";
-var validouSenha = false;
-var validouSenha = ''
 function valSenha() {
   var senha = document.getElementById("ipt_senha").value;
   var tamanho = senha.length;
@@ -8,10 +5,9 @@ function valSenha() {
   var num = false;
   var min = false;
   var max = false;
+  var tam = false;
   var validos = "!@#$%&?";
-  // validacao.innerHTML = "";
   var mensagem = "";
-  var mensagem_senhas_diferentes = "";
 
   for (var i = 0; i < tamanho; i++) {
     for (var j = 0; j < validos.length; j++) {
@@ -30,51 +26,49 @@ function valSenha() {
     }
   }
 
-  if (tamanho < 8 || tamanho > 30)
+  if (tamanho < 8 || tamanho > 30) {
     mensagem += `A senha deve conter entre 8 e 30 caracteres <br>`;
+  }else{
+    tam = true;
+  }
 
   if (!num) mensagem += `A senha deve conter 1 número <br>`;
 
-  if (!esp)
-    mensagem += `A senha deve conter 1 caracter especial: '!@#$%&?' <br>`;
+  if (!esp) mensagem += `A senha deve conter 1 caracter especial: '!@#$%&?' <br>`;
 
   if (!min) mensagem += `A senha deve conter 1 letra minúscula <br>`;
 
   if (!max) mensagem += `A senha deve conter 1 letra maiúscula <br>`;
 
-  //  validacao.innerHTML += `A senha deve conter 1 letra minúscula`
+  validacao.innerHTML = mensagem;
 
-  // Senha Vazia
-  // if (senha == '') validacao.innerHTML = '';
   if (senha == "") mensagem = `Preencha o campo para continuar <br>`;
-  input_senha.style.outline = "none";
-  input_senha.style.border = "solid red 2px";
-  if (num && esp && min && max) {
-    input_senha.style.outline = "solid #22c55e 2px";
-    input_senha.style.border = "#22c55e";
-    guardarSenha = ``;
-    guardarSenha = senha;
-    validouSenha = true;
+  ipt_senha.style.outline = "none";
+  ipt_senha.style.border = "solid red 2px";
+  if (num && esp && min && max && tam) {
+    ipt_senha.style.outline = "solid #22c55e 2px";
+    ipt_senha.style.border = "#22c55e";
   }
 
-  var confirmSenha = ipt_confirmar_senha.value
+  var confirmSenha = ipt_confirmar_senha.value;
   var senhasIguais = confirmSenha == senha;
-  if (!confirmSenha == '') {
+  if (!confirmSenha == "") {
     if (senhasIguais) {
+      ipt_confirmar_senha.style.outline = "solid #22c55e 2px";
+      ipt_confirmar_senha.style.border = "#22c55e";
     } else {
-      validacao.innerHTML += `As senhas não batem`
+      validacao.innerHTML += `As senhas não batem`;
     }
   }
-
 }
 
 function valRazaoSocial() {
   var razao = document.getElementById("ipt_razao");
   var termina =
     razao.endsWith("ME") ||
-      razao.endsWith("S.A") ||
-      razao.endsWith("LTDA") ||
-      razao.endsWith("EPP")
+    razao.endsWith("S.A") ||
+    razao.endsWith("LTDA") ||
+    razao.endsWith("EPP")
       ? true
       : false;
 
