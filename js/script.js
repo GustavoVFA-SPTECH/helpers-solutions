@@ -28,13 +28,14 @@ function valSenha() {
 
   if (tamanho < 8 || tamanho > 30) {
     mensagem += `A senha deve conter entre 8 e 30 caracteres <br>`;
-  }else{
+  } else {
     tam = true;
   }
 
   if (!num) mensagem += `A senha deve conter 1 número <br>`;
 
-  if (!esp) mensagem += `A senha deve conter 1 caracter especial: '!@#$%&?' <br>`;
+  if (!esp)
+    mensagem += `A senha deve conter 1 caracter especial: '!@#$%&?' <br>`;
 
   if (!min) mensagem += `A senha deve conter 1 letra minúscula <br>`;
 
@@ -58,7 +59,12 @@ function valSenha() {
       ipt_confirmar_senha.style.border = "#22c55e";
     } else {
       validacao.innerHTML += `As senhas não batem`;
+      ipt_confirmar_senha.style.outline = "none";
+      ipt_confirmar_senha.style.border = "solid red 2px";
     }
+  } else {
+    ipt_confirmar_senha.style.outline = "none";
+    ipt_confirmar_senha.style.border = "solid red 2px";
   }
 }
 
