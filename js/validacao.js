@@ -173,3 +173,26 @@ function valTelefone() {
 
   val1.innerHTML = mensagem;
 }
+
+function valCEP(){
+    var cep = document.getElementById("ipt_cep").value;
+    val1.innerHTML = "";
+    var mensagem = "";
+    var tam = false;
+    var tamanho = cep.length;
+
+    cep = cep.replace(/[^\d]/g, "");
+    document.getElementById("ipt_cep").value = cep;
+
+    if(tamanho != 8){
+        mensagem += "O CEP deve conter 8 caracteres";
+        ipt_cep.style.outline = "none";
+        ipt_cep.style.border = "solid red 2px";
+    }else{
+        tam = true;
+        ipt_cep.style.outline = "solid #22c55e 2px";
+        ipt_cep.style.border = "#22c55e";
+    }
+
+    val2.innerHTML = mensagem;
+}

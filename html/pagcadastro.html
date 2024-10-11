@@ -38,7 +38,7 @@
               </div>
               <div class="campo">
                 <span>Responsável:</span>
-                <input type="text" />
+                <input type="text" id="ipt_responsavel"/>
               </div>
               <div id="val1" class="validacao"></div>
               <div class="btns">
@@ -61,24 +61,25 @@
             <div class="campos">
               <div class="campo">
                 <span>CEP:</span>
-                <input type="text" />
+                <input type="text" id="ipt_cep" oninput="valCEP()"/>
               </div>
               <div class="campo">
                 <span>Logradouro:</span>
-                <input type="text" />
+                <input type="text" id="ipt_logradouro"/>
               </div>
               <div class="campo">
                 <span>Número do logradouro:</span>
-                <input type="text" />
+                <input type="text" id="ipt_numero"/>
               </div>
               <div class="campo">
                 <span>Bairro:</span>
-                <input type="text" />
+                <input type="text" id="ipt_bairro"/>
               </div>
               <div class="campo">
                 <span>Complemento:</span>
-                <input type="text" />
+                <input type="text" id="ipt_complemento"/>
               </div>
+              <div id="val2" class="validacao"></div>
               <div class="btns">
                 <button onclick="retornar_tela_01()">Voltar</button>
                 <button onclick="step_02()">Prosseguir</button>
