@@ -1,3 +1,20 @@
+function valRazaoSocial() {
+  var razao = document.getElementById("ipt_razao").value;
+  val1.innerHTML = ``;
+  var termina =
+    razao.endsWith("ME") ||
+    razao.endsWith("S.A") ||
+    razao.endsWith("LTDA") ||
+    razao.endsWith("EPP")
+      ? true
+      : false;
+
+  if (!termina) {
+    val1.innerHTML = `A razão social deve conter o Pós-fixo 'ME, S.A, LTDA, EPP'`;
+  }
+}
+
+
 function valSenha() {
   var senha = document.getElementById("ipt_senha").value;
   var tamanho = senha.length;
@@ -41,7 +58,7 @@ function valSenha() {
 
   if (!max) mensagem += `A senha deve conter 1 letra maiúscula <br>`;
 
-  validacao.innerHTML = mensagem;
+  val3.innerHTML = mensagem;
 
   if (senha == "") mensagem = `Preencha o campo para continuar <br>`;
   ipt_senha.style.outline = "none";
@@ -68,19 +85,3 @@ function valSenha() {
   }
 }
 
-function valRazaoSocial() {
-  var razao = document.getElementById("ipt_razao").value;
-
-  var termina =
-    razao.endsWith("ME") ||
-    razao.endsWith("S.A") ||
-    razao.endsWith("LTDA") ||
-    razao.endsWith("EPP")
-      ? true
-      : false;
-
-  if (!termina) {
-    console.log('if')
-    validacao.innerHTML = 'teste';
-  }
-}
