@@ -14,7 +14,6 @@ function valRazaoSocial() {
   }
 }
 
-
 function valSenha() {
   var senha = document.getElementById("ipt_senha").value;
   var tamanho = senha.length;
@@ -85,3 +84,35 @@ function valSenha() {
   }
 }
 
+function valCNPJ() {
+  var cnpj = document.getElementById("ipt_cnpj").value;
+  val1.innerHTML = "";
+  var mensagem = '';
+  var tamanho = cnpj.length;
+  var tam = false;
+
+  cnpj = cnpj.replace(/[^\d]/g, "");
+
+  document.getElementById("ipt_cnpj").value = cnpj;
+
+  if (tamanho != 14) {
+    mensagem += `O CNPJ deve conter 14 caracteres<br>`;
+    ipt_cnpj.style.outline = "none";
+    ipt_cnpj.style.border = "solid red 2px";
+  } else {
+    tam = true;
+  }
+
+  if (cnpj == "") {
+    mensagem += "Preencha o CNPJ para continuar";
+    ipt_cnpj.style.outline = "none";
+    ipt_cnpj.style.border = "solid red 2px";
+  }
+
+  val1.innerHTML = mensagem;
+
+  if(tam){
+    ipt_cnpj.style.outline = "solid #22c55e 2px";
+    ipt_cnpj.style.border = "#22c55e";
+  }
+}
