@@ -46,7 +46,7 @@ fkMaquina INT,
 
 CREATE TABLE Registro (
 idRegistro INT PRIMARY KEY AUTO_INCREMENT,
-dataHora DATETIME,
+dataHora DATETIME DEFAULT CURRENT_TIMESTAMP,
 Temperatura DECIMAL(5,2),
 fkSensor INT,
 	CONSTRAINT fkRegistroSensor FOREIGN KEY (fkSensor)
