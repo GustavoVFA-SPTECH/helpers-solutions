@@ -821,3 +821,26 @@ a {
 .main_index .main_container .main_solucao .container_solucao .box_solucao .sub_box img{
   width: 150px;
 }
+
+/* DASHBOARD --------------------------------------- */
+
+.main_dashboard {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+.main_container .container {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.main_dashboard .container .box_bar_left {
+  background-color: #040b0f;
+  width: 15%;
+  height: 100vh;
+}
+
