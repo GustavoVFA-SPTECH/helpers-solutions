@@ -38,10 +38,11 @@ body {
 .main_cadastro .modal .box_modal {
   position: absolute;
   width: 500px;
-  height: 320px;
+  height: 420px;
   background-color: white;
   border-radius: 12px;
   padding: 2rem;
+  align-content: center;
 }
 
 .main_cadastro .modal .box_modal .titulo {
