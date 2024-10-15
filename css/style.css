@@ -265,7 +265,7 @@ a {
   justify-content: space-between;
 }
 
-.main_login .container .box_login .campos a {
+.main_login .container .box_login .campos button {
   display: flex;
   align-self: center;
   justify-content: center;
