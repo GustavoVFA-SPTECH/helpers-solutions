@@ -133,6 +133,9 @@ body {
 .main_cadastro .container .box_cadastro .campos .validacao {
   font-size: small;
 }
+.main_login .container .box_login .campos .validacao {
+  font-size: small;
+}
 
 .main_cadastro .container .box_cadastro .campos .campo {
   display: flex;
@@ -295,6 +298,10 @@ a {
 }
 
 .main_cadastro .container .box_cadastro .form .campos .validacao{
+  color: red;
+}
+.main_login .container .box_login .form .campos .validacao{
+  text-indent: 15px;
   color: red;
 }
 

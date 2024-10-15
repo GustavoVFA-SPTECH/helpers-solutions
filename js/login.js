@@ -7,8 +7,13 @@ function login(){
 
     if(usuario == usuarioTeste && senha == senhaTeste){
         alert('Login realizado com sucesso!');
+        valLogin.innerHTML = ""
         window.location.href = 'dashboard.html';
     } else {
-        alert('Usuário ou senha inválidos!');
+        valLogin.innerHTML = "Usuario e Senha incorretos"
+        ipt_senhaLogin.style.outline = "none";
+        ipt_senhaLogin.style.border = "solid red 2px";
+        ipt_usuario.style.outline = "none";
+        ipt_usuario.style.border = "solid red 2px";
     }
 }
