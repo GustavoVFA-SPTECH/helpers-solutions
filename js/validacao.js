@@ -209,6 +209,19 @@ function valCEP() {
   return tam;
 }
 
+function valNulo(){
+  var nulo = false;
+  var inputs = document.getElementsByTagName('input');
+  for(var i = 0; i < inputs.length; i++){
+    if(inputs[i].value == ''){
+      nulo = true;
+      break;
+    }
+  }
+  
+  return nulo;
+}
+
 function valCadastro() {
   var cadastro =
     valRazaoSocial() &&
@@ -216,7 +229,7 @@ function valCadastro() {
     valCNPJ() &&
     valEmail() &&
     valTelefone() &&
-    valCEP() ? true : false;
+    valCEP() && valNulo() ? true : false;
 
     if(cadastro){
       window.location.replace('paglogin.html');
