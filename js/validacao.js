@@ -242,3 +242,11 @@ function valCadastro() {
     window.location.replace("paglogin.html");
   }
 }
+
+function numero(){
+  var numero = document.getElementById('ipt_numero').value;
+  
+  numero = numero.replace(/[^\d]/g, "");
+
+  document.getElementById("ipt_numero").value = numero;
+}
