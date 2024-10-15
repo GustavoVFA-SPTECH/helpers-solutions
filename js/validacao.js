@@ -81,7 +81,7 @@ function valSenha() {
       ipt_confirmar_senha.style.outline = "solid #22c55e 2px";
       ipt_confirmar_senha.style.border = "#22c55e";
     } else {
-      validacao.innerHTML += `As senhas não batem`;
+      val3.innerHTML += `As senhas não batem`;
       ipt_confirmar_senha.style.outline = "none";
       ipt_confirmar_senha.style.border = "solid red 2px";
     }
@@ -209,29 +209,36 @@ function valCEP() {
   return tam;
 }
 
-function valNulo(){
-  var nulo = false;
-  var inputs = document.getElementsByTagName('input');
-  for(var i = 0; i < inputs.length; i++){
-    if(inputs[i].value == ''){
-      nulo = true;
+function valNulo() {
+  var vazio = true;
+  var inputs = document.getElementsByTagName("input");
+  for (var i = 0; i < inputs.length; i++) {
+    if (inputs[i].value == "") {
+      vazio = false;
       break;
     }
   }
-  
-  return nulo;
+
+  console.log(vazio);
+  console.log(inputs);
+
+  return vazio;
 }
 
 function valCadastro() {
   var cadastro =
+    valNulo() &&
     valRazaoSocial() &&
     valSenha() &&
     valCNPJ() &&
     valEmail() &&
     valTelefone() &&
-    valCEP() && valNulo() ? true : false;
+    valCEP()
+      ? true
+      : false;
+  console.log(cadastro);
 
-    if(cadastro){
-      window.location.replace('paglogin.html');
-    }
+  if (cadastro) {
+    window.location.replace("paglogin.html");
+  }
 }
