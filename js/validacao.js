@@ -17,6 +17,8 @@ function valRazaoSocial() {
     ipt_razao.style.outline = "solid #22c55e 2px";
     ipt_razao.style.border = "#22c55e";
   }
+
+  return termina;
 }
 
 function valSenha() {
@@ -87,6 +89,8 @@ function valSenha() {
     ipt_confirmar_senha.style.outline = "none";
     ipt_confirmar_senha.style.border = "solid red 2px";
   }
+
+  return tam && num && esp && min && max && senhasIguais;
 }
 
 function valCNPJ() {
@@ -120,6 +124,8 @@ function valCNPJ() {
     ipt_cnpj.style.outline = "solid #22c55e 2px";
     ipt_cnpj.style.border = "#22c55e";
   }
+
+  return tam;
 }
 
 function valEmail() {
@@ -148,6 +154,8 @@ function valEmail() {
   }
 
   val1.innerHTML = mensagem;
+
+  return arroba && ponto;
 }
 
 function valTelefone() {
@@ -172,27 +180,45 @@ function valTelefone() {
   }
 
   val1.innerHTML = mensagem;
+
+  return tam;
 }
 
-function valCEP(){
-    var cep = document.getElementById("ipt_cep").value;
-    val1.innerHTML = "";
-    var mensagem = "";
-    var tam = false;
-    var tamanho = cep.length;
+function valCEP() {
+  var cep = document.getElementById("ipt_cep").value;
+  val1.innerHTML = "";
+  var mensagem = "";
+  var tam = false;
+  var tamanho = cep.length;
 
-    cep = cep.replace(/[^\d]/g, "");
-    document.getElementById("ipt_cep").value = cep;
+  cep = cep.replace(/[^\d]/g, "");
+  document.getElementById("ipt_cep").value = cep;
 
-    if(tamanho != 8){
-        mensagem += "O CEP deve conter 8 caracteres";
-        ipt_cep.style.outline = "none";
-        ipt_cep.style.border = "solid red 2px";
-    }else{
-        tam = true;
-        ipt_cep.style.outline = "solid #22c55e 2px";
-        ipt_cep.style.border = "#22c55e";
+  if (tamanho != 8) {
+    mensagem += "O CEP deve conter 8 caracteres";
+    ipt_cep.style.outline = "none";
+    ipt_cep.style.border = "solid red 2px";
+  } else {
+    tam = true;
+    ipt_cep.style.outline = "solid #22c55e 2px";
+    ipt_cep.style.border = "#22c55e";
+  }
+
+  val2.innerHTML = mensagem;
+
+  return tam;
+}
+
+function valCadastro() {
+  var cadastro =
+    valRazaoSocial() &&
+    valSenha() &&
+    valCNPJ() &&
+    valEmail() &&
+    valTelefone() &&
+    valCEP() ? true : false;
+
+    if(cadastro){
+      window.location.replace('paglogin.html');
     }
-
-    val2.innerHTML = mensagem;
 }
