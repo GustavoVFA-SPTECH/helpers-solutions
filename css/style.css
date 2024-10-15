@@ -979,6 +979,22 @@ a {
   vertical-align: top; /* Faz o texto começar no topo */
 }
 
+/* Container Footer */
+.main_index .main_container .main_footer{
+  width: 100%;
+  height: 150px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main_index .main_container .main_footer span{
+  color: white;
+  font-size: 30px;
+  
+}
+
 
 /* DASHBOARD --------------------------------------- */
 
