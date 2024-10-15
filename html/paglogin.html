@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../css/style.css" />
-    <script src="script.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/validacao.js"></script>
+    <script src="../js/login.js"></script>
   </head>
   <body>
     <main class="main_login">
@@ -20,17 +22,17 @@
 
               <div class="campo">
                 <span>Digite seu usuário:</span>
-                <input type="text" />
+                <input type="text" id="ipt_usuario" />
               </div>
 
               <div class="campo">
                 <span>Digite sua senha:</span>
-                <input type="password" />
+                <input type="password" id="ipt_senhaLogin" />
               </div>
-
+              <div id="valLogin" class="validacao" ></div>
               <div class="btns">
                 <a href="../index.html">Voltar</a>
-                <a>Prosseguir</a>
+                <a onclick="login()">Prosseguir</a>
               </div>
             </div>
             <div class="link_login">

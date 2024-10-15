@@ -1,3 +1,4 @@
+//Valida o campo de razão social
 function valRazaoSocial() {
   var razao = document.getElementById("ipt_razao").value;
   val1.innerHTML = ``;
@@ -7,7 +8,7 @@ function valRazaoSocial() {
     razao.endsWith("LTDA") ||
     razao.endsWith("EPP")
       ? true
-      : false;
+      : false; // Validação de final da razão social
 
   if (!termina) {
     val1.innerHTML += `A razão social deve conter o Pós-fixo 'ME, S.A, LTDA, EPP'`;
@@ -21,6 +22,7 @@ function valRazaoSocial() {
   return termina;
 }
 
+//Valida o campo de senha
 function valSenha() {
   var senha = document.getElementById("ipt_senha").value;
   var tamanho = senha.length;
@@ -32,6 +34,7 @@ function valSenha() {
   var validos = "!@#$%&?";
   var mensagem = "";
 
+  // Valida caracteres especiais, numeros, Maiuscula e minuscula
   for (var i = 0; i < tamanho; i++) {
     for (var j = 0; j < validos.length; j++) {
       if (senha[i] == validos[j]) {
@@ -73,7 +76,7 @@ function valSenha() {
     ipt_senha.style.outline = "solid #22c55e 2px";
     ipt_senha.style.border = "#22c55e";
   }
-
+  //Confirmação de senha
   var confirmSenha = ipt_confirmar_senha.value;
   var senhasIguais = confirmSenha == senha;
   if (!confirmSenha == "") {
@@ -93,13 +96,15 @@ function valSenha() {
   return tam && num && esp && min && max && senhasIguais;
 }
 
+//Valida o campo de CNPJ
 function valCNPJ() {
   var cnpj = document.getElementById("ipt_cnpj").value;
   val1.innerHTML = "";
   var mensagem = "";
   var tamanho = cnpj.length;
   var tam = false;
-
+  
+  //Limita a entrada de caracteres da input para apenas números
   cnpj = cnpj.replace(/[^\d]/g, "");
 
   document.getElementById("ipt_cnpj").value = cnpj;
@@ -128,11 +133,13 @@ function valCNPJ() {
   return tam;
 }
 
+//Valida o campo de email
 function valEmail() {
   var email = document.getElementById("ipt_email").value;
   val1.innerHTML = "";
   var mensagem = "";
 
+  //Valida arroba e ponto
   var arroba = email.includes("@");
   var ponto = email.includes(".");
 
@@ -158,6 +165,7 @@ function valEmail() {
   return arroba && ponto;
 }
 
+//Valida o campo de telefone
 function valTelefone() {
   var telefone = document.getElementById("ipt_telefone").value;
   val1.innerHTML = "";
@@ -165,6 +173,7 @@ function valTelefone() {
   var tam = false;
   var mensagem = "";
 
+  //Limita a entrada de caracteres da input para apenas números
   telefone = telefone.replace(/[^\d]/g, "");
 
   document.getElementById("ipt_telefone").value = telefone;
@@ -184,6 +193,7 @@ function valTelefone() {
   return tam;
 }
 
+//Valida o campo de CEP
 function valCEP() {
   var cep = document.getElementById("ipt_cep").value;
   val1.innerHTML = "";
@@ -191,6 +201,7 @@ function valCEP() {
   var tam = false;
   var tamanho = cep.length;
 
+  //Limita a entrada de caracteres da input para apenas números
   cep = cep.replace(/[^\d]/g, "");
   document.getElementById("ipt_cep").value = cep;
 
@@ -209,6 +220,7 @@ function valCEP() {
   return tam;
 }
 
+//Valida se todos os campos estão preenchidos
 function valNulo() {
   var vazio = true;
   var inputs = document.getElementsByTagName("input");
@@ -225,6 +237,17 @@ function valNulo() {
   return vazio;
 }
 
+//Valida o campo de numero
+function numero() {
+  var numero = document.getElementById("ipt_numero").value;
+
+  //Limita a entrada de caracteres da input para apenas números
+  numero = numero.replace(/[^\d]/g, "");
+
+  document.getElementById("ipt_numero").value = numero;
+}
+
+//Valida geral de todos os campos para concluir login
 function valCadastro() {
   var cadastro =
     valNulo() &&
@@ -240,5 +263,7 @@ function valCadastro() {
 
   if (cadastro) {
     window.location.replace("paglogin.html");
+  }else{
+    alert("Por favor, preencha todos os campos corretamente.");
   }
 }
