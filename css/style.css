@@ -894,6 +894,92 @@ a {
   height: 50px;
 }
 
+/* Container Contate Nos */
+
+.main_index .main_container .main_contato{
+  width: 100%;
+  background-color:#f0f0f0 ;
+  height: auto;
+  margin-top: 10rem;
+}
+
+.main_index .main_container .main_contato .container_contato{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 5rem 0;
+  
+}
+
+.main_index .main_container .main_contato .container_contato h1{
+  font-size: 48px;
+  margin: 0 0 0 0;
+  padding: 0; 
+}
+
+.main_index .main_container .main_contato .container_contato button{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  background-color: #f66b0e;
+  width: 300px;
+  box-shadow: 0 4px 0 #a54809;
+  border: none;
+  margin-top: 3rem;
+  padding: 0.8rem 0;
+  font-size: x-large;
+  border-radius: 12px;
+  cursor: pointer;
+  height: 50px;
+}
+
+.main_index .main_container .main_contato .container_contato button:hover{
+  background-color: #eb660e;
+}
+
+.main_index .main_container .main_contato .container_contato span{
+  font-family: Karla;
+  font-size: xx-large;
+  margin-top: 2rem;
+}
+
+.main_index .main_container .main_contato .container_contato input{
+  opacity: 0.7;
+  font-family:  Arial, Helvetica, sans-serif;
+  font-size: large;
+  margin: 0.2rem 0 1rem;
+  padding: 5px;
+  border-radius: 8px;
+  border: none;
+  background-color: white;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  outline-color: #f66b0e;
+  width: 40%;
+  height: 50px;
+}
+
+.main_index .main_container .main_contato .container_contato textarea{
+  opacity: 0.7;
+  font-family:  Arial, Helvetica, sans-serif;
+  font-size: large;
+  margin: 0.2rem 0 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: white;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  outline-color: #f66b0e;
+  padding: 5px;
+  width: 40%;
+  height: 300px;  
+  resize: none; /* Impede o redimensionamento da caixa */
+  overflow-wrap: break-word; /* Garante a quebra de linha automática */
+  box-sizing: border-box; /* Inclui o padding na largura total */
+  vertical-align: top; /* Faz o texto começar no topo */
+}
+
+
 /* DASHBOARD --------------------------------------- */
 
 .main_dashboard {
