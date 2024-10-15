@@ -225,6 +225,14 @@ function valNulo() {
   return vazio;
 }
 
+function numero(){
+  var numero = document.getElementById('ipt_numero').value;
+  
+  numero = numero.replace(/[^\d]/g, "");
+
+  document.getElementById("ipt_numero").value = numero;
+}
+
 function valCadastro() {
   var cadastro =
     valNulo() &&
@@ -241,12 +249,4 @@ function valCadastro() {
   if (cadastro) {
     window.location.replace("paglogin.html");
   }
-}
-
-function numero(){
-  var numero = document.getElementById('ipt_numero').value;
-  
-  numero = numero.replace(/[^\d]/g, "");
-
-  document.getElementById("ipt_numero").value = numero;
 }
