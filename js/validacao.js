@@ -263,5 +263,7 @@ function valCadastro() {
 
   if (cadastro) {
     window.location.replace("paglogin.html");
+  }else{
+    alert("Por favor, preencha todos os campos corretamente.");
   }
 }
