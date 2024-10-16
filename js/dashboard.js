@@ -4,17 +4,17 @@ const ctx = document.getElementById("myChart");
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      labels: ["Sensor 1", "Sensor 2", "Sensor 3", "Sensor 4", "Sensor 5", "Sensor 6"],
       datasets: [
         {
-          label: "# of Votes",
-          data: [12, 19, 3, 5, 2, 3],
+          label: "Temperatura Média por Sensor",
+          data: [90, 95, 110, 100, 115, 98],
           borderWidth: 1,
           backgroundColor: "#F66B0E",
         },
       ],
     },
-    options: {
+    options: {  
       scales: {
         y: {
           beginAtZero: true,
