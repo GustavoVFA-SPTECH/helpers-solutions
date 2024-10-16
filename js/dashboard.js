@@ -26,10 +26,10 @@ const ctx = document.getElementById("myChart");
   new Chart(ctx2, {
     type: "bar",
     data: {
-      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      labels: ["Sensor 1", "Sensor 2", "Sensor 3", "Sensor 4", "Sensor 5", "Sensor 6"],
       datasets: [
         {
-          label: "# of Votes",
+          label: "Temperatura Média por Sensor",
           data: [12, 19, 3, 5, 2, 3],
           borderWidth: 1,
           backgroundColor: "#F66B0E",
