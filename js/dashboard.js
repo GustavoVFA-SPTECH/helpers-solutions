@@ -4,7 +4,7 @@ const ctx = document.getElementById("myChart");
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      labels: ["Sensor 1", "Sensor 2", "Sensor 3", "Sensor 4", "Sensor 5", "Sensor 6"],
       datasets: [
         {
           label: "# of Votes",
