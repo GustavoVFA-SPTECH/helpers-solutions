@@ -1,47 +1,72 @@
 const ctx = document.getElementById("myChart");
-  const ctx2 = document.getElementById("myChart_2");
+const ctx2 = document.getElementById("myChart_2");
 
-  new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: ["Sensor 1", "Sensor 2", "Sensor 3", "Sensor 4", "Sensor 5", "Sensor 6"],
-      datasets: [
-        {
-          label: "Temperatura Média por Sensor",
-          data: [90, 95, 110, 100, 115, 98],
-          borderWidth: 1,
-          backgroundColor: "#F66B0E",
-        },
-      ],
-    },
-    options: {  
-      scales: {
-        y: {
-          beginAtZero: true,
+// Criação do gradiente com cores invertidas
+const gradient = ctx.getContext('2d').createLinearGradient(0, 0, 0, 400);
+gradient.addColorStop(0.2, 'rgba(255,240,0,1)'); // Cor amarela
+gradient.addColorStop(0.9, 'rgba(255,170,0,1)'); // Cor laranja
+gradient.addColorStop(0.5, 'rgba(219,89,6,1)'); // Cor vermelha
+
+new Chart(ctx, {
+  type: "bar",
+  data: {
+    labels: [
+      "Sensor 1",
+      "Sensor 2",
+      "Sensor 3",
+      "Sensor 4",
+      "Sensor 5",
+      "Sensor 6",
+      "Sensor 7",
+      "Sensor 8",
+      "Sensor 9",
+      "Sensor 10",
+      "Sensor 11",
+      "Sensor 12",
+    ],
+    datasets: [
+      {
+        label: "Temperatura Média por Sensor",
+        data: [90, 95, 110, 100, 115, 98, 90, 95, 110, 100, 115, 98],
+        borderWidth: 1,
+        backgroundColor: gradient, // Use o gradiente como cor de fundo
+      },
+    ],
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 150, // Define a escala máxima do eixo Y
+        ticks: {
+          stepSize: 10, // Define o intervalo do eixo Y para 10 em 10
         },
       },
     },
-  });
+  },
+});
 
-  new Chart(ctx2, {
-    type: "bar",
-    data: {
-      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-      datasets: [
-        {
-          label: "# of Votes",
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1,
-          backgroundColor: "#F66B0E",
-        },
-      ],
-    },
-    options: {
-      indexAxis: "y",
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
+
+
+new Chart(ctx2, {
+  type: "bar",
+  data: {
+    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    datasets: [
+      {
+        label: "# of Votes",
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1,
+        backgroundColor: "#F66B0E",
+      },
+    ],
+  },
+  options: {
+    indexAxis: "y",
+    scales: {
+      y: {
+        beginAtZero: true,
       },
     },
-  });
+  },
+});
