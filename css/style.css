@@ -1080,7 +1080,7 @@ a {
 .main_dashboard .container .box_bar_left .box_profile .profile .nome_empresa h2 {
   padding: 0;
   margin: 0;
-  /* color: #eb660e; */
+  color: #eb660e;
 }
 
 .main_dashboard .container .box_bar_left .box_profile .profile .nome_funcionario {
