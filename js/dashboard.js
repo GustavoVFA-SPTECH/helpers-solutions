@@ -66,9 +66,9 @@ new Chart(ctx2, {
     datasets: [
       {
         label: "Temperatura Atual das Sensores",
-        data: [90, 95, 110, 100, 115, 98, 90, 95, 110, 100, 115, 98],
+        data: [97, 93, 118, 105, 135, 108, 93, 95, 112, 100, 105, 80],
         borderWidth: 1,
-        backgroundColor: "#F66B0E",
+        backgroundColor: gradient,
       },
     ],
   },
