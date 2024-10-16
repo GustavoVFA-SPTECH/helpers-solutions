@@ -98,11 +98,11 @@ new Chart(ctx3, {
     labels: ["8:00", "9:00", "10:00", "11:00", "12:00", '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
     datasets: [
       {
-        label: "Temperatura indiviludal do Sensor 1",
+        label: "Temperatura do Sensor 1",
         data: [90, 95, 110, 100, 115, 98, 100, 95, 110, 100, 115],
         borderWidth: 2,
-        backgroundColor: 'rgba(219,89,6,1)', // Use o gradiente como cor de fundo
-        borderColor: 'rgba(219,89,6,1)',
+        backgroundColor: gradient,
+        borderColor: gradient,
         color: '#fff',
       },
     ],
@@ -120,7 +120,7 @@ new Chart(ctx3, {
 });
 
 new Chart(ctx4, {
-  type: "bar",
+  type: "doughnut",
   data: {
     labels: [
       "Sensor 1",
@@ -129,17 +129,11 @@ new Chart(ctx4, {
       "Sensor 4",
       "Sensor 5",
       "Sensor 6",
-      "Sensor 7",
-      "Sensor 8",
-      "Sensor 9",
-      "Sensor 10",
-      "Sensor 11",
-      "Sensor 12",
     ],
     datasets: [
       {
         label: "Temperatura Média por Sensor",
-        data: [90, 95, 110, 100, 115, 98, 90, 95, 110, 100, 115, 98],
+        data: [90, 95, 110, 100, 115, 98],
         borderWidth: 1,
         backgroundColor: gradient, // Use o gradiente como cor de fundo
       },
