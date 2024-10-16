@@ -1013,6 +1013,8 @@ a {
 }
 
 .main_dashboard .container .box_bar_left {
+  display: flex;
+  flex-direction: column;
   background-color: #112B3C;
   width: 15%;
   height: 100vh;
@@ -1040,6 +1042,8 @@ a {
 }
 
 .main_dashboard .container .box_bar_left .box_profile {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   display: flex;
@@ -1048,6 +1052,35 @@ a {
   justify-content: center;
   align-items: center;
   align-content: center;
+}
+
+.main_dashboard .container .box_bar_left .btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: black; */
+}
+
+.main_dashboard .container .box_bar_left .btns a {
+  font-size: x-large;
+  color: white;
+  padding: 2rem;
+}
+
+.main_dashboard .container .box_bar_left .btns .btn_sair {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  background-color: #f66b0e;
+  width: 200px;
+  box-shadow: 0 4px 0 #a54809;
+  border: none;
+  color: white;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+  font-size: x-large;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
 .main_dashboard .container .box_bar_left .box_profile .profile{
