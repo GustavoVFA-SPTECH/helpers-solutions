@@ -1,35 +1,105 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Visão Geral | Helpers Solutions</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
     <div class="main_dashboard">
-        <div class="container">
-            <div class="box_bar_left">
-                <div class="box_logo">
-                    <h1>Helpers</h1>
-                </div>
+      <div class="container">
+        <div class="box_bar_left">
+          <div class="box_logo">
+            <h1>Helpers</h1>
+          </div>
 
-                <div class="box_profile">
-                    <div class="profile">
-                        <div class="box_img_profile">
-                            <img height="100px" src="../assets/user white.png" alt="">
-                        </div>
-                        <div class="nome_empresa">
-                            <h2>SP Tech</h2>
-                        </div>
-                        <div class="nome_funcionario">
-                            <h3>Fernando Brandão</h3>
-                        </div>
-                    </div>
-                </div>
+          <div class="box_profile">
+            <div class="profile">
+              <div class="box_img_profile">
+                <img height="100px" src="../assets/user white.png" alt="" />
+              </div>
+              <div class="nome_empresa">
+                <h2>SP Tech</h2>
+              </div>
+              <div class="nome_funcionario">
+                <h3>Fernando Brandão</h3>
+              </div>
             </div>
-            <div class="box_view_right"></div>
+          </div>
         </div>
+        <div class="box_view_right">
+            <div class="kpis">
+                <div class="kpi_1"><h1>KPI 1</h1></div>
+                <div class="kpi_2"><h1>KPI 2</h1></div>
+                <div class="kpi_3"><h1>KPI 3</h1></div>
+                <div class="kpi_4"><h1>KPI 4</h1></div>
+            </div>
+          <div class="graficos">
+            <div class="grafico_1">
+              <div>
+                <canvas id="myChart"></canvas>
+              </div>
+            </div>
+
+            <div class="grafico_2">
+              <div>
+                <canvas id="myChart_2"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById("myChart");
+  const ctx2 = document.getElementById("myChart_2");
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      datasets: [
+        {
+          label: "# of Votes",
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+  new Chart(ctx2, {
+    type: "bar",
+    data: {
+      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      datasets: [
+        {
+          label: "# of Votes",
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      indexAxis: "y",
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+</script>
