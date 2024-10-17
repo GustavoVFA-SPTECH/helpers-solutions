@@ -33,7 +33,7 @@
 
 <br><br>
 
-    Qual o lucro médio por hora que a máquina te dá<br>
+    Qual é o lucro médio gerado pela máquina por hora? (em dólar)<br>
     <input id="iptCustoHora" type="number">
 
 <br><br>
@@ -62,7 +62,7 @@ function calcularPrejuizo() {
 
     var custoComSolucaoDia = (tempoInativo - tempoInativo * 0.3) * custoHora;
     var custoComSolucaoAnual = custoComSolucaoDia * 365;
-    var vidaUtilGeral = 0;
+    var vidaUtilGeral = 0; // em anos
 
     if (!tipoMaquina) {
         alert("Por favor, selecione uma máquina.");
@@ -74,6 +74,10 @@ function calcularPrejuizo() {
     }
     if (!temperaturaMedia) {
         alert("Por favor, informe uma temperatura válida.");
+        return;
+    }
+    if (!custoHora) {
+        alert("Por favor, informe um custo por hora válido (em dólares)");
         return;
     }
 
@@ -106,7 +110,8 @@ function calcularPrejuizo() {
             <h2>Prejuízos sem a Nossa Solução:</h2>
         `;
         if (temperaturaMedia > temperaturaIdeal) {
-            // Caso esteja vai fazer um cálculo onde descobriremos a quantidade de dias onde de vida útil a menos que a máquina terá com a temperatura
+            // Caso a temperatura esteja acima do ideal, calcular a redução da vida útil da máquina em dias
+            
             vidaUtilGeral = vidaUtilGeral - (temperaturaMedia - temperaturaIdeal) / 365;
 
             // plota as informações sobre a temperatura na div de output
