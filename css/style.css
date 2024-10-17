@@ -1229,7 +1229,7 @@ a {
 .main_dashboard .container .box_view_right .grafico_1 div,
 .main_dashboard .container .box_view_right .grafico_2 div{
   height: 30vh;
-  width: 65vh;
+  width: 67vh;
   background-color: #112B3C;
   border-radius: 12px;
   padding: 2rem;
@@ -1242,4 +1242,21 @@ a {
   height: 50vh;
   justify-content: space-between;
   align-items: center;
+}
+
+.graficos_inferior {
+  display: flex;
+  border: solid red;
+}
+
+.graficos_inferior .grafico_1 {
+  border: solid blue;
+  /* width: 100vw; */
+}
+
+.graficos_2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: red solid; */
 }
