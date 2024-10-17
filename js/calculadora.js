@@ -10,13 +10,13 @@ function calcularPrejuizo() {
     var temperaturaIdeal = 0;
 
     var downtimeSemSolucao = Math.round((tempoInativo / tempoTotalOperacao) * 100);
-    var custoSemSolucaoDia = (tempoInativo * custoHora).toFixed(2);
-    var custoSemSolucaoAnual = (custoSemSolucaoDia * 365).toFixed(2);
+    var custoSemSolucaoDia = (tempoInativo * custoHora);
+    var custoSemSolucaoAnual = (custoSemSolucaoDia * 365);
 
     var downtimeComSolucao = Math.round(((tempoInativo - tempoInativo * 0.3) / tempoTotalOperacao) * 100);
 
-    var custoComSolucaoDia = ((tempoInativo - tempoInativo * 0.3) * custoHora).toFixed(2);
-    var custoComSolucaoAnual = (custoComSolucaoDia * 365).toFixed(2);
+    var custoComSolucaoDia = ((tempoInativo - tempoInativo * 0.3) * custoHora);
+    var custoComSolucaoAnual = (custoComSolucaoDia * 365);
     var vidaUtilGeral = 0; // em anos
 
     if (!tipoMaquina) {
@@ -79,9 +79,9 @@ function calcularPrejuizo() {
           divOutput.innerHTML += `
             <h4>Porcentagem do tempo de inatividade da máquina em 1 dia: <b style="color: red;">${downtimeSemSolucao}%</b></h4>
 
-            <h4>Custo das horas inativas da máquina: <b style="color: red;">US$${custoSemSolucaoDia}</b></h4>
+            <h4>Custo das horas inativas da máquina: <b style="color: red;">${custoSemSolucaoDia.toLocaleString('eng',{style: 'currency', currency: 'USD'})}</b></h4>
 
-            <h4>Supondo uma média em que a planta fica inativa por ano, o prejuízo será de: <b style="color: red;">US$${custoSemSolucaoAnual}</b></h4>
+            <h4>Supondo uma média em que a planta fica inativa por ano, o prejuízo será de: <b style="color: red;">${custoSemSolucaoAnual.toLocaleString('eng',{style: 'currency', currency: 'USD'})}</b></h4>
 
             <br>
 
@@ -89,9 +89,9 @@ function calcularPrejuizo() {
 
             <h4>Porcentagem do tempo de inatividade da máquina em 1 dia: <b style="color: green;">${downtimeComSolucao}%,<b style="color:black"> reduzindo em</b> ${downtimeSemSolucao-downtimeComSolucao}%</b></h4>
 
-            <h4>O novo custo com a inatividade da máquina será de: <b style="color: green;">US$${custoComSolucaoDia}</b>, <b style="color: black;">economizando</b> um total de <b style="color: green;">US$${(custoSemSolucaoDia - custoComSolucaoDia).toFixed(2)}</b></h4>
+            <h4>O novo custo com a inatividade da máquina será de: <b style="color: green;">${custoComSolucaoDia.toLocaleString('eng',{style: 'currency', currency: 'USD'})}</b>, <b style="color: black;">economizando</b> um total de <b style="color: green;">$${(custoSemSolucaoDia - custoComSolucaoDia).toFixed(2)}</b></h4>
             
-            <b style="color: black;">economizando</b> um total de: <b style="color: green;">US$${Math.round(custoSemSolucaoAnual - custoComSolucaoAnual)}</b> 
+            <b style="color: black;">Economizando</b> um total de: <b style="color: green;">${(Math.round(custoSemSolucaoAnual - custoComSolucaoAnual)).toLocaleString('eng',{style: 'currency', currency: 'USD'})}</b> 
         `;
       
 }
