@@ -128,11 +128,12 @@ new Chart(ctx3, {
   },
   options: {
     scales: {
-      x: {
-        beginAtZero: true,
-      },
       y: {
-        max: 130,
+        beginAtZero: true,
+        max: 200,
+        ticks: {
+          stepSize: 10,
+        },
       },
     },
     plugins: {
