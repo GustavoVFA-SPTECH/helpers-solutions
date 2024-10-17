@@ -1227,7 +1227,8 @@ a {
 }
 
 .main_dashboard .container .box_view_right .grafico_1 div,
-.main_dashboard .container .box_view_right .grafico_2 div{
+.main_dashboard .container .box_view_right .grafico_2 div,
+.main_dashboard .container .box_view_right .grafico_3 div{
   height: 30vh;
   width: 67vh;
   background-color: #112B3C;
@@ -1242,6 +1243,16 @@ a {
   height: 50vh;
   justify-content: space-between;
   align-items: center;
+}
+.main_dashboard .container .box_view_right .graficos2 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 50vh;
+  /* background-color: aqua; */
+}
+.main_dashboard .container .box_view_right .graficos2 div {
+  width: 90%;
 }
 
 .graficos_inferior {
@@ -1259,4 +1270,9 @@ a {
   justify-content: center;
   align-items: center;
   /* border: red solid; */
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
 }
