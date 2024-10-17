@@ -1,6 +1,7 @@
 function calcularPrejuizo() {
 
     var tipoMaquina = maquinas.value;
+    console.log("Tipo de máquina selecionado:", tipoMaquina);
     var temperaturaMedia = Number(iptTemperaturaMedia.value);
     var tempoTotalOperacao = Number(iptTotalTempoOperacao.value);
     var tempoInativo = 24 - tempoTotalOperacao;
@@ -9,13 +10,13 @@ function calcularPrejuizo() {
     var temperaturaIdeal = 0;
 
     var downtimeSemSolucao = Math.round((tempoInativo / tempoTotalOperacao) * 100);
-    var custoSemSolucaoDia = parseFloat((tempoInativo * custoHora).toFixed(2));
-    var custoSemSolucaoAnual = parseFloat((custoSemSolucaoDia * 365).toFixed(2));
+    var custoSemSolucaoDia = (tempoInativo * custoHora).toFixed(2);
+    var custoSemSolucaoAnual = (custoSemSolucaoDia * 365).toFixed(2);
 
     var downtimeComSolucao = Math.round(((tempoInativo - tempoInativo * 0.3) / tempoTotalOperacao) * 100);
 
-    var custoComSolucaoDia = parseFloat(((tempoInativo - tempoInativo * 0.3) * custoHora).toFixed(2));
-    var custoComSolucaoAnual = parseFloat((custoComSolucaoDia * 365).toFixed(2));
+    var custoComSolucaoDia = ((tempoInativo - tempoInativo * 0.3) * custoHora).toFixed(2);
+    var custoComSolucaoAnual = (custoComSolucaoDia * 365).toFixed(2);
     var vidaUtilGeral = 0; // em anos
 
     if (!tipoMaquina) {
@@ -88,9 +89,9 @@ function calcularPrejuizo() {
 
             <h4>Porcentagem do tempo de inatividade da máquina em 1 dia: <b style="color: green;">${downtimeComSolucao}%,<b style="color:black"> reduzindo em</b> ${downtimeSemSolucao-downtimeComSolucao}%</b></h4>
 
-            <h4>O novo custo com a inatividade da máquina será de: <b style="color: green;">US$${custoComSolucaoDia.toFixed(2)}</b>, <b style="color: black;">economizando</b> um total de <b style="color: green;">US$${custoSemSolucaoDia - custoComSolucaoDia}</b></h4>
+            <h4>O novo custo com a inatividade da máquina será de: <b style="color: green;">US$${custoComSolucaoDia}</b>, <b style="color: black;">economizando</b> um total de <b style="color: green;">US$${(custoSemSolucaoDia - custoComSolucaoDia).toFixed(2)}</b></h4>
             
-            <b style="color: black;">economizando</b> um total de: <b style="color: green;">US$${Math.round(custoSemSolucaoAnual - custoComSolucaoAnual)}</b></h4> 
+            <b style="color: black;">economizando</b> um total de: <b style="color: green;">US$${Math.round(custoSemSolucaoAnual - custoComSolucaoAnual)}</b> 
         `;
       
 }
