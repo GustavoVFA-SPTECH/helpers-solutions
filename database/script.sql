@@ -1,5 +1,4 @@
 CREATE DATABASE Helpers;
-
 USE Helpers;
 
 CREATE TABLE Empresa (
@@ -21,7 +20,12 @@ CREATE TABLE Usuario (
 CREATE TABLE Endereco (
     idEndereco INT PRIMARY KEY AUTO_INCREMENT,
     CEP CHAR(14),
-    numero VARCHAR(45),
+    Logradouro VARCHAR(100),
+    Numero VARCHAR(45),
+    Complemento VARCHAR(45),
+    Bairro VARCHAR(45),
+    Cidade VARCHAR(45),
+    Estado VARCHAR(45),
     fkEmpresaEnd INT,
     CONSTRAINT fkEmpresaEnd FOREIGN KEY (fkEmpresaEnd) REFERENCES empresa (idEmpresa)
 );
@@ -36,11 +40,7 @@ CREATE TABLE Acesso (
 CREATE TABLE Sensor (
     idSensor INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(45),
-    numeroSerie VARCHAR(45),
-    fkEmpresa INT,
-    CONSTRAINT fkSensorEmpresa FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa),
-    fkMaquina INT,
-    CONSTRAINT fkSensorMaquina FOREIGN KEY (fkMaquina) REFERENCES Maquina (idMaquina)
+    numeroSerie VARCHAR(45)
 );
 
 CREATE TABLE Registro (
@@ -56,5 +56,9 @@ CREATE TABLE Maquina (
     Nome VARCHAR(45),
     Tipo VARCHAR(45),
     tempMax DECIMAL(5, 2),
-    Setor VARCHAR(45)
+    Setor VARCHAR(45),
+    fkEmpresa INT,
+    CONSTRAINT fkMaquinaEmpresa FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa),
+    fkSensor INT,
+    CONSTRAINT fkMaquinaSensor FOREIGN KEY (fkSensor) REFERENCES Sensor (idSensor)
 );
