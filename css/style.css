@@ -829,6 +829,22 @@ a {
   justify-content: center;
 }
 
+.main_index .main_container .main_simulador .container_simulador .maquinas {
+  opacity: 0.7;
+  font-family:  Arial, Helvetica, sans-serif;
+  font-size: large;
+  padding: 0 1rem;
+  margin: 0.2rem 0 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: white;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  outline-color: #f66b0e;
+  width: 60%;
+  height: 50px;
+  text-align: center;
+}
+
 .main_index .main_container .main_simulador .container_simulador{
   display: flex;
   align-items: center;
@@ -874,8 +890,10 @@ a {
 
 .main_index .main_container .main_simulador .container_simulador span{
   font-family: Karla;
-  font-size: xx-large;
-  margin-top: 2rem;
+  font-size: x-large;
+  margin-top: 1.5rem;
+  width: 50%;
+  text-align: center;
 }
 
 .main_index .main_container .main_simulador .container_simulador input{
@@ -888,7 +906,7 @@ a {
   border: none;
   background-color: white;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-  /* text-align: center; */
+  text-align: center;
   outline-color: #f66b0e;
   width: 60%;
   height: 50px;

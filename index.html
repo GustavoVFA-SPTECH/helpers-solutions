@@ -64,7 +64,7 @@
                 </span>
               </div>
 
-              <hr/>
+              <hr />
 
               <div class="container_mvv">
                 <div class="container_missao">
@@ -140,7 +140,8 @@
                   >TIPOS DE MÁQUINAS QUE NOSSAS SOLUÇÕES ATENDEM</span
                 >
                 <span style="margin-top: 3rem; margin-bottom: 18px"
-                  >OUTROS</span>
+                  >OUTROS</span
+                >
               </div>
             </div>
           </div>
@@ -151,13 +152,36 @@
         <div class="main_simulador" id="simulador">
           <div class="container_simulador">
             <h1>Simule Aqui</h1>
-              <span>Texto 1</span>
-              <input type="text">
+            <span>Qual máquina você deseja simular? </span>
+            <select class="maquinas" id="maquinas">
+              <option value="#" disabled selected>
+                Por favor, selecione uma máquina
+              </option>
+              <option value="centrifuga">Bomba Centrífuga</option>
+              <option value="axial">Bomba Axial</option>
+              <option value="deslocamentopositivo">
+                Bomba de Deslocamento Positivo
+              </option>
+            </select>
 
-              <span>Texto 1</span>
-              <input type="text">
+            <span
+              >Qual o tempo total de operação desta máquina, em horas, no
+              dia?<br
+            /></span>
+            <input id="iptTotalTempoOperacao" type="number" />
 
-            <button>SIMULAR</button>
+            <span
+              >Qual a temperatura média, em graus Celsius, cujo esta máquina
+              costuma operar?<br
+            /></span>
+            <input id="iptTemperaturaMedia" type="number" />
+
+            <span
+              >Qual é o lucro médio gerado pela máquina por hora? (em dólar)<br
+            /></span>
+            <input id="iptCustoHora" type="number" />
+
+            <button onclick="calcularPrejuizo()">SIMULAR</button>
           </div>
         </div>
 
@@ -166,10 +190,10 @@
           <div class="container_contato">
             <h1>Contate Nos</h1>
             <span>Informe o nome da sua empresa:</span>
-            <input type="text" id="ipt_nome_contatenos">
+            <input type="text" id="ipt_nome_contatenos" />
 
             <span>Informe o email:</span>
-            <input type="text" id="ipt_email_contatenos">
+            <input type="text" id="ipt_email_contatenos" />
 
             <span>Digite o texto da mensagem:</span>
             <textarea name="descricao" id="ipt_text_contatenos"></textarea>
@@ -178,12 +202,13 @@
           </div>
         </div>
 
-
         <!-- CONTAINER FOOTER -->
         <div class="main_footer">
-            <span> <b>Helpers Solutions LTDA © 2024 </b>- Todos os direitos reservados</span>
+          <span>
+            <b>Helpers Solutions LTDA © 2024 </b>- Todos os direitos
+            reservados</span
+          >
         </div>
-
       </div>
     </main>
   </body>
