@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/calculadora.js"></script>
 
     <title>Helpers | Página Inicial</title>
   </head>
@@ -159,9 +160,7 @@
               </option>
               <option value="centrifuga">Bomba Centrífuga</option>
               <option value="axial">Bomba Axial</option>
-              <option value="deslocamentopositivo">
-                Bomba de Deslocamento Positivo
-              </option>
+              <option value="deslocamentopositivo">Bomba de Deslocamento Positivo</option>
             </select>
 
             <span
@@ -182,6 +181,8 @@
             <input id="iptCustoHora" type="number" />
 
             <button onclick="calcularPrejuizo()">SIMULAR</button>
+
+            <div id="divOutput" class="divOutput"></div>
           </div>
         </div>
 

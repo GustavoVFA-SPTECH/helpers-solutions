@@ -912,6 +912,12 @@ a {
   height: 50px;
 }
 
+.main_index .main_container .main_simulador .container_simulador .divOutput{
+  font-size: x-large;
+  width: 90%;
+  text-align: center;
+}
+
 /* Container Contate Nos */
 
 .main_index .main_container .main_contato{
