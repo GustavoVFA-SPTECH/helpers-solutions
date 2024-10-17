@@ -93,5 +93,4 @@ function calcularPrejuizo() {
             
             <b style="color: black;">Economizando</b> um total de: <b style="color: green;">${(Math.round(custoSemSolucaoAnual - custoComSolucaoAnual)).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</b> 
         `;
-      
 }
