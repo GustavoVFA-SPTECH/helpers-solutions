@@ -1,16 +1,17 @@
 const ctx = document.getElementById("myChart");
 const ctx2 = document.getElementById("myChart_2");
 const ctx3 = document.getElementById("myChart_3");
-const ctx4 = document.getElementById("myChart_4");
 
 // Criação do gradiente
 const gradient = ctx.getContext("2d").createLinearGradient(0, 0, 0, 400);
 gradient.addColorStop(0.1, "rgba(255,240,0,1)"); // Cor amarela
 gradient.addColorStop(0.9, "rgba(255,170,0,1)"); // Cor laranja
 gradient.addColorStop(0.5, "rgba(219,89,6,1)"); // Cor vermelha
-Chart.defaults.color = '#FFF';
+Chart.defaults.color = "#FFF";
 
-new Chart(ctx, {
+//Grafico Temperatura média
+// Crie o gráfico e guarde em uma variável
+const chart = new Chart(ctx, {
   type: "bar",
   data: {
     labels: [
@@ -49,49 +50,48 @@ new Chart(ctx, {
     plugins: {
       title: {
         display: true,
-        text: 'Temperatura média dos sensores',
+        text: "Temperatura média dos sensores ultimas 24h",
       },
     },
   },
 });
 
-new Chart(ctx2, {
+//Grafico temperatura atual dos sensores
+const chart2 = new Chart(ctx2, {
   type: "bar",
   data: {
-    labels: [
-      "Maquinas"
-    ],
+    labels: ["Maquinas"],
     datasets: [
       {
         label: "Sensor 1",
         data: [97],
         borderWidth: 1,
-        backgroundColor: 'rgba(255, 165, 0, 1)', // Laranja
+        backgroundColor: "rgba(255, 165, 0, 1)", // Laranja
       },
       {
         label: "Sensor 2",
         data: [20],
         borderWidth: 1,
-        backgroundColor: 'rgba(78, 150, 244)', // Laranja Escuro
+        backgroundColor: "rgba(78, 150, 244)", // Laranja Escuro
       },
       {
         label: "Sensor 3",
         data: [90],
         borderWidth: 1,
-        backgroundColor: 'rgba(255, 120, 0, 1)', // Laranja Claro
+        backgroundColor: "rgba(255, 120, 0, 1)", // Laranja Claro
       },
       {
         label: "Sensor 4",
         data: [110],
         borderWidth: 1,
-        backgroundColor: 'rgba(255, 110, 0, 1)', // Laranja mais intenso
+        backgroundColor: "rgba(255, 110, 0, 1)", // Laranja mais intenso
       },
       {
         label: "Sensor 5",
         data: [200],
         borderWidth: 1,
-        backgroundColor: 'rgba(255, 0, 0)', // Laranja mais escuro
-      }
+        backgroundColor: "rgba(255, 0, 0)", // Laranja mais escuro
+      },
     ],
   },
   options: {
@@ -108,19 +108,30 @@ new Chart(ctx2, {
     plugins: {
       title: {
         display: true,
-        text: 'Temperatura atual dos sensores',
+        text: "Temperatura atual dos sensores",
       },
     },
   },
 });
-
-
-
-
-new Chart(ctx3, {
+//Grafico temperatura individual do sensor
+const chart3 = new Chart(ctx3, {
   type: "line",
   data: {
-    labels: ["8:00", "9:00", "10:00", "11:00", "12:00", '13:00', '14:00', '15:00', '16:00', '17:00', '18:00','19:00', '20:00'],
+    labels: [
+      "8:00",
+      "9:00",
+      "10:00",
+      "11:00",
+      "12:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00",
+      "18:00",
+      "19:00",
+      "20:00",
+    ],
     datasets: [
       {
         label: "Sensor 1",
@@ -128,7 +139,7 @@ new Chart(ctx3, {
         borderWidth: 2,
         backgroundColor: gradient,
         borderColor: gradient,
-        color: '#fff',
+        color: "#fff",
       },
     ],
   },
@@ -145,9 +156,56 @@ new Chart(ctx3, {
     plugins: {
       title: {
         display: true,
-        text: 'Temperatura indiviual',
+        text: "Temperatura indiviual",
       },
     },
   },
 });
 
+//Reseta a cor dos botões anteriores
+function resetButtonStyles() {
+  var buttons = document.querySelectorAll("#btn_dia, #btn_mes, #btn_ano");
+  buttons.forEach(function (btn) {
+    btn.style.backgroundColor = "#f66b0e";
+    btn.style.color = "#FFF";
+  });
+}
+
+//Muda o grafico para as ultimas 24 horas
+function dia() {
+  resetButtonStyles(); // Reseta os estilos dos botões
+  var btn = document.getElementById("btn_dia");
+  chart.data.datasets[0].data = [
+    90, 95, 110, 100, 115, 98, 90, 95, 110, 100, 115, 98,
+  ];
+  chart.options.plugins.title.text = "Temperatura média dos sensores ultimas 24h";
+  btn.style.backgroundColor = "#FFF";
+  btn.style.color = "#a54809";
+  chart.update();
+}
+
+//Muda o grafico para os ultimos 30 dias
+function mes() {
+  resetButtonStyles(); // Reseta os estilos dos botões
+  var btn = document.getElementById("btn_mes");
+  chart.data.datasets[0].data = [
+    110, 90, 80, 95, 120, 115, 100, 95, 110, 103, 108, 107,
+  ];
+  chart.options.plugins.title.text = "Temperatura média dos sensores ultimos 30 dias";
+  btn.style.backgroundColor = "#FFF";
+  btn.style.color = "#a54809";
+  chart.update();
+}
+
+//Muda o grafico para o ultimo ano
+function ano() {
+  resetButtonStyles(); // Reseta os estilos dos botões
+  var btn = document.getElementById("btn_ano");
+  chart.data.datasets[0].data = [
+    100, 80, 70, 85, 110, 105, 90, 85, 100, 93, 98, 97,
+  ];
+  chart.options.plugins.title.text = "Temperatura média dos sensores ultimo ano";
+  btn.style.backgroundColor = "#FFF";
+  btn.style.color = "#a54809";
+  chart.update();
+}
