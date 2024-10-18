@@ -87,9 +87,30 @@ function simular(){
     var string_preju_anual = preju_anual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
 
+    // COM NOSSA SOLUÇÃO
+    var solucao = 0;
+    
+    if(impacto == 1){
+        solucao = sem_faturar * 0.3
+    }
+    if(impacto == 2){
+        solucao = producao_media + producao_media*0.3
+    }
+    if(impacto == 3){
+        solucao = (producao_media*2) + producao_media*0.3
+    }
 
-    divOutput.innerHTML= `<span>Resultado:<br>
-    Identificamos que a máquina ${maquina} deixou de produzir ${string_sem_faturar} por dia, ou seja, significa ${porcentagem.toFixed(1)}% do tempo de produção,em escala MENSAL será ${string_preju_mensal} por mês</span> e ANUAL de ${string_preju_anual} por ano.`;
+    var solucao_mensal = solucao * 30;
+    solucao = solucao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    solucao_mensal = solucao_mensal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+
+    divOutput.innerHTML= `<span>Resultado:<br>   Sem a nossa solução<br>
+    Identificamos que a máquina ${maquina} deixou de produzir ${string_sem_faturar} por dia, ou seja, significa ${porcentagem.toFixed(1)}% do tempo de produção,em escala MENSAL será ${string_preju_mensal} por mês</span> e ANUAL de ${string_preju_anual} por ano.<br><br>
+    
+    Com a nossa solução<br>
+   
+    Com a nossa solução de monitoramento de temperatura da máquina ${maquina}, você pode melhorar a organização da sua indústria em até 30%, o que resulta em um aumento de ${solucao} no faturamento diário, totalizando ${solucao_mensal} por mês.`;
 
 
 }
