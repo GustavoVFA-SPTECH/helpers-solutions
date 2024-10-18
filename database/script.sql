@@ -56,9 +56,13 @@ CREATE TABLE Maquina (
     Nome VARCHAR(45),
     Tipo VARCHAR(45),
     tempMax DECIMAL(5, 2),
+<<<<<<< Updated upstream
     Setor VARCHAR(45),
     fkEmpresa INT,
     CONSTRAINT fkMaquinaEmpresa FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa),
     fkSensor INT,
     CONSTRAINT fkMaquinaSensor FOREIGN KEY (fkSensor) REFERENCES Sensor (idSensor)
+=======
+    Setor VARCHAR(45)
+>>>>>>> Stashed changes
 );
