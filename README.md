@@ -1,5 +1,7 @@
 # Helpers Solution
 
+<img src="assets/logo.png" alt="Descrição da imagem" width="200"/>
+
 ### PMS(Predictive maintence system)
 
 ## Contextualização
