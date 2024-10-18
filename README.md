@@ -1,6 +1,6 @@
 # Helpers Solution
-<div style="display: flex; justify-content: center;">
-<img src="assets/logo.png" alt="Descrição da imagem" width="60%"/>
+<div style="display: flex; justify-content: center; align-itens: center;">
+  <img src="assets/logo.png" alt="Descrição da imagem" width="60%"/>
 </div>  
 
 ### PMS(Predictive maintence system)
