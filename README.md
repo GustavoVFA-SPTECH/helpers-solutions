@@ -1,6 +1,6 @@
 # Helpers Solution
 
-<img src="assets/logo.png" alt="Descrição da imagem" width="200"/>
+<img src="assets/logo.png" alt="Descrição da imagem" width="200" style="align-self: center;"/>
 
 ### PMS(Predictive maintence system)
 
