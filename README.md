@@ -1,6 +1,10 @@
 # Helpers Solution
 
-### PMS(Predictive maintence system)
+<p align="center">
+  <img src="assets/logo.png" alt="Descrição da imagem" width="60%"/>
+</p>
+
+### PMS (Predictive Maintenance System)
 
 ## Contextualização
 
