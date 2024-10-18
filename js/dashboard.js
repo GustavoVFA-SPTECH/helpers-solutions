@@ -55,7 +55,6 @@ const chart = new Chart(ctx, {
     },
   },
 });
-
 //Grafico temperatura atual dos sensores
 const chart2 = new Chart(ctx2, {
   type: "bar",
@@ -161,7 +160,6 @@ const chart3 = new Chart(ctx3, {
     },
   },
 });
-
 //Reseta a cor dos botões anteriores
 function resetButtonStyles() {
   var buttons = document.querySelectorAll("#btn_dia, #btn_mes, #btn_ano");
@@ -170,7 +168,6 @@ function resetButtonStyles() {
     btn.style.color = "#FFF";
   });
 }
-
 //Muda o grafico para as ultimas 24 horas
 function dia() {
   resetButtonStyles(); // Reseta os estilos dos botões
@@ -183,7 +180,6 @@ function dia() {
   btn.style.color = "#a54809";
   chart.update();
 }
-
 //Muda o grafico para os ultimos 30 dias
 function mes() {
   resetButtonStyles(); // Reseta os estilos dos botões
@@ -196,7 +192,6 @@ function mes() {
   btn.style.color = "#a54809";
   chart.update();
 }
-
 //Muda o grafico para o ultimo ano
 function ano() {
   resetButtonStyles(); // Reseta os estilos dos botões
