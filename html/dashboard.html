@@ -1,93 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Visão Geral | Helpers Solutions</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-    <script src="../js/dashboard.js" defer></script>
-  </head>
 
-  <body>
-    <div class="main_dashboard">
-      <div class="container">
-        <div class="box_bar_left">
-          <div class="box_logo">
-            <h1>Helpers</h1>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visão Geral | Helpers Solutions</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="../js/dashboard.js" defer></script>
+</head>
 
-          <div class="box_profile">
-            <div class="profile">
-              <div class="box_img_profile">
-                <img height="100px" src="../assets/user white.png" alt="" />
-              </div>
-              <div class="nome_empresa">
-                <h2>SP Tech</h2>
-              </div>
-              <div class="nome_funcionario">
-                <h3>Fernando Brandão</h3>
-              </div>
+<body>
+  <div class="main_dashboard">
+    <div class="container">
+      <div class="box_bar_left">
+        <div class="box_logo">
+          <h1>Helpers</h1>
+        </div>
+
+        <div class="box_profile">
+          <div class="profile">
+            <div class="box_img_profile">
+              <img height="100px" src="../assets/user white.png" alt="" />
             </div>
-          </div>
-          <div class="btns">
-            <a href="">Perfil</a>
-            <a href="">Relatórios</a>
-            <a href="">Gerenciar usuários</a>
-            <a href="paglogin.html" class="btn_sair">Sair</a>
+            <div class="nome_empresa">
+              <h2>SP Tech</h2>
+            </div>
+            <div class="nome_funcionario">
+              <h3>Fernando Brandão</h3>
+            </div>
           </div>
         </div>
-        <div class="box_view_right">
-          <div class="view_container">
-            <div class="kpis">
-              <div class="kpi_1">
-                <h1>KPI 1</h1>
-              </div>
-              <div class="kpi_2">
-                <h1>KPI 2</h1>
-              </div>
-              <div class="kpi_3">
-                <h1>KPI 3</h1>
-              </div>
-              <div class="kpi_4">
-                <h1>KPI 4</h1>
+        <div class="btns">
+          <a href="">Perfil</a>
+          <a href="">Relatórios</a>
+          <a href="">Gerenciar usuários</a>
+          <a href="paglogin.html" class="btn_sair">Sair</a>
+        </div>
+      </div>
+      <div class="box_view_right">
+        <div class="view_container">
+          <div class="kpis">
+            <div class="kpi_1">
+              <h2>Sensor 5 detectou <span style="color: red;">SUPERAQUECIMENTO!</span></h2>
+              <!-- <canvas style="width: 100%; height: 100%;" id="kpiUm"></canvas> -->
+            </div>
+            <div class="kpi_2">
+              <h2>Sensor 2 detectou <span style="color: rgb(78, 150, 244);">RESFRIAMENTO!</span></h2>
+            </div>
+            <div class="kpi_3">
+              <h2>Média de temperatura recomendada: <span style="color: rgb(78, 244, 86);"><br>100-120ºC</span></h2>
+            </div>
+            <div class="kpi_4">
+              <h2>Recomenda-se manutenção:<span style="color: rgb(253, 239, 91);"><br>MÁQUINA 2 | MÁQUINA 5</span></h2>
+            </div>
+          </div>
+          <div class="graficos">
+            <div class="grafico_1">
+              <div>
+                <canvas style="width: 100%; height: 100%;" id="myChart"></canvas>
               </div>
             </div>
-            <div class="graficos">
-              <div class="grafico_1">
-                <div class="btns_grafico">
-                  <button>Dia</button>
-                  <button>Mês</button>
-                  <button>Ano</button>
-                </div>
-                <div>
-                  <canvas
-                    style="width: 100%; height: 100%"
-                    id="myChart"></canvas>
-                </div>
-              </div>
-              <div class="grafico_2">
-                <div>
-                  <canvas
-                    style="width: 100%; height: 100%"
-                    id="myChart_2"
-                  ></canvas>
-                </div>
+            <div class="grafico_2">
+              <div>
+                <canvas style="width: 100%; height: 100%;" id="myChart_2"></canvas>
               </div>
             </div>
-            <div class="graficos2">
-              <div class="grafico_3">
-                <div>
-                  <canvas
-                    style="width: 100%; height: 100%"
-                    id="myChart_3"
-                  ></canvas>
-                </div>
+          </div>
+          <div class="graficos2">
+            <div class="grafico_3">
+              <div>
+                <canvas style="width: 100%; height: 100%;" id="myChart_3"></canvas>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
