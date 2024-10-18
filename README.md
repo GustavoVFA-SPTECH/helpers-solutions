@@ -1,10 +1,6 @@
 # Helpers Solution
 
-<p align="center">
-  <img src="assets/logo.png" alt="Descrição da imagem" width="60%"/>
-</p>
-
-### PMS (Predictive Maintenance System)
+### PMS(Predictive maintence system)
 
 ## Contextualização
 
@@ -15,7 +11,6 @@ No contexto industrial, a digitalização e a automação são fundamentais para
 ### Desafios
 
 Equipamentos como **bombas centrífugas**, essenciais no setor petroquímico, são propensos a falhas, como corrosão e superaquecimento, que podem causar interrupções na produção e danos permanentes às máquinas. A falta de um sistema automatizado de monitoramento da temperatura aumenta os custos e as paradas inesperadas, dificultando a manutenção preditiva.
-
 
 ## Objetivo
 
