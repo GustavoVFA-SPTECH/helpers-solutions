@@ -29,7 +29,7 @@ new Chart(ctx, {
     ],
     datasets: [
       {
-        label: "Temperatura Média por Sensor",
+        label: "",
         data: [90, 95, 110, 100, 115, 98, 90, 95, 110, 100, 115, 98],
         borderWidth: 1,
         backgroundColor: gradient, // Use o gradiente como cor de fundo
@@ -44,6 +44,12 @@ new Chart(ctx, {
         ticks: {
           stepSize: 10, // Define o intervalo do eixo Y para 10 em 10
         },
+      },
+    },
+    plugins: {
+      title: {
+        display: true,
+        text: 'Temperatura média dos sensores',
       },
     },
   },

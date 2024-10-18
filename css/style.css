@@ -1097,10 +1097,10 @@ a {
   align-self: center;
   justify-content: center;
   background-color: #f66b0e;
-  width: 200px;
   box-shadow: 0 4px 0 #a54809;
   border: none;
   color: white;
+  width: 200px;
   margin-top: 0.5rem;
   padding: 0.5rem 0;
   font-size: x-large;
@@ -1238,6 +1238,7 @@ a {
   background-color: #112B3C;
   border-radius: 12px;
   padding: 2rem;
+
 }
 
 .main_dashboard .container .box_view_right .graficos {
@@ -1279,4 +1280,15 @@ a {
 .canvas {
   width: 100%;
   height: 100%;
+}
+
+.btn_grafico{
+  width: 10%;
+  justify-self: center;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: #f66b0e;
+  border-color: #f66b0e;
+  box-shadow: 0 2px 0 #a54809;
+  color: white;
 }
