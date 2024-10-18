@@ -9,6 +9,11 @@ CREATE TABLE Empresa (
     responsavel VARCHAR(45) NOT NULL
 );
 
+INSERT INTO Empresa (razaoSocial, CNPJ, email, responsavel) VALUES
+('Empresa A', '12345678000195', 'contato@empresaa.com', 'João Silva'),
+('Empresa B', '98765432000198', 'contato@empresab.com', 'Maria Oliveira');
+
+
 CREATE TABLE Usuario (
     idUsuario INT PRIMARY KEY AUTO_INCREMENT,
     userName VARCHAR(45),
@@ -16,6 +21,10 @@ CREATE TABLE Usuario (
     fKEmpresa INT,
     CONSTRAINT fkEmpresa FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
 );
+
+INSERT INTO Usuario (userName, senha, fKEmpresa) VALUES
+('usuario1', 'Senha@123', 1),
+('usuario2', 'Senha456!', 2);
 
 CREATE TABLE Endereco (
     idEndereco INT PRIMARY KEY AUTO_INCREMENT,
@@ -30,6 +39,11 @@ CREATE TABLE Endereco (
     CONSTRAINT fkEmpresaEnd FOREIGN KEY (fkEmpresaEnd) REFERENCES empresa (idEmpresa)
 );
 
+INSERT INTO Endereco (CEP, Logradouro, Numero, Complemento, Bairro, Cidade, Estado, fkEmpresaEnd) VALUES
+('12345678', 'Rua A', '100', 'Apto 101', 'Bairro A', 'Cidade A', 'Estado A', 1),
+('87654321', 'Rua B', '200', '', 'Bairro B', 'Cidade B', 'Estado B', 2);
+
+
 CREATE TABLE Acesso (
     idAcesso INT PRIMARY KEY AUTO_INCREMENT,
     dataHora DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -37,11 +51,20 @@ CREATE TABLE Acesso (
     CONSTRAINT fkAcessoUsuario FOREIGN KEY (fkUsuario) REFERENCES Usuario (idUsuario)
 );
 
+INSERT INTO Acesso (fkUsuario) VALUES
+(1),
+(2);
+
+
 CREATE TABLE Sensor (
     idSensor INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(45),
     numeroSerie VARCHAR(45)
 );
+
+INSERT INTO Sensor (Nome, numeroSerie) VALUES
+('Sensor A', 'SN123456'),
+('Sensor B', 'SN654321');
 
 CREATE TABLE Registro (
     idRegistro INT PRIMARY KEY AUTO_INCREMENT,
@@ -51,18 +74,22 @@ CREATE TABLE Registro (
     CONSTRAINT fkRegistroSensor FOREIGN KEY (fkSensor) REFERENCES Sensor (idSensor)
 );
 
+INSERT INTO Registro (Temperatura, fkSensor) VALUES
+(22.50, 1),
+(25.00, 2);
+
 CREATE TABLE Maquina (
     idMaquina INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(45),
     Tipo VARCHAR(45),
     tempMax DECIMAL(5, 2),
-<<<<<<< Updated upstream
     Setor VARCHAR(45),
     fkEmpresa INT,
     CONSTRAINT fkMaquinaEmpresa FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa),
     fkSensor INT,
     CONSTRAINT fkMaquinaSensor FOREIGN KEY (fkSensor) REFERENCES Sensor (idSensor)
-=======
-    Setor VARCHAR(45)
->>>>>>> Stashed changes
 );
+
+INSERT INTO Maquina (Nome, Tipo, tempMax, Setor, fkEmpresa, fkSensor) VALUES
+('Máquina A', 'Tipo A', 75.00, 'Setor A', 1, 1),
+('Máquina B', 'Tipo B', 80.00, 'Setor B', 2, 2);
