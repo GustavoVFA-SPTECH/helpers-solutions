@@ -64,9 +64,9 @@ new Chart(ctx2, {
       },
       {
         label: "Sensor 2",
-        data: [85],
+        data: [20],
         borderWidth: 1,
-        backgroundColor: 'rgba(255, 140, 0, 1)', // Laranja Escuro
+        backgroundColor: 'rgba(78, 150, 244)', // Laranja Escuro
       },
       {
         label: "Sensor 3",
@@ -82,9 +82,9 @@ new Chart(ctx2, {
       },
       {
         label: "Sensor 5",
-        data: [120],
+        data: [200],
         borderWidth: 1,
-        backgroundColor: 'rgba(255, 100, 0, 1)', // Laranja mais escuro
+        backgroundColor: 'rgba(255, 0, 0)', // Laranja mais escuro
       }
     ],
   },
