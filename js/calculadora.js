@@ -1,96 +1,90 @@
-function calcularPrejuizo() {
+function simular(){
+    var maquina= select_maquina.value;
+    var tempoMed= Number(input_tempoMed.value);
+    var impacto= Number(select_impacto.value);
 
-    var tipoMaquina = maquinas.value;
-    console.log("Tipo de máquina selecionado:", tipoMaquina);
-    var temperaturaMedia = Number(iptTemperaturaMedia.value);
-    var tempoTotalOperacao = Number(iptTotalTempoOperacao.value);
-    var tempoInativo = 24 - tempoTotalOperacao;
-    var custoHora = Number(iptCustoHora.value);
+    var producao_media = 0;
 
-    var temperaturaIdeal = 0;
-
-    var downtimeSemSolucao = Math.round((tempoInativo / tempoTotalOperacao) * 100);
-    var custoSemSolucaoDia = (tempoInativo * custoHora);
-    var custoSemSolucaoAnual = (custoSemSolucaoDia * 365);
-
-    var downtimeComSolucao = Math.round(((tempoInativo - tempoInativo * 0.3) / tempoTotalOperacao) * 100);
-
-    var custoComSolucaoDia = ((tempoInativo - tempoInativo * 0.3) * custoHora);
-    var custoComSolucaoAnual = (custoComSolucaoDia * 365);
-    var vidaUtilGeral = 0; // em anos
-
-    if (!tipoMaquina) {
+    // Validações de inputs vazias
+    if (!maquina.trim()){
         alert("Por favor, selecione uma máquina.");
         return;
     }
-    if (!tempoTotalOperacao) {
-        alert("Por favor, informe um tempo total de operação válido (em horas).");
+    if (!tempoMed) {
+        alert("Por favor, informe um tempo médio válido (em horas).");
         return;
     }
-    if (!temperaturaMedia) {
-        alert("Por favor, informe uma temperatura válida.");
+    if (!impacto) {
+        alert("Por favor, informe o impacto causado.");
         return;
     }
-    if (!custoHora) {
-        alert("Por favor, informe um custo por hora válido (em dólares)");
-        return;
-    }
-
-    if (tempoTotalOperacao < 0 || tempoTotalOperacao > 24) {
-        alert("O tempo total de operação deve ser um valor entre 0 e 24 horas.");
+    if (tempoMed < 0 || tempoMed > 24) {
+        alert("O tempo total médio deve ser um valor entre 0 e 24 horas.");
         return;
     }
 
-    if (temperaturaMedia < 0) {
-        alert("A temperatura média não pode ser negativa.");
-        return;
+
+    // Definir a média de produção por hora da máquina selecionada
+    if( maquina == "Centrífuga" ){
+        producao_media =  300000.00 / 24 // 12 mil e 500 reais p/h
+    }
+    if( maquina == "Axial" ){
+        producao_media = 240000.00 / 24 // 10 mil reais p/h
+    }
+    if( maquina == "Deslocamento Horizontal" ){
+        producao_media = 228000.00 / 24 // 9,5 mil reais p/h
+    }
+
+    // Desconto das horas sem operar, decorrente de paradas repentinas
+    var paradas_repentinas = tempoMed - impacto;
+
+    // Para saber o faturamento por dia
+    var faturamento_dia = producao_media * paradas_repentinas;
+
+    // Para saber o quanto deixou de faturar durante as horas paradas
+    var sem_faturar = impacto * producao_media;
+    var string_sem_faturar = sem_faturar.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    //Em porcentagem
+    var porcentagem =  (impacto / tempoMed) * 100;
+    console.log (porcentagem)
+
+    // Mensalmente
+    var preju_mensal = sem_faturar * 30;
+    var string_preju_mensal = preju_mensal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    //Anual
+    var preju_anual = preju_mensal * 12;
+    var string_preju_anual = preju_anual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+
+    // COM NOSSA SOLUÇÃO
+    var solucao = 0;
     
-    }   
+    if(impacto == 1){
+        solucao = sem_faturar * 0.3;
+    }
+    if(impacto == 2){
+        solucao = producao_media + producao_media * 0.3;
+    }
+    if(impacto == 3){
+        solucao = (producao_media*2) + producao_media * 0.3;
+    }
 
-    if (tipoMaquina == "centrifuga") {
-          temperaturaIdeal = 150;
-          vidaUtilGeral = 15;
-        } else if (tipoMaquina == "axial") {
-          temperaturaIdeal = 200;
-          vidaUtilGeral = 20;
-        } else if (tipoMaquina == "deslocamentopositivo") {
-          temperaturaIdeal = 100;
-          vidaUtilGeral = 15;
-        }
+    var solucao_mensal = solucao * 30;
+    solucao = solucao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    solucao_mensal = solucao_mensal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-        var vidaUtil = vidaUtilGeral;
 
-        divOutput.innerHTML = `
-            <br>
-            <h2>Prejuízos sem a Nossa Solução:</h2>
-        `;
-        if (temperaturaMedia > temperaturaIdeal) {
-            // Caso a temperatura esteja acima do ideal, calcular a redução da vida útil da máquina em dias
-            
-            vidaUtilGeral = vidaUtilGeral - (temperaturaMedia - temperaturaIdeal) / 365;
+    divOutput.innerHTML= `<b><span class="resultado-titulo">Resultado:<br></span></b><br>
 
-            // plota as informações sobre a temperatura na div de output
-            divOutput.innerHTML += `
-                <h4>Se a ${tipoMaquina} operasse a temperatura de ${temperaturaIdeal}ºC, sua vida útil seria de ${vidaUtil} anos</h4>
-                <h4>Porém, operando com a temperatura de ${temperaturaMedia}ºC, gera uma <b style="color: red;">perda de ${Math.round(365 * (Math.round(vidaUtilGeral) - vidaUtilGeral))} dias de sua vida util por hora</b>.</h4>
-            `;
-        }
-          // Plota o resto das informações e cálculos complementares
-          divOutput.innerHTML += `
-            <h4>Porcentagem do tempo de inatividade da máquina em 1 dia: <b style="color: red;">${downtimeSemSolucao}%</b></h4>
+    <b><span class="resultado-sem-solucao">Sem a nossa solução<br><br></span></b>
 
-            <h4>Custo das horas inativas da máquina: <b style="color: red;">${custoSemSolucaoDia.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</b></h4>
+    <p>Identificamos que a máquina ${maquina} deixou de produzir <span class="texto-destaque-negativo">${string_sem_faturar}</span> por dia, ou seja, significa <span class="texto-destaque-negativo">${porcentagem.toFixed(1)}%</span> do tempo de produção,em escala <b>MENSAL</b> será <span class="texto-destaque-negativo">${string_preju_mensal}</span> por mês e <b>ANUAL</b> de <span class="texto-destaque-negativo">${string_preju_anual}</span> por ano.<br><p>
+    
+    <b><span class="titulo-com-solucao">Com a nossa solução<br></span></b>
+   
+    <p>Com a nossa solução de monitoramento de temperatura da máquina <span class="texto-destaque-positivo">${maquina}</span>, você pode melhorar a produtividade da organização em até <span class="texto-destaque-positivo">30%</span>, o que resulta em um aumento de <span class="texto-destaque-positivo">${solucao}</span> no faturamento diário, totalizando <span class="texto-destaque-positivo">${solucao_mensal}</span> por mês.</p>`;
 
-            <h4>Supondo uma média em que a planta fica inativa por ano, o prejuízo será de: <b style="color: red;">${custoSemSolucaoAnual.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</b></h4>
 
-            <br>
-
-            <h2>Melhorias com a Nossa Solução:</h2>
-
-            <h4>Porcentagem do tempo de inatividade da máquina em 1 dia: <b style="color: green;">${downtimeComSolucao}%,<b style="color:black"> reduzindo em</b> ${downtimeSemSolucao-downtimeComSolucao}%</b></h4>
-
-            <h4>O novo custo com a inatividade da máquina será de: <b style="color: green;">${custoComSolucaoDia.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</b>, <b style="color: black;">economizando</b> um total de <b style="color: green;">${(custoSemSolucaoDia - custoComSolucaoDia).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</b></h4>
-            
-            <b style="color: black;">Economizando</b> um total de: <b style="color: green;">${(Math.round(custoSemSolucaoAnual - custoComSolucaoAnual)).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</b> 
-        `;
 }

@@ -845,6 +845,22 @@ a {
   text-align: center;
 }
 
+.main_index .main_container .main_simulador .container_simulador .impacto{
+  opacity: 0.7;
+  font-family:  Arial, Helvetica, sans-serif;
+  font-size: large;
+  padding: 0 1rem;
+  margin: 0.2rem 0 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: white;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  outline-color: #f66b0e;
+  width: 60%;
+  height: 50px;
+  text-align: center;
+}
+
 .main_index .main_container .main_simulador .container_simulador{
   display: flex;
   align-items: center;
@@ -854,8 +870,7 @@ a {
   border-radius: 100px;
   margin-top: 10rem;
   flex-direction: column;
-  padding: 8rem 0;
-
+  padding: 5rem 0;
 }
 
 .main_index .main_container .main_simulador .container_simulador h1{
@@ -867,6 +882,39 @@ a {
   margin: 0 0 0 0;
   padding: 0; 
 }
+
+.divOutput{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.divOutput .resultado-titulo{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 2rem !important;
+color: black;
+}
+
+.resultado-sem-solucao{
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.divOutput .texto-destaque-negativo{
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.divOutput .titulo-com-solucao{
+  color: green;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.divOutput .texto-destaque-positivo{
+  color: green;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 
 .main_index .main_container .main_simulador .container_simulador button{
   display: flex;

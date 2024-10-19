@@ -154,35 +154,28 @@
           <div class="container_simulador">
             <h1>Simule Aqui</h1>
             <span>Qual máquina você deseja simular? </span>
-            <select class="maquinas" id="maquinas">
-              <option value="#" disabled selected>
-                Por favor, selecione uma máquina
-              </option>
-              <option value="centrifuga">Bomba Centrífuga</option>
-              <option value="axial">Bomba Axial</option>
-              <option value="deslocamentopositivo">Bomba de Deslocamento Positivo</option>
-            </select>
+            <select class="maquinas" id="select_maquina">
+              <option value="" disabled selected>Por favor, selecione uma máquina</option>
+              <option value="Centrífuga">Bomba Centrífuga</option>
+              <option value="Axial">Bomba Axial</option>
+              <option value="Deslocamento Horizontal">Bomba de Deslocamento Positivo</option>
+          </select>
+          
+      
+          <span>Qual é o tempo médio de operação dessa máquina, em horas por DIA?</span>
+          <input id="input_tempoMed" min="0" max="24" type="number">
+      
+          <span>Qual é o impacto das paradas repentinas causadas pela temperatura por DIA no seu negócio?</span>
+      
+          <select class="impacto" id="select_impacto">
+              <option value="" disabled selected>Selecione um nível</option>
+              <option value=1>Baixo - impacto de até uma 1hr</option>
+              <option value=2>Médio - impacto de 1 à 2 hrs</option>
+              <option value=3>Alta - impacto de mais de 2hrs</option>
+          </select>
+          <button onclick="simular()">Simular</button>
 
-            <span
-              >Qual o tempo total de operação desta máquina, em horas, no
-              dia?<br
-            /></span>
-            <input id="iptTotalTempoOperacao" type="number" />
-
-            <span
-              >Qual a temperatura média, em graus Celsius, cujo esta máquina
-              costuma operar?<br
-            /></span>
-            <input id="iptTemperaturaMedia" type="number" />
-
-            <span
-              >Qual é o lucro médio gerado pela máquina por hora? (em dólar)<br
-            /></span>
-            <input id="iptCustoHora" type="number" />
-
-            <button onclick="calcularPrejuizo()">SIMULAR</button>
-
-            <div id="divOutput" class="divOutput"></div>
+          <div class="divOutput" id="divOutput"></div>
           </div>
         </div>
 
