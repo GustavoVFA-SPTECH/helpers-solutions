@@ -55,7 +55,7 @@ function simular(){
 
     // Definir a média de produção por hora da máquina selecionada
     if( maquina == "Centrífuga" ){
-        producao_media =  300000. / 24 // 12 mil e 500 reais p/h
+        producao_media =  300000.00 / 24 // 12 mil e 500 reais p/h
     }
     if( maquina == "Axial" ){
         producao_media = 240000.00 / 24 // 10 mil reais p/h
@@ -91,13 +91,13 @@ function simular(){
     var solucao = 0;
     
     if(impacto == 1){
-        solucao = sem_faturar * 0.3
+        solucao = sem_faturar * 0.3;
     }
     if(impacto == 2){
-        solucao = producao_media + producao_media*0.3
+        solucao = producao_media + producao_media * 0.3;
     }
     if(impacto == 3){
-        solucao = (producao_media*2) + producao_media*0.3
+        solucao = (producao_media*2) + producao_media * 0.3;
     }
 
     var solucao_mensal = solucao * 30;
@@ -110,7 +110,7 @@ function simular(){
     
     Com a nossa solução<br>
    
-    Com a nossa solução de monitoramento de temperatura da máquina ${maquina}, você pode melhorar a organização da sua indústria em até 30%, o que resulta em um aumento de ${solucao} no faturamento diário, totalizando ${solucao_mensal} por mês.`;
+    Com a nossa solução de monitoramento de temperatura da máquina ${maquina}, você pode melhorar a produtividade da organização em até 30%, o que resulta em um aumento de ${solucao} no faturamento diário, totalizando ${solucao_mensal} por mês.`;
 
 
 }
