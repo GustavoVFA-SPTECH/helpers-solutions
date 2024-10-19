@@ -76,11 +76,11 @@ function simular(){
     solucao_mensal = solucao_mensal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
 
-    divOutput.innerHTML= `<b><span class="resultado-titulo">Resultado:<br></span></b><br>
+    divOutput.innerHTML= `<br><b><span class="resultado-titulo">Resultado:<br></span></b><br>
 
     <b><span class="resultado-sem-solucao">Sem a nossa solução<br><br></span></b>
 
-    <p>Identificamos que a máquina ${maquina} deixou de produzir <span class="texto-destaque-negativo">${string_sem_faturar}</span> por dia, ou seja, significa <span class="texto-destaque-negativo">${porcentagem.toFixed(1)}%</span> do tempo de produção,em escala <b>MENSAL</b> será <span class="texto-destaque-negativo">${string_preju_mensal}</span> por mês e <b>ANUAL</b> de <span class="texto-destaque-negativo">${string_preju_anual}</span> por ano.<br><p>
+    <p>Identificamos que a máquina ${maquina} deixou de produzir <span class="texto-destaque-negativo">${string_sem_faturar}</span> por dia, ou seja, significa <span class="texto-destaque-negativo">${porcentagem.toFixed(1)}%</span> do tempo de produção, em escala <b>MENSAL</b> será <span class="texto-destaque-negativo">${string_preju_mensal}</span> e <b>ANUAL</b> de <span class="texto-destaque-negativo">${string_preju_anual}</span>.<br><p>
     
     <b><span class="titulo-com-solucao">Com a nossa solução<br></span></b>
    
