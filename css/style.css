@@ -1340,3 +1340,10 @@ color: black;
   box-shadow: 0 2px 0 #a54809;
   color: white;
 }
+
+.grafico_3 select{
+  background-color: #f66b0e;
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+}
