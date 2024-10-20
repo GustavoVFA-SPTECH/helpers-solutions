@@ -133,7 +133,7 @@ const chart3 = new Chart(ctx3, {
     ],
     datasets: [
       {
-        label: "Sensor 1",
+        label: "",
         data: [90, 95, 110, 100, 115, 98, 100, 95, 110, 100, 115, 107, 120],
         borderWidth: 2,
         backgroundColor: gradient,
