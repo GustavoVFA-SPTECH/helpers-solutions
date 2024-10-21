@@ -93,3 +93,14 @@ CREATE TABLE Maquina (
 INSERT INTO Maquina (Nome, Tipo, tempMax, Setor, fkEmpresa, fkSensor) VALUES
 ('Máquina A', 'Tipo A', 75.00, 'Setor A', 1, 1),
 ('Máquina B', 'Tipo B', 80.00, 'Setor B', 2, 2);
+
+
+
+SELECT * FROM registro;
+
+SELECT r.temperatura, r.dataHora, m.nome
+FROM registro as r
+JOIN sensor as s
+ON r.fkSensor = s.idSensor
+JOIN maquina as m
+ON m.fkSensor = s.idSensor;
