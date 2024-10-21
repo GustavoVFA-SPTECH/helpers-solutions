@@ -95,10 +95,9 @@ INSERT INTO Maquina (Nome, Tipo, tempMax, Setor, fkEmpresa, fkSensor) VALUES
 ('Máquina B', 'Tipo B', 80.00, 'Setor B', 2, 2);
 
 
-
 SELECT * FROM registro;
 
-SELECT r.temperatura, r.dataHora, m.nome
+SELECT r.temperatura as Temperatura, r.dataHora as "Horario Registro", m.nome as Maquina
 FROM registro as r
 JOIN sensor as s
 ON r.fkSensor = s.idSensor
