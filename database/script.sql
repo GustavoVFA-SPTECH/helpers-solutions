@@ -122,4 +122,3 @@ JOIN sensor as s
 ON r.fkSensor = s.idSensor
 JOIN maquina as m
 ON m.fkSensor = s.idSensor;
-
