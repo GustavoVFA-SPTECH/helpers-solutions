@@ -1,0 +1,13 @@
+
+
+.geral{
+    justify-content: center;
+    margin-top: 10%;
+    border: red 1px solid;
+}
+
+.grafico{
+    border: red 1px solid;
+    background-color: #112B3C;
+    border-radius: 12px;
+}

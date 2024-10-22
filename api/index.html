@@ -2,13 +2,13 @@
 <html>
   <head>
     <title>Graphics</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body>
-    <h1>Graphics</h1>
-    <div style="display: flex">
-      <div style="width: 50%">
+    <div style="display: flex" class="geral">
+      <div style="width: 50%" class="grafico">
         <canvas id="sensorAnalogico"></canvas>
       </div>
     </div>
@@ -22,7 +22,7 @@
             datasets: [
               {
                 label: "Temperatura",
-                borderColor: "#63B1BC",
+                borderColor: "#f66b0e",
                 backgroundColor: "#ED145B",
               },
             ],
@@ -35,7 +35,7 @@
               y: {
                 title: {
                   display: true,
-                  text: "(%)",
+                  text: "(°C)",
                 },
                 beginAtZero: true,
               },
