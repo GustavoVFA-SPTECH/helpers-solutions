@@ -45,6 +45,14 @@ const chart = new Chart(ctx, {
         ticks: {
           stepSize: 10, // Define o intervalo do eixo Y para 10 em 10
         },
+        title: {
+          display: true,  // Mostra o título do eixo Y
+          text: 'Temperatura (ºC)',  // Texto do título do eixo Y
+          font: {
+              size: 14  // Tamanho da fonte do título
+          },
+          color: '#FFFFFF'  // Cor da fonte do título
+        }
       },
     },
     plugins: {
@@ -102,6 +110,14 @@ const chart2 = new Chart(ctx2, {
         ticks: {
           stepSize: 10,
         },
+        title: {
+          display: true,  // Mostra o título do eixo Y
+          text: 'Temperatura (ºC)',  // Texto do título do eixo Y
+          font: {
+              size: 14  // Tamanho da fonte do título
+          },
+          color: '#FFFFFF'  // Cor da fonte do título
+        }
       },
     },
     plugins: {
@@ -168,6 +184,14 @@ const chart3 = new Chart(ctx3, {
         ticks: {
           stepSize: 10,
         },
+        title: {
+          display: true,  // Mostra o título do eixo Y
+          text: 'Temperatura (ºC)',  // Texto do título do eixo Y
+          font: {
+              size: 14  // Tamanho da fonte do título
+          },
+          color: '#FFFFFF'  // Cor da fonte do título
+        }
       },
     },
     plugins: {
