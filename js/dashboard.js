@@ -10,7 +10,6 @@ gradient.addColorStop(0.5, "rgba(219,89,6,1)"); // Cor vermelha
 Chart.defaults.color = "#FFF";
 
 //Grafico Temperatura média
-// Crie o gráfico e guarde em uma variável
 const chart = new Chart(ctx, {
   type: "bar",
   data: {
@@ -157,7 +156,7 @@ const chart3 = new Chart(ctx3, {
         color: "#fff",
       },
       {
-        label: "Tmeperatura maxima",
+        label: "Temperatura maxima",
         data: [150,150,150,150,150,150,150,150,150,150,150,150,150,150],
         borderWidth: 2,
         // backgroundColor: "blue",
