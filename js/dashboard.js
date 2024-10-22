@@ -58,6 +58,9 @@ const chart = new Chart(ctx, {
       title: {
         display: true,
         text: "Temperatura média dos sensores ultimas 24h",
+        font: {
+          size: 20 // Tamanho da fonte da legenda
+        },          
       },
     },
   },
@@ -66,7 +69,7 @@ const chart = new Chart(ctx, {
 const chart2 = new Chart(ctx2, {
   type: "bar",
   data: {
-    labels: ["Maquinas"],
+    labels: [""],
     datasets: [
       {
         label: "Sensor 1",
@@ -113,16 +116,32 @@ const chart2 = new Chart(ctx2, {
           display: true,  // Mostra o título do eixo Y
           text: 'Temperatura (ºC)',  // Texto do título do eixo Y
           font: {
-              size: 14  // Tamanho da fonte do título
+              size: 16,  // Tamanho da fonte do título
+              weight: 'bold' 
           },
+          padding:0,
           color: '#FFFFFF'  // Cor da fonte do título
         }
       },
+      y: {
+        display: true, // Exibe o eixo Y
+        title: {
+          display: true, // Exibe a legenda
+          text: 'Máquinas', // Texto da legenda do eixo Y
+          font: {
+            size: 20 // Tamanho da fonte da legenda
+          }
+        }
+      }
     },
     plugins: {
       title: {
         display: true,
         text: "Temperatura atual dos sensores",
+        font: {
+          size: 20 // Tamanho da fonte da legenda
+        },
+        padding: 0 
       },
     },
   },
@@ -181,6 +200,7 @@ const chart3 = new Chart(ctx3, {
     scales: {
       y: {
         beginAtZero: true,
+        min: 20,
         max: 180,
         ticks: {
           stepSize: 10,
@@ -194,11 +214,26 @@ const chart3 = new Chart(ctx3, {
           color: '#FFFFFF'  // Cor da fonte do título
         }
       },
+      x: {
+        display: true, // Exibe o eixo Y
+        title: {
+          display: true, // Exibe a legenda
+          text: 'Horário', // Texto da legenda do eixo Y
+          font: {
+            size: 16, // Tamanho da fonte da legenda
+            weight: 'bold'
+          }
+        }
+      }
     },
     plugins: {
       title: {
         display: true,
         text: "Temperatura indiviual",
+        font: {
+          size: 20 // Tamanho da fonte da legenda
+        },
+        padding: 0 
       },
     },
   },

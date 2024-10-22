@@ -1281,11 +1281,11 @@ color: black;
 .main_dashboard .container .box_view_right .grafico_1 div,
 .main_dashboard .container .box_view_right .grafico_2 div,
 .main_dashboard .container .box_view_right .grafico_3 div{
-  height: 30vh;
-  width: 67vh;
+  height: 33vh;
+  width: 72vh;
   background-color: #112B3C;
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1rem;
 
 }
 
