@@ -42,7 +42,7 @@ const chart = new Chart(ctx, {
         beginAtZero: true,
         max: 150, // Define a escala máxima do eixo Y
         ticks: {
-          stepSize: 10, // Define o intervalo do eixo Y para 10 em 10
+          stepSize: 20, // Define o intervalo do eixo Y para 10 em 10
         },
         title: {
           display: true,  // Mostra o título do eixo Y
@@ -149,7 +149,7 @@ const chart3 = new Chart(ctx3, {
     datasets: [
       {
         label: "",
-        data: [95, 100, 115, 105, 120, 113, 105, 100, 115, 105, 120, 112, 125],
+        data: [105, 110, 125, 115, 130, 123, 115, 110, 125, 115, 130, 122, 135],
         borderWidth: 2,
         backgroundColor: gradient,
         borderColor: gradient,
@@ -163,15 +163,17 @@ const chart3 = new Chart(ctx3, {
         borderColor: "red",
         color: "#fff",
         borderDash: [5,5],
+        pointRadius: 0,
       },
       {
         label: "Temperatura minima",
-        data: [90,90,90,90,90,90,90,90,90,90,90,90,90,],
+        data: [100,100,100,100,100,100,100,100,100,100,100,100,100,],
         borderWidth: 2,
         // backgroundColor: "blue",
-        borderColor: "blue",
+        borderColor: "rgb(78, 150, 244)",
         color: "#fff",
         borderDash: [5,5],
+        pointRadius: 0,
       },
     ],
   },
@@ -179,7 +181,7 @@ const chart3 = new Chart(ctx3, {
     scales: {
       y: {
         beginAtZero: true,
-        max: 200,
+        max: 180,
         ticks: {
           stepSize: 10,
         },
