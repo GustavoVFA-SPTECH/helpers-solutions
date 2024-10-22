@@ -167,12 +167,12 @@ const chart3 = new Chart(ctx3, {
     ],
     datasets: [
       {
-        label: "",
+        label: "Temperatura",
         data: [105, 110, 125, 115, 130, 123, 115, 110, 125, 115, 130, 122, 135],
         borderWidth: 2,
-        backgroundColor: gradient,
-        borderColor: gradient,
-        color: "#fff",
+        backgroundColor: "#eb9a05",
+        borderColor: "#eb9a05",
+        color: "#eb9a05",
       },
       {
         label: "Temperatura maxima",
