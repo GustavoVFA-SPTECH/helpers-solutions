@@ -2,14 +2,22 @@
 <html>
   <head>
     <title>Graphics</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body>
     <div style="display: flex" class="geral">
-      <div style="width: 50%" class="grafico">
+      <div class="grafico">
         <canvas id="sensorAnalogico"></canvas>
+      </div>
+      <div class="dados">
+        <div class="title">
+          <h1>Dados Inseridos:</h1>
+        </div>
+        <div class="inserir">
+          <span class="texto">Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br>Temperatura:<br></span>
+        </div>
       </div>
     </div>
 
@@ -24,7 +32,6 @@
                 label: "Temperatura",
                 borderColor: "#f66b0e",
                 backgroundColor: "#ED145B",
-                color: "#fff",
               },
             ],
           },
@@ -32,13 +39,32 @@
             scales: {
               x: {
                 beginAtZero: true,
+                ticks: {
+                  color: "#fff",
+                },
               },
               y: {
                 title: {
                   display: true,
-                  text: "(°C)",
+                  text: "( Temperatura °C )",
+                  color: "#fff",
                 },
                 beginAtZero: true,
+                ticks: {
+                  color: "#fff",
+                },
+              },
+            },
+            plugins: {
+              title: {
+                display: true,
+                text: "Temperatura indiviual",
+                color:"#fff",
+              },
+              legend: {
+                labels: {
+                  color: "#fff",
+                },
               },
             },
           },
