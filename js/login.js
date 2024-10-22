@@ -11,7 +11,7 @@ function login(){
         valLogin.innerHTML = ""
         window.location.href = 'dashboard.html';
     } else {
-        valLogin.innerHTML = "Usuario e Senha incorretos"
+        valLogin.innerHTML = "Usuario ou Senha incorreto"
         ipt_senhaLogin.style.outline = "none";
         ipt_senhaLogin.style.border = "solid red 2px";
         ipt_usuario.style.outline = "none";

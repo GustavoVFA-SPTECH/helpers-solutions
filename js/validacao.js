@@ -160,7 +160,7 @@ function valEmail() {
     ipt_email.style.border = "#22c55e";
   }
 
-  val1.innerHTML = mensagem;
+  val3.innerHTML = mensagem;
 
   return arroba && ponto;
 }
