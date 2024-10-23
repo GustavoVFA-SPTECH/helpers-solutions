@@ -305,7 +305,7 @@ function sensor1() {
 }
 
 function sensor2() {
-  chart3.data.datasets[0].data = [100, 80, 70, 85, 110, 105, 90, 85, 100, 93, 98, 97];
+  chart3.data.datasets[0].data = [120, 100, 90, 105, 130, 125, 110, 105, 120, 113, 118, 117, 120];
   chart3.update();
 }
 
