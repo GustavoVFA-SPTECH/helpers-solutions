@@ -108,7 +108,7 @@ const chart2 = new Chart(ctx2, {
     scales: {
       x: {
         beginAtZero: true,
-        max: 150,
+        max: 180,
         ticks: {
           stepSize: 10,
         },
