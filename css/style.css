@@ -1078,15 +1078,15 @@ color: black;
 
 .main_dashboard {
   background-color: white;
-  width: 100vw;
-  height: 130vh;
+  width: 100%;
+  height: 110vh;
 }
 
 .main_dashboard .container {
   padding: 0;
   margin: 0;
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 }
 
@@ -1095,7 +1095,7 @@ color: black;
   flex-direction: column;
   background-color: #112B3C;
   width: 15%;
-  height: 130vh;
+  height: 110vh;
 }
 
 .main_dashboard .container .box_bar_left .box_logo {
@@ -1293,7 +1293,7 @@ color: black;
 }
 .main_dashboard .container .box_view_right .grafico_3 div{
 
-  height: 70vh;
+  height: 50vh;
   width: 72vh;
   background-color: #112B3C;
   border-radius: 12px;

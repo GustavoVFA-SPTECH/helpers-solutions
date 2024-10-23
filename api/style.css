@@ -3,12 +3,12 @@
 .geral{
     justify-content: center;
     margin-top: 10%;
-    border: red 1px solid;
+    /* border: red 1px solid; */
     justify-content: space-around;
 }
 
 .grafico{
-    border: red 1px solid;
+    /* border: red 1px solid; */
     background-color: #112B3C;
     border-radius: 50px;
     width: 50%;
@@ -18,7 +18,7 @@
 
 .dados {
     display: flex;
-    border: blue 1px solid;
+    /* border: blue 1px solid; */
     width: 30%;
     height: 500px; /* Define uma altura fixa */
     background-color: #f66b0e;
@@ -36,7 +36,7 @@
     align-items: center;
     overflow-y: auto; /* Permite rolagem vertical se o texto exceder o espaço */
     overflow-x: hidden; /* Garante que não haja rolagem horizontal */
-    justify-content: cneter;
+    justify-content: center;
     width: 100%;
 }
 
@@ -44,7 +44,7 @@
     font-weight: bold;
     font-size: 20px;
     margin-bottom: 10px;
-    border: red 1px solid;
+    /* border: red 1px solid; */
 
 }
 
