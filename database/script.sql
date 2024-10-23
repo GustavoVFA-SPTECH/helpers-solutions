@@ -19,7 +19,7 @@ CREATE TABLE Usuario (
     userName VARCHAR(45),
     senha VARCHAR(45) NOT NULL,
     fKEmpresa INT,
-    CONSTRAINT fkEmpresa FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
+    CONSTRAINT fkEmpresa FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
 INSERT INTO Usuario (userName, senha, fKEmpresa) VALUES
@@ -36,7 +36,7 @@ CREATE TABLE Endereco (
     Cidade VARCHAR(45),
     Estado VARCHAR(45),
     fkEmpresaEnd INT,
-    CONSTRAINT fkEmpresaEnd FOREIGN KEY (fkEmpresaEnd) REFERENCES empresa (idEmpresa)
+    CONSTRAINT fkEmpresaEnd FOREIGN KEY (fkEmpresaEnd) REFERENCES Empresa (idEmpresa)
 );
 
 INSERT INTO Endereco (CEP, Logradouro, Numero, Complemento, Bairro, Cidade, Estado, fkEmpresaEnd) VALUES
@@ -95,30 +95,30 @@ INSERT INTO Maquina (Nome, Tipo, tempMax, Setor, fkEmpresa, fkSensor) VALUES
 ('Máquina B', 'Tipo B', 80.00, 'Setor B', 2, 2);
 
 
-SELECT * FROM registro;
+SELECT * FROM Registro;
 
 -- Select do registro com maquina
 SELECT r.temperatura as Temperatura, r.dataHora as "Horario Registro", m.nome as Maquina
-FROM registro as r
-JOIN sensor as s
+FROM Registro as r
+JOIN Sensor as s
 ON r.fkSensor = s.idSensor
-JOIN maquina as m
+JOIN Maquina as m
 ON m.fkSensor = s.idSensor;
 
 -- Select do registro com maquina e empresa dona
 SELECT r.temperatura as Temperatura, r.dataHora as "Horario Registro", m.nome as Maquina, e.razaoSocial as Empresa
-FROM registro as r
-JOIN sensor as s
+FROM Registro as r
+JOIN Sensor as s
 ON r.fkSensor = s.idSensor
-JOIN maquina as m
+JOIN Maquina as m
 ON m.fkSensor = s.idSensor
-JOIN empresa as e
+JOIN Empresa as e
 ON m.fkEmpresa = e.idEmpresa;
 
 -- Select com concat e formatação de data
 SELECT CONCAT('A ', m.nome, ' atingiu: ', r.temperatura, 'ºC às: ', DATE_FORMAT(r.dataHora, '%H:%i:%s'), ' do dia: ', DATE_FORMAT(r.dataHora, '%d/%m/%Y')) AS Mensagem
-FROM registro as r
-JOIN sensor as s
+FROM Registro as r
+JOIN Sensor as s
 ON r.fkSensor = s.idSensor
-JOIN maquina as m
+JOIN Maquina as m
 ON m.fkSensor = s.idSensor;
