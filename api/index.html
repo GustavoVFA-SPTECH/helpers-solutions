@@ -48,6 +48,10 @@
                   display: true,
                   text: "( Temperatura °C )",
                   color: "#fff",
+                  max: 150,
+                  ticks: {
+                    stepSize: 20, // Define o intervalo do eixo Y para 10 em 10
+                  },
                 },
                 beginAtZero: true,
                 ticks: {
@@ -59,7 +63,7 @@
               title: {
                 display: true,
                 text: "Temperatura indiviual",
-                color:"#fff",
+                color: "#fff",
               },
               legend: {
                 labels: {
