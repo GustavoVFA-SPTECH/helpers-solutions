@@ -5,11 +5,13 @@ function login(){
     
     var usuario = document.getElementById('ipt_usuario').value;
     var senha = document.getElementById('ipt_senhaLogin').value;
+    var alerta = document.getElementById('alertamodal');
 
     if(usuario == usuarioTeste && senha == senhaTeste){
-        alert('Login realizado com sucesso!');
+        alerta.style.display = "flex";
+        // alert('Login realizado com sucesso!');
         valLogin.innerHTML = ""
-        window.location.href = 'dashboard.html';
+        // window.location.href = 'dashboard.html';
     } else {
         valLogin.innerHTML = "Usuario ou Senha incorreto"
         ipt_senhaLogin.style.outline = "none";

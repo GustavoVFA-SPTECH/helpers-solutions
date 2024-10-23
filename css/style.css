@@ -24,7 +24,7 @@ body {
 }
 
 
-.main_cadastro .modal {
+.main_login .modal {
   display: flex;
   position: absolute;
   justify-content: center;
@@ -35,7 +35,7 @@ body {
   z-index: 1;
 }
 
-.main_cadastro .modal .box_modal {
+.main_login .modal .box_modal {
   position: absolute;
   width: 500px;
   height: 420px;
@@ -45,29 +45,34 @@ body {
   align-content: center;
 }
 
-.main_cadastro .modal .box_modal .titulo {
+.main_login .modal .box_modal .titulo {
   display: flex;
   justify-content: center;
 }
 
-.main_cadastro .modal .box_modal .icon {
+.main_login .modal .box_modal .icon {
   /* border: solid; */
   display: flex;
   justify-content: center;  
+  width: 100%;
+  height: 200px;
+  
 }
 
-.main_cadastro .modal .box_modal .info {
+.main_login .modal .box_modal .info {
   display: flex;
   justify-content: center;
+  text-align: center;
+  font-size: 22px;
 }
 
-.main_cadastro .modal .box_modal .btn {
+.main_login .modal .box_modal .btn {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
 }
 
-.main_cadastro .modal .box_modal .btn a{
+.main_login .modal .box_modal .btn a{
   display: flex;
   align-self: center;
   justify-content: center;
@@ -84,7 +89,7 @@ body {
   opacity: 0.9;
 }
 
-.main_cadastro .modal .box_modal .btn a:hover {
+.main_login .modal .box_modal .btn a:hover {
   opacity: 1;
 }
 
