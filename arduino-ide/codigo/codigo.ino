@@ -13,14 +13,9 @@ void loop(){
   temperaturaCelsius = (valorLeitura * 5.0 / 1023.0) / 0.01; // Converter essa info na temperatura em graus Celsius  0.002
   temperaturaAdaptada = (valorLeitura * 5.0 / 1023.0) / 0.0015; // Converter essa info na temperatura em graus Celsius  0.002
   
-  // Serial.print("Temperatura Maxima:"); // label
-  Serial.print(TEMP_MAXIMA);// Print da temperatura na tela
-  Serial.println(" ");// separação da label
-  // Serial.print("Temperatura Real:"); // label
-  Serial.print(temperaturaCelsius);// Print da temperatura na tela
-  Serial.println(" ");// separação da label
-  // Serial.print("Temperatura Adaptada:");
-  Serial.println(temperaturaAdaptada); // Print da temperatura na tela
+  // Serial.print(temperaturaCelsius);// Print da temperatura na tela
+  Serial.print(temperaturaAdaptada); // Print da temperatura na tela
+  Serial.println(";"); // Print da temperatura na tela
   
   delay(2000); // tempo até executar a função de loop novamente
 }

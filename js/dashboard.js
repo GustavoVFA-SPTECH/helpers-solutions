@@ -45,13 +45,13 @@ const chart = new Chart(ctx, {
           stepSize: 20, // Define o intervalo do eixo Y para 10 em 10
         },
         title: {
-          display: true,  // Mostra o título do eixo Y
-          text: 'Temperatura (ºC)',  // Texto do título do eixo Y
+          display: true, // Mostra o título do eixo Y
+          text: "Temperatura (ºC)", // Texto do título do eixo Y
           font: {
-              size: 14  // Tamanho da fonte do título
+            size: 14, // Tamanho da fonte do título
           },
-          color: '#FFFFFF'  // Cor da fonte do título
-        }
+          color: "#FFFFFF", // Cor da fonte do título
+        },
       },
     },
     plugins: {
@@ -59,8 +59,8 @@ const chart = new Chart(ctx, {
         display: true,
         text: "Temperatura média dos sensores ultimas 24h",
         font: {
-          size: 20 // Tamanho da fonte da legenda
-        },          
+          size: 20, // Tamanho da fonte da legenda
+        },
       },
     },
   },
@@ -113,35 +113,35 @@ const chart2 = new Chart(ctx2, {
           stepSize: 10,
         },
         title: {
-          display: true,  // Mostra o título do eixo Y
-          text: 'Temperatura (ºC)',  // Texto do título do eixo Y
+          display: true, // Mostra o título do eixo Y
+          text: "Temperatura (ºC)", // Texto do título do eixo Y
           font: {
-              size: 16,  // Tamanho da fonte do título
-              weight: 'bold' 
+            size: 16, // Tamanho da fonte do título
+            weight: "bold",
           },
-          padding:0,
-          color: '#FFFFFF'  // Cor da fonte do título
-        }
+          padding: 0,
+          color: "#FFFFFF", // Cor da fonte do título
+        },
       },
       y: {
         display: true, // Exibe o eixo Y
         title: {
           display: true, // Exibe a legenda
-          text: 'Máquinas', // Texto da legenda do eixo Y
+          text: "Máquinas", // Texto da legenda do eixo Y
           font: {
-            size: 20 // Tamanho da fonte da legenda
-          }
-        }
-      }
+            size: 20, // Tamanho da fonte da legenda
+          },
+        },
+      },
     },
     plugins: {
       title: {
         display: true,
         text: "Temperatura atual dos sensores",
         font: {
-          size: 20 // Tamanho da fonte da legenda
+          size: 20, // Tamanho da fonte da legenda
         },
-        padding: 0 
+        padding: 0,
       },
     },
   },
@@ -176,22 +176,24 @@ const chart3 = new Chart(ctx3, {
       },
       {
         label: "Temperatura maxima",
-        data: [150,150,150,150,150,150,150,150,150,150,150,150,150,150],
+        data: [
+          150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150,
+        ],
         borderWidth: 2,
         // backgroundColor: "blue",
         borderColor: "red",
         color: "#fff",
-        borderDash: [5,5],
+        borderDash: [5, 5],
         pointRadius: 0,
       },
       {
         label: "Temperatura minima",
-        data: [100,100,100,100,100,100,100,100,100,100,100,100,100,],
+        data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
         borderWidth: 2,
         // backgroundColor: "blue",
         borderColor: "rgb(78, 150, 244)",
         color: "#fff",
-        borderDash: [5,5],
+        borderDash: [5, 5],
         pointRadius: 0,
       },
     ],
@@ -206,38 +208,39 @@ const chart3 = new Chart(ctx3, {
           stepSize: 10,
         },
         title: {
-          display: true,  // Mostra o título do eixo Y
-          text: 'Temperatura (ºC)',  // Texto do título do eixo Y
+          display: true, // Mostra o título do eixo Y
+          text: "Temperatura (ºC)", // Texto do título do eixo Y
           font: {
-              size: 14  // Tamanho da fonte do título
+            size: 14, // Tamanho da fonte do título
           },
-          color: '#FFFFFF'  // Cor da fonte do título
-        }
+          color: "#FFFFFF", // Cor da fonte do título
+        },
       },
       x: {
         display: true, // Exibe o eixo Y
         title: {
           display: true, // Exibe a legenda
-          text: 'Horário', // Texto da legenda do eixo Y
+          text: "Horário", // Texto da legenda do eixo Y
           font: {
             size: 16, // Tamanho da fonte da legenda
-            weight: 'bold'
-          }
-        }
-      }
+            weight: "bold",
+          },
+        },
+      },
     },
     plugins: {
       title: {
         display: true,
         text: "Temperatura indiviual",
         font: {
-          size: 20 // Tamanho da fonte da legenda
+          size: 20, // Tamanho da fonte da legenda
         },
-        padding: 0 
+        padding: 0,
       },
     },
   },
 });
+
 //Reseta a cor dos botões anteriores
 function resetButtonStyles() {
   var buttons = document.querySelectorAll("#btn_dia, #btn_mes, #btn_ano");
@@ -253,7 +256,8 @@ function dia() {
   chart.data.datasets[0].data = [
     90, 95, 110, 100, 115, 98, 90, 95, 110, 100, 115, 98,
   ];
-  chart.options.plugins.title.text = "Temperatura média dos sensores ultimas 24h";
+  chart.options.plugins.title.text =
+    "Temperatura média dos sensores ultimas 24h";
   btn.style.backgroundColor = "#FFF";
   btn.style.color = "#a54809";
   chart.update();
@@ -265,7 +269,8 @@ function mes() {
   chart.data.datasets[0].data = [
     110, 90, 80, 95, 120, 115, 100, 95, 110, 103, 108, 107,
   ];
-  chart.options.plugins.title.text = "Temperatura média dos sensores ultimos 30 dias";
+  chart.options.plugins.title.text =
+    "Temperatura média dos sensores ultimos 30 dias";
   btn.style.backgroundColor = "#FFF";
   btn.style.color = "#a54809";
   chart.update();
@@ -277,8 +282,34 @@ function ano() {
   chart.data.datasets[0].data = [
     100, 80, 70, 85, 110, 105, 90, 85, 100, 93, 98, 97,
   ];
-  chart.options.plugins.title.text = "Temperatura média dos sensores ultimo ano";
+  chart.options.plugins.title.text =
+    "Temperatura média dos sensores ultimo ano";
   btn.style.backgroundColor = "#FFF";
   btn.style.color = "#a54809";
   chart.update();
+}
+
+function sensorChange(value) {
+  if (value === "1") {
+    sensor1();
+  } else if (value === "2") {
+    sensor2();
+  } else if (value === "3") {
+    sensor3();
+  }
+}
+
+function sensor1() {
+  chart3.data.datasets[0].data = [105, 110, 125, 115, 130, 123, 115, 110, 125, 115, 130, 122, 135];
+  chart3.update();
+}
+
+function sensor2() {
+  chart3.data.datasets[0].data = [100, 80, 70, 85, 110, 105, 90, 85, 100, 93, 98, 97];
+  chart3.update();
+}
+
+function sensor3() {
+  chart3.data.datasets[0].data = [135, 122, 130, 115, 125, 110, 115, 123, 130, 115, 125, 110, 105];
+  chart3.update();
 }
