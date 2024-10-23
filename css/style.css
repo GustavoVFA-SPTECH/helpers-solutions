@@ -1079,7 +1079,7 @@ color: black;
 .main_dashboard {
   background-color: white;
   width: 100vw;
-  height: 100vh;
+  height: 130vh;
 }
 
 .main_dashboard .container {
@@ -1095,7 +1095,7 @@ color: black;
   flex-direction: column;
   background-color: #112B3C;
   width: 15%;
-  height: 100vh;
+  height: 130vh;
 }
 
 .main_dashboard .container .box_bar_left .box_logo {
@@ -1212,7 +1212,6 @@ color: black;
 .main_dashboard .container .box_view_right .view_container {
   display: flex;
   flex-direction: column;
-
   width: 90%;
 }
 
@@ -1284,9 +1283,17 @@ color: black;
 }
 
 .main_dashboard .container .box_view_right .grafico_1 div,
-.main_dashboard .container .box_view_right .grafico_2 div,
-.main_dashboard .container .box_view_right .grafico_3 div{
+.main_dashboard .container .box_view_right .grafico_2 div{
   height: 33vh;
+  width: 72vh;
+  background-color: #112B3C;
+  border-radius: 12px;
+  padding: 1rem;
+
+}
+.main_dashboard .container .box_view_right .grafico_3 div{
+
+  height: 70vh;
   width: 72vh;
   background-color: #112B3C;
   border-radius: 12px;
