@@ -5,13 +5,17 @@ CREATE TABLE Empresa (
     idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     razaoSocial VARCHAR(45) NOT NULL,
     CNPJ CHAR(14) UNIQUE NOT NULL,
+    telefone CHAR(11),
     email VARCHAR(70) NOT NULL,
     responsavel VARCHAR(45) NOT NULL
 );
 
 select * from Empresa;
+select * from Usuario;
+select * from Endereco;
 
-delete from Empresa where idEmpresa = 3;
+
+delete from Empresa where idEmpresa = 8;
 
 INSERT INTO Empresa (razaoSocial, CNPJ, email, responsavel) VALUES
 ('Empresa A', '12345678000195', 'contato@empresaa.com', 'João Silva'),
@@ -32,7 +36,7 @@ INSERT INTO Usuario (userName, senha, fKEmpresa) VALUES
 
 CREATE TABLE Endereco (
     idEndereco INT PRIMARY KEY AUTO_INCREMENT,
-    CEP CHAR(14),
+    CEP CHAR(8),
     Logradouro VARCHAR(100),
     Numero VARCHAR(45),
     Complemento VARCHAR(45),
@@ -42,8 +46,6 @@ CREATE TABLE Endereco (
     fkEmpresaEnd INT,
     CONSTRAINT fkEmpresaEnd FOREIGN KEY (fkEmpresaEnd) REFERENCES Empresa (idEmpresa)
 );
-
-alter table Endereco modify column CEP char(8);
 
 select * from Endereco;
 
