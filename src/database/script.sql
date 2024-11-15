@@ -9,6 +9,10 @@ CREATE TABLE Empresa (
     responsavel VARCHAR(45) NOT NULL
 );
 
+select * from Empresa;
+
+delete from Empresa where idEmpresa = 3;
+
 INSERT INTO Empresa (razaoSocial, CNPJ, email, responsavel) VALUES
 ('Empresa A', '12345678000195', 'contato@empresaa.com', 'João Silva'),
 ('Empresa B', '98765432000198', 'contato@empresab.com', 'Maria Oliveira');
@@ -39,6 +43,10 @@ CREATE TABLE Endereco (
     CONSTRAINT fkEmpresaEnd FOREIGN KEY (fkEmpresaEnd) REFERENCES Empresa (idEmpresa)
 );
 
+alter table Endereco modify column CEP char(8);
+
+select * from Endereco;
+
 INSERT INTO Endereco (CEP, Logradouro, Numero, Complemento, Bairro, Cidade, Estado, fkEmpresaEnd) VALUES
 ('12345678', 'Rua A', '100', 'Apto 101', 'Bairro A', 'Cidade A', 'Estado A', 1),
 ('87654321', 'Rua B', '200', '', 'Bairro B', 'Cidade B', 'Estado B', 2);
@@ -65,6 +73,7 @@ CREATE TABLE Sensor (
 INSERT INTO Sensor (Nome, numeroSerie) VALUES
 ('Sensor A', 'SN123456'),
 ('Sensor B', 'SN654321');
+
 
 CREATE TABLE Registro (
     idRegistro INT PRIMARY KEY AUTO_INCREMENT,

@@ -12,9 +12,9 @@ function valRazaoSocial() {
   val1.innerHTML = ``;
   var termina =
     razao.endsWith("ME") ||
-    razao.endsWith("S.A") ||
-    razao.endsWith("LTDA") ||
-    razao.endsWith("EPP")
+      razao.endsWith("S.A") ||
+      razao.endsWith("LTDA") ||
+      razao.endsWith("EPP")
       ? true
       : false; // Validação de final da razão social
 
@@ -111,7 +111,7 @@ function valCNPJ() {
   var mensagem = "";
   var tamanho = cnpj.length;
   var tam = false;
-  
+
   //Limita a entrada de caracteres da input para apenas números
   cnpj = cnpj.replace(/[^\d]/g, "");
 
@@ -186,7 +186,7 @@ function valTelefone() {
 
   document.getElementById("ipt_telefone").value = telefone;
 
-  if (tamanho != 10) {
+  if (tamanho != 11) {
     mensagem += `O telefone deve conter 11 numeros incluindo o DDD`;
     ipt_telefone.style.outline = "none";
     ipt_telefone.style.border = "solid red 2px";
@@ -259,60 +259,127 @@ function numero() {
 function valCadastro() {
   var cadastro =
     valNulo() &&
-    valRazaoSocial() &&
-    valSenha() &&
-    valCNPJ() &&
-    valEmail() &&
-    valTelefone() &&
-    valCEP()
+      valRazaoSocial() &&
+      valSenha() &&
+      valCNPJ() &&
+      valEmail() &&
+      valTelefone() &&
+      valCEP()
       ? true
       : false;
+
   console.log(cadastro);
 
   if (cadastro) {
-    window.location.replace("paglogin.html");
-  }else{
+    Cadastrar()
+  } else {
     alert("Por favor, preencha todos os campos corretamente.");
   }
+}
 
-  fetch("/usuarios/cadastrar", {
+function Cadastrar(){
+  var razaoVar = ipt_razao.value;
+  var cnpjVar = ipt_cnpj.value;
+  var telefoneVar = ipt_telefone.value;
+  var responsavelVar = ipt_responsavel.value;
+  var cepVar = ipt_cep.value;
+  var logradouroVar = ipt_logradouro.value;
+  var numeroVar = ipt_numero.value;
+  var bairroVar = ipt_bairro.value;
+  var cidadeVar =ipt_cidade.value
+  var estadoVar = ipt_estado.value
+  var complementoVar = ipt_complemento.value;
+  var nomeUsuarioVar = ipt_nomeUsuario.value;
+  var emailVar = ipt_email.value;
+  var senhaVar = ipt_senha.value;
+  
+  fetch("/usuarios/cadastrar_empresa", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      // crie um atributo que recebe o valor recuperado aqui
-      // Agora vá para o arquivo routes/usuario.js
-      nomeServer: nomeVar,
+      razaoServer: razaoVar,
+      cnpjServer: cnpjVar,
       emailServer: emailVar,
-      senhaServer: senhaVar,
-      idEmpresaVincularServer: idEmpresaVincular
+      telefoneServe: telefoneVar,
+      responsavelServer: responsavelVar
     }),
-  })
-    .then(function (resposta) {
+  }).then(function (resposta) {
       console.log("resposta: ", resposta);
-
+  
       if (resposta.ok) {
-        cardErro.style.display = "block";
+        alert("Deu certo")
 
-        mensagem_erro.innerHTML =
-          "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+        fetch("/usuarios/cadastrar_endereco", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            cnpjServer : cnpjVar,
+            cepServer : cepVar,
+            logradouroServer : logradouroVar,
+            numeroServer : numeroVar,
+            bairroServer : bairroVar,
+            cidadeServer: cidadeVar,
+            estadoServer : estadoVar,
+            complementoServer : complementoVar
+          }),
+        }).then(function (resposta) {
+            console.log("resposta: ", resposta);   
 
-        setTimeout(() => {
-          window.location = "login.html";
-        }, "2000");
+            fetch("/usuarios/cadastrar_usuario", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                cnpjServer : cnpjVar,
+                nomeUsuarioServer : nomeUsuarioVar,
+                senhaServer : senhaVar
+              }),
+            }).then(function (resposta) {
+                console.log("resposta: ", resposta);
+    
+                if (resposta.ok) {
+                  alert("Deu certo")
+                } else {
+                  throw "Houve um erro ao tentar realizar o cadastro do endereço!";
+                }
+              })
+               // SE USUARIO DER ERRO CAI AQUI
+              .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+              });
 
-        limparFormulario();
-        finalizarAguardar();
+              // SE ENDEREÇO DER ERRO CAI AQUI
+              if (resposta.ok) {
+              alert("Deu certo")
+            } else {
+              throw "Houve um erro ao tentar realizar o cadastro do endereço!";
+            }
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+          });
+
+        // setTimeout(() => {
+        //   window.location = "login.html";
+        // }, "2000");
+        
       } else {
-        throw "Houve um erro ao tentar realizar o cadastro!";
+        throw "Houve um erro ao tentar realizar o cadastro da empresa!";
       }
     })
+     // SE EMPRESA DER ERRO CAI AQUI
     .catch(function (resposta) {
       console.log(`#ERRO: ${resposta}`);
-      finalizarAguardar();
     });
-
+  
   return false;
+
 }
+
+
 
