@@ -597,27 +597,30 @@ a {
   align-self: flex-end;
   position: fixed;
   justify-self: flex-end;
-  height: 100rem;
+  height: 120rem;
 
 }
 
 .voltarTopo{
 
-  display: none;
+  opacity: 0;
+  display: flex;
   align-self: center;
   justify-content: center;
   background-color: #f66b0e;
   box-shadow: 0 4px 0 #a54809;
   border: none;
   margin-right: 3rem;
-  padding: 0.8rem 0;
   font-size: x-large;
-  border-radius: 100rem;
   cursor: pointer;
-  width: 80px;
+  border: none;
+  width: 80px;      
   height: 80px;
+  border-radius: 50%;
   transition: 0.3s;
+  transition: opacity 0.2s, visibility 0.1s;
   z-index: 99;  
+  padding: 0; 
 
 }
 
@@ -630,8 +633,7 @@ a {
 
 .imagem{
 
-  height: 50px;
-  color: #ffffff;
+  height: 80px;
 
 }
 

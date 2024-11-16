@@ -215,10 +215,12 @@
   window.onscroll = function() {
      var botao = document.querySelector('.voltarTopo');
  
-     if(window.scrollY >= 300){
-       botao.style.display = 'block'
+     if (window.scrollY > 310) {
+        botao.style.opacity = '1';
+        botao.style.visibility = 'visible';
     } else {
-        botao.style.display = 'none'
+        botao.style.opacity = '0';
+        botao.style.visibility = 'hidden';
     }
- };
+};
  </script>
