@@ -603,7 +603,7 @@ a {
 
 .voltarTopo{
 
-  display: flex;
+  display: none;
   align-self: center;
   justify-content: center;
   background-color: #f66b0e;
@@ -617,6 +617,7 @@ a {
   width: 80px;
   height: 80px;
   transition: 0.3s;
+  z-index: 99;  
 
 }
 

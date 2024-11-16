@@ -211,3 +211,14 @@
     </main>
   </body>
 </html>
+<script>
+  window.onscroll = function() {
+     var botao = document.querySelector('.voltarTopo');
+ 
+     if(window.scrollY >= 300){
+       botao.style.display = 'block'
+    } else {
+        botao.style.display = 'none'
+    }
+ };
+ </script>
