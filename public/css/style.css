@@ -1436,7 +1436,6 @@ color: black;
 
 .main_relatorios .container .box_bar_left .box_logo {
   display: flex;
-  /* background-color: orange; */
   height: 13vh;
   justify-content: center;
   align-items: center;
@@ -1462,7 +1461,6 @@ color: black;
   padding: 0;
   display: flex;
   height: 30vh;
-  /* background-color: red; */
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -1472,7 +1470,6 @@ color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: black; */
 }
 
 .main_relatorios .container .box_bar_left .btns a {
@@ -1549,4 +1546,14 @@ color: black;
   display: flex;
   flex-direction: column;
   width: 90%;
+}
+
+.main_relatorios .container .box_view_right .view_container .top_filter{
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+
+
 }
