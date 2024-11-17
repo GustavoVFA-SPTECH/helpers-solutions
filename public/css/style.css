@@ -1257,6 +1257,7 @@ color: black;
   display: flex;
   width: 85%;
   justify-content: center;
+  
 }
 
 .main_dashboard .container .box_view_right .view_container {
@@ -1637,5 +1638,19 @@ color: black;
 
 }
 
+.main_relatorios .container .box_view_right .titulos_relatorio{
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: large;
+}
+
+.main_relatorios .container .box_view_right .titulos_relatorio .horario_relatorio{
+
+  height: auto;
+
+}
 
