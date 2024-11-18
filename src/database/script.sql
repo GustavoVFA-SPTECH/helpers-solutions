@@ -7,28 +7,15 @@ CREATE TABLE Empresa (
     CNPJ CHAR(14) UNIQUE NOT NULL,
     telefone CHAR(11),
     email VARCHAR(70) NOT NULL,
+    userName VARCHAR(45) NOT NULL,
+    senha VARCHAR(45) NOT NULL,
     responsavel VARCHAR(45) NOT NULL
 );
 
-select * from Empresa;
-select * from Usuario;
-select * from Endereco;
-
-
-delete from Empresa where idEmpresa = 8;
-
-INSERT INTO Empresa (razaoSocial, CNPJ, email, responsavel) VALUES
+INSERT INTO Empresa (razaoSocial, CNPJ, email, responsavel
+) VALUES
 ('Empresa A', '12345678000195', 'contato@empresaa.com', 'João Silva'),
 ('Empresa B', '98765432000198', 'contato@empresab.com', 'Maria Oliveira');
-
-
-CREATE TABLE Usuario (
-    idUsuario INT PRIMARY KEY AUTO_INCREMENT,
-    userName VARCHAR(45),
-    senha VARCHAR(45) NOT NULL,
-    fKEmpresa INT,
-    CONSTRAINT fkEmpresa FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
-);
 
 INSERT INTO Usuario (userName, senha, fKEmpresa) VALUES
 ('usuario1', 'Senha@123', 1),

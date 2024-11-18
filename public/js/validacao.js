@@ -292,6 +292,8 @@ function Cadastrar(){
   var nomeUsuarioVar = ipt_nomeUsuario.value;
   var emailVar = ipt_email.value;
   var senhaVar = ipt_senha.value;
+
+  console.log("Telefone:", telefoneVar)
   
   fetch("/usuarios/cadastrar_empresa", {
     method: "POST",
@@ -303,7 +305,9 @@ function Cadastrar(){
       cnpjServer: cnpjVar,
       emailServer: emailVar,
       telefoneServe: telefoneVar,
-      responsavelServer: responsavelVar
+      responsavelServer: responsavelVar,
+      nomeUsuarioServer : nomeUsuarioVar,
+      senhaServer : senhaVar
     }),
   }).then(function (resposta) {
       console.log("resposta: ", resposta);
@@ -329,30 +333,6 @@ function Cadastrar(){
         }).then(function (resposta) {
             console.log("resposta: ", resposta);   
 
-            fetch("/usuarios/cadastrar_usuario", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                cnpjServer : cnpjVar,
-                nomeUsuarioServer : nomeUsuarioVar,
-                senhaServer : senhaVar
-              }),
-            }).then(function (resposta) {
-                console.log("resposta: ", resposta);
-    
-                if (resposta.ok) {
-                  alert("Deu certo")
-                } else {
-                  throw "Houve um erro ao tentar realizar o cadastro do endereço!";
-                }
-              })
-               // SE USUARIO DER ERRO CAI AQUI
-              .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-              });
-
               // SE ENDEREÇO DER ERRO CAI AQUI
               if (resposta.ok) {
               alert("Deu certo")
@@ -364,9 +344,9 @@ function Cadastrar(){
             console.log(`#ERRO: ${resposta}`);
           });
 
-        // setTimeout(() => {
-        //   window.location = "login.html";
-        // }, "2000");
+        setTimeout(() => {
+          window.location = "login.html";
+        }, "2000");
         
       } else {
         throw "Houve um erro ao tentar realizar o cadastro da empresa!";
