@@ -345,7 +345,7 @@ function Cadastrar(){
           });
 
         setTimeout(() => {
-          window.location = "login.html";
+          window.location = "paglogin.html";
         }, "2000");
         
       } else {
