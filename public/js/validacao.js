@@ -313,7 +313,7 @@ function Cadastrar(){
       console.log("resposta: ", resposta);
   
       if (resposta.ok) {
-        alert("Deu certo")
+        console.log("Deu certo")
 
         fetch("/usuarios/cadastrar_endereco", {
           method: "POST",
@@ -335,7 +335,16 @@ function Cadastrar(){
 
               // SE ENDEREÇO DER ERRO CAI AQUI
               if (resposta.ok) {
-              alert("Deu certo")
+              console.log("Deu certo")
+              btn_finalizar
+
+              var btnFinalizar = document.getElementById('btn_finalizar');
+              btnFinalizar.innerHTML = `Cadastrando`;
+
+              setTimeout(() => {
+                window.location = "paglogin.html";
+              }, "1000");
+
             } else {
               throw "Houve um erro ao tentar realizar o cadastro do endereço!";
             }
@@ -344,9 +353,7 @@ function Cadastrar(){
             console.log(`#ERRO: ${resposta}`);
           });
 
-        setTimeout(() => {
-          window.location = "paglogin.html";
-        }, "2000");
+        
         
       } else {
         throw "Houve um erro ao tentar realizar o cadastro da empresa!";

@@ -292,6 +292,11 @@ a {
   font-size: x-large;
   border-radius: 12px;
   cursor: pointer;
+  transition: 0.5s ease all;
+}
+
+.main_login .container .box_login .campos button:hover{
+  background-color: #e05a00;
 }
 
 a {
@@ -1208,7 +1213,12 @@ color: black;
   padding: 0.5rem 0;
   font-size: x-large;
   border-radius: 12px;
-  cursor: pointer;
+  cursor: pointer;  
+  transition: 0.5s ease all;
+}
+
+.main_dashboard .container .box_bar_left .btns .btn_sair:hover{
+    background-color: #e05a00;
 }
 
 .main_dashboard .container .box_bar_left .box_profile .profile{
@@ -1250,7 +1260,7 @@ color: black;
 }
 
 .main_dashboard .container .box_bar_left .box_profile .profile .nome_funcionario h3 {
-  color: #226b9c;  
+  color: #2d9be4;  
 }
 
 .main_dashboard .container .box_view_right {

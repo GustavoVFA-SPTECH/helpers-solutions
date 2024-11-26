@@ -8,9 +8,10 @@
     <link rel="icon" type="image/png" href="./assets/logo sem fundo.png" sizes="16x16">
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <script src="./js/dashboard.js" defer></script>
+    <script src="./js/script.js" defer></script>
   </head>
 
-  <body>
+  <body onload="informacoes_menuLateral()">
     <div class="main_dashboard">
       <div class="container">
         <div class="box_bar_left">
@@ -24,17 +25,17 @@
                 <img height="100px" src="./assets/user white.png" alt="" />
               </div>
               <div class="nome_empresa">
-                <h2>SPTech</h2>
+                <h2 id="public_empresa"></h2>
               </div>
               <div class="nome_funcionario">
-                <h3>Fernando Brandão</h3>
+                <h3 id="public_nome"></h3>
               </div>
             </div>
           </div>
           <div class="btns">
             <a href="relatorios.html">Relatórios</a>
             <a href="">Gerenciar usuários</a>
-            <a href="paglogin.html" class="btn_sair">Sair</a>
+            <a class="btn_sair" id="btn_sair" onclick="limparSessao()">Sair</a>
           </div>
         </div>
         <div class="box_view_right">

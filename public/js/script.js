@@ -38,3 +38,15 @@ function retornar_tela_02() {
   box_form_2.style.display = "block";
   box_form_3.style.display = "none";
 }
+
+
+function limparSessao() {
+  var btnSair = document.getElementById('btn_sair');
+  btnSair.innerHTML = `Saindo`;
+
+  sessionStorage.clear();
+  
+  setTimeout(() => {
+    window.location.href = 'paglogin.html';
+  }, 1000);
+}

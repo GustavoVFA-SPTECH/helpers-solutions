@@ -52,14 +52,19 @@ function login() {
         console.log("ESTOU NO THEN DO entrar()!")
 
         if (resposta.ok) {
-            console.log(resposta);
 
             resposta.json().then(json => {
-                console.log(json);
+                // console.log(json);
                 console.log(JSON.stringify(json));
-                sessionStorage.EMAIL_USUARIO = json.email;
-                sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_USUARIO = json.id;
+            console.log("Dados recebidos: ", json)
+
+            sessionStorage.ID_USUARIO = json.id;
+            sessionStorage.NOME_USUARIO = json.usuario;
+            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.RAZAO_SOCIAL = json.razaoSocial;
+
+                var btnProsseguir = document.getElementById('btn_prosseguir');
+                btnProsseguir.innerHTML = `Conectando`;
 
                 setTimeout(function () {
                     window.location = "./dashboard.html";

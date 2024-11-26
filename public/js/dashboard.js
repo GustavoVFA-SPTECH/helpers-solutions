@@ -29,7 +29,6 @@ const chart = new Chart(ctx, {
     ],
     datasets: [
       {
-        label: "",
         data: [90, 95, 110, 100, 115, 98, 90, 95, 110, 100, 115, 98],
         borderWidth: 1,
         backgroundColor: gradient, // Use o gradiente como cor de fundo
@@ -55,6 +54,9 @@ const chart = new Chart(ctx, {
       },
     },
     plugins: {
+      legend: {
+        display: false, // Oculta a legenda do dataset
+      },
       title: {
         display: true,
         text: "Temperatura média dos sensores ultimas 24h",
@@ -312,4 +314,9 @@ function sensor2() {
 function sensor3() {
   chart3.data.datasets[0].data = [135, 122, 130, 115, 125, 110, 115, 123, 130, 115, 125, 110, 105];
   chart3.update();
+}
+
+function informacoes_menuLateral(){
+  public_empresa.innerHTML= `${sessionStorage.RAZAO_SOCIAL}`;
+  public_nome.innerHTML= `${sessionStorage.NOME_USUARIO}`;
 }

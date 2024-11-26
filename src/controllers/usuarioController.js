@@ -19,9 +19,10 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
                             res.json({
-                                id: resultadoAutenticar[0].id,
-                                usuario: resultadoAutenticar[0].usuario,
-                                senha: resultadoAutenticar[0].senha
+                                id: resultadoAutenticar[0].idEmpresa,
+                                usuario: resultadoAutenticar[0].userName,
+                                email: resultadoAutenticar[0].email,
+                                razaoSocial: resultadoAutenticar[0].razaoSocial,
                             });
                         }
                      
