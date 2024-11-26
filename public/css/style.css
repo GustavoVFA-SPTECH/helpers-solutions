@@ -105,7 +105,7 @@ body {
   display: flex;
   background-color: white;
   width: 1000px;
-  height: 600px;
+  height: 700px;
   border-radius: 12px;
 }
 
@@ -116,7 +116,7 @@ body {
 
 .main_cadastro .container .box_cadastro {
   /* border: solid black; */
-  margin: 0 2rem 1rem 2rem;
+  margin: 0 2rem 1rem 0rem;
   width: 100%;
 }
 
@@ -125,7 +125,7 @@ body {
   font-size: 40px;
   justify-content: center;
   /* border: solid black; */
-  margin: 2rem 1rem 0 1rem;
+  margin: 1.5rem 1rem 0 1rem;
   width: auto;
 }
 
@@ -133,7 +133,7 @@ body {
   display: flex;
   flex-direction: column;
   /* border: solid red; */
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .main_cadastro .container .box_cadastro .campos .validacao {
