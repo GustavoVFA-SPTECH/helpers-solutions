@@ -320,3 +320,42 @@ function informacoes_menuLateral(){
   public_empresa.innerHTML= `${sessionStorage.RAZAO_SOCIAL}`;
   public_nome.innerHTML= `${sessionStorage.NOME_USUARIO}`;
 }
+
+function dadosTempAtual(){
+
+  fetch("/dashboard/dashboard").then(function (resposta){
+    if(resposta.ok){
+        if(resposta.status == 204){
+            throw "Nenhum resultado encontrado!";
+        }
+        resposta.json().then(function(resposta){
+            console.log("Resposta recebida: ", JSON.stringify(resposta));
+        });
+    } else {
+        throw ('Houve um erro na API!');
+    }
+}).catch(function(resposta){
+    console.error(resposta)
+});
+
+}
+
+
+function dadosTempMedia(){
+
+  fetch("/dashboard/dashboard").then(function (resposta){
+    if(resposta.ok){
+        if(resposta.status == 204){
+            throw "Nenhum resultado encontrado!";
+        }
+        resposta.json().then(function(resposta){
+            console.log("Resposta recebida: ", JSON.stringify(resposta));
+        });
+    } else {
+        throw ('Houve um erro na API!');
+    }
+}).catch(function(resposta){
+    console.error(resposta)
+});
+
+}
