@@ -340,7 +340,6 @@ function dadosTempAtual(){
 
 }
 
-
 function dadosTempMedia(){
 
   fetch("/dashboard/dashboard").then(function (resposta){
