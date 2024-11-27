@@ -1607,6 +1607,7 @@ color: black;
   padding-left: 20px;
   padding-right: 20px;
   font-size: large;
+  text-align: center;
 }
 
 .main_relatorios .container .box_view_right .titulos_relatorio .horario_relatorio{

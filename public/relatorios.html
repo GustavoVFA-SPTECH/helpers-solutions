@@ -11,7 +11,7 @@
     <script src="./js/relatorios.js"></script>
   </head>
 
-  <body onload="carregarRelatorios()">
+  <body onload="carregarRelatorios(), informacoes_menuLateral()">
     <div class="main_relatorios">
       <div class="container">
         <div class="box_bar_left">
@@ -25,10 +25,10 @@
                 <img height="100px" src="./assets/user white.png" alt="" />
               </div>
               <div class="nome_empresa">
-                <h2>SPTech</h2>
+                <h2 id="public_empresa"></h2>
               </div>
               <div class="nome_funcionario">
-                <h3>Fernando Brandão</h3>
+                <h3 id="public_nome"></h3>
               </div>
             </div>
           </div>
