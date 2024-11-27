@@ -9,8 +9,14 @@ function carregarRelatorios(){
 
             resposta.json().then(function(resposta){
                 console.log("Resposta recebida: ", JSON.stringify(resposta));
-                dadosHorarios.innerHTML += `${resposta[0].Horário}`
-            })
+
+                for(var i = 0; i < resposta.length; i++){
+                    dadosHorarios.innerHTML += `${resposta[i].horario}<br>`
+                    dadosMaq.innerHTML += `${resposta[i].maquina}<br>`
+                    dadosTemp.innerHTML += `${resposta[i].temp}<br>`
+                    dadosStatus.innerHTML += `${resposta[i].Stats}<br>`
+                }
+            });
         } else {
             throw ('Houve um erro na API!');
         }
