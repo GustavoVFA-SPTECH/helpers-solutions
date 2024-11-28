@@ -12,7 +12,7 @@ function autenticar(email, senha) {
 function puxarFkEmpresa(cnpj) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ")
     var instrucaoSql = `
-        SELECT idEmpresa, razaoSocial, CNPJ, email, responsavel FROM Empresa WHERE idEmpresa = '${cnpj}' ;
+        SELECT idEmpresa, razaoSocial, CNPJ, email, responsavel FROM Empresa WHERE cnpj = '${cnpj}' ;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
