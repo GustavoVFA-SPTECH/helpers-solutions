@@ -1616,3 +1616,19 @@ color: black;
 
 }
 
+/* CADASTRO DE MÁQUINA */
+
+.select {
+  opacity: 0.7;
+  font-family: Archivo, Arial, Helvetica, sans-serif;
+  font-size: large;
+  height: 2rem;
+  padding: 0 1rem;
+  margin: 0.2rem 0 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #efefef;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  outline-color: #f66b0e;
+}
+

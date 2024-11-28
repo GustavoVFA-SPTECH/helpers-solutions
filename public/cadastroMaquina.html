@@ -21,28 +21,28 @@
                 <h1 style="text-align: center;">Cadastrar<br>Máquina</h1>
                 <div class="campos">
                   <div class="campo">
-                    <span>Razão Social:</span>
-                    <input type="text" oninput="valRazaoSocial()" id="ipt_razao" />
+                    <span>Nome:</span>
+                    <input type="text" id="iptNomeMaquina" />
                   </div>
                   <div class="campo">
-                    <span>CNPJ:</span>
-                    <input type="text" id="ipt_cnpj" oninput="valCNPJ()" />
-                  </div>
-                  <!-- <div class="campo">
-                    <span>Email:</span>
-                    <input type="text" id="ipt_email" oninput="valEmail()" />
-                  </div> -->
-                  <div class="campo">
-                    <span>Telefone:</span>
-                    <input maxlength="11" type="text" id="ipt_telefone" oninput="valTelefone()" />
+                    <span>Tipo da Máquina:</span>
+                    <select class="select" id="sltMaquina">
+                        <option value="#" selected disabled>Selecione um tipo de máquina</option>
+                        <option value="axial">Bomba Axial</option>
+                        <option value="centrifuga">Bomba Centrífuga</option>
+                        <option value="deslocamentoPositivo">Bomba de Deslocamento Positivo</option>
+                    </select>
                   </div>
                   <div class="campo">
-                    <span>Responsável:</span>
-                    <input type="text" id="ipt_responsavel" />
+                    <span>Temperatura Máxima de Operação:</span>
+                    <input maxlength="11" type="number" id="iptTempMaxima" />
                   </div>
-                  <div id="val1" class="validacao"></div>
+                  <div class="campo">
+                    <span>Temperatura Mínima de Operação:</span>
+                    <input type="number" id="iptTempMinima" />
+                  </div>
                   <div class="btns">
-                    <a href="../index.html">Voltar</a>
-                    <button onclick="step_01()">Prosseguir</button>
+                    <a href="./dashboard.html">Voltar</a>
+                    <button>Cadastrar</button>
                   </div>
                 </div>
