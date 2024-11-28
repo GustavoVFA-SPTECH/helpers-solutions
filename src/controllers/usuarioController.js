@@ -127,8 +127,63 @@ function cadastrarEndereco(req, res) {
     
 }
 
+function cadastrarEmpresa(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var razao = req.body.razaoServer;
+    var cnpj = req.body.cnpjServer;
+    var email = req.body.emailServer
+    var telefone = req.body.telefoneServe;
+    var responsavel = req.body.responsavelServer;
+    var nomeUsuario = req.body.nomeUsuarioServer;
+    var senha = req.body.senhaServer;
+    console.log("Telefone controller:" ,telefone)
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarEmpresa(nomeUsuario, senha, razao, cnpj, email, telefone, responsavel)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro da empresa! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    
+}
+function cadastrarMaquinas(req, res){
+    var Maquina = req.body.MaquinaServer;
+    var NomeMaquina = req.body.NomeMaquinaServer;
+    var TempMaxima = req.body.TempMaximaServer;
+    var TempMinima = req.body.TempMinimaServer;
+
+                        usuarioModel.cadastrarMaquina(NomeMaquina, Maquina, TempMaxima, TempMinima)
+                            .then(
+                                function (resultado) {
+                                    res.json(resultado);
+                                }
+                            ).catch(
+                                function (erro) {
+                                    console.log(erro);
+                                    console.log(
+                                        "\nHouve um erro ao realizar o cadastro da empresa! Erro: ",
+                                        erro.sqlMessage
+                                    );
+                                    res.status(500).json(erro.sqlMessage);
+                                }
+                            );
+
+}
+
+
 module.exports = {
     autenticar,
     cadastrarEmpresa,
-    cadastrarEndereco
+    cadastrarEndereco,
+    cadastrarMaquinas
 }

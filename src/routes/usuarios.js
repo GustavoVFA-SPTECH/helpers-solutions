@@ -13,6 +13,9 @@ router.post("/cadastrar_empresa", function (req, res) {
 router.post("/cadastrar_endereco", function (req, res) {
     usuarioController.cadastrarEndereco(req, res);
 })
+router.post("/cadastrar_maquinas", function (req, res) {
+    usuarioController.cadastrarMaquinas(req, res);
+})
 // FIM DAS ROTAS DE CADASTRO
 
 router.post("/autenticar", function (req, res) {

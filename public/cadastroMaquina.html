@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/style.css" />
 
     <link rel="icon" type="image/png" href="./assets/logo sem fundo.png" sizes="16x16">
-    <script src="./js/script.js"></script>
     <script src="./js/validacao.js"></script>
   </head>
   <body>
@@ -35,14 +34,14 @@
                   </div>
                   <div class="campo">
                     <span>Temperatura Máxima de Operação:</span>
-                    <input maxlength="11" type="number" id="iptTempMaxima" />
+                    <input min="0" type="number" id="iptTempMaxima" />
                   </div>
                   <div class="campo">
                     <span>Temperatura Mínima de Operação:</span>
-                    <input type="number" id="iptTempMinima" />
+                    <input min="0" type="number" id="iptTempMinima" />
                   </div>
                   <div class="btns">
                     <a href="./dashboard.html">Voltar</a>
-                    <button>Cadastrar</button>
+                    <button onclick="cadastrarMaquina()">Cadastrar</button>
                   </div>
                 </div>

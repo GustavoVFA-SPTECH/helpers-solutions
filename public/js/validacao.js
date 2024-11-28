@@ -368,5 +368,43 @@ function Cadastrar(){
 
 }
 
+function cadastrarMaquina(){
+  
+  var Maquina = sltMaquina.value
+  var NomeMaquina = iptNomeMaquina.value
+  var TempMaxima = Number(iptTempMaxima.value)
+  var TempMinima = Number(iptTempMinima.value)
+
+
+  console.log("Dados enviados: ", {
+    NomeMaquinaServer: NomeMaquina,
+    MaquinaServer: Maquina,
+    TempMaximaServer: TempMaxima,
+    TempMinimaServer: TempMinima,
+});
+          fetch("/usuarios/cadastrar_maquinas", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+
+              NomeMaquinaServer : NomeMaquina,
+              MaquinaServer : Maquina,
+              TempMaximaServer : TempMaxima,
+              TempMinimaServer : TempMinima
+            }),
+                })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+                    
+                    if (resposta.ok) {                       
+                          alert("Máquina cadastrada com sucesso!")
+                        }
+                    })
+
+
+}
+
 
 
