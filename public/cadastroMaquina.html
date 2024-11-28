@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Máquina | Helpers Solutions</title>
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="icon" type="image/png" href="./assets/logo sem fundo.png" sizes="16x16">
+    <script src="./js/script.js"></script>
+    <script src="./js/validacao.js"></script>
+  </head>
+  <body>
+    <main class="main_cadastro">
+        <div class="container">
+            <div class="box_img">
+              <img src="assets/bgmaquina.jpg" style="width: 490px; display: flex; border-radius: 8%;" alt="Imagem sobre tecnologia" />
+            </div>
+            <div class="box_cadastro">
+              <div class="form" style="display: block" id="form_1">
+                <h1 style="text-align: center;">Cadastrar<br>Máquina</h1>
+                <div class="campos">
+                  <div class="campo">
+                    <span>Razão Social:</span>
+                    <input type="text" oninput="valRazaoSocial()" id="ipt_razao" />
+                  </div>
+                  <div class="campo">
+                    <span>CNPJ:</span>
+                    <input type="text" id="ipt_cnpj" oninput="valCNPJ()" />
+                  </div>
+                  <!-- <div class="campo">
+                    <span>Email:</span>
+                    <input type="text" id="ipt_email" oninput="valEmail()" />
+                  </div> -->
+                  <div class="campo">
+                    <span>Telefone:</span>
+                    <input maxlength="11" type="text" id="ipt_telefone" oninput="valTelefone()" />
+                  </div>
+                  <div class="campo">
+                    <span>Responsável:</span>
+                    <input type="text" id="ipt_responsavel" />
+                  </div>
+                  <div id="val1" class="validacao"></div>
+                  <div class="btns">
+                    <a href="../index.html">Voltar</a>
+                    <button onclick="step_01()">Prosseguir</button>
+                  </div>
+                </div>
