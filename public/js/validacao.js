@@ -406,6 +406,10 @@ fetch("/usuarios/cadastrar_setor", {
   .then(function (dadosSetor) {
     console.log("Setor processado:", dadosSetor);
 
+    if (!dadosSetor.idSetor) {
+      throw new Error('ID do setor não retornado');
+    }
+
     return fetch("/usuarios/cadastrar_maquinas", {
       method: "POST",
       headers: {
@@ -422,18 +426,18 @@ fetch("/usuarios/cadastrar_setor", {
         
       }),
     })
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
+      .then(function (resposta) {
+      console.log("resposta: ", resposta);
                     
-                    if (resposta.ok) {                       
-                      alert("Máquina cadastrada com sucesso!")
-                    }
-                  })
-                })
-                  
-             
-                  
-
+    if (!resposta.ok) {
+      throw new Error('Erro no cadastro da máquina');
+    }else{
+      alert("Máquina cadastrada com sucesso!")
+    }
+    
+    return resposta.json();
+    })
+  })
 }
 
 

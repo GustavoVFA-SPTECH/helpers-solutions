@@ -156,6 +156,48 @@ function cadastrarEmpresa(req, res) {
             );
     
 }
+
+function cadastrarSetor(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var fkEmpresa = req.body.idEmpresaServer;
+    var setor = req.body.SetorServer;
+
+    usuarioModel.buscarSetor(setor, fkEmpresa)
+    .then(function (resultadoSetor) {
+
+        
+
+        if(resultadoSetor && resultadoSetor.length > 0){
+
+            console.log("resultado setor ", resultadoSetor)
+            let = setorId = resultadoSetor[0].idSetor
+            console.log("Setor existe, id: ", setorId)
+            res.json({ idSetor: setorId });
+        } else {
+            return usuarioModel.cadastrarSetor(fkEmpresa, setor)
+            .then(
+                function (resultado) {
+                    console.log("Setor criado, id: ", setorId)
+                    let novoSetorId = resultado.insertId;
+                    res.json({ 
+                        idSetor: resultado.insertId,
+                        message: "Setor cadastrado com sucesso" 
+                    });;
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro da maquina Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+        }
+                        })
+                    }
+
 function cadastrarMaquinas(req, res){
     var Maquina = req.body.MaquinaServer;
     var NomeMaquina = req.body.NomeMaquinaServer;
@@ -180,45 +222,7 @@ function cadastrarMaquinas(req, res){
                     );
 
                     }
-
-
-function cadastrarSetor(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var fkEmpresa = req.body.idEmpresaServer;
-    var setor = req.body.SetorServer;
-
-    usuarioModel.buscarSetor(setor, fkEmpresa)
-    .then(function (resultadoSetor) {
-
-        
-
-        if(resultadoSetor && resultadoSetor.length > 0){
-
-            console.log("resultado setor ", resultadoSetor)
-            let = setorId = resultadoSetor[0].idSetor
-            console.log("Setor existe, id: ", setorId)
-            res.json({ idSetor: setorId });
-        }else{
-            return usuarioModel.cadastrarSetor(fkEmpresa, setor)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                    res.json({ idSetor: resultado.insertId });
-                    console.log("Setor criado, id: ", setorId)
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro da maquina Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-        }
-                        })
-                    }
+                                          
 
 
 module.exports = {
