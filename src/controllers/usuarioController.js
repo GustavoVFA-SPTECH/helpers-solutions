@@ -161,60 +161,61 @@ function cadastrarMaquinas(req, res){
     var NomeMaquina = req.body.NomeMaquinaServer;
     var TempMaxima = req.body.TempMaximaServer;
     var TempMinima = req.body.TempMinimaServer;
-    var fkEmpresa = req.body.idEmpresaServer;
+    var fkSetor = req.body.SetorServer;
     
-    usuarioModel.puxarFkEmpresaSetor(fkEmpresa)
-            .then(
-                function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`);
-                                        
-                    if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar);
-                        var fkSetor = resultadoAutenticar[0].idSetor
-                        console.log('Fk da Empresa:', fkSetor);
+           usuarioModel.cadastrarMaquina(NomeMaquina, Maquina, TempMaxima, TempMinima, fkSetor)
+           .then(
+               function (resultado) {
+                   res.json(resultado);
+               }
+           ).catch(
+               function (erro) {
+                   console.log(erro);
+                   console.log(
+                       "\nHouve um erro ao realizacadastro da empresa! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
                     }
-                        usuarioModel.cadastrarMaquina(NomeMaquina, Maquina, TempMaxima, TempMinima, fkSetor)
-                        .then(
-                            function (resultado) {
-                                res.json(resultado);
-                            }
-                        ).catch(
-                            function (erro) {
-                                console.log(erro);
-                                console.log(
-                                    "\nHouve um erro ao realizar o cadastro da empresa! Erro: ",
-                                    erro.sqlMessage
-                                );
-                                res.status(500).json(erro.sqlMessage);
-                            }
-                        );
-                    })
+                    );
 
-}
+                    }
+
+
 function cadastrarSetor(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var fkEmpresa = req.body.idEmpresaServer;
     var setor = req.body.SetorServer;
 
-    
-                        usuarioModel.cadastrarSetor(fkEmpresa, setor)
-                            .then(
-                                function (resultado) {
-                                    res.json(resultado);
-                                }
-                            ).catch(
-                                function (erro) {
-                                    console.log(erro);
-                                    console.log(
-                                        "\nHouve um erro ao realizar o cadastro da empresa! Erro: ",
-                                        erro.sqlMessage
-                                    );
-                                    res.status(500).json(erro.sqlMessage);
-                                }
-                            );
-    
-}
+    usuarioModel.buscarSetor(setor)
+    .then(function (resultadoSetor) {
+        let setorId;
+
+        if(resultadoSetor && resultadoSetor.length > 0){
+            console.log("resultado setor ", resultadoSetor)
+            setorId = resultadoSetor[0].idSetor
+            console.log("Setor existe, id: ", setorId)
+        }else{
+            usuarioModel.cadastrarSetor(fkEmpresa, setor)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                    setorId = resultado.insertId;
+                    console.log("Setor criado, id: ", setorId)
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro da empresa! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+        }
+                        })
+                    }
 
 
 module.exports = {

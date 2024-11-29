@@ -374,7 +374,7 @@ function cadastrarMaquina(){
   var NomeMaquina = iptNomeMaquina.value
   var TempMaxima = Number(iptTempMaxima.value)
   var TempMinima = Number(iptTempMinima.value)
-  var setor = iptSetor.value
+  var setor = Number(iptSetor.value)
   var idEmpresa = sessionStorage.ID_USUARIO
 
 
@@ -400,32 +400,35 @@ fetch("/usuarios/cadastrar_setor", {
     console.log("resposta: ", resposta);   
       if (resposta.ok) {
       console.log("Deu certo")
+    }
+  }).then(function (dadosSetor) {
+    console.log("Setor processado:", dadosSetor);
+    fetch("/usuarios/cadastrar_maquinas", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
         
-          fetch("/usuarios/cadastrar_maquinas", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-
-              NomeMaquinaServer: NomeMaquina,
-              MaquinaServer: Maquina,
-              TempMaximaServer: TempMaxima,
-              TempMinimaServer: TempMinima,
-              SetorServer: setor,
-              idEmpresaServer : idEmpresa
-
-            }),
-                })
+        NomeMaquinaServer: NomeMaquina,
+        MaquinaServer: Maquina,
+        TempMaximaServer: TempMaxima,
+        TempMinimaServer: TempMinima,
+        SetorServer: setor,
+        idEmpresaServer : idEmpresa
+        
+      }),
+    })
                 .then(function (resposta) {
                     console.log("resposta: ", resposta);
                     
                     if (resposta.ok) {                       
-                          alert("Máquina cadastrada com sucesso!")
-                        }
-                    })
-                  }
+                      alert("Máquina cadastrada com sucesso!")
+                    }
+                  })
                 })
+                  
+             
                   
 
 }

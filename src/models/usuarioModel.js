@@ -18,15 +18,6 @@ function puxarFkEmpresa(cnpj) {
     return database.executar(instrucaoSql);
 }
 
-function puxarFkEmpresaSetor(idEmpresa){
-
-    var instrucaoSql = `
-        SELECT idSetor FROM Setor WHERE fkEmpresa = '${idEmpresa}' ;
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
-
 function cadastrarEmpresa(nomeUsuario, senha, razao, cnpj, email ,telefone, responsavel) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", razao, cnpj, telefone, responsavel)
     
@@ -53,10 +44,21 @@ function cadastrarEndereco(fkEmpresa, cep, logradouro, numero, bairro, cidade, e
 }
 
 function cadastrarSetor(fkEmpresa, nomeSetor){
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():");
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarSetor():");
 
     var instrucaoSql = `
-    INSERT INTO Setor (nome, fkEmpresa) VALUES ('${nomeSetor}', ${fkEmpresa});
+    INSERT INTO Setor (idSetor, nome, fkEmpresa) VALUES (${nomeSetor}, '${'setor' + nomeSetor}', ${fkEmpresa});
+`
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+}
+
+function buscarSetor(setor){
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function buscarSetor():");
+
+    var instrucaoSql = `
+    SELECT idSetor, nome FROM setor WHERE idSetor = ${setor};
 `
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -82,7 +84,7 @@ module.exports = {
     cadastrarEmpresa,
     puxarFkEmpresa,
     cadastrarEndereco,
-    puxarFkEmpresaSetor,
     cadastrarSetor,
     cadastrarMaquina,
+    buscarSetor
 };
