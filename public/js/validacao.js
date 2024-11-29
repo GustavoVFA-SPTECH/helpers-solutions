@@ -401,9 +401,12 @@ fetch("/usuarios/cadastrar_setor", {
       if (resposta.ok) {
       console.log("Deu certo")
     }
-  }).then(function (dadosSetor) {
+    return resposta.json()
+  })
+  .then(function (dadosSetor) {
     console.log("Setor processado:", dadosSetor);
-    fetch("/usuarios/cadastrar_maquinas", {
+
+    return fetch("/usuarios/cadastrar_maquinas", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

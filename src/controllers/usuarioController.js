@@ -192,11 +192,13 @@ function cadastrarSetor(req, res) {
         let setorId;
 
         if(resultadoSetor && resultadoSetor.length > 0){
+
             console.log("resultado setor ", resultadoSetor)
             setorId = resultadoSetor[0].idSetor
             console.log("Setor existe, id: ", setorId)
+            res.json({ idSetor: setorId });
         }else{
-            usuarioModel.cadastrarSetor(fkEmpresa, setor)
+            return usuarioModel.cadastrarSetor(fkEmpresa, setor)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -207,7 +209,7 @@ function cadastrarSetor(req, res) {
                 function (erro) {
                     console.log(erro);
                     console.log(
-                        "\nHouve um erro ao realizar o cadastro da empresa! Erro: ",
+                        "\nHouve um erro ao realizar o cadastro da maquina Erro: ",
                         erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage);
