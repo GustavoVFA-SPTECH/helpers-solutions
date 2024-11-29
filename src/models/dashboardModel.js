@@ -33,6 +33,8 @@ function selectTempInd(){
     console.log("Deu certo o dashboardModel");
     var instrucaoSql = `
     SELECT r.temperatura AS Temperatura,
+	m.tempMax AS 'TempMax',
+    m.tempMinima AS 'TempMin',
     m.nome AS Maquina
     FROM registro AS r
     JOIN maquina AS m
