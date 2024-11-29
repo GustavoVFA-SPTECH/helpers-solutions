@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro | Helpers Solutions</title>
+    <!-- ABAIXO ONDE PUXA O ARQUIVO DE ESTILO DA PAGINA -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="icon" type="image/png" href="./assets/logo sem fundo.png" sizes="16x16">
+    <script src="./js/script.js"></script>
+    <script src="./js/validacao.js"></script>
+  </head>
+  <body>
+    <main class="main_cadastro">
+      <div id="modal" class="modal" style="display: none">
+        <div class="box_modal">
+          <div class="titulo">
+            <h1>Sucesso no cadastro!</h1>
+            </div>
+            <div class="icon">
+              <img height="150px" src="assets/verified_high_quality.gif" alt="">
+            </div>
+            <div class="info">
+              <h3>Clique no botão continuar para efetuar o login</h3>
+            </div>
+
+            <div class="btn">
+              <a href="paglogin.html">Continuar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="box_img">
+          <img src="assets/bg.png" alt="Imagem sobre tecnologia" />
+        </div>
+        <div class="box_cadastro">
+          <!-- PRIMEIRA ETAPA ----------------------------------------------------------- -->
+          <div class="form" style="display: block" id="form_1">
+            <h1>Cadastro</h1>
+            <div class="campos">
+              <div class="campo">
+                <span>Razão Social:</span>
+                <input type="text" oninput="valRazaoSocial()" id="ipt_razao" />
+              </div>
+              <div class="campo">
+                <span>CNPJ:</span>
+                <input type="text" id="ipt_cnpj" oninput="valCNPJ()" />
+              </div>
+              <!-- <div class="campo">
+                <span>Email:</span>
+                <input type="text" id="ipt_email" oninput="valEmail()" />
+              </div> -->
+              <div class="campo">
+                <span>Telefone:</span>
+                <input maxlength="11" type="text" id="ipt_telefone" oninput="valTelefone()" />
+              </div>
+              <div class="campo">
+                <span>Responsável:</span>
+                <input type="text" id="ipt_responsavel" />
+              </div>
+              <div id="val1" class="validacao"></div>
+              <div class="btns">
+                <a href="../index.html">Voltar</a>
+                <button onclick="step_01()">Prosseguir</button>
+              </div>
+            </div>
+            <div class="link_login">
+              <a href="paglogin.html"
+                >Já possui um cadastro?<br /><span style="color: #f66b0e"
+                  >Clique aqui para fazer login</span
+                ></a
+              >
+            </div>
+          </div>
+
+          <!-- SEGUNDA ETAPA ----------------------------------------------------------- -->
+          <div class="form" style="display: none" id="form_2">
+            <h1>Cadastro</h1>
+            <div class="campos">
+              <div class="campo">
+                <span>CEP:</span>
+                <input type="text" id="ipt_cep" oninput="valCEP()" />
+              </div>
+              <div class="campo">
+                <span>Logradouro:</span>
+                <input type="text" id="ipt_logradouro" />
+              </div>
+              <div class="campo">
+                <span>Número do logradouro:</span>
+                <input type="text" id="ipt_numero" oninput="numero()" />
+              </div>
+              <div class="campo">
+                <span>Bairro:</span>
+                <input type="text" id="ipt_bairro" />
+              </div>
+              <div class="campo">
+                <span>Cidade:</span>
+                <input type="text" id="ipt_cidade" />
+              </div>
+              <div class="campo">
+                <span>Estado:</span>
+                <input type="text" id="ipt_estado" />
+              </div>
+              <div class="campo">
+                <span>Complemento:</span>
+                <input type="text" id="ipt_complemento" />
+              </div>
+              <div id="val2" class="validacao"></div>
+              <div class="btns">
+                <button onclick="retornar_tela_01()">Voltar</button>
+                <button onclick="step_02()">Prosseguir</button>
+              </div>
+            </div>
+            <div class="link_login">
+              <a href="paglogin.html"
+                >Já possui um cadastro?<br /><span style="color: #f66b0e"
+                  >Clique aqui para fazer login</span
+                ></a
+              >
+            </div>
+          </div>
+
+          <!-- TERCEIRA ETAPA ---------------------------------------------------------- -->
+          <div class="form" style="display: none" id="form_3">
+            <h1>Cadastro</h1>
+            <div class="campos">
+              <div class="campo">
+                <span>Nome e Sobrenome do usuário:</span>
+                <input type="text" id="ipt_nomeUsuario"/>
+              </div>
+              <div class="campo">
+                <span>Email:</span>
+                <input type="text" oninput="valEmail()" id="ipt_email"/>
+              </div>
+              <div class="campo">
+                <span>Senha:</span>
+                <input id="ipt_senha" oninput="valSenha()" type="password" />
+              </div>
+              <div class="campo">
+                <span>Confirme a senha:</span>
+                <input
+                  id="ipt_confirmar_senha"
+                  oninput="valSenha()"
+                  type="password"
+                />
+              </div>
+
+              <span id="val3" class="validacao"></span>
+              <div class="btns">
+                <button onclick="retornar_tela_02()">Voltar</button>
+                <button onclick="valCadastro()" id="btn_finalizar">Finalizar</button>
+              </div>
+            </div>
+            <div class="link_login">
+              <a href="paglogin.html"
+                >Já possui um cadastro?<br /><span style="color: #f66b0e"
+                  >Clique aqui para fazer login</span
+                ></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
