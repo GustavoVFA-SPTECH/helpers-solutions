@@ -187,14 +187,15 @@ function cadastrarSetor(req, res) {
     var fkEmpresa = req.body.idEmpresaServer;
     var setor = req.body.SetorServer;
 
-    usuarioModel.buscarSetor(setor)
+    usuarioModel.buscarSetor(fkEmpresa, setor)
     .then(function (resultadoSetor) {
-        let setorId;
+
+        
 
         if(resultadoSetor && resultadoSetor.length > 0){
 
             console.log("resultado setor ", resultadoSetor)
-            setorId = resultadoSetor[0].idSetor
+            let = setorId = resultadoSetor[0].idSetor
             console.log("Setor existe, id: ", setorId)
             res.json({ idSetor: setorId });
         }else{
@@ -202,7 +203,7 @@ function cadastrarSetor(req, res) {
             .then(
                 function (resultado) {
                     res.json(resultado);
-                    setorId = resultado.insertId;
+                    res.json({ idSetor: resultado.insertId });
                     console.log("Setor criado, id: ", setorId)
                 }
             ).catch(
