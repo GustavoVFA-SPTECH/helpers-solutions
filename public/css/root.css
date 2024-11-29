@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+
 /* Definição padãro de cores */
 :root{
     --azulEscuro: #112B3C;
@@ -6,6 +10,17 @@
     --azul2: #226B9C;
     --verdeDash: rgb(78, 244, 86);
     --amareloDash: rgb(253, 239, 91);
+}
+
+*{
+  font-family: Karla;
+}
+
+body {
+  margin: 0;
+  background-color: #040b0f;
+  color: #1e1e1e;
+  font-family: Archivo, Arial, Helvetica, sans-serif;
 }
 
 /* Barra de scroll estilizada */
