@@ -1,0 +1,27 @@
+/* Definição padãro de cores */
+:root{
+    --azulEscuro: #112B3C;
+    --laranjaClaro: #F66B0E;
+    --laranjaEscuro: #EB660E;
+    --azul2: #226B9C;
+    --verdeDash: rgb(78, 244, 86);
+    --amareloDash: rgb(253, 239, 91);
+}
+
+/* Barra de scroll estilizada */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: white;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--laranjaClaro);
+    border-radius: 50px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--laranjaEscuro);
+  }
