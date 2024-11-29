@@ -161,8 +161,44 @@ function cadastrarMaquinas(req, res){
     var NomeMaquina = req.body.NomeMaquinaServer;
     var TempMaxima = req.body.TempMaximaServer;
     var TempMinima = req.body.TempMinimaServer;
+    var fkEmpresa = req.body.idEmpresaServer;
+    
+    usuarioModel.puxarFkEmpresaSetor(fkEmpresa)
+            .then(
+                function (resultadoAutenticar) {
+                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`);
+                                        
+                    if (resultadoAutenticar.length == 1) {
+                        console.log(resultadoAutenticar);
+                        var fkSetor = resultadoAutenticar[0].idSetor
+                        console.log('Fk da Empresa:', fkSetor);
+                    }
+                        usuarioModel.cadastrarMaquina(NomeMaquina, Maquina, TempMaxima, TempMinima, fkSetor)
+                        .then(
+                            function (resultado) {
+                                res.json(resultado);
+                            }
+                        ).catch(
+                            function (erro) {
+                                console.log(erro);
+                                console.log(
+                                    "\nHouve um erro ao realizar o cadastro da empresa! Erro: ",
+                                    erro.sqlMessage
+                                );
+                                res.status(500).json(erro.sqlMessage);
+                            }
+                        );
+                    })
 
-                        usuarioModel.cadastrarMaquina(NomeMaquina, Maquina, TempMaxima, TempMinima)
+}
+function cadastrarSetor(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var fkEmpresa = req.body.idEmpresaServer;
+    var setor = req.body.SetorServer;
+
+    
+                        usuarioModel.cadastrarSetor(fkEmpresa, setor)
                             .then(
                                 function (resultado) {
                                     res.json(resultado);
@@ -177,7 +213,7 @@ function cadastrarMaquinas(req, res){
                                     res.status(500).json(erro.sqlMessage);
                                 }
                             );
-
+    
 }
 
 
@@ -185,5 +221,6 @@ module.exports = {
     autenticar,
     cadastrarEmpresa,
     cadastrarEndereco,
-    cadastrarMaquinas
+    cadastrarMaquinas,
+    cadastrarSetor
 }

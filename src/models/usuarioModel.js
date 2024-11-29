@@ -18,6 +18,15 @@ function puxarFkEmpresa(cnpj) {
     return database.executar(instrucaoSql);
 }
 
+function puxarFkEmpresaSetor(idEmpresa){
+
+    var instrucaoSql = `
+        SELECT idSetor FROM Setor WHERE fkEmpresa = '${idEmpresa}' ;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function cadastrarEmpresa(nomeUsuario, senha, razao, cnpj, email ,telefone, responsavel) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", razao, cnpj, telefone, responsavel)
     
@@ -43,14 +52,23 @@ function cadastrarEndereco(fkEmpresa, cep, logradouro, numero, bairro, cidade, e
     return database.executar(instrucaoSql);
 }
 
-function puxarSetor(fkEmpresa){}
+function cadastrarSetor(fkEmpresa, nomeSetor){
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():");
 
-function cadastrarMaquina(NomeMaquina, Maquina, TempMaxima, TempMinima){
+    var instrucaoSql = `
+    INSERT INTO Setor (nome, fkEmpresa) VALUES ('${nomeSetor}', ${fkEmpresa});
+`
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+}
+
+function cadastrarMaquina(NomeMaquina, Maquina, TempMaxima, TempMinima, fkSetor){
 
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():");
 
     var instrucaoSql = `
-    INSERT INTO Maquina (Nome, Tipo, TempMax, TempMinima) VALUES ('${NomeMaquina}', '${Maquina}', ${TempMaxima}, ${TempMinima});
+    INSERT INTO Maquina (Nome, Tipo, TempMax, TempMinima, fkSetor) VALUES ('${NomeMaquina}', '${Maquina}', ${TempMaxima}, ${TempMinima}, ${fkSetor});
 `
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -64,5 +82,7 @@ module.exports = {
     cadastrarEmpresa,
     puxarFkEmpresa,
     cadastrarEndereco,
-    cadastrarMaquina
+    puxarFkEmpresaSetor,
+    cadastrarSetor,
+    cadastrarMaquina,
 };
