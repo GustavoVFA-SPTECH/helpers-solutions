@@ -187,7 +187,7 @@ function cadastrarSetor(req, res) {
     var fkEmpresa = req.body.idEmpresaServer;
     var setor = req.body.SetorServer;
 
-    usuarioModel.buscarSetor(fkEmpresa, setor)
+    usuarioModel.buscarSetor(setor, fkEmpresa)
     .then(function (resultadoSetor) {
 
         

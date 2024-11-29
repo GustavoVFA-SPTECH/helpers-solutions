@@ -417,7 +417,7 @@ fetch("/usuarios/cadastrar_setor", {
         MaquinaServer: Maquina,
         TempMaximaServer: TempMaxima,
         TempMinimaServer: TempMinima,
-        SetorServer: setor,
+        SetorServer: dadosSetor.idSetor,
         idEmpresaServer : idEmpresa
         
       }),
