@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro | Helpers Solutions</title>
     <!-- ABAIXO ONDE PUXA O ARQUIVO DE ESTILO DA PAGINA -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/cadastro.css" />
 
     <link rel="icon" type="image/png" href="./assets/logo sem fundo.png" sizes="16x16">
     <script src="./js/script.js"></script>
     <script src="./js/validacao.js"></script>
   </head>
   <body>
-    <main class="main_cadastro">
-      <div id="modal" class="modal" style="display: none">
+    <div class="main_cadastro">
+      <div id="modal" class="modal" style="">
         <div class="box_modal">
           <div class="titulo">
             <h1>Sucesso no cadastro!</h1>
@@ -24,7 +24,6 @@
             <div class="info">
               <h3>Clique no botão continuar para efetuar o login</h3>
             </div>
-
             <div class="btn">
               <a href="paglogin.html">Continuar</a>
             </div>
@@ -33,7 +32,7 @@
       </div>
       <div class="container">
         <div class="box_img">
-          <img src="assets/bg.png" alt="Imagem sobre tecnologia" />
+          <img src="../assets/bg.png" alt="Imagem sobre tecnologia" />
         </div>
         <div class="box_cadastro">
           <!-- PRIMEIRA ETAPA ----------------------------------------------------------- -->
@@ -48,10 +47,6 @@
                 <span>CNPJ:</span>
                 <input type="text" id="ipt_cnpj" oninput="valCNPJ()" />
               </div>
-              <!-- <div class="campo">
-                <span>Email:</span>
-                <input type="text" id="ipt_email" oninput="valEmail()" />
-              </div> -->
               <div class="campo">
                 <span>Telefone:</span>
                 <input maxlength="11" type="text" id="ipt_telefone" oninput="valTelefone()" />
@@ -69,9 +64,7 @@
             <div class="link_login">
               <a href="paglogin.html"
                 >Já possui um cadastro?<br /><span style="color: #f66b0e"
-                  >Clique aqui para fazer login</span
-                ></a
-              >
+                  >Clique aqui para fazer login</span></a>
             </div>
           </div>
 
@@ -163,6 +156,6 @@
           </div>
         </div>
       </div>
-    </main>
+    </div>
   </body>
 </html>
