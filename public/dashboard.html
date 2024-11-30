@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="icon" type="image/png" href="./assets/logo sem fundo.png" sizes="16x16">
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-    <script src="./js/dashboard.js" defer></script>
     <script src="./js/script.js" defer></script>
   </head>
 
@@ -94,14 +93,8 @@
               <div class="grafico_3">
                 <div>
                   <select name="" id="slc_sensor" onchange="sensorChange(this.value)">
-                    <option value="1" selected>Sensor 1</option>
-                    <option value="2">Sensor 2</option>
-                    <option value="3">Sensor 3</option>
                   </select>
-                  <canvas
-                    style="width: 100%; height: 100%"
-                    id="myChart_3"
-                  ></canvas>
+                  <canvas style="width: 100%; height: 100%" id="myChart_3"></canvas>
                 </div>
               </div>
             </div>
@@ -109,5 +102,6 @@
         </div>
       </div>
     </div>
+    <script src="./js/dashboard.js" defer></script>
   </body>
 </html>

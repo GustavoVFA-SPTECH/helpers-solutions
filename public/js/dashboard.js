@@ -2,36 +2,23 @@ const ctx = document.getElementById("myChart");
 const ctx2 = document.getElementById("myChart_2");
 const ctx3 = document.getElementById("myChart_3");
 
-// Criação do gradiente
+
 const gradient = ctx.getContext("2d").createLinearGradient(0, 0, 0, 400);
-gradient.addColorStop(0.1, "rgba(255,240,0,1)"); // Cor amarela
-gradient.addColorStop(0.9, "rgba(255,170,0,1)"); // Cor laranja
-gradient.addColorStop(0.5, "rgba(219,89,6,1)"); // Cor vermelha
+gradient.addColorStop(0.1, "rgba(255,240,0,1)"); 
+gradient.addColorStop(0.9, "rgba(255,170,0,1)"); 
+gradient.addColorStop(0.5, "rgba(219,89,6,1)"); 
 Chart.defaults.color = "#FFF";
 
-//Grafico Temperatura média
+
 const chart = new Chart(ctx, {
   type: "bar",
   data: {
-    labels: [
-      "Sensor 1",
-      "Sensor 2",
-      "Sensor 3",
-      "Sensor 4",
-      "Sensor 5",
-      "Sensor 6",
-      "Sensor 7",
-      "Sensor 8",
-      "Sensor 9",
-      "Sensor 10",
-      "Sensor 11",
-      "Sensor 12",
-    ],
+    labels: [],
     datasets: [
       {
-        data: [90, 95, 110, 100, 115, 98, 90, 95, 110, 100, 115, 98],
+        data: [],
         borderWidth: 1,
-        backgroundColor: gradient, // Use o gradiente como cor de fundo
+        backgroundColor: gradient, 
       },
     ],
   },
@@ -39,35 +26,35 @@ const chart = new Chart(ctx, {
     scales: {
       y: {
         beginAtZero: true,
-        max: 150, // Define a escala máxima do eixo Y
+        max: 150, 
         ticks: {
-          stepSize: 20, // Define o intervalo do eixo Y para 10 em 10
+          stepSize: 20, 
         },
         title: {
-          display: true, // Mostra o título do eixo Y
-          text: "Temperatura (ºC)", // Texto do título do eixo Y
+          display: true, 
+          text: "Temperatura (ºC)", 
           font: {
-            size: 14, // Tamanho da fonte do título
+            size: 14, 
           },
-          color: "#FFFFFF", // Cor da fonte do título
+          color: "#FFFFFF", 
         },
       },
     },
     plugins: {
       legend: {
-        display: false, // Oculta a legenda do dataset
+        display: false, 
       },
       title: {
         display: true,
         text: "Temperatura média dos sensores ultimas 24h",
         font: {
-          size: 20, // Tamanho da fonte da legenda
+          size: 20, 
         },
       },
     },
   },
 });
-//Grafico temperatura atual dos sensores
+
 const chart2 = new Chart(ctx2, {
   type: "bar",
   data: {
@@ -77,31 +64,31 @@ const chart2 = new Chart(ctx2, {
         label: "Sensor 1",
         data: [97],
         borderWidth: 1,
-        backgroundColor: "rgba(255, 165, 0, 1)", // Laranja
+        backgroundColor: "rgba(255, 165, 0, 1)", 
       },
       {
         label: "Sensor 2",
         data: [20],
         borderWidth: 1,
-        backgroundColor: "rgba(78, 150, 244)", // Laranja Escuro
+        backgroundColor: "rgba(78, 150, 244)", 
       },
       {
         label: "Sensor 3",
         data: [90],
         borderWidth: 1,
-        backgroundColor: "rgba(255, 120, 0, 1)", // Laranja Claro
+        backgroundColor: "rgba(255, 120, 0, 1)", 
       },
       {
         label: "Sensor 4",
         data: [110],
         borderWidth: 1,
-        backgroundColor: "rgba(255, 110, 0, 1)", // Laranja mais intenso
+        backgroundColor: "rgba(255, 110, 0, 1)", 
       },
       {
         label: "Sensor 5",
         data: [200],
         borderWidth: 1,
-        backgroundColor: "rgba(255, 0, 0)", // Laranja mais escuro
+        backgroundColor: "rgba(255, 0, 0)", 
       },
     ],
   },
@@ -115,23 +102,23 @@ const chart2 = new Chart(ctx2, {
           stepSize: 10,
         },
         title: {
-          display: true, // Mostra o título do eixo Y
-          text: "Temperatura (ºC)", // Texto do título do eixo Y
+          display: true, 
+          text: "Temperatura (ºC)", 
           font: {
-            size: 16, // Tamanho da fonte do título
+            size: 16, 
             weight: "bold",
           },
           padding: 0,
-          color: "#FFFFFF", // Cor da fonte do título
+          color: "#FFFFFF", 
         },
       },
       y: {
-        display: true, // Exibe o eixo Y
+        display: true, 
         title: {
-          display: true, // Exibe a legenda
-          text: "Máquinas", // Texto da legenda do eixo Y
+          display: true, 
+          text: "Máquinas", 
           font: {
-            size: 20, // Tamanho da fonte da legenda
+            size: 20, 
           },
         },
       },
@@ -141,32 +128,18 @@ const chart2 = new Chart(ctx2, {
         display: true,
         text: "Temperatura atual dos sensores",
         font: {
-          size: 20, // Tamanho da fonte da legenda
+          size: 20, 
         },
         padding: 0,
       },
     },
   },
 });
-//Grafico temperatura individual do sensor
+
 const chart3 = new Chart(ctx3, {
   type: "line",
   data: {
-    labels: [
-      "8:00",
-      "9:00",
-      "10:00",
-      "11:00",
-      "12:00",
-      "13:00",
-      "14:00",
-      "15:00",
-      "16:00",
-      "17:00",
-      "18:00",
-      "19:00",
-      "20:00",
-    ],
+    labels: [],
     datasets: [
       {
         label: "Temperatura",
@@ -178,11 +151,9 @@ const chart3 = new Chart(ctx3, {
       },
       {
         label: "Temperatura maxima",
-        data: [
-          150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150,
-        ],
+        data: [],
         borderWidth: 2,
-        // backgroundColor: "blue",
+        
         borderColor: "red",
         color: "#fff",
         borderDash: [5, 5],
@@ -190,9 +161,9 @@ const chart3 = new Chart(ctx3, {
       },
       {
         label: "Temperatura minima",
-        data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+        data: [],
         borderWidth: 2,
-        // backgroundColor: "blue",
+        
         borderColor: "rgb(78, 150, 244)",
         color: "#fff",
         borderDash: [5, 5],
@@ -210,21 +181,21 @@ const chart3 = new Chart(ctx3, {
           stepSize: 10,
         },
         title: {
-          display: true, // Mostra o título do eixo Y
-          text: "Temperatura (ºC)", // Texto do título do eixo Y
+          display: true, 
+          text: "Temperatura (ºC)", 
           font: {
-            size: 14, // Tamanho da fonte do título
+            size: 14, 
           },
-          color: "#FFFFFF", // Cor da fonte do título
+          color: "#FFFFFF", 
         },
       },
       x: {
-        display: true, // Exibe o eixo Y
+        display: true, 
         title: {
-          display: true, // Exibe a legenda
-          text: "Horário", // Texto da legenda do eixo Y
+          display: true, 
+          text: "Horário", 
           font: {
-            size: 16, // Tamanho da fonte da legenda
+            size: 16, 
             weight: "bold",
           },
         },
@@ -235,7 +206,7 @@ const chart3 = new Chart(ctx3, {
         display: true,
         text: "Temperatura indiviual",
         font: {
-          size: 20, // Tamanho da fonte da legenda
+          size: 20, 
         },
         padding: 0,
       },
@@ -243,7 +214,7 @@ const chart3 = new Chart(ctx3, {
   },
 });
 
-//Reseta a cor dos botões anteriores
+
 function resetButtonStyles() {
   var buttons = document.querySelectorAll("#btn_dia, #btn_mes, #btn_ano");
   buttons.forEach(function (btn) {
@@ -251,126 +222,97 @@ function resetButtonStyles() {
     btn.style.color = "#FFF";
   });
 }
-//Muda o grafico para as ultimas 24 horas
-function dia() {
-  resetButtonStyles(); // Reseta os estilos dos botões
-  var btn = document.getElementById("btn_dia");
-  chart.data.datasets[0].data = [
-    90, 95, 110, 100, 115, 98, 90, 95, 110, 100, 115, 98,
-  ];
-  chart.options.plugins.title.text =
-    "Temperatura média dos sensores ultimas 24h";
-  btn.style.backgroundColor = "#FFF";
-  btn.style.color = "#a54809";
-  chart.update();
-}
-//Muda o grafico para os ultimos 30 dias
-function mes() {
-  resetButtonStyles(); // Reseta os estilos dos botões
-  var btn = document.getElementById("btn_mes");
-  chart.data.datasets[0].data = [
-    110, 90, 80, 95, 120, 115, 100, 95, 110, 103, 108, 107,
-  ];
-  chart.options.plugins.title.text =
-    "Temperatura média dos sensores ultimos 30 dias";
-  btn.style.backgroundColor = "#FFF";
-  btn.style.color = "#a54809";
-  chart.update();
-}
-//Muda o grafico para o ultimo ano
-function ano() {
-  resetButtonStyles(); // Reseta os estilos dos botões
-  var btn = document.getElementById("btn_ano");
-  chart.data.datasets[0].data = [
-    100, 80, 70, 85, 110, 105, 90, 85, 100, 93, 98, 97,
-  ];
-  chart.options.plugins.title.text =
-    "Temperatura média dos sensores ultimo ano";
-  btn.style.backgroundColor = "#FFF";
-  btn.style.color = "#a54809";
-  chart.update();
-}
 
-function sensorChange(value) {
-  if (value === "1") {
-    sensor1();
-  } else if (value === "2") {
-    sensor2();
-  } else if (value === "3") {
-    sensor3();
+async function preencherSelect() {
+  try {
+    
+    const response = await fetch('/dashboard/maquinas')
+    
+    if (!response.ok) {
+      throw new Error(`Erro na requisição: ${response.statusText}`);
+    }
+  
+    const data = await response.json();
+  
+    const select = document.getElementById('slc_sensor');
+
+    select.innerHTML = '';
+   
+    data.data.forEach((maquina, index) => {
+      const option = document.createElement('option');
+      option.value = maquina.idMaquina;
+      option.textContent = maquina.nome;
+      
+      if (index === 0) {
+        option.selected = true;
+      }
+      select.appendChild(option);
+    });
+  } catch (error) {
+    console.error('Erro ao preencher o select:', error);
   }
 }
 
-function sensor1() {
-  fetch("/dashboard/grafico3S1", {
-      method: "GET"
-  }).then(resposta => {
-      resposta.json()
+window.onload = preencherSelect;
 
-          .then(dados => {
-              console.log(dados);
-              chart3.data.datasets[0].data = [];
-              // chart3.data.labels = [];
+// Função para atualizar os dados do gráfico de 1 em 1 segundo
+let intervalId;
 
-          })
+async function sensorChange(value) {
+  try {
+    // Limpa qualquer intervalo anterior
+    if (intervalId) clearInterval(intervalId);
 
-          .catch(function (resposta) {
-              console.log(`#ERRO: ${resposta}`);
+    // Zera os dados do gráfico
+    chart3.data.labels = [];
+    chart3.data.datasets[0].data = [];
+    chart3.data.datasets[1].data = [];
+    chart3.data.datasets[2].data = [];
+    chart3.update();
 
-          });
-  })
+    // Faz a requisição para a rota com o idMaquina
+    const response = await fetch(`/dashboard/grafico2/${value}`);
 
-      .catch(function (erro) {
-          console.log(erro);
-      })
+    if (!response.ok) {
+      throw new Error(`Erro na requisição: ${response.statusText}`);
+    }
 
-  // myChart.config.options.plugins.title.text = "Spiders";
-  chart3.update();
+    // Obtém os dados do JSON
+    const data = await response.json();
+
+    // Atualiza os dados do gráfico de 1 em 1 segundo
+    let index = 0;
+    intervalId = setInterval(() => {
+      if (index < data.data.length) {
+        const ponto = data.data[index];
+        const horario = new Date(ponto.dataHora).toLocaleTimeString();
+
+        // Adiciona os novos valores
+        chart3.data.labels.push(horario);
+        chart3.data.datasets[0].data.push(ponto.temperatura);
+        chart3.data.datasets[1].data.push(Number(ponto.tempMax));
+        chart3.data.datasets[2].data.push(Number(ponto.tempMinima));
+
+        // Limita o gráfico para mostrar apenas os últimos 5 pontos
+        if (chart3.data.labels.length > 5) {
+          chart3.data.labels.shift();
+          chart3.data.datasets[0].data.shift();
+          chart3.data.datasets[1].data.shift();
+          chart3.data.datasets[2].data.shift();
+        }
+
+        // Atualiza o gráfico
+        chart3.update();
+        index++;
+      } else {
+        clearInterval(intervalId);
+      }
+    }, 1000);
+  } catch (error) {
+    console.error('Erro ao carregar os dados do gráfico:', error);
+  }
 }
 
-
-// function sensor1(){
-//   fetch("/dashboard/dashboard").then(function (resposta){
-//     if(resposta.ok){
-//         if(resposta.status == 204){
-//             throw "Nenhum resultado encontrado!";
-//         }
-//         resposta.json().then(function(resposta){
-//           console.log("  1: ", JSON.stringify(resposta));
-//           var maquinas = resposta.map((Maquina) => Maquina.Maquina);
-//           var tempAtual = resposta.map((registro) => registro.Temperatura);
-//           console.log("Temperatura atual: ",tempAtual)
-//           var tempMax = resposta.map((Maquina) => Maquina.tempMax);
-//           var tempMin = resposta.map((Maquina) => Maquina.tempMin);
-//           chart3.data.labels = tempAtual;
-//           chart3.data.datasets[0].data = tempAtual;
-//           chart3.update();
-//         });
-        
-        
-//       } else {
-//         throw ('Houve um erro na API!');
-//       }
-//     })
-
-
-//       // var maquinas = dados.map((Maquina) => Maquina.Maquina);
-//       // var tempAtual = dados.map((registro) => registro.Temperatura);
-//       // console.log(tempAtual)
-//       // var tempMax = dados.map((Maquina) => Maquina.tempMax);
-//       // var tempMin = dados.map((Maquina) => Maquina.tempMin);
-
-      
-//       // chart3.data.datasets[0].data = tempMax;
-//       // chart3.data.datasets[0].data = tempMin;
-
-      
-      
-//   .catch(function(resposta){
-//     console.error(resposta)
-// });
-
-// }
 
 
 function informacoes_menuLateral(){
