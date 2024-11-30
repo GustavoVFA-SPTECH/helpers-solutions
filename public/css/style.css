@@ -1137,7 +1137,8 @@ color: black;
 .main_dashboard {
   background-color: white;
   width: 100%;
-  height: 110vh;
+  height: 110dvh;
+  
 }
 
 .main_dashboard .container {
@@ -1145,12 +1146,13 @@ color: black;
   margin: 0;
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: fit-content;
 }
 
 .main_dashboard .container .box_bar_left {
   display: flex;
   flex-direction: column;
+  text-align: center;
   background-color: #112B3C;
   width: 15%;
   height: 110vh;
@@ -1198,9 +1200,13 @@ color: black;
 }
 
 .main_dashboard .container .box_bar_left .btns a {
-  font-size: x-large;
+  font-size: 27px;
   color: white;
-  padding: 2rem;
+  padding: 1.5rem;
+  transition: 0.3s;
+}
+.main_dashboard .container .box_bar_left .btns a:hover{
+  color:#dd5a02
 }
 
 .main_dashboard .container .box_bar_left .btns .btn_sair {
@@ -1270,7 +1276,7 @@ color: black;
   display: flex;
   width: 85%;
   justify-content: center;
-  
+  height: 100vh;
 }
 
 .main_dashboard .container .box_view_right .view_container {
@@ -1343,7 +1349,7 @@ color: black;
   display: flex;
   justify-content: center;
   width: min-content;
-  height: 38vh;
+  height: fit-content;
 }
 
 .main_dashboard .container .box_view_right .grafico_1 div,
@@ -1446,6 +1452,8 @@ color: black;
   background-color: #112B3C;
   width: 15%;
   height: 110vh;
+  text-align: center;
+  
 }
 
 .main_relatorios .container .box_bar_left .box_logo {
@@ -1487,9 +1495,14 @@ color: black;
 }
 
 .main_relatorios .container .box_bar_left .btns a {
-  font-size: x-large;
+  font-size: 27px;
   color: white;
-  padding: 2rem;
+  padding: 1.5rem;
+  transition: 0.3s;
+}
+
+.main_relatorios .container .box_bar_left .btns a:hover{
+  color:#dd5a02
 }
 
 .main_relatorios .container .box_bar_left .btns .btn_sair {
@@ -1611,11 +1624,19 @@ color: black;
   padding-right: 20px;
   font-size: large;
   text-align: center;
+  border: solid 1px #dd5a02;
 }
 
 .main_relatorios .container .box_view_right .titulos_relatorio .horario_relatorio{
 
   height: auto;
+
+  
+}
+
+#dadosHorarios, #dadosMaq, #dadosTemp, #dadosStatus{
+  border-top: solid 2px #f66b0e;
+  padding: 1rem;
 
 }
 
@@ -1655,4 +1676,8 @@ color: black;
   border-radius: 12px;
   text-align: center;
   width: 90%;
+<<<<<<< HEAD
+=======
+  /* height: ; */
+>>>>>>> 8bc5b395be6e440211a2ab3864accd9fda394910
 }

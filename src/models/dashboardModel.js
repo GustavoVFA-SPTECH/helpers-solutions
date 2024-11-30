@@ -13,7 +13,7 @@ const getSetores = async (idEmpresa) => {
 const grafico2 = async (idMaquina) => {
 
     try {
-        const registros = await database.executar(`SELECT temperatura, tempMax, tempMinima, nome, dataHora FROM Registro JOIN Maquina ON fkMaquina = idMaquina WHERE fkMaquina = ${idMaquina}`)
+        const registros = await database.executar(`SELECT temperatura, tempMax, tempMinima, nome, dataHora FROM Registro JOIN Maquina ON fkMaquina = idMaquina WHERE fkMaquina = ${idMaquina} ORDER BY dataHora DESC LIMIT 1`)
 
         return registros;
     } catch (error) {
