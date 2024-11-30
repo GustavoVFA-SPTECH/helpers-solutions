@@ -1624,11 +1624,19 @@ color: black;
   padding-right: 20px;
   font-size: large;
   text-align: center;
+  border: solid 1px #dd5a02;
 }
 
 .main_relatorios .container .box_view_right .titulos_relatorio .horario_relatorio{
 
   height: auto;
+
+  
+}
+
+#dadosHorarios, #dadosMaq, #dadosTemp, #dadosStatus{
+  border-top: solid 2px #f66b0e;
+  padding: 1rem;
 
 }
 
