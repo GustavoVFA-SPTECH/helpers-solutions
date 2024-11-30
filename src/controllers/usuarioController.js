@@ -26,6 +26,7 @@ function autenticar(req, res) {
                                         id: resultadoAutenticar[0].idUsuario,
                                         usuario: resultadoAutenticar[0].userName,
                                         email: resultadoAutenticar[0].email,
+                                        razaoSocial:resultadoAutenticar[0].razaoSocial
                                     });
                                 });                            
                         }                     

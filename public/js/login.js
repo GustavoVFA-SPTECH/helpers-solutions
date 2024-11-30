@@ -63,6 +63,7 @@ function login() {
             sessionStorage.ID_USUARIO = json.id;
             sessionStorage.NOME_USUARIO = json.usuario;
             sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.RAZAO_SOCIAL= json.razaoSocial;
 
                 var btnProsseguir = document.getElementById('btn_prosseguir');
                 btnProsseguir.innerHTML = `Conectando`;

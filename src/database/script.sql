@@ -18,10 +18,20 @@ fkEmpresa INT,
 constraint fkUsuarioEmpresa foreign key (fkEmpresa) references Empresa(idEmpresa)
 );
 
-INSERT INTO Empresa (razaoSocial, CNPJ, telefone, email, userName, senha, responsavel
+INSERT INTO Empresa (razaoSocial, CNPJ, telefone, responsavel
 ) VALUES
-('Empresa A', '12345678000195', '1234567890', 'contato@empresaa.com', 'Usuario1', 'Urubu@100', 'João Silva'),
-('Empresa B', '98765432000198', '0987654321', 'contato@empresab.com', 'Usuario2', 'Urubu@200', 'Maria Oliveira');
+('Empresa A', '12345678000195', '1234567890',  'João Silva'),
+('Empresa B', '98765432000198', '0987654321',  'Maria Oliveira');
+
+INSERT INTO Usuario (email, userName, senha, fkEmpresa) VALUES
+('contato@empresaa.com', 'Usuario1', 'Urubu@100',1),
+('contato@empresab.com', 'Usuario2', 'Urubu@200',2);
+
+
+SELECT idUsuario, email, userName, razaoSocial FROM Usuario
+        JOIN Empresa
+        ON fkEmpresa = idEmpresa
+        WHERE email = 'contato@empresab.com' AND senha = 'Urubu@200';
 
 CREATE TABLE Endereco (
     idEndereco INT PRIMARY KEY AUTO_INCREMENT,
@@ -36,12 +46,9 @@ CREATE TABLE Endereco (
     CONSTRAINT fkEmpresaEnd FOREIGN KEY (fkEmpresaEnd) REFERENCES Empresa (idEmpresa)
 );
 
-select * from Endereco;
-
 INSERT INTO Endereco (CEP, Logradouro, Numero, Complemento, Bairro, Cidade, Estado, fkEmpresaEnd) VALUES
 ('12345678', 'Rua A', '100', 'Apto 101', 'Bairro A', 'Cidade A', 'Estado A', 1),
 ('87654321', 'Rua B', '200', '', 'Bairro B', 'Cidade B', 'Estado B', 2);
-
 
 CREATE TABLE Acesso (
     idAcesso INT PRIMARY KEY AUTO_INCREMENT,
@@ -67,7 +74,6 @@ CREATE TABLE Maquina (
     fkSetor INT,
     CONSTRAINT fkMaquinaSetor FOREIGN KEY (fkSetor) REFERENCES Setor(idSetor)
 );
-
 
 CREATE TABLE Registro (
     idRegistro INT PRIMARY KEY AUTO_INCREMENT,
