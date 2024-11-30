@@ -13,7 +13,15 @@ router.get("/dashboard", function (req, res) {
 })
 
 router.get("/dashboard", function (req, res) {
-    dashboardController.dashboardTempInd(req, res);
+    dashboardController.dashboardTempInd1(req, res);
+})
+
+router.get("/dashboard", function (req, res) {
+    dashboardController.dashboardTempInd2(req, res);
+})
+
+router.get("/dashboard", function (req, res) {
+    dashboardController.dashboardTempInd3(req, res);
 })
 
 module.exports = router;

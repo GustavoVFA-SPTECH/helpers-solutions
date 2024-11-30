@@ -315,7 +315,7 @@ function sensor1(){
           console.log("Temperatura atual: ",tempAtual)
           var tempMax = resposta.map((Maquina) => Maquina.tempMax);
           var tempMin = resposta.map((Maquina) => Maquina.tempMin);
-          chart3.data.labels = maquinas;
+          chart3.data.labels = tempAtual;
           chart3.data.datasets[0].data = tempAtual;
           chart3.update();
         });
@@ -325,7 +325,7 @@ function sensor1(){
         throw ('Houve um erro na API!');
       }
     })
-    .then((dados) => {
+
 
       // var maquinas = dados.map((Maquina) => Maquina.Maquina);
       // var tempAtual = dados.map((registro) => registro.Temperatura);
@@ -339,7 +339,6 @@ function sensor1(){
 
       
       
-    })
   .catch(function(resposta){
     console.error(resposta)
 });

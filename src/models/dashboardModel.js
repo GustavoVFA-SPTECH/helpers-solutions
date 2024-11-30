@@ -29,7 +29,7 @@ function selectTempMedia(){
     return database.executar(instrucaoSql);
 }
 
-function selectTempInd(){
+function selectTempIndMaq1(){
     console.log("Deu certo o dashboardModel");
     var instrucaoSql = `
     SELECT r.temperatura AS Temperatura,
@@ -38,7 +38,40 @@ function selectTempInd(){
     m.nome AS Maquina
     FROM registro AS r
     JOIN maquina AS m
-    ON r.fkMaquina = m.idMaquina;
+    ON r.fkMaquina = m.idMaquina
+    WHERE idMaquina = 1;
+    `
+    console.log("Chamando a instrucaoSql" + instrucaoSql)
+    return database.executar(instrucaoSql);
+}
+
+function selectTempIndMaq2(){
+    console.log("Deu certo o dashboardModel");
+    var instrucaoSql = `
+    SELECT r.temperatura AS Temperatura,
+	m.tempMax AS 'TempMax',
+    m.tempMinima AS 'TempMin',
+    m.nome AS Maquina
+    FROM registro AS r
+    JOIN maquina AS m
+    ON r.fkMaquina = m.idMaquina
+    WHERE idMaquina = 2;
+    `
+    console.log("Chamando a instrucaoSql" + instrucaoSql)
+    return database.executar(instrucaoSql);
+}
+
+function selectTempIndMaq3(){
+    console.log("Deu certo o dashboardModel");
+    var instrucaoSql = `
+    SELECT r.temperatura AS Temperatura,
+	m.tempMax AS 'TempMax',
+    m.tempMinima AS 'TempMin',
+    m.nome AS Maquina
+    FROM registro AS r
+    JOIN maquina AS m
+    ON r.fkMaquina = m.idMaquina
+    WHERE idMaquina = 3;
     `
     console.log("Chamando a instrucaoSql" + instrucaoSql)
     return database.executar(instrucaoSql);
@@ -50,5 +83,7 @@ function selectTempInd(){
 module.exports = {
     selectTempAtual,
     selectTempMedia,
-    selectTempInd
+    selectTempIndMaq1,
+    selectTempIndMaq2,
+    selectTempIndMaq3,
 };
