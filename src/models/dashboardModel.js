@@ -1,6 +1,14 @@
 var database = require("../database/config")
 
+const getSetores = async (idEmpresa) => {
+    try {
+        const setores = await database.executar(`SELECT idSetor, Nome FROM Setor WHERE fkEmpresa = ${idEmpresa}`)
 
+        return setores;
+    } catch (error) {
+        return error
+    }
+}
 
 const grafico2 = async (idMaquina) => {
 
@@ -27,4 +35,5 @@ const getMaquinas = async () =>{
 module.exports = {
     getMaquinas,
     grafico2,
+    getSetores,
 };

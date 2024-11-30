@@ -1639,3 +1639,22 @@ color: black;
   border: black 1px solid;
   
 }
+
+
+.setorContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  height: 10%;
+  border: black 1px solid;
+}
+
+.setorSelect{
+  background-color: #f66b0e;
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%;
+  height: ;
+}

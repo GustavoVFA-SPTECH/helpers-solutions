@@ -40,7 +40,27 @@ const criarGrafico2 = async (req, res) => {
     }
 }
 
+const getSetores = async (req, res) => {
+    const {idEmpresa} = req.params;
+
+    try {
+        const setores = await dashboardModel.getSetores(idEmpresa)
+
+        if(!setores){
+            res.status(404).json({
+                message: "Nenhum setor encontrado"
+            })
+        }else{
+            res.status(200).json({
+                data: setores
+            })
+        }
+    } catch (error) {
+        return error
+    }
+}
 module.exports = {
     criarGrafico2,
-    getMaquina
+    getMaquina,
+    getSetores
 }

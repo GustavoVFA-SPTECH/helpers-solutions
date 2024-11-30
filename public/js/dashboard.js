@@ -2,7 +2,6 @@ const ctx = document.getElementById("myChart");
 const ctx2 = document.getElementById("myChart_2");
 const ctx3 = document.getElementById("myChart_3");
 
-
 const gradient = ctx.getContext("2d").createLinearGradient(0, 0, 0, 400);
 gradient.addColorStop(0.1, "rgba(255,240,0,1)"); 
 gradient.addColorStop(0.9, "rgba(255,170,0,1)"); 
@@ -214,6 +213,7 @@ const chart3 = new Chart(ctx3, {
   },
 });
 
+sessionStorage.ID_EMPRESA = 1;
 
 function resetButtonStyles() {
   var buttons = document.querySelectorAll("#btn_dia, #btn_mes, #btn_ano");
@@ -312,8 +312,6 @@ async function sensorChange(value) {
     console.error('Erro ao carregar os dados do gráfico:', error);
   }
 }
-
-
 
 function informacoes_menuLateral(){
   public_empresa.innerHTML= `${sessionStorage.RAZAO_SOCIAL}`;
