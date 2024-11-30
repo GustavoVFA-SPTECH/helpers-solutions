@@ -1,16 +1,19 @@
-DROP DATABASE IF EXISTS Helpers;
-CREATE DATABASE IF NOT EXISTS Helpers ;
+CREATE DATABASE Helpers;
 USE Helpers;
 
 CREATE TABLE Empresa (
     idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     razaoSocial VARCHAR(45) NOT NULL,
     CNPJ CHAR(14) UNIQUE NOT NULL,
-    telefone CHAR(11),
-    email VARCHAR(70) NOT NULL,
-    userName VARCHAR(45) NOT NULL,
-    senha VARCHAR(45) NOT NULL,
+    telefone CHAR(11),    
     responsavel VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE Usuario (
+idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+userName VARCHAR(45) NOT NULL,
+senha VARCHAR(45) NOT NULL,
+email VARCHAR(100) NOT NULL
 );
 
 INSERT INTO Empresa (razaoSocial, CNPJ, telefone, email, userName, senha, responsavel
@@ -45,61 +48,53 @@ CREATE TABLE Acesso (
     CONSTRAINT fkAcessoEmpresa FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa)
 );
 
-CREATE TABLE Setor(
-idSetor INT PRIMARY KEY AUTO_INCREMENT,
-Nome VARCHAR(45),
-fkEmpresa INT,
-CONSTRAINT fkSetorEmpresa FOREIGN KEY (fkEmpresa)
-	REFERENCES empresa(idEmpresa)
+CREATE TABLE Sensor (
+    idSensor INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(45),
+    numeroSerie VARCHAR(45)
 );
 
-CREATE TABLE Maquina (
-    idMaquina INT PRIMARY KEY AUTO_INCREMENT,
-    Nome VARCHAR(45),
-    Tipo VARCHAR(45),
-    tempMax DECIMAL(5, 2),
-    tempMinima DECIMAL (5, 2),
-    fkSetor INT,
-    CONSTRAINT fkMaquinaSetor FOREIGN KEY (fkSetor) REFERENCES Setor(idSetor)
-);
+INSERT INTO Sensor (Nome, numeroSerie) VALUES
+('Sensor 1', 'SN123456'),
+('Sensor 2', 'SN654321'),
+('Sensor 3', 'SN456789'),
+('Sensor 4', 'SN987654'),
+('Sensor 5', 'SN321654');
 
 
 CREATE TABLE Registro (
     idRegistro INT PRIMARY KEY AUTO_INCREMENT,
     dataHora DATETIME DEFAULT CURRENT_TIMESTAMP,
     Temperatura FLOAT,
-    fkMaquina INT,
-    CONSTRAINT fkRegistroMaquina FOREIGN KEY (fkMaquina) REFERENCES Maquina(idMaquina)
+    fkSensor INT,
+    CONSTRAINT fkRegistroSensor FOREIGN KEY (fkSensor) REFERENCES Sensor (idSensor)
 );
 
-INSERT INTO Setor (Nome, fkEmpresa) VALUES
-('Setor A', 1),
-('Setor B', 2);
+INSERT INTO Registro (Temperatura, fkSensor) VALUES
+(114.00, 1),
+(20.00, 2),
+(111.50, 3),
+(110.00, 4),
+(200.00, 5);
 
-INSERT INTO Maquina (Nome, Tipo, tempMax, tempMinima, fkSetor) VALUES
-('Máquina 1', 'Tipo A', 150.00, 70, 1),
-('Máquina 2', 'Tipo B', 150.00, 90, 2),
-('Máquina 3', 'Tipo B', 150.00, 50, 2);
+CREATE TABLE Maquina (
+    idMaquina INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(45),
+    Tipo VARCHAR(45),
+    tempMax DECIMAL(5, 2),
+    Setor VARCHAR(45),
+    fkEmpresa INT,
+    CONSTRAINT fkMaquinaEmpresa FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa),
+    fkSensor INT,
+    CONSTRAINT fkMaquinaSensor FOREIGN KEY (fkSensor) REFERENCES Sensor (idSensor)
+);
 
-INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
-('2023-06-01 10:00:00', 105.2, 1),
-('2023-06-01 10:05:00', 107.1, 1),
-('2023-06-01 10:10:00', 108.5, 1),
-('2023-06-01 10:15:00', 106.8, 1),
-('2023-06-01 10:20:00', 109.2, 1),
-('2023-06-01 10:25:00', 100.1, 1),
-('2023-06-02 09:00:00', 102.4, 2),
-('2023-06-02 09:05:00', 103.7, 2),
-('2023-06-02 09:10:00', 104.9, 2),
-('2023-06-02 09:15:00', 106.2, 2),
-('2023-06-02 09:20:00', 107.6, 2),
-('2023-06-02 09:25:00', 108.3, 2),
-('2023-06-02 10:00:00', 120.3, 3),
-('2023-06-02 10:05:00', 122.4, 3),
-('2023-06-02 10:10:00', 130.1, 3),
-('2023-06-02 10:15:00', 150.2, 3),
-('2023-06-02 10:20:00', 157.7, 3),
-('2023-06-02 10:25:00', 159.9, 3);
+INSERT INTO Maquina (Nome, Tipo, tempMax, Setor, fkEmpresa, fkSensor) VALUES
+('Máquina A', 'Tipo A', 150.00, 'Setor A', 1, 1),
+('Máquina B', 'Tipo B', 150.00, 'Setor B', 2, 2),
+('Máquina B', 'Tipo B', 150.00, 'Setor B', 2, 3),
+('Máquina A', 'Tipo A', 150.00, 'Setor A', 1, 4),
+('Máquina B', 'Tipo B', 150.00, 'Setor B', 2, 5);
 
 
 SELECT * FROM Registro;
@@ -107,24 +102,28 @@ SELECT * FROM Registro;
 -- Select do registro com maquina
 SELECT r.temperatura as Temperatura, r.dataHora as "Horario Registro", m.nome as Maquina
 FROM Registro as r
+JOIN Sensor as s
+ON r.fkSensor = s.idSensor
 JOIN Maquina as m
-JOIN Setor
-ON m.fkSetor = setor.idSetor;
+ON m.fkSensor = s.idSensor;
 
 -- Select do registro com maquina e empresa dona
 SELECT r.temperatura as Temperatura, r.dataHora as "Horario Registro", m.nome as Maquina, e.razaoSocial as Empresa
 FROM Registro as r
+JOIN Sensor as s
+ON r.fkSensor = s.idSensor
 JOIN Maquina as m
-JOIN Setor
-ON m.fkSetor = setor.idSetor
+ON m.fkSensor = s.idSensor
 JOIN Empresa as e
-ON setor.fkEmpresa = e.idEmpresa;
+ON m.fkEmpresa = e.idEmpresa;
 
 -- Select com concat e formatação de data
 SELECT CONCAT('A ', m.nome, ' atingiu: ', r.temperatura, 'ºC às: ', DATE_FORMAT(r.dataHora, '%H:%i:%s'), ' do dia: ', DATE_FORMAT(r.dataHora, '%d/%m/%Y')) AS Mensagem
 FROM Registro as r
+JOIN Sensor as s
+ON r.fkSensor = s.idSensor
 JOIN Maquina as m
-ON r.fkMaquina = m.idMaquina;
+ON m.fkSensor = s.idSensor;
 
 -- VIEW
 CREATE VIEW RegistroMaquina
@@ -138,7 +137,9 @@ THEN 'OK'
 ELSE 'Superaquecimento'
 END AS Stats
 FROM Registro as r
+JOIN Sensor as s
+ON r.fkSensor = s.idSensor
 JOIN Maquina as m
-ON r.fkMaquina = m.idMaquina;
+ON m.fkSensor = s.idSensor;
 
 select Horário, Máquina, Temperatura, stats from RegistroMaquina;
