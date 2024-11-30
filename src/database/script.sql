@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS Helpers;
 CREATE DATABASE IF NOT EXISTS Helpers ;
 USE Helpers;
 
@@ -75,19 +76,30 @@ INSERT INTO Setor (Nome, fkEmpresa) VALUES
 ('Setor A', 1),
 ('Setor B', 2);
 
-INSERT INTO Maquina (Nome, Tipo, tempMax, fkSetor) VALUES
-('Máquina A', 'Tipo A', 150.00, 1),
-('Máquina B', 'Tipo B', 150.00, 2),
-('Máquina B', 'Tipo B', 150.00, 2),
-('Máquina A', 'Tipo A', 150.00, 1),
-('Máquina B', 'Tipo B', 150.00, 2);
+INSERT INTO Maquina (Nome, Tipo, tempMax, tempMinima, fkSetor) VALUES
+('Máquina A', 'Tipo A', 150.00, 70, 1),
+('Máquina B', 'Tipo B', 150.00, 90, 2),
+('Máquina C', 'Tipo B', 150.00, 50, 2);
 
-INSERT INTO Registro (Temperatura, fkMaquina) VALUES
-(114.00, 1),
-(20.00, 2),
-(111.50, 3),
-(110.00, 4),
-(200.00, 5);
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2023-06-01 10:00:00', 105.2, 1),
+('2023-06-01 10:05:00', 107.1, 1),
+('2023-06-01 10:10:00', 108.5, 1),
+('2023-06-01 10:15:00', 106.8, 1),
+('2023-06-01 10:20:00', 109.2, 1),
+('2023-06-01 10:25:00', 100.1, 1),
+('2023-06-02 09:00:00', 102.4, 2),
+('2023-06-02 09:05:00', 103.7, 2),
+('2023-06-02 09:10:00', 104.9, 2),
+('2023-06-02 09:15:00', 106.2, 2),
+('2023-06-02 09:20:00', 107.6, 2),
+('2023-06-02 09:25:00', 108.3, 2),
+('2023-06-02 10:00:00', 120.3, 3),
+('2023-06-02 10:05:00', 122.4, 3),
+('2023-06-02 10:10:00', 130.1, 3),
+('2023-06-02 10:15:00', 150.2, 3),
+('2023-06-02 10:20:00', 157.7, 3),
+('2023-06-02 10:25:00', 159.9, 3);
 
 
 SELECT * FROM Registro;
