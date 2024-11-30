@@ -301,49 +301,76 @@ function sensorChange(value) {
   }
 }
 
+function sensor1() {
+  fetch("/dashboard/grafico3S1", {
+      method: "GET"
+  }).then(resposta => {
+      resposta.json()
 
-function sensor1(){
-  fetch("/dashboard/dashboard").then(function (resposta){
-    if(resposta.ok){
-        if(resposta.status == 204){
-            throw "Nenhum resultado encontrado!";
-        }
-        resposta.json().then(function(resposta){
-          console.log("  1: ", JSON.stringify(resposta));
-          var maquinas = resposta.map((Maquina) => Maquina.Maquina);
-          var tempAtual = resposta.map((registro) => registro.Temperatura);
-          console.log("Temperatura atual: ",tempAtual)
-          var tempMax = resposta.map((Maquina) => Maquina.tempMax);
-          var tempMin = resposta.map((Maquina) => Maquina.tempMin);
-          chart3.data.labels = tempAtual;
-          chart3.data.datasets[0].data = tempAtual;
-          chart3.update();
-        });
-        
-        
-      } else {
-        throw ('Houve um erro na API!');
-      }
-    })
+          .then(dados => {
+              console.log(dados);
+              chart3.data.datasets[0].data = [];
+              // chart3.data.labels = [];
 
+          })
 
-      // var maquinas = dados.map((Maquina) => Maquina.Maquina);
-      // var tempAtual = dados.map((registro) => registro.Temperatura);
-      // console.log(tempAtual)
-      // var tempMax = dados.map((Maquina) => Maquina.tempMax);
-      // var tempMin = dados.map((Maquina) => Maquina.tempMin);
+          .catch(function (resposta) {
+              console.log(`#ERRO: ${resposta}`);
 
-      
-      // chart3.data.datasets[0].data = tempMax;
-      // chart3.data.datasets[0].data = tempMin;
+          });
+  })
 
-      
-      
-  .catch(function(resposta){
-    console.error(resposta)
-});
+      .catch(function (erro) {
+          console.log(erro);
+      })
 
+  // myChart.config.options.plugins.title.text = "Spiders";
+  chart3.update();
 }
+
+
+// function sensor1(){
+//   fetch("/dashboard/dashboard").then(function (resposta){
+//     if(resposta.ok){
+//         if(resposta.status == 204){
+//             throw "Nenhum resultado encontrado!";
+//         }
+//         resposta.json().then(function(resposta){
+//           console.log("  1: ", JSON.stringify(resposta));
+//           var maquinas = resposta.map((Maquina) => Maquina.Maquina);
+//           var tempAtual = resposta.map((registro) => registro.Temperatura);
+//           console.log("Temperatura atual: ",tempAtual)
+//           var tempMax = resposta.map((Maquina) => Maquina.tempMax);
+//           var tempMin = resposta.map((Maquina) => Maquina.tempMin);
+//           chart3.data.labels = tempAtual;
+//           chart3.data.datasets[0].data = tempAtual;
+//           chart3.update();
+//         });
+        
+        
+//       } else {
+//         throw ('Houve um erro na API!');
+//       }
+//     })
+
+
+//       // var maquinas = dados.map((Maquina) => Maquina.Maquina);
+//       // var tempAtual = dados.map((registro) => registro.Temperatura);
+//       // console.log(tempAtual)
+//       // var tempMax = dados.map((Maquina) => Maquina.tempMax);
+//       // var tempMin = dados.map((Maquina) => Maquina.tempMin);
+
+      
+//       // chart3.data.datasets[0].data = tempMax;
+//       // chart3.data.datasets[0].data = tempMin;
+
+      
+      
+//   .catch(function(resposta){
+//     console.error(resposta)
+// });
+
+// }
 
 
 function informacoes_menuLateral(){
