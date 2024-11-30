@@ -52,13 +52,45 @@ function cadastrarEmpresa(req, res) {
     var responsavel = req.body.responsavelServer;
     var nomeUsuario = req.body.nomeUsuarioServer;
     var senha = req.body.senhaServer;
-    console.log("Telefone controller:" ,telefone)
+    console.log("razao controller:" ,razao)
+    console.log("cnpj controller:" ,cnpj)
+    console.log("email controller:" ,email)
+    console.log("telefone controller:" ,telefone)
+    console.log("responsavel controller:" ,responsavel)
+    console.log("nomeUsuario controller:" ,nomeUsuario)
+    console.log("senha controller:" ,senha)
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarEmpresa(nomeUsuario, senha, razao, cnpj, email, telefone, responsavel)
+        usuarioModel.cadastrarEmpresa(razao, cnpj, telefone, responsavel)
             .then(
                 function (resultado) {
-                    res.json(resultado);
+                    usuarioModel.puxarFkEmpresa(cnpj).then(function (resultado) {
+                        if (resultado.length > 0) {
+                            res.status(200).json(resultado);
+                            var id = resultado[0].idEmpresa
+                            usuarioModel.cadastrarUsuario(id, email, nomeUsuario, senha)
+                            .then(
+                                function (resultado) {
+                                    res.json(resultado);                                   
+                                }
+                            ).catch(
+                                function (erro) {
+                                    console.log(erro);
+                                    console.log(
+                                        "\nHouve um erro ao realizar o cadastro do Usuário! Erro: ",
+                                        erro.sqlMessage
+                                    );
+                                    res.status(500).json(erro.sqlMessage);
+                                }
+                            );
+                        } else {
+                            res.status(204).send("Nenhum resultado encontrado!")
+                        }
+                    }).catch(function (erro) {
+                        console.log(erro);
+                        console.log("Houve um erro ao buscar o id da Empresa: ", erro.sqlMessage);
+                        res.status(500).json(erro.sqlMessage);
+                    });
                 }
             ).catch(
                 function (erro) {
@@ -121,36 +153,6 @@ function cadastrarEndereco(req, res) {
                 function (erro) {
                     console.log(erro);
                     console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    
-}
-
-function cadastrarEmpresa(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var razao = req.body.razaoServer;
-    var cnpj = req.body.cnpjServer;
-    var email = req.body.emailServer
-    var telefone = req.body.telefoneServe;
-    var responsavel = req.body.responsavelServer;
-    var nomeUsuario = req.body.nomeUsuarioServer;
-    var senha = req.body.senhaServer;
-    console.log("Telefone controller:" ,telefone)
-
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarEmpresa(nomeUsuario, senha, razao, cnpj, email, telefone, responsavel)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro da empresa! Erro: ",
-                        erro.sqlMessage
-                    );
                     res.status(500).json(erro.sqlMessage);
                 }
             );

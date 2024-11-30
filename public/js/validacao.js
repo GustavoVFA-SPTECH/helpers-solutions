@@ -336,7 +336,6 @@ function Cadastrar(){
               // SE ENDEREÇO DER ERRO CAI AQUI
               if (resposta.ok) {
               console.log("Deu certo")
-              btn_finalizar
 
               var btnFinalizar = document.getElementById('btn_finalizar');
               btnFinalizar.innerHTML = `Cadastrando`;

@@ -13,7 +13,9 @@ CREATE TABLE Usuario (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 userName VARCHAR(45) NOT NULL,
 senha VARCHAR(45) NOT NULL,
-email VARCHAR(100) NOT NULL
+email VARCHAR(100) NOT NULL,
+fkEmpresa INT,
+constraint fkUsuarioEmpresa foreign key (fkEmpresa) references Empresa(idEmpresa)
 );
 
 INSERT INTO Empresa (razaoSocial, CNPJ, telefone, email, userName, senha, responsavel
