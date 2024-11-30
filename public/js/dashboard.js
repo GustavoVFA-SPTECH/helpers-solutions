@@ -45,7 +45,7 @@ const chart = new Chart(ctx, {
       },
       title: {
         display: true,
-        text: "Temperatura média dos sensores ultimas 24h",
+        text: "Temperatura média das máquinas ultimas 24h",
         font: {
           size: 20, 
         },
@@ -60,31 +60,31 @@ const chart2 = new Chart(ctx2, {
     labels: [""],
     datasets: [
       {
-        label: "Sensor 1",
+        label: "Máquina 1",
         data: [97],
         borderWidth: 1,
         backgroundColor: "rgba(255, 165, 0, 1)", 
       },
       {
-        label: "Sensor 2",
+        label: "Máquina 2",
         data: [20],
         borderWidth: 1,
         backgroundColor: "rgba(78, 150, 244)", 
       },
       {
-        label: "Sensor 3",
+        label: "Máquina 3",
         data: [90],
         borderWidth: 1,
         backgroundColor: "rgba(255, 120, 0, 1)", 
       },
       {
-        label: "Sensor 4",
+        label: "Máquina 4",
         data: [110],
         borderWidth: 1,
         backgroundColor: "rgba(255, 110, 0, 1)", 
       },
       {
-        label: "Sensor 5",
+        label: "Máquina 5",
         data: [200],
         borderWidth: 1,
         backgroundColor: "rgba(255, 0, 0)", 
@@ -125,7 +125,7 @@ const chart2 = new Chart(ctx2, {
     plugins: {
       title: {
         display: true,
-        text: "Temperatura atual dos sensores",
+        text: "Temperatura atual das máquinas",
         font: {
           size: 20, 
         },

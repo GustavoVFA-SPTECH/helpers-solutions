@@ -77,9 +77,9 @@ INSERT INTO Setor (Nome, fkEmpresa) VALUES
 ('Setor B', 2);
 
 INSERT INTO Maquina (Nome, Tipo, tempMax, tempMinima, fkSetor) VALUES
-('Máquina A', 'Tipo A', 150.00, 70, 1),
-('Máquina B', 'Tipo B', 150.00, 90, 2),
-('Máquina C', 'Tipo B', 150.00, 50, 2);
+('Máquina 1', 'Tipo A', 150.00, 70, 1),
+('Máquina 2', 'Tipo B', 150.00, 90, 2),
+('Máquina 3', 'Tipo B', 150.00, 50, 2);
 
 INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
 ('2023-06-01 10:00:00', 105.2, 1),
