@@ -18,9 +18,13 @@
 
 body {
   margin: 0;
-  background-color: #040b0f;
   color: #1e1e1e;
   font-family: Archivo, Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100vh;
 }
 
 /* Barra de scroll estilizada */

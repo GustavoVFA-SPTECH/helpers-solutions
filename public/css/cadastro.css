@@ -1,1 +1,19 @@
 @import url(components.css);
+
+body{
+    background-color: #040b0f;
+}
+
+.main_cadastro{
+
+}
+
+.container{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+.modal{
+    display: none;
+}

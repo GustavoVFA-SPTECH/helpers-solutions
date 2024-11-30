@@ -1,1 +1,12 @@
 @import url(components.css);
+
+
+.kpis{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    height: 20vh;
+    width: 100%;
+    border: black 1px solid;
+}

@@ -1,9 +1,108 @@
 @import url(root.css);
 
 body{
+    flex-direction: row;
+}
+
+.sideBar{
+    background-color: var(--azulEscuro);
+    height: 100vh;
+    width: 15vw;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    color: white;
+}
+
+.title{
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sidebarTop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    /* border: white 1px solid; */
+    gap: 5%;
+    height: 50%;
+}
+
+.boxProfile{
+    height: 50%;
+    width: 90%;
+    border: var(--azul2) 1px solid;
+    border-radius: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgProfile{
+    width: 100px;
+    height: 100px;
+}
+
+.nomes{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.nomeEmpresa{
+    color: #eb660e;
+    margin: 0;
+}
+
+.nomeUsuario{
+    color: #226b9c;
+    margin: 0;
+}
+
+.navBar{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.btnSair{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    background-color: #f66b0e;
+    box-shadow: 0 4px 0 #a54809;
+    border: none;
+    color: white;
+    width: 200px;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    font-size: x-large;
+    border-radius: 12px;
+    cursor: pointer;  
+    transition: 0.5s ease all;
+}
+
+.btnSair:hover{
+    background-color: #e05a00;
+}
+
+.navBar a{
+    text-decoration: none;
+    color: #efefef;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+}
+
+.main{
+    width: 85vw;
     height: 100vh;
 }
