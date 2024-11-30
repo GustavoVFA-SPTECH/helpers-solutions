@@ -46,8 +46,8 @@ INSERT INTO Endereco (CEP, Logradouro, Numero, Complemento, Bairro, Cidade, Esta
 CREATE TABLE Acesso (
     idAcesso INT PRIMARY KEY AUTO_INCREMENT,
     dataHora DATETIME DEFAULT CURRENT_TIMESTAMP,
-    fkEmpresa INT,
-    CONSTRAINT fkAcessoEmpresa FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa)
+    fkUsuario INT,
+    CONSTRAINT fkAcessoUsuario FOREIGN KEY (fkUsuario) REFERENCES Usuario (idUsuario)
 );
 
 CREATE TABLE Setor(

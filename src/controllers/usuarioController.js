@@ -3,6 +3,7 @@ var usuarioModel = require("../models/usuarioModel");
 function autenticar(req, res) {
     var usuario = req.body.usuarioServer;
     var senha = req.body.senhaServer;
+    var horario = req.body.horarioServer;
 
     if (usuario == undefined) {
         res.status(400).send("Seu usuário está undefined!");
@@ -18,14 +19,16 @@ function autenticar(req, res) {
 
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
-                            res.json({
-                                id: resultadoAutenticar[0].idEmpresa,
-                                usuario: resultadoAutenticar[0].userName,
-                                email: resultadoAutenticar[0].email,
-                                razaoSocial: resultadoAutenticar[0].razaoSocial,
-                            });
-                        }
-                     
+                            var id = resultadoAutenticar[0].idUsuario                            
+                            return usuarioModel.logAcesso_usuario(id, horario)
+                                .then(() => {
+                                    res.json({
+                                        id: resultadoAutenticar[0].idUsuario,
+                                        usuario: resultadoAutenticar[0].userName,
+                                        email: resultadoAutenticar[0].email,
+                                    });
+                                });                            
+                        }                     
                     else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -225,8 +228,6 @@ function cadastrarMaquinas(req, res){
 
                     }
                                           
-
-
 module.exports = {
     autenticar,
     cadastrarEmpresa,
