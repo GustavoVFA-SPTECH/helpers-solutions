@@ -1,12 +1,118 @@
 @import url(components.css);
 
 
+.setorContainer{
+    width: 100%;
+    min-height: 5%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.setorSelect{
+    background-color: var(--laranjaClaro);
+    color: white;
+    border-radius: 12px;
+    width: 30%;
+    height: 50%;
+    text-align: center;
+}
 .kpis{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 30px;
     flex-direction: row;
-    height: 20vh;
+    min-height: 20vh;
     width: 100%;
-    border: black 1px solid;
+    /* border: black 1px solid; */
+    margin-bottom: 1%;
+}
+.kpi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background-color: #112B3C;
+    color: white;
+    gap: 10px;
+    flex-direction: column;
+    text-align: center;
+    height: 70%;
+    width: 20%;
+    font-size: 25px;
+    padding: 10px;
+}
+.kpi1{
+    color: red;
+}
+.kpi2{
+    color: var(--azul2);
+}
+.kpi3{
+    color: var(--verdeDash);
+}
+.kpi4{
+    color: var(--amareloDash);
+}
+
+.graficosTop{
+    display: flex;
+    min-width: 100%;
+    /* border: solid 1px black; */
+    min-height: 40%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+    margin-bottom: 1%;
+}
+.graficosBottom{
+    display: flex;
+    width: 100%;
+    /* border: solid 1px black; */
+    min-height: 60%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.graficoConteiner{
+    background-color: var(--azulEscuro);
+    width: 43%;
+    height: 100%;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.graficoIndividual{
+    width: 90%;
+    height: 90%;
+    background-color: var(--azulEscuro);
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.selectSensor{
+    background-color: var(--laranjaClaro);
+    color: white;
+    border-radius: 12px;
+    width: 30%;
+    text-align: center;
+    height: 5%;
+}
+
+.btnsGrafico1{
+    width: 100%;
+}
+
+.btnGrafico{
+    background-color: var(--laranjaClaro);
+    border-radius: 12px;
+    width: 10%;
 }
