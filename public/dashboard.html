@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/dashboard.css" />
     <link rel="icon" type="image/png" href="assets/logo sem fundo.png" sizes="16x16">
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-    <script src="./js/script.js" defer></script>
+    <script src="js/script.js" defer></script>
   </head>
   <body>
     <div class="sideBar">
@@ -61,14 +61,14 @@
           <canvas style="width: 100%; height: 100%" id="myChart"></canvas>
         </div>
         <div class="graficoConteiner">
-          <canvas style="width: 100%; height: 100%" id="myChart"></canvas>
+          <canvas style="width: 100%; height: 100%" id="myChart2"></canvas>
         </div>
       </div>
       <div class="graficosBottom">
         <div class="graficoIndividual">
-          <select class="selectSensor" id="">
+          <select class="selectSensor" id="sltSensor" onchange="sensorChange(this.value)">
           </select>
-          <canvas style="width: 100%; height: 100%" id="myChart"></canvas>
+          <canvas style="width: 100%; height: 100%" id="myChart3"></canvas>
         </div>
       </div>
     </div>
