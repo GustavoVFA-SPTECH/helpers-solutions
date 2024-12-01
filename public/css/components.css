@@ -78,7 +78,7 @@ body{
     align-self: center;
     justify-content: center;
     background-color: #f66b0e;
-    box-shadow: 0 4px 0 #a54809;
+    box-shadow: 0 4px 0 var(--marrom);
     border: none;
     color: white;
     width: 200px;
@@ -91,7 +91,7 @@ body{
 }
 
 .btnSair:hover{
-    background-color: #e05a00;
+    background-color: var(--laranjaEscuro);
 }
 
 .navBar a{
