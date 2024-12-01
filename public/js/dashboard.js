@@ -213,7 +213,6 @@ const chart3 = new Chart(ctx3, {
   },
 });
 
-sessionStorage.ID_EMPRESA = 1;
 
 function resetButtonStyles() {
   var buttons = document.querySelectorAll("#btn_dia, #btn_mes, #btn_ano");
@@ -314,6 +313,8 @@ async function sensorChange(value) {
 }
 
 function informacoes_menuLateral(){
-  public_empresa.innerHTML= `${sessionStorage.RAZAO_SOCIAL}`;
-  public_nome.innerHTML= `${sessionStorage.NOME_USUARIO}`;
+  var Empresa = document.getElementById('public_empresa')
+  var Usuario = document.getElementById('public_nome')
+  Empresa.innerHTML= `${sessionStorage.RAZAO_SOCIAL}`;
+  Usuario.innerHTML= `${sessionStorage.NOME_USUARIO}`;
 }

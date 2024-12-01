@@ -26,6 +26,7 @@ function login() {
 
     var usuarioVar = document.getElementById('ipt_usuario').value;
     var senhaVar = document.getElementById('ipt_senhaLogin').value;
+    var horarioVar = ObterDateTime();
     var alerta = document.getElementById('alertamodal');
     
     if (usuarioVar == "" || senhaVar == "") {
@@ -38,7 +39,7 @@ function login() {
 
     console.log("FORM LOGIN: ", usuarioVar);
     console.log("FORM SENHA: ", senhaVar);
-
+    
     fetch("/usuarios/autenticar", {
         method: "POST",
         headers: {
@@ -46,7 +47,8 @@ function login() {
         },
         body: JSON.stringify({
             usuarioServer: usuarioVar,
-            senhaServer: senhaVar
+            senhaServer: senhaVar,
+            horarioServer: horarioVar
         })
     }).then(function (resposta) {
         console.log("ESTOU NO THEN DO entrar()!")
@@ -61,7 +63,7 @@ function login() {
             sessionStorage.ID_USUARIO = json.id;
             sessionStorage.NOME_USUARIO = json.usuario;
             sessionStorage.EMAIL_USUARIO = json.email;
-            sessionStorage.RAZAO_SOCIAL = json.razaoSocial;
+            sessionStorage.RAZAO_SOCIAL= json.razaoSocial;
 
                 var btnProsseguir = document.getElementById('btn_prosseguir');
                 btnProsseguir.innerHTML = `Conectando`;
@@ -88,6 +90,31 @@ function login() {
 
     return false;
 }
+
+function ObterDateTime(){
+    var data = new Date();
+  
+    var ano = data.getFullYear();
+    var mes = (data.getMonth() + 1).toString().padStart(2, '0'); 
+    var dia = data.getDate().toString().padStart(2, '0'); 
+  
+    // Formando a data no formato YYYY-MM-DD
+    var dataFormatada = `${ano}-${mes}-${dia}`;
+  
+    // Extraindo a hora, minuto e segundo
+    var hora = data.getHours().toString().padStart(2, '0');
+    var minuto = data.getMinutes().toString().padStart(2, '0');
+    var segundo = data.getSeconds().toString().padStart(2, '0');
+  
+    var horaFormatada = `${hora}:${minuto}:${segundo}`;
+  
+    var DataFormartadaMySQL = `${dataFormatada} ${horaFormatada}`;
+  
+    console.log(DataFormartadaMySQL);
+  
+    return DataFormartadaMySQL
+  }
+
 
 function sumirMensagem() {
     cardErro.style.display = "none"

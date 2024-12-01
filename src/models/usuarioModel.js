@@ -3,8 +3,23 @@ var database = require("../database/config")
 function autenticar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucaoSql = `
-        SELECT idEmpresa, userName, email, razaoSocial FROM Empresa WHERE email = '${email}' AND senha = '${senha}';
+        SELECT idUsuario, email, userName, razaoSocial FROM Usuario 
+        JOIN Empresa
+        ON fkEmpresa = idEmpresa
+        WHERE email = '${email}' AND senha = '${senha}';
     `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function logAcesso_usuario(id, horario){
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function logAcesso_usuario(): ", id)
+    
+
+    var instrucaoSql = `
+    INSERT INTO Acesso ( dataHora, fkUsuario) VALUES ('${horario}', ${id} );
+    `;
+
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -12,19 +27,31 @@ function autenticar(email, senha) {
 function puxarFkEmpresa(cnpj) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ")
     var instrucaoSql = `
-        SELECT idEmpresa, razaoSocial, CNPJ, email, responsavel FROM Empresa WHERE cnpj = '${cnpj}' ;
+        SELECT idEmpresa, razaoSocial, CNPJ, responsavel, telefone FROM Empresa WHERE cnpj = '${cnpj}' ;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function cadastrarEmpresa(nomeUsuario, senha, razao, cnpj, email ,telefone, responsavel) {
+function cadastrarEmpresa( razao, cnpj, telefone, responsavel) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", razao, cnpj, telefone, responsavel)
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO Empresa (userName,  senha, razaoSocial, CNPJ, email, telefone, responsavel) VALUES ('${nomeUsuario}', '${senha}', '${razao}', '${cnpj}', '${email}', '${telefone}', '${responsavel}');
+        INSERT INTO Empresa (razaoSocial, CNPJ, telefone, responsavel) VALUES ('${razao}', '${cnpj}', '${telefone}', '${responsavel}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function cadastrarUsuario(id, email, nomeUsuario, senha) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():")
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+        INSERT INTO Usuario (userName,  senha, email, fkEmpresa) VALUES ('${nomeUsuario}', '${senha}', '${email}', ${id});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -81,7 +108,9 @@ function cadastrarMaquina(NomeMaquina, Maquina, TempMaxima, TempMinima, fkSetor)
 
 module.exports = {
     autenticar,
+    logAcesso_usuario,
     cadastrarEmpresa,
+    cadastrarUsuario,
     puxarFkEmpresa,
     cadastrarEndereco,
     cadastrarSetor,
