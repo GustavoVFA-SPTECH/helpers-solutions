@@ -7,7 +7,7 @@ router.get('/setores/:idEmpresa', function (req, res) {
     dashboardController.getSetores(req, res)
 })
 
-router.get('/maquinas', function (req, res) {
+router.get('/maquinas/:idSetor', function (req, res) {
     dashboardController.getMaquina(req, res)
 })
 

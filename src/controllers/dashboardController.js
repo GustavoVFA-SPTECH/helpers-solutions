@@ -1,8 +1,9 @@
 var dashboardModel = require("../models/dashboardModel");
 
 const getMaquina = async (req, res) => {
+    const {idSetor} = req.params
     try {
-        const maquinas = await dashboardModel.getMaquinas();
+        const maquinas = await dashboardModel.getMaquinas(idSetor);
 
         if(!maquinas){
             res.status(404).json({

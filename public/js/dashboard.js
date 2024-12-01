@@ -212,50 +212,97 @@ const chart3 = new Chart(ctx3, {
   },
 });
 
+let intervalId;  // Declarar intervalId no escopo global
 
-function resetButtonStyles() {
-  var buttons = document.querySelectorAll("#btn_dia, #btn_mes, #btn_ano");
-  buttons.forEach(function (btn) {
-    btn.style.backgroundColor = "#f66b0e";
-    btn.style.color = "#FFF";
-  });
+async function carregarSetores() {
+  try {
+    // Obtém o idEmpresa do sessionStorage
+    const idEmpresa = sessionStorage.getItem('ID_EMPRESA');
+
+    // Verifica se o idEmpresa está presente no sessionStorage
+    if (!idEmpresa) {
+        console.error('ID da empresa não encontrado no sessionStorage');
+        return;
+    }
+
+    // Faz a requisição para a rota que retorna os setores
+    const response = await fetch(`/dashboard/setores/${idEmpresa}`);
+    
+    // Verifica se a resposta foi bem-sucedida
+    if (!response.ok) {
+        throw new Error('Erro ao obter setores');
+    }
+
+    // Converte a resposta para JSON
+    const data = await response.json();
+
+    // Verifica se há setores na resposta
+    if (data && data.data && Array.isArray(data.data) && data.data.length > 0) {
+        // Seleciona o elemento <select> pelo ID
+        const selectElement = document.getElementById('slc_setor');
+
+        // Limpa o conteúdo do <select> antes de adicionar novas opções
+        selectElement.innerHTML = '';
+
+        // Adiciona uma opção para cada setor
+        data.data.forEach(setor => {
+            const option = document.createElement('option');
+            option.value = setor.idSetor;  // O valor da opção é o id do setor
+            option.textContent = setor.Nome;  // O texto da opção é o nome do setor
+            selectElement.appendChild(option);
+        });
+
+        // Chama a função para preencher as máquinas e carregar o gráfico com o setor selecionado
+        const idSetor = selectElement.value; // Pegue o valor do setor selecionado
+        await preencherSelect(idSetor); // Chama para preencher as máquinas e carregar o gráfico
+
+    } else {
+        console.log('Nenhum setor encontrado');
+    }
+  } catch (error) {
+    console.error('Erro ao carregar setores:', error);
+  }
 }
 
-async function preencherSelect() {
+// Esta função preencherá o select com as máquinas e fará a consulta ao gráfico
+async function preencherSelect(idSetor) {
   try {
-    
-    const response = await fetch('/dashboard/maquinas')
+    // Faz a requisição para obter as máquinas do setor
+    const response = await fetch(`/dashboard/maquinas/${idSetor}`);
     
     if (!response.ok) {
       throw new Error(`Erro na requisição: ${response.statusText}`);
     }
-  
+
     const data = await response.json();
   
+    // Seleciona o elemento <select> para preencher
     const select = document.getElementById('sltSensor');
-
-    select.innerHTML = '';
-   
+    select.innerHTML = ''; // Limpa o conteúdo atual do select
+    
+    // Preenche o select com as máquinas
     data.data.forEach((maquina, index) => {
       const option = document.createElement('option');
       option.value = maquina.idMaquina;
       option.textContent = maquina.nome;
       
+      // Marca a primeira opção como selecionada
       if (index === 0) {
         option.selected = true;
       }
       select.appendChild(option);
     });
+
+    // Depois de preencher o select, chama a função para carregar o gráfico com o primeiro valor
+    const value = select.value;
+    await sensorChange(value); // Chama a função de mudança de sensor para carregar o gráfico
+
   } catch (error) {
     console.error('Erro ao preencher o select:', error);
   }
 }
 
-window.onload = preencherSelect;
-
-// Função para atualizar os dados do gráfico de 1 em 1 segundo
-let intervalId;
-
+// Função para atualizar o gráfico com o novo sensor selecionado
 async function sensorChange(value) {
   try {
     // Limpa qualquer intervalo anterior
@@ -322,58 +369,23 @@ async function sensorChange(value) {
     intervalId = setInterval(async () => {
       await fetchDataAndUpdateChart();
     }, 1000); // Atualiza a cada 1 segundo
-
+    
   } catch (error) {
     console.error('Erro ao carregar os dados do gráfico:', error);
   }
 }
 
-// Função que será chamada ao carregar a página ou ao selecionar a máquina
-window.onload = async () => {
-  // Preenche o select com as máquinas
-  await preencherSelect();
-
-  // Pega o valor do primeiro sensor (ou valor inicial desejado)
-  const select = document.getElementById('sltSensor');
-  const value = select.value;
-
-  // Inicia a atualização do gráfico automaticamente
-  sensorChange(value);
-};
-
-// Função para preencher o select com máquinas
-async function preencherSelect() {
-  try {
-    const response = await fetch('/dashboard/maquinas');
-    if (!response.ok) {
-      throw new Error(`Erro na requisição: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-
-    const select = document.getElementById('sltSensor');
-    select.innerHTML = '';
-
-    data.data.forEach((maquina, index) => {
-      const option = document.createElement('option');
-      option.value = maquina.idMaquina;
-      option.textContent = maquina.nome;
-      if (index === 0) {
-        option.selected = true;
-      }
-      select.appendChild(option);
-    });
-  } catch (error) {
-    console.error('Erro ao preencher o select:', error);
-  }
-}
-
-// Função para atualizar o gráfico com o novo sensor selecionado
-document.getElementById('sltSensor').addEventListener('change', (event) => {
-  // Chama a função de atualização de gráfico quando a seleção muda
-  const value = event.target.value;
-  sensorChange(value);
+// Chamando carregarSetores() para iniciar o processo de carregamento
+document.addEventListener('DOMContentLoaded', () => {
+  carregarSetores(); // Inicia o carregamento de setores
 });
+
+// Adiciona o evento de mudança para o select de setores
+document.getElementById('slc_setor').addEventListener('change', async (event) => {
+  const idSetor = event.target.value;  // Obtém o id do setor selecionado
+  await preencherSelect(idSetor);  // Preenche as máquinas e atualiza o gráfico
+});
+
 
 
 function informacoes_menuLateral(){
@@ -382,3 +394,4 @@ function informacoes_menuLateral(){
   Empresa.innerHTML= `${sessionStorage.RAZAO_SOCIAL}`;
   Usuario.innerHTML= `${sessionStorage.NOME_USUARIO}`;
 }
+

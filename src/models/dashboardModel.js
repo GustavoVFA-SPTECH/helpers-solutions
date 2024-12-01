@@ -22,9 +22,9 @@ const grafico2 = async (idMaquina) => {
     
 }
 
-const getMaquinas = async () =>{
+const getMaquinas = async (idSetor) =>{
     try {
-        const maquinas = await database.executar(`SELECT idMaquina, nome FROM Maquina`)
+        const maquinas = await database.executar(`SELECT idMaquina, nome FROM Maquina WHERE fkSetor = ${idSetor}`)
         return maquinas;
         
     } catch (error) {
