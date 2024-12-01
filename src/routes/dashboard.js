@@ -15,4 +15,5 @@ router.get("/grafico2/:idMaquina", function (req, res) {
     dashboardController.criarGrafico2(req, res)
 })
 
+
 module.exports = router;

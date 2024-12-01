@@ -376,13 +376,6 @@ document.getElementById('sltSensor').addEventListener('change', (event) => {
 });
 
 
-
-
-
-
-
-
-
 function informacoes_menuLateral(){
   var Empresa = document.getElementById('public_empresa')
   var Usuario = document.getElementById('public_nome')
