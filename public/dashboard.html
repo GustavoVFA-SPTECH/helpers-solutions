@@ -4,102 +4,74 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Visão Geral | Helpers Solutions</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="icon" type="image/png" href="./assets/logo sem fundo.png" sizes="16x16">
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="icon" type="image/png" href="assets/logo sem fundo.png" sizes="16x16">
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <script src="./js/script.js" defer></script>
   </head>
-
-  <body class="dashboard_body" onload="informacoes_menuLateral(), sensor1()">
-    <div class="main_dashboard">
-      <div class="container">
-        <div class="box_bar_left">
-          <div class="box_logo">
-            <h1>Helpers</h1>
-          </div>
-
-          <div class="box_profile">
-            <div class="profile">
-              <div class="box_img_profile">
-                <img height="100px" src="./assets/user white.png" alt="" />
-              </div>
-              <div class="nome_empresa">
-                <h2 id="public_empresa"></h2>
-              </div>
-              <div class="nome_funcionario">
-                <h3 id="public_nome"></h3>
-              </div>
-            </div>
-          </div>
-          <div class="btns">
-            <a href="relatorios.html">Relatórios</a>
-            <a href="cadastroMaquina.html">Cadastrar Máquinas</a>
-            <a href="">Gerenciar Máquinas</a>
-            <a class="btn_sair" id="btn_sair" onclick="limparSessao()">Sair</a>
-          </div>
-        </div>
-        <div class="box_view_right">
-          <div class="view_container">
-            <!-- <div class="setorContainer">
-              <select id="slc_setor" class="setorSelect">
-              </select>
-            </div> -->
-            <div class="kpis">
-              <div class="kpi_1">
-                <h2>MÁQUINA 5 detectou<span style="color: red">SUPERAQUECIMENTO!</span></h2>
-              </div>
-              <div class="kpi_2">
-                <h2>
-                  MÁQUINA 2 detectou
-                  <span style="color: rgb(78, 150, 244)">RESFRIAMENTO!</span>
-                </h2>
-              </div>
-              <div class="kpi_3">
-                <h2>
-                  Média de temperatura recomendada:
-                  <span style="color: rgb(78, 244, 86)"><br />110-140ºC</span>
-                </h2>
-              </div>
-              <div class="kpi_4">
-                <h2>
-                  Recomenda-se manutenção:<span style="color: rgb(253, 239, 91)"><br />MÁQUINA 2 | MÁQUINA 5</span>
-                </h2>
-              </div>
-            </div>
-            <div class="graficos">
-              <div class="grafico_1">
-                <div>
-                  <button class="btn_grafico" onclick="dia()" id="btn_dia">Dia</button>
-                  <button class="btn_grafico" onclick="mes()" id="btn_mes">Mês</button>
-                  <button class="btn_grafico" onclick="ano()" id="btn_ano">Ano</button>
-                  <canvas
-                    style="width: 100%; height: 100%"
-                    id="myChart"
-                  ></canvas>
-                </div>
-              </div>
-              <div class="grafico_2">
-                <div>
-                  <canvas
-                    style="width: 100%; height: 100%"
-                    id="myChart_2"
-                  ></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="graficos2">
-              <div class="grafico_3">
-                <div>
-                  <select name="" id="slc_sensor" onchange="sensorChange(this.value)">
-                  </select>
-                  <canvas style="width: 100%; height: 100%" id="myChart_3"></canvas>
-                </div>
-              </div>
-            </div>
+  <body>
+    <div class="sideBar">
+      <div class="sidebarTop">
+        <h1 class="title">Helpers</h1>
+        <div class="boxProfile">
+          <img class="imgProfile" src="assets/user white.png" alt="">
+          <div class="nomes">
+            <h2 class="nomeEmpresa">teste</h2>
+            <h3 class="nomeUsuario">teste</h3>
           </div>
         </div>
       </div>
+      <div class="navBar">
+        <a href="relatorios.html">Relatórios</a>
+        <a href="cadastroMaquina.html">Cadastrar Máquinas</a>
+        <a href="">Gerenciar Máquinas</a>
+        <a class="btnSair" id="btn_sair" onclick="limparSessao()">Sair</a>
+      </div>
     </div>
-    <script src="./js/dashboard.js" defer></script>
+    <div class="main">
+      <div class="setorContainer">
+        <select id="slc_setor" class="setorSelect">
+        </select>
+      </div>
+      <div class="kpis">
+        <div class="kpi">
+            <span>MÁQUINA 5 detectou</span>
+            <span class="kpi1">SUPERAQUECIMENTO!</span>
+        </div>
+        <div class="kpi">
+            <span>MÁQUINA 5 detectou</span>
+            <span class="kpi2">RESFRIAMENTO!</span>
+        </div>
+        <div class="kpi">
+            <span>Média de Temperatura Recomendada</span>
+            <span class="kpi3">110 - 140ºC</span>
+        </div>
+        <div class="kpi">
+            <span>Recomenda-se manutenção</span>
+            <span class="kpi4">MÁQUINA 2 | MÁQUINA 5</span>
+        </div>
+      </div>
+      <div class="graficosTop">
+        <div class="graficoConteiner">
+          <div class="btnsGrafico1">
+            <button class="btnGrafico">Dia</button>
+            <button class="btnGrafico">Mês</button>
+            <button class="btnGrafico">Ano</button>
+          </div>
+          <canvas style="width: 100%; height: 100%" id="myChart"></canvas>
+        </div>
+        <div class="graficoConteiner">
+          <canvas style="width: 100%; height: 100%" id="myChart"></canvas>
+        </div>
+      </div>
+      <div class="graficosBottom">
+        <div class="graficoIndividual">
+          <select class="selectSensor" id="">
+          </select>
+          <canvas style="width: 100%; height: 100%" id="myChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <script src="js/dashboard.js" defer></script>
   </body>
 </html>
