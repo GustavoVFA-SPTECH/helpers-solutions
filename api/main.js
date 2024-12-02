@@ -65,7 +65,7 @@ const serial = async (valoresSensorAnalogico) => {
       const aleatorio12 = parseInt(Math.random() * 40 - 20);
       const aleatorio13 = parseInt(Math.random() * 30 - 15);
       const aleatorio14 = parseInt(Math.random() * 35 - 10);
-      
+
       const sensorAnalogico = parseFloat(valores[0]);
       const sensorAnalogico2 = sensorAnalogico + aleatorio;
       const sensorAnalogico3 = sensorAnalogico + aleatorio2;
@@ -120,12 +120,25 @@ const serial = async (valoresSensorAnalogico) => {
             sensorAnalogico14,
             14,
             sensorAnalogico15,
-            15
+            15,
           ]
         );
 
-        console.log("valores inseridos no banco: ", sensorAnalogico);
-        
+        console.log("sensorAnalogico: ", sensorAnalogico);
+        console.log("sensorAnalogico2: ", sensorAnalogico2);
+        console.log("sensorAnalogico3: ", sensorAnalogico3);
+        console.log("sensorAnalogico4: ", sensorAnalogico4);
+        console.log("sensorAnalogico5: ", sensorAnalogico5);
+        console.log("sensorAnalogico6: ", sensorAnalogico6);
+        console.log("sensorAnalogico7: ", sensorAnalogico7);
+        console.log("sensorAnalogico8: ", sensorAnalogico8);
+        console.log("sensorAnalogico9: ", sensorAnalogico9);
+        console.log("sensorAnalogico10: ", sensorAnalogico10);
+        console.log("sensorAnalogico11: ", sensorAnalogico11);
+        console.log("sensorAnalogico12: ", sensorAnalogico12);
+        console.log("sensorAnalogico13: ", sensorAnalogico13);
+        console.log("sensorAnalogico14: ", sensorAnalogico14);
+        console.log("sensorAnalogico15: ", sensorAnalogico15);
       }
     });
 
