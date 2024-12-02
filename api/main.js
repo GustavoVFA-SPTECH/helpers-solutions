@@ -124,21 +124,21 @@ const serial = async (valoresSensorAnalogico) => {
           ]
         );
 
-        console.log("valores inseridos no banco: ", sensorAnalogico);
-        console.log("valores inseridos no banco: ", sensorAnalogico2);
-        console.log("valores inseridos no banco: ", sensorAnalogico3);
-        console.log("valores inseridos no banco: ", sensorAnalogico4);
-        console.log("valores inseridos no banco: ", sensorAnalogico5);
-        console.log("valores inseridos no banco: ", sensorAnalogico6);
-        console.log("valores inseridos no banco: ", sensorAnalogico7);
-        console.log("valores inseridos no banco: ", sensorAnalogico8);
-        console.log("valores inseridos no banco: ", sensorAnalogico9);
-        console.log("valores inseridos no banco: ", sensorAnalogico10);
-        console.log("valores inseridos no banco: ", sensorAnalogico11);
-        console.log("valores inseridos no banco: ", sensorAnalogico12);
-        console.log("valores inseridos no banco: ", sensorAnalogico13);
-        console.log("valores inseridos no banco: ", sensorAnalogico14);
-        console.log("valores inseridos no banco: ", sensorAnalogico15);
+        console.log("sensorAnalogico: ", sensorAnalogico);
+        console.log("sensorAnalogico2: ", sensorAnalogico2);
+        console.log("sensorAnalogico3: ", sensorAnalogico3);
+        console.log("sensorAnalogico4: ", sensorAnalogico4);
+        console.log("sensorAnalogico5: ", sensorAnalogico5);
+        console.log("sensorAnalogico6: ", sensorAnalogico6);
+        console.log("sensorAnalogico7: ", sensorAnalogico7);
+        console.log("sensorAnalogico8: ", sensorAnalogico8);
+        console.log("sensorAnalogico9: ", sensorAnalogico9);
+        console.log("sensorAnalogico10: ", sensorAnalogico10);
+        console.log("sensorAnalogico11: ", sensorAnalogico11);
+        console.log("sensorAnalogico12: ", sensorAnalogico12);
+        console.log("sensorAnalogico13: ", sensorAnalogico13);
+        console.log("sensorAnalogico14: ", sensorAnalogico14);
+        console.log("sensorAnalogico15: ", sensorAnalogico15);
       }
     });
 
