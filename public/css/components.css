@@ -109,3 +109,7 @@ body{
     flex-direction: column;
     overflow: auto;
 }
+
+.agora{
+    font-weight: 1000;
+}
