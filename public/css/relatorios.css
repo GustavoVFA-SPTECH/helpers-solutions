@@ -1,1 +1,89 @@
 @import url(components.css);
+
+
+.main{
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.filtroRelatorios{
+    width: 100%;
+    min-height: 10%;
+    /* border: red 1px solid; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.inputHorario{
+    background-color: var(--laranjaClaro);
+    border-radius: 12px;
+    width: 15%;
+    text-align: center;
+    height: 40%;
+    font-size: 20px;
+    border: black 3px solid;
+    color: white;
+}
+
+.selectSetor{
+    background-color: var(--laranjaClaro);
+    border-radius: 12px;
+    border: black 3px solid;
+    width: 15%;
+    text-align: center;
+    height: 40%;
+    font-size: 20px;
+    color: white;
+}
+
+.filtrar{
+    background-color: var(--laranjaClaro);
+    border-radius: 12px;
+    width: 15%;
+    text-align: center;
+    height: 40%;
+    font-size: 20px;
+    color: white;
+    box-shadow: 0 4px 0 var(--marrom);
+    border: none;
+}
+
+.filtrar:hover{
+    background-color: var(--laranjaEscuro);
+}
+
+.relatorios{
+    /* border: black 1px solid; */
+    width: 90%;
+    border-collapse: collapse;
+    /* height: 90%; */
+}
+
+tr{
+    /* border: red 1px solid; */
+    height: 50px;
+}
+
+th{
+    font-size: 45px;
+    border-bottom: black 3px solid;
+    /* text-decoration: underline; */
+}
+
+td{
+    text-align: center;
+    font-size: 30px;
+}
+
+tr:hover{
+    background-color: var(--laranjaClaro);
+    color: white;
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px black;
+}
+
+.ok:hover{
+    color: blue;
+}
