@@ -4,7 +4,7 @@ USE Helpers;
 -- Usuario de inserção VM
 CREATE USER 'Inserir'@'%' IDENTIFIED BY 'Inserir#DB2024';
 
-GRANT INSERT ON *.* TO 'Inserir'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'Inserir'@'%' WITH GRANT OPTION;
 
 -- Usuario geral Banco de Dados
 CREATE USER 'Helpers'@'%' IDENTIFIED BY 'Helpers#BD2024';
