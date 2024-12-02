@@ -36,9 +36,6 @@ async function carregarSetores() {
               selectElement.appendChild(option);
           });
   
-          // Chama a função para preencher as máquinas e carregar o gráfico com o setor selecionado
-          const idSetor = selectElement.value; // Pegue o valor do setor selecionado
-          await preencherSelect(idSetor); // Chama para preencher as máquinas e carregar o gráfico
   
       } else {
           console.log('Nenhum setor encontrado');
