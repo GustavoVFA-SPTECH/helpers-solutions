@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "mysql2": "^3.9.4",
     "nodemon": "^2.0.22",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "@google/generative-ai": "^0.7.1"
   }
 }

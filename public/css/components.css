@@ -113,3 +113,65 @@ body{
 .agora{
     font-weight: 1000;
 }
+
+
+#container_perguntar {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: fixed;
+    width: 300px;
+    height: fit-content;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-left: 80%;
+    margin-top: 1rem;
+    color: #040b0f;
+    border: #63B1BC solid 5px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #container_perguntar button {
+    background-color: #ED145B;
+    padding: 1rem 2rem;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: large;
+    cursor: pointer;
+  }
+  
+  #container_perguntar textarea {
+    font-family: Archivo;
+    font-size: large;
+    padding: 1rem;
+    width: 80%;
+    min-height: 100px;
+  }
+  
+  #div_icone_ia {
+    display: flex;
+    height: 100px;
+    width: 100px;
+    /* background-color: blue; */
+    position: fixed;
+    margin-left: 90%;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 85vh;
+    background-image: url(../assets/bob_camisa.png);
+    background-size: cover;
+  }
+  
+  #div_sair_ia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 100%;
+    cursor: pointer;
+    font-size: xx-large;
+    font-weight: bolder;
+  }

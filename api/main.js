@@ -56,14 +56,11 @@ const serial = async (
         const aleatorio3 = parseInt(Math.random() * 10 - 5);
         const aleatorio4 = parseInt(Math.random() * 50 - 20);
 
-        
-
         const sensorAnalogico2 = sensorAnalogico + aleatorio;
         const sensorAnalogico3 = sensorAnalogico + aleatorio2;
         const sensorAnalogico4 = sensorAnalogico + aleatorio3;
         const sensorAnalogico5 = sensorAnalogico + aleatorio4;
 
-        console.log(sensorAnalogico2)
 
         // armazena os valores dos sensores nos arrays correspondentes
         valoresSensorAnalogico.push(sensorAnalogico);
@@ -78,6 +75,11 @@ const serial = async (
             );
           
             console.log("valores inseridos no banco: ", sensorAnalogico );
+            console.log("valores inseridos no banco: ", sensorAnalogico2 );
+            console.log("valores inseridos no banco: ", sensorAnalogico3 );
+            console.log("valores inseridos no banco: ", sensorAnalogico4 );
+            console.log("valores inseridos no banco: ", sensorAnalogico5 );
+
 
         }
 

@@ -70,7 +70,6 @@ tr{
 th{
     font-size: 45px;
     border-bottom: black 3px solid;
-    /* text-decoration: underline; */
 }
 
 td{
@@ -81,10 +80,7 @@ td{
 tr:hover{
     background-color: var(--laranjaClaro);
     color: white;
+    cursor: pointer;
     transform: translateY(-10px);
     box-shadow: 0 8px 16px black;
-}
-
-.ok:hover{
-    color: blue;
 }

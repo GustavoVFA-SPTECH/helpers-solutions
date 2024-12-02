@@ -8,4 +8,8 @@ router.get("/relatorios", function (req, res) {
     relatoriosController.relatorios(req, res);
 })
 
+router.post("/filtrado", function(req, res){
+    relatoriosController.filtroRelatorios(req, res)
+})
+
 module.exports = router;
