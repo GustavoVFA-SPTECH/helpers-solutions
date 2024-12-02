@@ -33,11 +33,11 @@
     </div>
     <div class="main">
       <div class="filtroRelatorios">
-        <input type="date" class="inputHorario">
-        <input type="date" class="inputHorario">
-        <select class="selectSetor" id="">
+        <input type="date" class="inputHorario" id="horarioInicio">
+        <input type="date" class="inputHorario" id="horarioFinal">
+        <select class="selectSetor" id="fkSetor">
         </select>
-        <button class="filtrar">Filtrar</button>
+        <button class="filtrar" onclick="carregarRelatoriosFiltro()">Filtrar</button>
       </div>
       <table class="relatorios">
         <tr>

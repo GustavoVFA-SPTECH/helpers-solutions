@@ -19,6 +19,22 @@ function relatorios(req, res) {
 }
 
 
+function filtroRelatorios(req, res){
+    const idSetor = req.body.setorServer;
+    const inicio = req.body.inicioServer;
+    const final = req.body.finalServer;
+
+    relatoriosModel.relatorioFiltrado(idSetor, inicio, final)
+    .then(function(resultado){
+        res.json(resultado);
+    }).catch(
+        function(erro){
+            console.log(erro);
+        }
+    )
+}
+
 module.exports = {
-    relatorios
+    relatorios,
+    filtroRelatorios
 }
