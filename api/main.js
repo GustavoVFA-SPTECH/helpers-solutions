@@ -18,11 +18,11 @@ const serial = async (
     // conexão com o banco de dados MySQL
     let poolBancoDados = mysql.createPool(
         {
-            host: '10.18.34.238',
+            host: 'localhost',
             user: 'Inserir',
             password: 'Inserir#DB2024',
             database: 'Helpers',
-            port: 3307
+            port: 3306
         }
     ).promise();
 
@@ -51,6 +51,19 @@ const serial = async (
         console.log(data);
         const valores = data.split(';');
         const sensorAnalogico = parseFloat(valores[0]);
+        const aleatorio = parseInt(Math.random() * 20 - 10);
+        const aleatorio2 = parseInt(Math.random() * 30 - 10);
+        const aleatorio3 = parseInt(Math.random() * 10 - 5);
+        const aleatorio4 = parseInt(Math.random() * 50 - 20);
+
+        
+
+        const sensorAnalogico2 = sensorAnalogico + aleatorio;
+        const sensorAnalogico3 = sensorAnalogico + aleatorio2;
+        const sensorAnalogico4 = sensorAnalogico + aleatorio3;
+        const sensorAnalogico5 = sensorAnalogico + aleatorio4;
+
+        console.log(sensorAnalogico2)
 
         // armazena os valores dos sensores nos arrays correspondentes
         valoresSensorAnalogico.push(sensorAnalogico);
@@ -60,9 +73,10 @@ const serial = async (
 
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO Registro (temperatura, fkMaquina) VALUES (?, ?)',
-                [sensorAnalogico, 1]
+                'INSERT INTO Registro (temperatura, fkMaquina) VALUES (?, ?), (?, ?), (?, ?), (?, ?), (?, ?)',
+                [sensorAnalogico, 1, sensorAnalogico2, 2, sensorAnalogico3, 3, sensorAnalogico4, 4 ,sensorAnalogico5, 5]
             );
+          
             console.log("valores inseridos no banco: ", sensorAnalogico );
 
         }
