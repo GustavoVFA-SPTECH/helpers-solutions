@@ -1,0 +1,195 @@
+#zohoSupportWebToCase{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#zsWebToCase_1031916000000337005{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.titulo{
+    font-size: 48px;
+    justify-content: center;
+    font-weight: bold;
+    font-family: Archivo, Arial, Helvetica, sans-serif;
+
+}
+
+.ipt_valores {
+    width: 400px;
+    height: 45px;
+    font-family: Archivo, Arial, Helvetica, sans-serif;
+    font-size: large;
+    margin: 0.5rem 0 ;    
+    border-radius: 8px;
+    border: none;
+    
+    background-color: #efefef;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    /* text-align: center; */
+    outline-color: #f66b0e;
+  }
+
+  .textarea_valores{
+    font-family: Archivo, Arial, Helvetica, sans-serif;
+    font-size: large;
+    margin: 0.5rem 0 ;    
+    border-radius: 8px;
+    border: none;
+    background-color: #efefef;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    outline-color: #f66b0e;
+    resize: none; /* Impede o redimensionamento */
+    width: 400px; /* Define a largura fixa */
+    height: 200px;
+  }
+
+  #zsBrowseAttachment{
+    font-size: 20px;
+  }
+  
+  .span_titulos{
+    width: auto;
+    font-weight: bold;
+    font-size: 24px;
+    height: 45px;
+    font-family: Archivo, Arial, Helvetica, sans-serif;
+    color: black;
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+  }
+
+  .button{
+  align-self: center;
+  justify-content: center;
+  background-color: #f66b0e;
+  width: 200px;
+  box-shadow: 0 4px 0 #a54809;
+  border: none;
+  color: white;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+  font-size: x-large;
+  border-radius: 12px;
+  cursor: pointer;
+  }
+  .button:hover{
+      background-color: #e05a00;
+  }
+
+  .manfieldbdr {
+    border-left: 1px solid #ff6448 !important
+}
+
+.hleft {
+    text-align: left;
+}
+
+input[type=file]::-webkit-file-upload-button {
+    cursor: pointer;
+}
+
+.wtcsepcode {
+    margin: 0px 15px;
+    color: #aaa;
+    float: left;
+}
+
+.wtccloudattach {
+    float: left;
+    color: #00a3fe !important;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.wtccloudattach:hover {
+    text-decoration: none !important;
+}
+
+.wtcuploadinput {
+    cursor: pointer;
+    float: left;
+    width: 150px;
+    margin-top: -20px;
+    opacity: 0;
+    clear: both;
+}
+
+.wtcuploadfile {
+    float: left;
+    color: #00a3fe;
+}
+
+.filenamecls {
+    margin-right: 15px;
+    float: left;
+    margin-top: 5px;
+}
+
+.clboth {
+    clear: both;
+}
+
+#zsFileBrowseAttachments {
+    clear: both;
+    margin: 5px 0px 10px;
+}
+
+.zsFontClass {
+    vertical-align: top;
+}
+
+#tooltip-zc {
+    font: normal 16px Arial, Helvetica, sans-serif;
+    line-height: 18px;
+    position: absolute;
+    padding: 8px;
+    margin: 20px 0 0;
+    background: #fff;
+    border: 1px solid #528dd1;
+    border-radius: 5px;
+    color: #eee;
+    z-index: 10000;
+    color: #777
+}
+
+.wtcmanfield {
+    color: #f00;
+    font-size: 16px;
+    position: relative;
+    top: 2px;
+    left: 1px;
+}
+
+#zsCloudAttachmentIframe {
+    width: 100%;
+    height: 100%;
+    z-index: 99999 !important;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    border-style: none;
+    display: none;
+    background-color: #fff;
+}
+
+.wtchelpinfo {
+    background-position: -246px -485px;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    background-image: url(https://d1ydxa2xvtn0b5.cloudfront.net/app/images/zs-mpro.b6c9cf2347c62390fdcb.png);
+}
+
+.zsMaxSizeMessage {
+    font-size: 18px;
+}
