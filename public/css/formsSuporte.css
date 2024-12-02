@@ -66,6 +66,10 @@
     align-items: end;
   }
 
+  .disabled{
+    pointer-events: none;
+  }
+
   .button{
   align-self: center;
   justify-content: center;
