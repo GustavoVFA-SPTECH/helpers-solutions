@@ -4,31 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/logo sem fundo.png" sizes="16x16">
-    <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/cadastrarMaquina.css" />
-
     <title>Cadastro de Máquina | Helpers Solutions</title>
-</head>
-<body>
+    <script src="js/script.js" defer></script>
+  </head>
+  <body onload="menuLateral()">
     <div class="sideBar">
-        <div class="sidebarTop">
-          <h1 class="title">Helpers</h1>
-          <div class="boxProfile">
-            <img class="imgProfile" src="assets/user white.png" alt="">
-            <div class="nomes">
-              <h2 class="nomeEmpresa" id="nomeEmpresa">1</h2>
-              <h3 class="nomeUsuario" id="nomeUsuario">2</h3>
-            </div>
+      <div class="sidebarTop">
+        <h1 class="title">Helpers</h1>
+        <div class="boxProfile">
+          <img class="imgProfile" src="assets/user white.png" alt="">
+          <div class="nomes">
+            <h2 class="nomeEmpresa" id="nomeEmpresa"></h2>
+            <h3 class="nomeUsuario" id="nomeUsuario"></h3>
           </div>
         </div>
-        <div class="navBar">
-          <a href="dashboard.html" >Visão Geral</a>
-          <a href="relatorios.html">Relatórios</a>
-          <a href="" class="agora">Cadastrar Máquinas</a>
-          <a href="formsSuporte.html">Suporte Técnico</a>
-          <a class="btnSair" id="btn_sair" onclick="limparSessao()">Sair</a>
-        </div>
       </div>
+      <div class="navBar">
+        <a href="dashboard.html" >Visão Geral</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="cadastrarMaquina.html" class="agora">Cadastrar Máquinas</a>
+        <a href="formsSuporte.html">Suporte Técnico</a>
+        <a class="btnSair" id="btn_sair" onclick="limparSessao()">Sair</a>
+      </div>
+    </div>
       <div class="main">
         <div class="box_cadastroMaquina">
             <span class="span_tituloPrincipal">Cadastrar Máquina</span>
