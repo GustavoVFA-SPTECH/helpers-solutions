@@ -1,13 +1,28 @@
 @import url(components.css);
 
 
-.setorContainer{
-    width: 100%;
+.tituloKPIS{
+    /* border: red 1px solid; */
+    margin: 0;
     min-height: 5%;
-    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
+    align-items: end;
+}
+
+.setorContainer{
+    width: 100%;
+    min-height: 10%;
+    /* border: 1px solid red; */
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
     align-items: center;
+}
+
+.setorContainer h2{
+    margin: 0;
+
 }
 
 .setorSelect{
@@ -15,8 +30,9 @@
     color: white;
     border-radius: 12px;
     width: 30%;
-    height: 50%;
+    height: 40%;
     text-align: center;
+    /* border: black 1px solid; */
 }
 
 .kpis{
@@ -86,7 +102,7 @@
     height: 100%;
     flex-direction: column;
     border-radius: 12px;
-    padding: 10px;
+    padding: 5px;
     display: flex;
     justify-content: center;
 }
@@ -96,7 +112,7 @@
     height: 90%;
     background-color: var(--azulEscuro);
     border-radius: 12px;
-    padding: 10px;
+    padding: 5px;
     display: flex;
     align-items: center;
     /* justify-content: center; */
