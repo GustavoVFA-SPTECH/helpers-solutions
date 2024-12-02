@@ -1,3 +1,5 @@
+@import url(components.css);
+
 #zohoSupportWebToCase{
     height: 100vh;
     display: flex;
@@ -22,10 +24,11 @@
 }
 
 .ipt_valores {
+    padding: 10px;
     width: 400px;
     height: 45px;
     font-family: Archivo, Arial, Helvetica, sans-serif;
-    font-size: large;
+    font-size: 20px;
     margin: 0.5rem 0 ;    
     border-radius: 8px;
     border: none;
@@ -38,10 +41,11 @@
 
   .textarea_valores{
     font-family: Archivo, Arial, Helvetica, sans-serif;
-    font-size: large;
+    font-size: 20px;
     margin: 0.5rem 0 ;    
     border-radius: 8px;
     border: none;
+    padding: 10px;
     background-color: #efefef;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
     outline-color: #f66b0e;
