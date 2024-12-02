@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/logo sem fundo.png" sizes="16x16">
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/cadastrarMaquina.css" />
+
+    <title>Cadastro de Máquina | Helpers Solutions</title>
+</head>
+<body>
+    <div class="sideBar">
+        <div class="sidebarTop">
+          <h1 class="title">Helpers</h1>
+          <div class="boxProfile">
+            <img class="imgProfile" src="assets/user white.png" alt="">
+            <div class="nomes">
+              <h2 class="nomeEmpresa" id="nomeEmpresa">1</h2>
+              <h3 class="nomeUsuario" id="nomeUsuario">2</h3>
+            </div>
+          </div>
+        </div>
+        <div class="navBar">
+          <a href="dashboard.html" >Visão Geral</a>
+          <a href="relatorios.html">Relatórios</a>
+          <a href="" class="agora">Cadastrar Máquinas</a>
+          <a href="formsSuporte.html">Suporte Técnico</a>
+          <a class="btnSair" id="btn_sair" onclick="limparSessao()">Sair</a>
+        </div>
+      </div>
+      <div class="main">
+        <div class="box_cadastroMaquina">
+            <span class="span_tituloPrincipal">Cadastrar Máquina</span>
+
+            <div class="box_inputs">
+                <span class="span_titulos">Nome:</span>
+                <input type="text" id="" class="input_valores">
+                
+                <span class="span_titulos">Número do Setor:</span>
+                <input type="text" id="" class="input_valores">
+    
+                <span class="span_titulos">Tipo da Máquina:</span>
+                <select class="slt_tpMaquina" id="slt_tpMaquina">
+                    <option value="#">Selecionar</option>
+                </select>
+                
+                <span class="span_titulos">Temperatura Máxima de Operação:</span>
+                <input type="text" id="" class="input_valores">
+    
+                <span class="span_titulos">Temperatura Mínima de Operação:</span>
+                <input type="text" id="" class="input_valores">
+
+                <a href="" class="btn_cadastrar" id="btn_cadastrar">Cadastrar</a>
+            </div>
+        </div>
+
+      </div>
+</body>
+</html>
