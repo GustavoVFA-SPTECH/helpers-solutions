@@ -40,6 +40,15 @@ function retornar_tela_02() {
 }
 
 
+
+function menuLateral(){
+  var Empresa = document.getElementById('nomeEmpresa')
+  var Usuario = document.getElementById('nomeUsuario')
+  Empresa.innerHTML= `${sessionStorage.RAZAO_SOCIAL}`;
+  Usuario.innerHTML= `${sessionStorage.NOME_USUARIO}`;
+}
+
+
 function limparSessao() {
   var btnSair = document.getElementById('btn_sair');
   btnSair.innerHTML = `Saindo`;

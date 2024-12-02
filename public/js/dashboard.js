@@ -387,11 +387,3 @@ document.getElementById('slc_setor').addEventListener('change', async (event) =>
 });
 
 
-
-function informacoes_menuLateral(){
-  var Empresa = document.getElementById('public_empresa')
-  var Usuario = document.getElementById('public_nome')
-  Empresa.innerHTML= `${sessionStorage.RAZAO_SOCIAL}`;
-  Usuario.innerHTML= `${sessionStorage.NOME_USUARIO}`;
-}
-

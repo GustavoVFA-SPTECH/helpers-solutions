@@ -5,38 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Relatórios | Helpers Solutions</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+
     <link rel="icon" type="image/png" href="./assets/logo sem fundo.png" sizes="16x16">
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-    <script src="./js/dashboard.js" defer></script>
     <script src="./js/relatorios.js"></script>
+    <script src="./js/script.js"></script>
   </head>
 
-  <body onload="carregarRelatorios(), informacoes_menuLateral()">
+  <body onload=" menuLateral()">
     <div class="main_relatorios">
       <div class="container">
-        <div class="box_bar_left">
-          <div class="box_logo">
-            <h1>Helpers</h1>
-          </div>
-          <div class="box_profile">
-            <div class="profile">
-              <div class="box_img_profile">
-                <img height="100px" src="./assets/user white.png" alt="" />
-              </div>
-              <div class="nome_empresa">
-                <h2 id="public_empresa"></h2>
-              </div>
-              <div class="nome_funcionario">
-                <h3 id="public_nome"></h3>
+        <div class="sideBar">
+          <div class="sidebarTop">
+            <h1 class="title">Helpers</h1>
+            <div class="boxProfile">
+              <img class="imgProfile" src="assets/user white.png" alt="">
+              <div class="nomes">
+                <h2 id="nomeEmpresa"></h2>
+                <h3 id="nomeUsuario"></h3>
               </div>
             </div>
           </div>
-          <div class="btns">
+          <div class="navBar">
             <a href="dashboard.html">Visão Geral</a>
+            <a href="relatorios.html" class="agora">Relatórios</a>
             <a href="cadastroMaquina.html">Cadastrar Máquinas</a>
-            <a href="">Gerenciar Máquinas</a>
             <a href="formsSuporte.html">Suporte Técnico</a>
-            <a href="paglogin.html" class="btn_sair">Sair</a>
+            <a class="btnSair" id="btn_sair" onclick="limparSessao()">Sair</a>
           </div>
         </div>
         <div class="box_view_right">
@@ -87,3 +83,10 @@
         </div>
       </div>
     </div>
+</body>
+
+<style>
+  .agora{
+      font-weight: 1000;
+  }
+</style>

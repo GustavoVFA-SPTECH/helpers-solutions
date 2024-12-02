@@ -9,22 +9,22 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <script src="js/script.js" defer></script>
   </head>
-  <body>
+  <body onload="menuLateral()">
     <div class="sideBar">
       <div class="sidebarTop">
         <h1 class="title">Helpers</h1>
         <div class="boxProfile">
           <img class="imgProfile" src="assets/user white.png" alt="">
           <div class="nomes">
-            <h2 class="nomeEmpresa">teste</h2>
-            <h3 class="nomeUsuario">teste</h3>
+            <h2 id="nomeEmpresa"></h2>
+            <h3 id="nomeUsuario"></h3>
           </div>
         </div>
       </div>
       <div class="navBar">
+        <a href="dashboard.html" class="agora">Visão Geral</a>
         <a href="relatorios.html">Relatórios</a>
         <a href="cadastroMaquina.html">Cadastrar Máquinas</a>
-        <a href="">Gerenciar Máquinas</a>
         <a href="formsSuporte.html">Suporte Técnico</a>
         <a class="btnSair" id="btn_sair" onclick="limparSessao()">Sair</a>
       </div>
@@ -76,3 +76,8 @@
     <script src="js/dashboard.js" defer></script>
   </body>
 </html>
+<style>
+  .agora{
+      font-weight: 1000;
+  }
+</style>

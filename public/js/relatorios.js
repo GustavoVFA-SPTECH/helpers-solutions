@@ -1,6 +1,4 @@
-function carregarRelatorios(){
-    
-    
+function carregarRelatorios(){   
     fetch("/relatorios/relatorios").then(function (resposta){
         if(resposta.ok){
             if(resposta.status == 204){
