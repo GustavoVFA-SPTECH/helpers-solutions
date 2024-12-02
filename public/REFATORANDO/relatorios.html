@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relatórios | Helpers Solutions</title>
+    <!-- <link rel="stylesheet" href="./css/style.css" /> -->
+    <link rel="stylesheet" href="css/dashboard.css" />
+
+    <link rel="icon" type="image/png" href="./assets/logo sem fundo.png" sizes="16x16">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="./js/relatorios.js"></script>
+    <script src="./js/script.js"></script>
+  </head>
+    <body onload=" menuLateral()">
+      <div class="main_relatorios">
+        <div class="container">
+          <div class="sideBar">
+          <div class="sidebarTop">
+            <h1 class="title">Helpers</h1>
+            <div class="boxProfile">
+              <img class="imgProfile" src="assets/user white.png" alt="">
+              <div class="nomes">
+                <h2 class="nomeEmpresa" id="nomeEmpresa"></h2>
+                <h3 class="nomeUsuario" id="nomeUsuario"></h3>
+              </div>
+            </div>
+          </div>
+          <div class="navBar">
+            <a href="dashboard.html">Visão Geral</a>
+            <a href="relatorios.html" class="agora">Relatórios</a>
+            <a href="cadastroMaquina.html">Cadastrar Máquinas</a>
+            <a href="formsSuporte.html">Suporte Técnico</a>
+            <a class="btnSair" id="btn_sair" onclick="limparSessao()">Sair</a>
+          </div>
+        </div>
+        <div class="box_view_right">
+            <div class="view_container">
+                <div class="top_filter">
+                    <!-- <div class="date_filter">
+                        Data:<input type="date">
+                    </div>
+                    <div class="select_sector">
+                        <select class="sector_filter" id="setor">
+                            <option value="#" disabled selected>Selecione Um Setor</option>
+                        </select>
+                    </div>
+                    <div class="select_machine">
+                        <select class="machine_filter" id="maquina">
+                            <option value="#" disabled selected>Selecione Uma Máquina</option>
+                        </select>
+                    </div> -->
+                </div>
+                <div class="titulos_relatorio">
+                    <div class="horario_relatorio">
+                      <div class="itens">
+                        <h1>Horário</h1>
+                      </div>
+                          <h2 id="dadosHorarios"></h2>
+
+                    </div>
+                    <div class="maquina_relatorio">
+                      <div class="itens">
+                        <h1>Máquina</h1>
+                      </div>
+                        <h2 id="dadosMaq"></h2>
+                    </div>
+                    <div class="temperatura_relatorio">
+                      <div class="itens">  
+                        <h1>Temperatura</h1>
+                      </div>
+                        <h2 id="dadosTemp"></h2>
+                    </div>
+                    <div class="status_relatorio">
+                      <div class="itens">
+                        <h1>Status</h1>
+                        </div>
+                        <h2 id="dadosStatus"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+<style>
+  .agora{
+      font-weight: 1000;
+  }
+</style>
