@@ -147,7 +147,7 @@ function carregarRelatoriosFiltro() {
             celulaTemperatura.textContent = item.temp;
 
             var celulaStatus = document.createElement('td');
-            celulaStatus.textContent = item.stats;
+            celulaStatus.textContent = item.Stats;
 
             novaLinha.appendChild(celulaHorario);
             novaLinha.appendChild(celulaMaquina);
