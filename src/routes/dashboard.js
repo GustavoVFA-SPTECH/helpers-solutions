@@ -11,7 +11,11 @@ router.get('/maquinas/:idSetor', function (req, res) {
     dashboardController.getMaquina(req, res)
 })
 
-router.get("/grafico2/:idMaquina", function (req, res) {
+router.get("/grafico3/:idMaquina", function (req, res) {
+    dashboardController.criarGrafico3(req, res)
+})
+
+router.get("/grafico2/:idSetor", function (req, res) {
     dashboardController.criarGrafico2(req, res)
 })
 

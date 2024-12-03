@@ -57,39 +57,8 @@ const chart = new Chart(ctx, {
 const chart2 = new Chart(ctx2, {
   type: "bar",
   data: {
-    labels: [""],
-    datasets: [
-      {
-        label: "Máquina 1",
-        data: [97],
-        borderWidth: 1,
-        backgroundColor: "rgba(255, 165, 0, 1)", 
-      },
-      {
-        label: "Máquina 2",
-        data: [20],
-        borderWidth: 1,
-        backgroundColor: "rgba(78, 150, 244)", 
-      },
-      {
-        label: "Máquina 3",
-        data: [90],
-        borderWidth: 1,
-        backgroundColor: "rgba(255, 120, 0, 1)", 
-      },
-      {
-        label: "Máquina 4",
-        data: [110],
-        borderWidth: 1,
-        backgroundColor: "rgba(255, 110, 0, 1)", 
-      },
-      {
-        label: "Máquina 5",
-        data: [200],
-        borderWidth: 1,
-        backgroundColor: "rgba(255, 0, 0)", 
-      },
-    ],
+    labels: [],  // Labels (nomes das máquinas) serão populadas dinamicamente
+    datasets: []  // Os datasets também serão populados dinamicamente
   },
   options: {
     indexAxis: "y",
@@ -115,7 +84,7 @@ const chart2 = new Chart(ctx2, {
         display: true, 
         title: {
           display: true, 
-          text: "Máquinas", 
+          text: "", 
           font: {
             size: 20, 
           },
@@ -257,7 +226,7 @@ async function carregarSetores() {
         await preencherSelect(idSetor); // Chama para preencher as máquinas e carregar o gráfico
 
     } else {
-        console.log('Nenhum setor encontrado');
+        
     }
   } catch (error) {
     console.error('Erro ao carregar setores:', error);
@@ -296,7 +265,7 @@ async function preencherSelect(idSetor) {
     // Depois de preencher o select, chama a função para carregar o gráfico com o primeiro valor
     const value = select.value;
     await sensorChange(value); // Chama a função de mudança de sensor para carregar o gráfico
-
+    await grafico2(idSetor)
   } catch (error) {
     console.error('Erro ao preencher o select:', error);
   }
@@ -312,14 +281,14 @@ async function sensorChange(value) {
     const fetchDataAndUpdateChart = async () => {
       try {
         // Faz a requisição para a rota com o idMaquina
-        const response = await fetch(`/dashboard/grafico2/${value}`);
+        const response = await fetch(`/dashboard/grafico3/${value}`);
         if (!response.ok) {
           throw new Error(`Erro na requisição: ${response.statusText}`);
         }
 
         // Obtém os dados do JSON
         const data = await response.json();
-        console.log("Dados recebidos:", data);  // Log dos dados recebidos para depuração
+        
 
         // Verifica se a estrutura de dados existe antes de tentar acessar
         if (data && data.data && Array.isArray(data.data) && data.data.length > 0) {
@@ -329,8 +298,6 @@ async function sensorChange(value) {
             if (item.dataHora && item.temperatura !== undefined && item.tempMax !== undefined && item.tempMinima !== undefined) {
               const horario = new Date(item.dataHora).toLocaleTimeString();
               
-              console.log(`Novo ponto: ${horario}, Temperatura: ${item.temperatura}, Max: ${item.tempMax}, Min: ${item.tempMinima}`);
-
               // Verifica se o gráfico já contém 10 pontos e remove o primeiro se necessário
               if (chart3.data.labels.length === 10 && chart3.data.datasets[0].data.length === 10) {
                 // Remove o primeiro item de cada lista para garantir que só existem 10 pontos
@@ -346,7 +313,7 @@ async function sensorChange(value) {
               chart3.data.datasets[1].data.push(Number(item.tempMax));
               chart3.data.datasets[2].data.push(Number(item.tempMinima));
 
-              console.log("Dados do gráfico após inserção:", chart3.data);  // Log do gráfico após inserção dos dados
+              
 
               // Atualiza o gráfico após adicionar os novos dados
               chart3.update();
@@ -355,7 +322,7 @@ async function sensorChange(value) {
             }
           });
         } else {
-          console.log("Nenhum dado válido para processar ou estrutura de dados inesperada.");
+          
         }
       } catch (error) {
         console.error('Erro ao carregar os dados do gráfico:', error);
@@ -384,6 +351,69 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById('slc_setor').addEventListener('change', async (event) => {
   const idSetor = event.target.value;  // Obtém o id do setor selecionado
   await preencherSelect(idSetor);  // Preenche as máquinas e atualiza o gráfico
+  await grafico2(idSetor);  // Atualiza o gráfico com o novo setor selecionado
 });
 
 
+let intervalo; // Variável para armazenar o ID do intervalo e limpar se necessário
+
+// Função que será chamada ao carregar a página para inicializar o gráfico 2
+
+async function grafico2(idSetor) {
+  try {
+    // Função para fazer a requisição e atualizar o gráfico
+    const fetchDataAndUpdateChart = async () => {
+      // Realiza a requisição para a API
+      const response = await fetch(`/dashboard/grafico2/${idSetor}`);
+      const data = await response.json();
+
+      console.log(data);  // Verifique os dados retornados
+
+      // Extraindo os nomes das máquinas e as temperaturas
+      const labels = data.data.map(item => item.nome);  // Nomes das máquinas
+      const temperaturas = data.data.map(item => item.temperatura);  // Temperaturas das máquinas
+
+      // Função para gerar a cor com base na temperatura
+      const generateColor = (temperatura) => {
+        if (temperatura > 140) {
+          return "rgba(255, 0, 0, 1)";  // Vermelho para temperaturas maiores que 140
+        } else if (temperatura < 100) {
+          return "rgba(78, 150, 244, 1)";  // Azul para temperaturas menores que 100
+        } else {
+          return "#eb9a05";  // Laranja para temperaturas entre 100 e 140
+        }
+      };
+
+      // Verificando se chart2 e datasets estão definidos
+      if (!chart2.data.datasets || chart2.data.datasets.length === 0) {
+        // Inicializa o dataset caso não esteja definido
+        chart2.data.datasets = [{
+          label: "Temperaturas das Máquinas", 
+          data: temperaturas,  // Temperaturas associadas a cada máquina
+          borderWidth: 1,
+          backgroundColor: temperaturas.map(generateColor),  // Atribui cor com base na temperatura
+        }];
+      } else {
+        // Atualizando os datasets com as novas temperaturas e cores
+        chart2.data.datasets[0].data = temperaturas;  // Temperaturas associadas a cada máquina
+        chart2.data.datasets[0].backgroundColor = temperaturas.map(generateColor);  // Atribui cor com base na temperatura
+      }
+
+      // Atualizando as labels do gráfico
+      chart2.data.labels = labels;  // Nomes das máquinas no eixo Y
+
+      // Atualiza o gráfico sem recriar a estrutura
+      chart2.update();
+    };
+
+    // Atualiza o gráfico inicialmente
+    await fetchDataAndUpdateChart();
+
+    // Configura o intervalo para atualizar o gráfico a cada 1 segundo
+    if (intervalo) clearInterval(intervalo); // Limpa o intervalo anterior
+    intervalo = setInterval(fetchDataAndUpdateChart, 1000);  // Atualiza a cada 1 segundo
+
+  } catch (error) {
+    console.error("Erro ao carregar ou atualizar o gráfico:", error);
+  }
+}

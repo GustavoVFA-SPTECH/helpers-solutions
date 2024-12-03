@@ -415,3 +415,40 @@ JOIN Maquina as m
 ON r.fkMaquina = m.idMaquina;
 
 select Horário, Máquina, Temperatura, stats from RegistroMaquina;
+
+select * from registro;
+
+SELECT 
+m.nome AS 'Nome',
+r.temperatura AS 'Temperatura'
+FROM Registro AS r
+JOIN Maquina AS m 
+ON r.fkMaquina = m.idMaquina
+WHERE fkSetor = 1 limit 1;
+
+SELECT 
+m.nome AS 'Nome',
+r.temperatura AS 'Temperatura'
+FROM Registro AS r
+JOIN Maquina AS m ON r.fkMaquina = m.idMaquina
+WHERE fkSetor = 1
+ORDER BY r.dataHora DESC;
+
+select * from registro;
+select * from maquina order by idMaquina desc;
+
+SELECT nome, avg(temperatura) as temp FROM registro
+JOIN Maquina
+ON fkMaquina = idMaquina
+WHERE fkSetor = 1
+GROUP BY nome, temp;
+
+SELECT nome, temperatura, dataHora
+FROM registro r
+JOIN maquina m ON r.fkMaquina = m.idMaquina
+WHERE r.fkSetor = 1
+GROUP BY nome, temperatura, dataHora
+ORDER BY dataHora DESC
+LIMIT ;
+
+

@@ -32,8 +32,30 @@ const getMaquinas = async (idSetor) =>{
     }
 }
 
+const getGrafico2 = async (idSetor) => {
+    try {
+        const [cont] = await database.executar(`SELECT count(*) as qtdSensor FROM Maquina WHERE fkSetor = ${idSetor}`);
+        const qtd = cont.qtdSensor
+
+        if(!cont){
+
+        }else{
+            const maquinas = await database.executar(`SELECT nome, temperatura, dataHora FROM registro
+                    JOIN maquina ON fkMaquina = idMaquina
+                    WHERE fkSetor = ${idSetor}
+                    GROUP BY nome, temperatura, dataHora
+                    ORDER BY dataHora DESC
+                    LIMIT ${qtd}`)
+                    return maquinas
+        }
+    } catch (error) {
+        return error
+    }
+}
+
 module.exports = {
     getMaquinas,
     grafico2,
     getSetores,
+    getGrafico2
 };

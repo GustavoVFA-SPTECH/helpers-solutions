@@ -20,7 +20,7 @@ const getMaquina = async (req, res) => {
 
 }
 
-const criarGrafico2 = async (req, res) => {
+const criarGrafico3 = async (req, res) => {
     const {idMaquina} = req.params;
 
     try {
@@ -40,6 +40,27 @@ const criarGrafico2 = async (req, res) => {
         return error
     }
 }
+
+const criarGrafico2 = async (req, res) => {
+    const {idSetor} = req.params;
+
+    try {
+        const registros = await dashboardModel.getGrafico2(idSetor);
+        
+        if(!registros){
+            res.status(404).json({
+                message: "Nenhum registro encontrado"
+            })
+        }else{
+            res.status(200).json({
+                data:registros
+            })
+        }
+    } catch (error) {
+        return error
+    }
+}
+
 
 const getSetores = async (req, res) => {
     const {idEmpresa} = req.params;
@@ -61,6 +82,7 @@ const getSetores = async (req, res) => {
     }
 }
 module.exports = {
+    criarGrafico3,
     criarGrafico2,
     getMaquina,
     getSetores
