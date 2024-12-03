@@ -92,6 +92,14 @@ const getGrafico2 = async (idSetor) => {
     }
 }
 
+const getKPI1 = async () => {
+    try {
+        const aquecimento = await database.executar(`SELECT nome, `);
+    } catch (error) {
+        return error
+    }
+}
+
 module.exports = {
     getMaquinas,
     grafico1,
