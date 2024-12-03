@@ -25,17 +25,30 @@
       </div>
       <div class="navBar">
         <a href="dashboard.html">Visão Geral</a>
-        <a href="relatorios.html" class="agora">Relatórios</a>
+        <a href="relatorios.html" class="agora">Logs</a>
         <a href="cadastrarMaquina.html">Cadastrar Máquinas</a>
         <a href="formsSuporte.html">Suporte Técnico</a>
         <a class="btnSair" id="btn_sair" onclick="limparSessao()">Sair</a>
       </div>
     </div>
     <div class="main">
+      <div class="titulosRelatorio">
+        <h2>Filtro por data e setor</h2>
+      </div>
       <div class="filtroRelatorios">
         <input type="date" class="inputHorario" id="horarioInicio">
         <input type="date" class="inputHorario" id="horarioFinal">
         <select class="selectSetor" id="fkSetor">
+        </select>
+        <button class="filtrar" onclick="carregarRelatoriosFiltro()">Filtrar</button>
+      </div>
+      <div class="titulosRelatorio">
+        <h2>Filtro por maquina e setor</h2>
+      </div>
+      <div class="filtroRelatorios">
+        <select class="selectSetor fkSetor" id="fkSetor2">
+        </select>
+        <select class="selectSetor" id="fkMaquina">
         </select>
         <button class="filtrar" onclick="carregarRelatoriosFiltro()">Filtrar</button>
       </div>

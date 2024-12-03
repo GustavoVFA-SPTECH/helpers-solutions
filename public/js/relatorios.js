@@ -24,6 +24,7 @@ async function carregarSetores() {
       if (data && data.data && Array.isArray(data.data) && data.data.length > 0) {
           // Seleciona o elemento <select> pelo ID
           const selectElement = document.getElementById('fkSetor');
+          const selectElement2 = document.getElementById('fkSetor2');
   
           // Limpa o conteúdo do <select> antes de adicionar novas opções
           selectElement.innerHTML = '';
@@ -35,7 +36,15 @@ async function carregarSetores() {
               option.textContent = setor.Nome;  // O texto da opção é o nome do setor
               selectElement.appendChild(option);
           });
-  
+          data.data.forEach(setor => {
+              const option = document.createElement('option');
+              option.value = setor.idSetor;  // O valor da opção é o id do setor
+              option.textContent = setor.Nome;  // O texto da opção é o nome do setor
+              selectElement2.appendChild(option);
+          });
+          
+          const idSetor = selectElement.value; // Pegue o valor do setor selecionado
+          await preencherSelect(idSetor); // Chama para preencher as máquinas e carregar o gráfico
   
       } else {
           console.log('Nenhum setor encontrado');
@@ -46,6 +55,44 @@ async function carregarSetores() {
 }
 
 carregarSetores();
+
+async function preencherSelect(idSetor) {
+    try {
+      // Faz a requisição para obter as máquinas do setor
+      const response = await fetch(`/dashboard/maquinas/${idSetor}`);
+      
+      if (!response.ok) {
+        throw new Error(`Erro na requisição: ${response.statusText}`);
+      }
+  
+      const data = await response.json();
+    
+      // Seleciona o elemento <select> para preencher
+      const select = document.getElementById('fkMaquina');
+      select.innerHTML = ''; // Limpa o conteúdo atual do select
+      
+      // Preenche o select com as máquinas
+      data.data.forEach((maquina, index) => {
+        const option = document.createElement('option');
+        option.value = maquina.idMaquina;
+        option.textContent = maquina.nome;
+        
+        // Marca a primeira opção como selecionada
+        if (index === 0) {
+          option.selected = true;
+        }
+        select.appendChild(option);
+      });
+  
+    } catch (error) {
+      console.error('Erro ao preencher o select:', error);
+    }
+}
+
+document.getElementById('fkSetor2').addEventListener('change', async (event) => {
+    const idSetor = event.target.value;  // Obtém o id do setor selecionado
+    await preencherSelect(idSetor);  // Preenche as máquinas e atualiza o gráfico
+  });
 
 function carregarRelatorios() {
     fetch("/relatorios/relatorios").then(function (resposta) {

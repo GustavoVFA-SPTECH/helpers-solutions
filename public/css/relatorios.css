@@ -87,7 +87,20 @@ tr:hover{
 
 .navBar a{
     transition: 0.3s;
-  }
+}
 .navBar a:hover{
     color:#dd5a02
-  }
+}
+
+.titulosRelatorio{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 100%;
+    /* border: red 1px solid; */
+    min-height: 5%;
+}
+
+.titulosRelatorio h2{
+    margin: 0;
+}

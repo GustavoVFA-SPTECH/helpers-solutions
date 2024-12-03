@@ -389,8 +389,6 @@ async function grafico2(idSetor) {
       const response = await fetch(`/dashboard/grafico2/${idSetor}`);
       const data = await response.json();
 
-      console.log(data);  // Verifique os dados retornados
-
       // Extraindo os nomes das máquinas e as temperaturas
       const labels = data.data.map(item => item.nome);  // Nomes das máquinas
       const temperaturas = data.data.map(item => item.temperatura);  // Temperaturas das máquinas
