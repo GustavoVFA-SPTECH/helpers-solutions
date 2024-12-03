@@ -373,7 +373,7 @@ function cadastrarMaquina(){
   var NomeMaquina = iptNomeMaquina.value
   var TempMaxima = Number(iptTempMaxima.value)
   var TempMinima = Number(iptTempMinima.value)
-  var setor = Number(iptSetor.value)
+  var setor = iptSetor.value
   var idEmpresa = sessionStorage.ID_USUARIO
 
 

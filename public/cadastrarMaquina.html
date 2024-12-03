@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/cadastrarMaquina.css" />
     <title>Cadastro de Máquina | Helpers Solutions</title>
     <script src="js/script.js" defer></script>
+    <script src="js/validacao.js" defer></script>
   </head>
   <body onload="menuLateral()">
     <div class="sideBar">
@@ -34,23 +35,26 @@
 
             <div class="box_inputs">
                 <span class="span_titulos">Nome:</span>
-                <input type="text" id="" class="input_valores">
+                <input type="text" id="iptNomeMaquina" class="input_valores">
                 
                 <span class="span_titulos">Número do Setor:</span>
-                <input type="text" id="" class="input_valores">
+                <input type="number" id="iptSetor" class="input_valores">
     
                 <span class="span_titulos">Tipo da Máquina:</span>
-                <select class="slt_tpMaquina" id="slt_tpMaquina">
-                    <option value="#">Selecionar</option>
-                </select>
+                <select class="slt_tpMaquina" id="sltMaquina">
+                    <option value="#" selected disabled>Selecione Uma Máquina</option>
+                    <option value="axial">Bomba Axial</option>
+                    <option value="centrifuga">Bomba Centrífuga</option>
+                    <option value="deslocamentoPositivo">Bomba de Deslocamento Positivo</option>
+                </select><br>
                 
                 <span class="span_titulos">Temperatura Máxima de Operação:</span>
-                <input type="text" id="" class="input_valores">
+                <input type="text" id="iptTempMaxima" class="input_valores">
     
                 <span class="span_titulos">Temperatura Mínima de Operação:</span>
-                <input type="text" id="" class="input_valores">
+                <input type="text" id="iptTempMinima" class="input_valores">
 
-                <a href="" class="btn_cadastrar" id="btn_cadastrar">Cadastrar</a>
+                <button onclick="cadastrarMaquina()" class="btn_cadastrar" id="btn_cadastrar">Cadastrar</a>
             </div>
         </div>
 
