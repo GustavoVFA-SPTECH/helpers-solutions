@@ -92,9 +92,9 @@ async function preencherSelect(idSetor) {
 document.getElementById('fkSetor2').addEventListener('change', async (event) => {
     const idSetor = event.target.value;  // Obtém o id do setor selecionado
     await preencherSelect(idSetor);  // Preenche as máquinas e atualiza o gráfico
-  });
+});
 
-function carregarRelatorios() {
+  function carregarRelatorios() {
     fetch("/relatorios/relatorios").then(function (resposta) {
         if (resposta.ok) {
             if (resposta.status == 204) {
@@ -122,6 +122,21 @@ function carregarRelatorios() {
 
                     var celulaStatus = document.createElement('td');
                     celulaStatus.textContent = dados[i].Stats;
+
+                    // Modifica a cor do texto do status de acordo com seu valor
+                    switch (dados[i].Stats) {
+                        case "OK":
+                            celulaStatus.style.color = "green";  // Verde para OK
+                            break;
+                        case "Superaquecimento":
+                            celulaStatus.style.color = "red";  // Vermelho para superaquecimento
+                            break;
+                        case "Resfriamento":
+                            celulaStatus.style.color = "blue";  // Azul para resfriamento
+                            break;
+                        default:
+                            celulaStatus.style.color = "black";  // Cor padrão
+                    }
 
                     novaLinha.appendChild(celulaHorario);
                     novaLinha.appendChild(celulaMaquina);
@@ -194,6 +209,21 @@ function carregarRelatoriosFiltro() {
             var celulaStatus = document.createElement('td');
             celulaStatus.textContent = item.Stats;
 
+            // Modifica a cor do texto do status de acordo com seu valor
+            switch (item.Stats) {
+                case "OK":
+                    celulaStatus.style.color = "green";  // Verde para OK
+                    break;
+                case "Superaquecimento":
+                    celulaStatus.style.color = "red";  // Vermelho para superaquecimento
+                    break;
+                case "Resfriamento":
+                    celulaStatus.style.color = "blue";  // Azul para resfriamento
+                    break;
+                default:
+                    celulaStatus.style.color = "black";  // Cor padrão
+            }
+
             novaLinha.appendChild(celulaHorario);
             novaLinha.appendChild(celulaMaquina);
             novaLinha.appendChild(celulaTemperatura);
@@ -253,6 +283,21 @@ function carregarFiltroMaquina() {
             var celulaStatus = document.createElement('td');
             celulaStatus.textContent = item.Stats;
 
+            // Modifica a cor do texto do status de acordo com seu valor
+            switch (item.Stats) {
+                case "OK":
+                    celulaStatus.style.color = "green";  // Verde para OK
+                    break;
+                case "Superaquecimento":
+                    celulaStatus.style.color = "red";  // Vermelho para superaquecimento
+                    break;
+                case "Resfriamento":
+                    celulaStatus.style.color = "blue";  // Azul para resfriamento
+                    break;
+                default:
+                    celulaStatus.style.color = "black";  // Cor padrão
+            }
+
             novaLinha.appendChild(celulaHorario);
             novaLinha.appendChild(celulaMaquina);
             novaLinha.appendChild(celulaTemperatura);
@@ -265,5 +310,6 @@ function carregarFiltroMaquina() {
         console.error(erro);
     });
 }
+
 
 carregarRelatorios();

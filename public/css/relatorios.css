@@ -19,9 +19,9 @@
 .inputHorario{
     background-color: var(--laranjaClaro);
     border-radius: 12px;
-    width: 15%;
+    width: 100%;
     text-align: center;
-    height: 40%;
+    height: 33%;
     font-size: 20px;
     border: black 3px solid;
     color: white;
@@ -103,4 +103,20 @@ tr:hover{
 
 .titulosRelatorio h2{
     margin: 0;
+    font-size: 25px;
+}
+.selectLabel{
+    display: flex;
+    height: 100%;
+    min-width: 15%;
+    /* border: red 1px solid; */
+    align-items: center;
+    padding-top: 13px;
+    flex-direction: column;
+    /* justify-content: center; */
+}
+
+.selectLabel label{
+    font-size: 15px;
+    font-weight: bold;
 }

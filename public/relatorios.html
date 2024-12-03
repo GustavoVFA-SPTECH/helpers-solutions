@@ -36,8 +36,15 @@
         <h2>Filtro por data e setor</h2>
       </div>
       <div class="filtroRelatorios">
-        <input type="date" class="inputHorario" id="horarioInicio">
-        <input type="date" class="inputHorario" id="horarioFinal">
+        <div class="selectLabel">
+          <label for="horarioFinal">Horario de Inicio</label>
+          <input type="date" class="inputHorario" id="horarioInicio">
+        </div>
+        <div class="selectLabel">
+          <label for="horarioFinal">Horario de Final</label>
+          
+          <input type="date" class="inputHorario" id="horarioFinal">
+        </div>
         <select class="selectSetor" id="fkSetor">
         </select>
         <button class="filtrar" onclick="carregarRelatoriosFiltro()">Filtrar</button>
