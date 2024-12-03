@@ -151,6 +151,7 @@ const chart3 = new Chart(ctx3, {
         backgroundColor: "#eb9a05",
         borderColor: "#eb9a05",
         color: "#eb9a05",
+        tension: 0.4,
       },
       {
         label: "Temperatura maxima",
@@ -177,7 +178,7 @@ const chart3 = new Chart(ctx3, {
   options: {
     scales: {
       y: {
-        beginAtZero: true,
+        // beginAtZero: true,
         ticks: {
           stepSize: 10,
         },
