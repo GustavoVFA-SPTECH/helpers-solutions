@@ -56,6 +56,6 @@ function limparSessao() {
   sessionStorage.clear();
   
   setTimeout(() => {
-    window.location.href = 'paglogin.html';
+    window.location.href = 'index.html';
   }, 1000);
 }

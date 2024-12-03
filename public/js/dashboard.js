@@ -138,7 +138,6 @@ const chart2 = new Chart(ctx2, {
   },
 });
 
-
 const chart3 = new Chart(ctx3, {
   type: "line",
   data: {
