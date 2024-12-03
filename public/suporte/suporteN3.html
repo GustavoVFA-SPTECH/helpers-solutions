@@ -1,64 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Relatórios | Helpers Solutions</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="icon" type="image/png" href="../assets/logo sem fundo.png" sizes="16x16">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-    <script src="../js/dashboard.js" defer></script>
-    <script src="../js/relatorios.js"></script>
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BobIA</title>
+    <link rel="stylesheet" href="../css/styleSuporte.css">
+</head>
+<body>
 
-  <body onload="carregarRelatorios(), informacoes_menuLateral()">
-    <div class="main_relatorios">
-      <div class="container">
-        <div class="box_bar_left">
-          <div class="box_logo">
-            <h1>Helpers</h1>
-          </div>
-          <div class="box_profile">
-            <div class="profile">
-              <div class="box_img_profile">
-                <img height="100px" src="../assets/user white.png" alt="" />
-              </div>
-              <div class="nome_empresa">
-                <h2 id="public_empresa"></h2>
-              </div>
-              <div class="nome_funcionario">
-                <h3 id="public_nome"></h3>
-              </div>
-            </div>
-          </div>
-          <div class="btns">
-            <a href="../dashboard.html">Visão Geral</a>
-            <a href="../cadastroMaquina.html">Cadastrar Máquinas</a>
-            <a href="">Gerenciar Máquinas</a>
-            <a href="../paglogin.html" class="btn_sair">Sair</a>
-          </div>
+    <div id="container_perguntar">
+        <div class="box_perguntar">
+          <h1>BobIA</h1>
+        <h2>Ferramenta de suporte</h2>
+        <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
+        <br><br>
+        <button onclick="gerarResposta()">Gerar Resposta</button>
+        <h3>Resposta da IA:</h3>
+        <div id="resposta"></div>
         </div>
-        <div class="box_view_right">
-            <div class="view_container">
-                <!-- <div class="top_filter">
-                     <div class="date_filter">
-                        Data:<input type="date">
-                    </div>
-                    <div class="select_sector">
-                        <select class="sector_filter" id="setor">
-                            <option value="#" disabled selected>Selecione Um Setor</option>
-                        </select>
-                    </div>
-                    <div class="select_machine">
-                        <select class="machine_filter" id="maquina">
-                            <option value="#" disabled selected>Selecione Uma Máquina</option>
-                        </select>
-                    </div> 
-                </div> -->
-                    <div class="BobIAView">
-
-                    </div>
-            </div>
-        </div>
-      </div>
     </div>
+
+</body>
+</html>
+
+
+    <script>
+        
+        async function gerarResposta() {
+            const pergunta = document.getElementById('pergunta').value;
+
+            const response = await fetch('/perguntar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pergunta })
+            });
+
+            const data = await response.json();
+
+            resposta.style.display = 'block';
+            document.getElementById('resposta').innerText = data.resultado;
+        }
+    </script>

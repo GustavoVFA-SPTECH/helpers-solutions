@@ -47,10 +47,15 @@ function login() {
                 var btnProsseguir = document.getElementById('btn_prosseguir');
                 btnProsseguir.innerHTML = `Conectando`;
 
-                setTimeout(function () {
-                    window.location = "./dashboard.html";
-                }, 1000); // apenas para exibir o loading
-
+                if(sessionStorage.ID_USUARIO == 4) {
+                    setTimeout(function () {
+                        window.location = "./suporte/suporteN3.html";
+                    }, 1000); // apenas para exibir o loading    
+                } else {
+                    setTimeout(function () {
+                        window.location = "./dashboard.html";
+                    }, 1000); // apenas para exibir o loading    
+                }
             });
 
         } else {
