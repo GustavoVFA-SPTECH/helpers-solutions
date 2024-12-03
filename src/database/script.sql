@@ -1,4 +1,4 @@
-
+DROP DATABASE IF EXISTS Helpers;
 CREATE DATABASE Helpers;
 USE Helpers;
 
@@ -102,6 +102,13 @@ CREATE TABLE Registro (
     CONSTRAINT fkRegistroMaquina FOREIGN KEY (fkMaquina) REFERENCES Maquina(idMaquina)
 );
 select * from setor;
+
+CREATE TABLE Contato (
+idContato INT PRIMARY KEY AUTO_INCREMENT,
+Nome VARCHAR(45),
+Email VARCHAR(100),
+Mensagem VARCHAR(240)
+);
 
 INSERT INTO Setor (Nome, fkEmpresa) VALUES
 ('Setor A', 1),
