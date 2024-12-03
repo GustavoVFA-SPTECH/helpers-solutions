@@ -10,10 +10,19 @@ Chart.defaults.color = "#FFF";
 
 
 const chart = new Chart(ctx, {
-  type: "bar",
-  data: {
+  type: "line",
+  data: {    
     labels: [],
     datasets: [
+      {
+        data: '',
+        borderWidth: 2,
+        backgroundColor: "#eb9a05",
+        borderColor: "#ffffff",
+        color: "#ffb9a05",
+        fill:true,
+        tension: 0.4,
+      },
       {
         data: [],
         borderWidth: 1,
@@ -23,8 +32,26 @@ const chart = new Chart(ctx, {
   },
   options: {
     scales: {
+      x: {
+        display: true,
+        title: {
+          display: true,
+          font: {
+            size: 16,
+            weight: "bold",
+          },
+          padding:0,
+          color: "#FFFFFF", // Cor do texto
+        },
+        ticks: {
+          maxRotation: 0, // Impede a rotação das labels
+          minRotation: 0, // Impede a rotação das labels
+        },
+      },
       y: {
         beginAtZero: true,
+        min: 20,
+        max: 160, 
         ticks: {
           stepSize: 20, 
         },
@@ -32,15 +59,11 @@ const chart = new Chart(ctx, {
           display: true, 
           text: "Temperatura (ºC)", 
           font: {
-            size: 20, 
+            size: 14, 
+            weight: 'bold',
           },
           color: "#FFFFFF", 
         },
-          ticks: {
-            font: {
-              size: 15,  // Aumenta o tamanho das labels no eixo Y
-            },
-          },
       },
     },
     plugins: {
@@ -205,6 +228,70 @@ const chart3 = new Chart(ctx3, {
 
 let intervalId;  // Declarar intervalId no escopo global
 
+var opcao_global;
+async function grafico1 (opcao) {
+  opcao_global = opcao;
+  var IdSetor = slc_setor.value
+  var setor = lista_setores[IdSetor-1]
+
+  try {
+    const graficoMedia = async () => {
+      try {                
+        const resposta = await fetch(`/dashboard/grafico1/${opcao}/${setor}`);
+        if (!resposta.ok) {
+          throw new Error(`Erro na requisição: ${resposta.statusText}`);
+        }
+
+        // Obtém os dados do JSON
+        const data = await resposta.json();
+        console.log("Dados recebidos da média:", data); 
+         // Log dos dados recebidos para depuração
+         var lista_x=[]
+         var lista_y=[]
+         var lista_meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro', 'Novembro','Dezembro']
+         console.log("Tamanho do array:", data.data.length);
+
+         for (let cont = 0; cont < data.data.length; cont++) {
+           const elemento = data.data[cont];
+           var x = elemento.Data
+
+          if(opcao == 2){
+            var x = lista_meses[elemento.Data -1]
+          }
+
+          var y = elemento.media
+
+          lista_x.push(x)
+          lista_y.push(y)     
+         }
+
+
+         if(opcao == 1){
+          chart.config.options.plugins.title.text = "Temperatura média das últimos 24 hrs";
+          chart.options.scales.x.title.text = "Dia"; 
+        } else if(opcao == 2){
+           chart.config.options.plugins.title.text = "Temperatura média dos últimos meses";
+           chart.options.scales.x.title.text = "Mês"; 
+        } else if (opcao == 3){
+          chart.config.options.plugins.title.text = "Temperatura média dos últimos anos";
+          chart.options.scales.x.title.text = "Ano"; 
+        }
+         chart.data.labels = lista_x;
+         chart.data.datasets[0].data = lista_y;        
+         chart.update();
+      } catch (error) {
+        console.error('Erro ao carregar os dados do gráfico média:', error);
+      }
+    };
+
+    // Faz a requisição inicial para carregar os dados
+    await graficoMedia();    
+  } catch (error) {
+    console.error('Erro ao carregar os dados do gráfico:', error);
+  }
+}
+
+lista_setores = []
 async function carregarSetores() {
   try {
     // Obtém o idEmpresa do sessionStorage
@@ -240,12 +327,14 @@ async function carregarSetores() {
             const option = document.createElement('option');
             option.value = setor.idSetor;  // O valor da opção é o id do setor
             option.textContent = setor.Nome;  // O texto da opção é o nome do setor
+            lista_setores.push(setor.Nome)
             selectElement.appendChild(option);
         });
 
         // Chama a função para preencher as máquinas e carregar o gráfico com o setor selecionado
         const idSetor = selectElement.value; // Pegue o valor do setor selecionado
-        await preencherSelect(idSetor); // Chama para preencher as máquinas e carregar o gráfico
+        await preencherSelect(idSetor); 
+        await grafico1(1)// Chama para preencher as máquinas e carregar o gráfico
 
     } else {
         
@@ -374,6 +463,7 @@ document.getElementById('slc_setor').addEventListener('change', async (event) =>
   const idSetor = event.target.value;  // Obtém o id do setor selecionado
   await preencherSelect(idSetor);  // Preenche as máquinas e atualiza o gráfico
   await grafico2(idSetor);  // Atualiza o gráfico com o novo setor selecionado
+  await grafico1(opcao_global);
 });
 
 

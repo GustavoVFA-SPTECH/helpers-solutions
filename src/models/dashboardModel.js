@@ -10,6 +10,45 @@ const getSetores = async (idEmpresa) => {
     }
 }
 
+const grafico1 = async (opcao,setor) => {
+
+    try {
+        if(opcao == 1){
+            const registros = await database.executar(`select DATE_FORMAT(datahora, '%d/%m') as Data, truncate(avg(temperatura),0) as media 
+                                                        from Registro 
+                                                        join Maquina 
+                                                        on fkMaquina = idMaquina
+                                                        join Setor
+                                                        on fkSetor = idSetor
+                                                        where Setor.Nome = "${setor}"
+                                                        group by Data 
+                                                        order by Data desc 
+                                                        limit 7;`)    
+            return registros;
+        }else if(opcao == 2){
+            const registros = await database.executar(`select month(datahora) as Data, truncate(avg(temperatura),0) as media from Registro 
+                                                        join Maquina 
+                                                        on fkMaquina = idMaquina
+                                                        join Setor
+                                                        on fkSetor = idSetor
+                                                        where Setor.Nome = "${setor}" and datahora >= '2024-01-01'
+                                                        group by Data order by Data asc limit 12;`)    
+            return registros;            
+        }else if(opcao == 3){
+            const registros = await database.executar(`select year(datahora) as Data, truncate(avg(temperatura),0) as media from Registro 
+                                                        join Maquina 
+                                                        on fkMaquina = idMaquina
+                                                        join Setor
+                                                        on fkSetor = idSetor
+                                                        where Setor.Nome = "${setor}"
+                                                        group by Data order by Data desc limit 12;    `)    
+            return registros;
+        }
+    } catch (error) {
+        return error
+    }    
+}
+
 const grafico2 = async (idMaquina) => {
 
     try {
@@ -55,6 +94,7 @@ const getGrafico2 = async (idSetor) => {
 
 module.exports = {
     getMaquinas,
+    grafico1,
     grafico2,
     getSetores,
     getGrafico2

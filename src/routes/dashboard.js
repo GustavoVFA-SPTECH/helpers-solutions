@@ -11,6 +11,10 @@ router.get('/maquinas/:idSetor', function (req, res) {
     dashboardController.getMaquina(req, res)
 })
 
+router.get("/grafico1/:opcao/:setor", function (req, res) {
+    dashboardController.criarGrafico1(req, res)
+})
+
 router.get("/grafico3/:idMaquina", function (req, res) {
     dashboardController.criarGrafico3(req, res)
 })

@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS Helpers;
+
 CREATE DATABASE Helpers;
 USE Helpers;
 
@@ -92,6 +92,8 @@ CREATE TABLE Maquina (
     CONSTRAINT fkMaquinaSetor FOREIGN KEY (fkSetor) REFERENCES Setor(idSetor)
 );
 
+select * from acesso;
+
 CREATE TABLE Registro (
     idRegistro INT PRIMARY KEY AUTO_INCREMENT,
     dataHora DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -99,6 +101,7 @@ CREATE TABLE Registro (
     fkMaquina INT,
     CONSTRAINT fkRegistroMaquina FOREIGN KEY (fkMaquina) REFERENCES Maquina(idMaquina)
 );
+select * from setor;
 
 INSERT INTO Setor (Nome, fkEmpresa) VALUES
 ('Setor A', 1),
@@ -123,43 +126,44 @@ INSERT INTO Setor (Nome, fkEmpresa) VALUES
 ('Setor T', 7),
 ('Setor U', 7);
 
+select * from Maquina;
 
 INSERT INTO Maquina (Nome, Tipo, tempMax, tempMinima, fkSetor) VALUES
-('Máquina 1', 'Tipo A', 140.00, 110.00, 1),
-('Máquina 2', 'Tipo B', 140.00, 110.00, 1),
-('Máquina 3', 'Tipo C', 140.00, 110.00, 1),
-('Máquina 4', 'Tipo A', 140.00, 110.00, 1),
-('Máquina 5', 'Tipo B', 140.00, 110.00, 1),
-('Máquina 6', 'Tipo C', 140.00, 110.00, 2),
-('Máquina 7', 'Tipo A', 140.00, 110.00, 2),
-('Máquina 8', 'Tipo B', 140.00, 110.00, 2),
-('Máquina 9', 'Tipo C', 140.00, 110.00, 2),
-('Máquina 10', 'Tipo A', 140.00, 110.00, 2),
-('Máquina 11', 'Tipo B', 140.00, 110.00, 3),
-('Máquina 12', 'Tipo C', 140.00, 110.00, 3),
-('Máquina 13', 'Tipo A', 140.00, 110.00, 3),
-('Máquina 14', 'Tipo B', 140.00, 110.00, 3),
-('Máquina 15', 'Tipo C', 140.00, 110.00, 3),
-('Máquina 16', 'Tipo A', 140.00, 110.00, 4),
-('Máquina 17', 'Tipo B', 140.00, 110.00, 4),
-('Máquina 18', 'Tipo C', 140.00, 110.00, 4),
-('Máquina 19', 'Tipo A', 140.00, 110.00, 4),
-('Máquina 20', 'Tipo B', 140.00, 110.00, 4),
-('Máquina 21', 'Tipo C', 140.00, 110.00, 5),
-('Máquina 22', 'Tipo A', 140.00, 110.00, 5),
-('Máquina 23', 'Tipo B', 140.00, 110.00, 5),
-('Máquina 24', 'Tipo C', 140.00, 110.00, 5),
-('Máquina 25', 'Tipo A', 140.00, 110.00, 5),
-('Máquina 26', 'Tipo B', 140.00, 110.00, 6),
-('Máquina 27', 'Tipo C', 140.00, 110.00, 6),
-('Máquina 28', 'Tipo A', 140.00, 110.00, 6),
-('Máquina 29', 'Tipo B', 140.00, 110.00, 6),
-('Máquina 30', 'Tipo C', 140.00, 110.00, 6),
-('Máquina 31', 'Tipo A', 140.00, 110.00, 7),
-('Máquina 32', 'Tipo B', 140.00, 110.00, 7),
-('Máquina 33', 'Tipo C', 140.00, 110.00, 7),
-('Máquina 34', 'Tipo A', 140.00, 110.00, 7),
-('Máquina 35', 'Tipo B', 140.00, 110.00, 7);
+('Máquina 1', 'Tipo A', 150.00, 110.00, 1),
+('Máquina 2', 'Tipo B', 150.00, 110.00, 1),
+('Máquina 3', 'Tipo C', 150.00, 110.00, 1),
+('Máquina 4', 'Tipo A', 150.00, 110.00, 1),
+('Máquina 5', 'Tipo B', 150.00, 110.00, 1),
+('Máquina 6', 'Tipo C', 150.00, 110.00, 2),
+('Máquina 7', 'Tipo A', 150.00, 110.00, 2),
+('Máquina 8', 'Tipo B', 150.00, 110.00, 2),
+('Máquina 9', 'Tipo C', 150.00, 110.00, 2),
+('Máquina 10', 'Tipo A', 150.00, 110.00, 2),
+('Máquina 11', 'Tipo B', 150.00, 110.00, 3),
+('Máquina 12', 'Tipo C', 150.00, 110.00, 3),
+('Máquina 13', 'Tipo A', 150.00, 110.00, 3),
+('Máquina 14', 'Tipo B', 150.00, 110.00, 3),
+('Máquina 15', 'Tipo C', 150.00, 110.00, 3),
+('Máquina 16', 'Tipo A', 150.00, 110.00, 4),
+('Máquina 17', 'Tipo B', 150.00, 110.00, 4),
+('Máquina 18', 'Tipo C', 150.00, 110.00, 4),
+('Máquina 19', 'Tipo A', 150.00, 110.00, 4),
+('Máquina 20', 'Tipo B', 150.00, 110.00, 4),
+('Máquina 21', 'Tipo C', 150.00, 110.00, 5),
+('Máquina 22', 'Tipo A', 150.00, 110.00, 5),
+('Máquina 23', 'Tipo B', 150.00, 110.00, 5),
+('Máquina 24', 'Tipo C', 150.00, 110.00, 5),
+('Máquina 25', 'Tipo A', 150.00, 110.00, 5),
+('Máquina 26', 'Tipo B', 150.00, 110.00, 6),
+('Máquina 27', 'Tipo C', 150.00, 110.00, 6),
+('Máquina 28', 'Tipo A', 150.00, 110.00, 6),
+('Máquina 29', 'Tipo B', 150.00, 110.00, 6),
+('Máquina 30', 'Tipo C', 150.00, 110.00, 6),
+('Máquina 31', 'Tipo A', 150.00, 110.00, 7),
+('Máquina 32', 'Tipo B', 150.00, 110.00, 7),
+('Máquina 33', 'Tipo C', 150.00, 110.00, 7),
+('Máquina 34', 'Tipo A', 150.00, 110.00, 7),
+('Máquina 35', 'Tipo B', 150.00, 110.00, 7);
 
 INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
 ('2024-01-15 09:00:00', 110.2, 1),
@@ -373,15 +377,264 @@ INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
 ('2024-01-15 09:20:00', 120.0, 35),
 ('2024-01-15 09:25:00', 122.2, 35);
 
-CREATE TABLE Contato (
-idContato INT PRIMARY KEY AUTO_INCREMENT,
-Nome VARCHAR(45),
-Email VARCHAR(100),
-Mensagem VARCHAR(240)
-);
+-- Dados do dia 9 de janeiro
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-01-09 09:00:00', 110.0, 1),
+('2024-01-09 09:05:00', 111.2, 2),
+('2024-01-09 09:10:00', 80.4, 3),
+('2024-01-09 09:15:00', 113.6, 4),
+('2024-01-09 09:20:00', 90.8, 5),
+('2024-01-09 09:25:00', 116.0, 6),
+('2024-01-09 09:00:00', 100.2, 7),
+('2024-01-09 09:05:00', 118.4, 8),
+('2024-01-09 09:10:00', 80.6, 9),
+('2024-01-09 09:15:00', 120.8, 10),
+('2024-01-09 09:20:00', 80.0, 11),
+('2024-01-09 09:25:00', 123.2, 12),
+('2024-01-09 09:00:00', 124.4, 13),
+('2024-01-09 09:05:00', 125.6, 14),
+('2024-01-09 09:10:00', 126.8, 15);
+
+-- Dados do dia 10 de janeiro
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-01-10 09:00:00', 100.5, 1),
+('2024-01-10 09:05:00', 101.7, 2),
+('2024-01-10 09:10:00', 102.9, 3),
+('2024-01-10 09:15:00', 100.1, 4),
+('2024-01-10 09:20:00', 105.3, 5),
+('2024-01-10 09:25:00', 90.5, 6),
+('2024-01-10 09:00:00', 70.7, 7),
+('2024-01-10 09:05:00', 108.9, 8),
+('2024-01-10 09:10:00', 90.1, 9),
+('2024-01-10 09:15:00', 111.3, 10),
+('2024-01-10 09:20:00', 112.5, 11),
+('2024-01-10 09:25:00', 75.7, 12),
+('2024-01-10 09:00:00', 114.9, 13),
+('2024-01-10 09:05:00', 116.1, 14),
+('2024-01-10 09:10:00', 117.3, 15);
+
+-- Dados do dia 11 de janeiro
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-01-11 09:00:00', 101.0, 1),
+('2024-01-11 09:05:00', 102.2, 2),
+('2024-01-11 09:10:00', 103.4, 3),
+('2024-01-11 09:15:00', 104.6, 4),
+('2024-01-11 09:20:00', 100.8, 5),
+('2024-01-11 09:25:00', 107.0, 6),
+('2024-01-11 09:00:00', 108.2, 7),
+('2024-01-11 09:05:00', 109.4, 8),
+('2024-01-11 09:10:00', 110.6, 9),
+('2024-01-11 09:15:00', 100.8, 10),
+('2024-01-11 09:20:00', 113.0, 11),
+('2024-01-11 09:25:00', 114.2, 12),
+('2024-01-11 09:00:00', 115.4, 13),
+('2024-01-11 09:05:00', 116.6, 14),
+('2024-01-11 09:10:00', 117.8, 15);
+
+-- Dados do dia 12 de janeiro
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-01-12 09:00:00', 100.8, 1),
+('2024-01-12 09:05:00', 102.0, 2),
+('2024-01-12 09:10:00', 90.2, 3),
+('2024-01-12 09:15:00', 104.4, 4),
+('2024-01-12 09:20:00', 105.6, 5),
+('2024-01-12 09:25:00', 80.8, 6),
+('2024-01-12 09:00:00', 108.0, 7),
+('2024-01-12 09:05:00', 109.2, 8),
+('2024-01-12 09:10:00', 110.4, 9),
+('2024-01-12 09:15:00', 111.6, 10),
+('2024-01-12 09:20:00', 75.8, 11),
+('2024-01-12 09:25:00', 114.0, 12),
+('2024-01-12 09:00:00', 85.2, 13),
+('2024-01-12 09:05:00', 116.4, 14),
+('2024-01-12 09:10:00', 117.6, 15);
+
+-- Dados do dia 13 de janeiro
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-01-13 09:00:00', 101.1, 1),
+('2024-01-13 09:05:00', 102.3, 2),
+('2024-01-13 09:10:00', 103.5, 3),
+('2024-01-13 09:15:00', 104.7, 4),
+('2024-01-13 09:20:00', 105.9, 5),
+('2024-01-13 09:25:00', 107.1, 6),
+('2024-01-13 09:00:00', 108.3, 7),
+('2024-01-13 09:05:00', 109.5, 8),
+('2024-01-13 09:10:00', 110.7, 9),
+('2024-01-13 09:15:00', 111.9, 10),
+('2024-01-13 09:20:00', 113.1, 11),
+('2024-01-13 09:25:00', 114.3, 12),
+('2024-01-13 09:00:00', 115.5, 13),
+('2024-01-13 09:05:00', 116.7, 14),
+('2024-01-13 09:10:00', 117.9, 15);
+
+-- Dados do dia 14 de janeiro
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-01-14 09:00:00', 101.4, 1),
+('2024-01-14 09:05:00', 90.6, 2),
+('2024-01-14 09:10:00', 103.8, 3),
+('2024-01-14 09:15:00', 105.0, 4),
+('2024-01-14 09:20:00', 106.2, 5),
+('2024-01-14 09:25:00', 123.4, 6),
+('2024-01-14 09:00:00', 108.6, 7),
+('2024-01-14 09:05:00', 109.8, 8),
+('2024-01-14 09:10:00', 90.0, 9),
+('2024-01-14 09:15:00', 112.2, 10),
+('2024-01-14 09:20:00', 100.4, 11),
+('2024-01-14 09:25:00', 114.6, 12),
+('2024-01-14 09:00:00', 115.8, 13),
+('2024-01-14 09:05:00', 117.0, 14),
+('2024-01-14 09:10:00', 100.2, 15);
+
+-- Inserindo registros para os últimos meses com médias definidas
+-- Fevereiro (média 85)
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-02-05 09:00:00', 86.2, 2),
+('2024-02-10 10:30:00', 84.5, 6),
+('2024-02-15 12:15:00', 85.7, 10),
+('2024-02-20 14:00:00', 83.9, 14),
+('2024-02-25 16:30:00', 86.4, 18);
+
+-- Março (média 97)
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-03-05 08:30:00', 96.1, 3),
+('2024-03-10 10:00:00', 98.5, 7),
+('2024-03-15 11:45:00', 97.3, 11),
+('2024-03-20 13:30:00', 95.8, 15),
+('2024-03-25 15:10:00', 99.0, 19);
+
+-- Abril (média 100)
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-04-05 09:10:00', 101.3, 4),
+('2024-04-10 10:25:00', 99.6, 8),
+('2024-04-15 11:50:00', 100.5, 12),
+('2024-04-20 13:15:00', 98.8, 16),
+('2024-04-25 15:00:00', 101.7, 20);
+
+-- Maio (média 93)
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-05-05 08:00:00', 92.4, 5),
+('2024-05-10 10:10:00', 93.8, 9),
+('2024-05-15 12:30:00', 94.1, 13),
+('2024-05-20 14:20:00', 92.7, 17),
+('2024-05-25 16:45:00', 93.3, 21);
+
+-- Junho (média 89)
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-06-05 09:30:00', 88.2, 6),
+('2024-06-10 11:00:00', 89.7, 10),
+('2024-06-15 12:45:00', 90.1, 14),
+('2024-06-20 14:30:00', 88.9, 18),
+('2024-06-25 16:15:00', 89.3, 22);
+
+-- Julho (média 110)
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-07-05 08:45:00', 109.5, 7),
+('2024-07-10 10:30:00', 111.2, 11),
+('2024-07-15 12:20:00', 110.8, 15),
+('2024-07-20 14:10:00', 109.1, 19),
+('2024-07-25 16:40:00', 111.5, 23);
+
+-- Agosto (média 100)
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-08-05 09:15:00', 99.8, 8),
+('2024-08-10 10:50:00', 101.0, 12),
+('2024-08-15 11:35:00', 100.3, 16),
+('2024-08-20 13:45:00', 99.2, 20),
+('2024-08-25 15:25:00', 100.7, 24);
+
+-- Setembro (média 96)
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-09-05 09:05:00', 95.4, 9),
+('2024-09-10 10:40:00', 96.8, 13),
+('2024-09-15 11:30:00', 97.2, 17),
+('2024-09-20 14:00:00', 95.7, 21),
+('2024-09-25 16:10:00', 96.5, 25);
+
+-- Outubro (média 117)
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-10-05 08:55:00', 116.2, 10),
+('2024-10-10 10:35:00', 118.1, 14),
+('2024-10-15 11:45:00', 117.5, 18),
+('2024-10-20 13:20:00', 116.9, 22),
+('2024-10-25 15:50:00', 117.3, 26);
+
+-- Novembro (média 93)
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-11-05 09:10:00', 92.8, 11),
+('2024-11-10 10:45:00', 93.2, 15),
+('2024-11-15 12:00:00', 94.1, 19),
+('2024-11-20 14:35:00', 93.5, 23),
+('2024-11-25 16:20:00', 92.9, 27);
+
+-- Dezembro (média 101)
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2024-12-05 08:30:00', 100.5, 12),
+('2024-12-10 10:20:00', 101.7, 16),
+('2024-12-15 11:40:00', 102.3, 20),
+('2024-12-20 14:10:00', 100.8, 24),
+('2024-12-25 16:45:00', 101.1, 28);
+
+
+-- Ano 2022
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2022-03-15 09:00:00', 115.2, 1),
+('2022-05-20 10:15:00', 122.3, 5),
+('2022-07-10 14:45:00', 125.8, 10),
+('2022-08-25 16:00:00', 135.2, 15),
+('2022-10-05 18:30:00', 140.5, 20),
+('2022-12-18 20:00:00', 145.1, 25),
+('2022-01-22 08:30:00', 112.0, 30),
+('2022-04-14 11:45:00', 118.4, 12),
+('2022-06-30 13:30:00', 121.6, 7),
+('2022-11-11 09:50:00', 130.9, 3);
+
+-- Ano 2023
+INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
+('2023-01-15 08:30:00', 70.3, 2),
+('2023-03-18 09:45:00', 70.8, 6),
+('2023-05-21 15:20:00', 70.4, 8),
+('2023-07-27 17:00:00', 130.7, 14),
+('2023-08-13 19:10:00', 70.2, 18),
+('2023-10-02 21:45:00', 142.5, 23),
+('2023-12-11 07:30:00', 115.9, 26),
+('2023-02-22 11:15:00', 120.6, 11),
+('2023-04-08 12:40:00', 128.3, 4),
+('2023-09-30 16:25:00', 135.1, 17);
+
+select datahora, temperatura,fkmaquina from Registro where datahora > '2024-11-27';
+
+select DATE_FORMAT(datahora, '%d/%m') as Dia, truncate(avg(temperatura),0) as Média 
+from Registro 
+join Maquina 
+on fkMaquina = idMaquina
+join Setor
+on fkSetor = idSetor
+where Setor.Nome = "Setor A"
+group by Dia 
+order by Dia desc 
+limit 7;
+
+select month(datahora) as Mes, truncate(avg(temperatura),0) as Média from Registro 
+join Maquina 
+on fkMaquina = idMaquina
+join Setor
+on fkSetor = idSetor
+where Setor.Nome = "Setor B" and datahora >= '2024-01-01'
+group by Mes order by Mes desc limit 12;
+
+select year(datahora) as Ano, truncate(avg(temperatura),0) as Média from Registro 
+join Maquina 
+on fkMaquina = idMaquina
+join Setor
+on fkSetor = idSetor
+where Setor.Nome = "Setor A"
+group by Ano order by Ano desc limit 12;
+
+
+
+
 
 SELECT * FROM Registro;
-SELECT * FROM Contato;
 
 -- Select do registro com maquina
 SELECT r.temperatura as Temperatura, r.dataHora as "Horario Registro", m.nome as Maquina
@@ -408,7 +661,7 @@ ON r.fkMaquina = m.idMaquina;
 -- VIEW
 CREATE VIEW RegistroMaquina
 as
-SELECT r.temperatura as Temperatura, r.dataHora as Horário, m.nome as Máquina, fkSetor, fkmaquina
+SELECT r.temperatura as Temperatura, r.dataHora as Horário, m.nome as Máquina,
 CASE
 WHEN Temperatura < 100
 THEN 'Resfriamento'
@@ -421,40 +674,3 @@ JOIN Maquina as m
 ON r.fkMaquina = m.idMaquina;
 
 select Horário, Máquina, Temperatura, stats from RegistroMaquina;
-
-select * from registro;
-
-SELECT 
-m.nome AS 'Nome',
-r.temperatura AS 'Temperatura'
-FROM Registro AS r
-JOIN Maquina AS m 
-ON r.fkMaquina = m.idMaquina
-WHERE fkSetor = 1 limit 1;
-
-SELECT 
-m.nome AS 'Nome',
-r.temperatura AS 'Temperatura'
-FROM Registro AS r
-JOIN Maquina AS m ON r.fkMaquina = m.idMaquina
-WHERE fkSetor = 1
-ORDER BY r.dataHora DESC;
-
-select * from registro;
-select * from maquina order by idMaquina desc;
-
-SELECT nome, avg(temperatura) as temp FROM registro
-JOIN Maquina
-ON fkMaquina = idMaquina
-WHERE fkSetor = 1
-GROUP BY nome, temp;
-
-SELECT nome, temperatura, dataHora
-FROM registro r
-JOIN maquina m ON r.fkMaquina = m.idMaquina
-WHERE r.fkSetor = 1
-GROUP BY nome, temperatura, dataHora
-ORDER BY dataHora DESC
-LIMIT ;
-
-
