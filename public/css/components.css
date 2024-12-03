@@ -175,3 +175,25 @@ body{
     font-size: xx-large;
     font-weight: bolder;
   }
+
+.kpiModal {
+    display: flex;
+    position: absolute;
+    z-index: 3;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(56, 54, 54, 0.653);
+}
+
+.kpiMain{
+    border: var(--laranjaEscuro) 2px solid;
+    background-color: var(--azulEscuro);
+    width: 35%;
+    display: flex;
+    overflow: auto;
+    align-items: center ;
+    height: 80%;
+}
+
