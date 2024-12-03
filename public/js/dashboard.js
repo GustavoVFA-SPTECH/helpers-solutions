@@ -25,7 +25,6 @@ const chart = new Chart(ctx, {
     scales: {
       y: {
         beginAtZero: true,
-        max: 150, 
         ticks: {
           stepSize: 20, 
         },
@@ -33,10 +32,15 @@ const chart = new Chart(ctx, {
           display: true, 
           text: "Temperatura (ºC)", 
           font: {
-            size: 14, 
+            size: 20, 
           },
           color: "#FFFFFF", 
         },
+          ticks: {
+            font: {
+              size: 15,  // Aumenta o tamanho das labels no eixo Y
+            },
+          },
       },
     },
     plugins: {
@@ -65,28 +69,35 @@ const chart2 = new Chart(ctx2, {
     scales: {
       x: {
         beginAtZero: true,
-        max: 180,
         ticks: {
           stepSize: 10,
+          font: {
+            size: 15,  // Aumenta o tamanho das labels no eixo X
+          },
         },
         title: {
-          display: true, 
+          display: true,
           text: "Temperatura (ºC)", 
           font: {
-            size: 16, 
+            size: 20,  // Tamanho da fonte do título do eixo X
             weight: "bold",
           },
           padding: 0,
-          color: "#FFFFFF", 
+          color: "#FFFFFF",
         },
       },
       y: {
-        display: true, 
+        display: true,
         title: {
           display: true, 
-          text: "", 
+          text: "",  // Título vazio para o eixo Y
           font: {
-            size: 20, 
+            size: 20,  // Tamanho do título do eixo Y
+          },
+        },
+        ticks: {
+          font: {
+            size: 17,  // Aumenta o tamanho das labels no eixo Y
           },
         },
       },
@@ -96,13 +107,14 @@ const chart2 = new Chart(ctx2, {
         display: true,
         text: "Temperatura atual das máquinas",
         font: {
-          size: 20, 
+          size: 20,  // Tamanho da fonte do título do gráfico
         },
         padding: 0,
       },
     },
   },
 });
+
 
 const chart3 = new Chart(ctx3, {
   type: "line",
@@ -150,9 +162,14 @@ const chart3 = new Chart(ctx3, {
           display: true, 
           text: "Temperatura (ºC)", 
           font: {
-            size: 14, 
+            size: 20, 
           },
           color: "#FFFFFF", 
+        },
+        ticks: {
+          font: {
+            size: 15,  // Aumenta o tamanho das labels no eixo Y
+          },
         },
       },
       x: {
@@ -161,8 +178,13 @@ const chart3 = new Chart(ctx3, {
           display: true, 
           text: "Horário", 
           font: {
-            size: 16, 
+            size: 20, 
             weight: "bold",
+          },
+        },
+        ticks: {
+          font: {
+            size: 15,  // Aumenta o tamanho das labels no eixo Y
           },
         },
       },
@@ -378,9 +400,9 @@ async function grafico2(idSetor) {
         if (temperatura > 140) {
           return "rgba(255, 0, 0, 1)";  // Vermelho para temperaturas maiores que 140
         } else if (temperatura < 100) {
-          return "rgba(78, 150, 244, 1)";  // Azul para temperaturas menores que 100
+          return "rgba(78, 150, 255, 1)";  // Azul para temperaturas menores que 100
         } else {
-          return "#eb9a05";  // Laranja para temperaturas entre 100 e 140
+          return "rgb(149, 245, 154)";  // Laranja para temperaturas entre 100 e 140
         }
       };
 
