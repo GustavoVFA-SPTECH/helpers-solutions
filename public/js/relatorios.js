@@ -102,7 +102,6 @@ function carregarRelatorios() {
             }
 
             resposta.json().then(function (dados) {
-                console.log("Resposta recebida: ", JSON.stringify(dados));
                 const tabela = document.querySelector('.relatorios');
                 tabela.querySelectorAll('tr:not(:first-child)').forEach(function (linha) {
                     linha.remove();
@@ -169,7 +168,65 @@ function carregarRelatoriosFiltro() {
         }
     })
     .then(function (dados) {
-        console.log("Resposta recebida: ", JSON.stringify(dados));
+
+        const tabela = document.querySelector('.relatorios');
+        
+        // Remove as linhas anteriores da tabela
+        tabela.querySelectorAll('tr:not(:first-child)').forEach(function (linha) {
+            linha.remove();
+        });
+
+        // Preenche a tabela com os dados recebidos
+        dados.forEach(function (item) {
+            var formatoData = new Date(item.horario).toLocaleDateString("PT-BR", { hour: "2-digit", minute: "2-digit" });
+
+            var novaLinha = document.createElement('tr');
+            
+            var celulaHorario = document.createElement('td');
+            celulaHorario.textContent = formatoData;
+            
+            var celulaMaquina = document.createElement('td');
+            celulaMaquina.textContent = item.maquina;
+
+            var celulaTemperatura = document.createElement('td');
+            celulaTemperatura.textContent = item.temp;
+
+            var celulaStatus = document.createElement('td');
+            celulaStatus.textContent = item.Stats;
+
+            novaLinha.appendChild(celulaHorario);
+            novaLinha.appendChild(celulaMaquina);
+            novaLinha.appendChild(celulaTemperatura);
+            novaLinha.appendChild(celulaStatus);
+
+            tabela.appendChild(novaLinha);
+        });
+    })
+    .catch(function (erro) {
+        console.error(erro);
+    });
+}
+
+function carregarFiltroMaquina() {
+    const maquina = document.getElementById('fkMaquina').value;
+
+    fetch('/relatorios/filtrado/maquina', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            maquinaServer: maquina
+        })
+    })
+    .then(function (resposta) {
+        if (resposta.ok) {
+            return resposta.json();
+        } else {
+            throw "Erro ao obter os relatórios filtrados!";
+        }
+    })
+    .then(function (dados) {
 
         const tabela = document.querySelector('.relatorios');
         

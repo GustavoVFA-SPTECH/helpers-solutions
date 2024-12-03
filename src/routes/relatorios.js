@@ -12,4 +12,8 @@ router.post("/filtrado", function(req, res){
     relatoriosController.filtroRelatorios(req, res)
 })
 
+router.post("/filtrado/maquina", function(req, res){
+    relatoriosController.filtroMaquina(req, res)
+})
+
 module.exports = router;

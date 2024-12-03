@@ -408,7 +408,7 @@ ON r.fkMaquina = m.idMaquina;
 -- VIEW
 CREATE VIEW RegistroMaquina
 as
-SELECT r.temperatura as Temperatura, r.dataHora as Horário, m.nome as Máquina, fkSetor,
+SELECT r.temperatura as Temperatura, r.dataHora as Horário, m.nome as Máquina, fkSetor, fkmaquina
 CASE
 WHEN Temperatura < 100
 THEN 'Resfriamento'

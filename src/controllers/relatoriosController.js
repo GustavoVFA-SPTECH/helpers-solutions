@@ -33,8 +33,21 @@ function filtroRelatorios(req, res){
         }
     )
 }
+function filtroMaquina(req, res){
+    const idMaquina = req.body.maquinaServer;
+
+    relatoriosModel.relatorioMaquina(idMaquina)
+    .then(function(resultado){
+        res.json(resultado);
+    }).catch(
+        function(erro){
+            console.log(erro);
+        }
+    )
+}
 
 module.exports = {
     relatorios,
-    filtroRelatorios
+    filtroRelatorios,
+    filtroMaquina
 }

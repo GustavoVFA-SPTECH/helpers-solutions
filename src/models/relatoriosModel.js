@@ -13,8 +13,14 @@ function relatorioFiltrado(idSetor, inicio, final){
 `)
     return log;
 }
+function relatorioMaquina(idMaquina){
+    const log = database.executar(`SELECT Horário AS horario, Máquina AS maquina, Temperatura AS temp, stats FROM RegistroMaquina WHERE fkMaquina = ${idMaquina} ORDER BY Horário DESC;
+`)
+    return log;
+}
 
 module.exports = {
   relatorios,
-  relatorioFiltrado
+  relatorioFiltrado,
+  relatorioMaquina
 };
