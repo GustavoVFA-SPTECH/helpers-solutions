@@ -204,3 +204,8 @@ input[type=file]::-webkit-file-upload-button {
 .navBar a:hover{
     color:#dd5a02
   }
+  
+.span_manual {
+    font-size: 20px;
+    margin-bottom: 4rem;
+}
