@@ -146,3 +146,10 @@
 .btnGrafico:hover{
     background-color: var(--laranjaEscuro);
 }
+
+.navBar a{
+    transition: 0.3s;
+  }
+.navBar a:hover{
+    color:#dd5a02
+  }
