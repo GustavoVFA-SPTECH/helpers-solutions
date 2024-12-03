@@ -41,7 +41,7 @@ const grafico1 = async (opcao,setor) => {
                                                         join Setor
                                                         on fkSetor = idSetor
                                                         where Setor.Nome = "${setor}"
-                                                        group by Data order by Data desc limit 12;    `)    
+                                                        group by Data order by Data ASC limit 12;    `)    
             return registros;
         }
     } catch (error) {
