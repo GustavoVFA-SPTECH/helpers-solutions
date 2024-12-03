@@ -267,7 +267,7 @@ async function grafico1 (opcao) {
 
 
          if(opcao == 1){
-          chart.config.options.plugins.title.text = "Temperatura média das últimos 24 hrs";
+          chart.config.options.plugins.title.text = "Temperatura média das últimos 7 dias";
           chart.options.scales.x.title.text = "Dia"; 
         } else if(opcao == 2){
            chart.config.options.plugins.title.text = "Temperatura média dos últimos meses";
