@@ -94,7 +94,7 @@ document.getElementById('fkSetor2').addEventListener('change', async (event) => 
     await preencherSelect(idSetor);  // Preenche as máquinas e atualiza o gráfico
 });
 
-  function carregarRelatorios() {
+function carregarRelatorios() {
     fetch("/relatorios/relatorios").then(function (resposta) {
         if (resposta.ok) {
             if (resposta.status == 204) {
