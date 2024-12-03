@@ -92,9 +92,13 @@ const getGrafico2 = async (idSetor) => {
     }
 }
 
-const getKPI1 = async () => {
+const getKPI1 = async (idEmpresa) => {
     try {
-        const aquecimento = await database.executar(`SELECT nome, `);
+        const aquecimento = await database.executar(`SELECT máquina, temperatura, nome, stats FROM RegistroMaquina
+                                                        JOIN setor
+                                                        ON fkSetor = idSetor
+                                                        WHERE fkEmpresa = ${idEmpresa} AND horário >= now();`);
+            return aquecimento;
     } catch (error) {
         return error
     }
@@ -105,5 +109,6 @@ module.exports = {
     grafico1,
     grafico2,
     getSetores,
-    getGrafico2
+    getGrafico2,
+    getKPI1
 };

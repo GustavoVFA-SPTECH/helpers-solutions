@@ -82,7 +82,6 @@ const criarGrafico2 = async (req, res) => {
     }
 }
 
-
 const getSetores = async (req, res) => {
     const {idEmpresa} = req.params;
 
@@ -102,10 +101,31 @@ const getSetores = async (req, res) => {
         return error
     }
 }
+
+const getKPI1 = async (req, res) => {
+    const {idEmpresa} = req.params;
+
+    try {
+        const aquecido = await dashboardModel.getKPI1(idEmpresa)
+
+        if(!aquecido){
+            res.status(404).json({
+                message: "Nenhum evento encontrado"
+            })
+        }else{
+            res.status(200).json({
+                data: aquecido
+            })
+        }
+    } catch (error) {
+        return error
+    }
+}
 module.exports = {
     criarGrafico1,
     criarGrafico3,
     criarGrafico2,
     getMaquina,
-    getSetores
+    getSetores,
+    getKPI1
 }
