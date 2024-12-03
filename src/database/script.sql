@@ -373,9 +373,15 @@ INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
 ('2024-01-15 09:20:00', 120.0, 35),
 ('2024-01-15 09:25:00', 122.2, 35);
 
-
+CREATE TABLE Contato (
+idContato INT PRIMARY KEY AUTO_INCREMENT,
+Nome VARCHAR(45),
+Email VARCHAR(100),
+Mensagem VARCHAR(240)
+);
 
 SELECT * FROM Registro;
+SELECT * FROM Contato;
 
 -- Select do registro com maquina
 SELECT r.temperatura as Temperatura, r.dataHora as "Horario Registro", m.nome as Maquina

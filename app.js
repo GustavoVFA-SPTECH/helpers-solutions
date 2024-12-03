@@ -23,11 +23,13 @@ var usuarioRouter = require("./src/routes/usuarios");
 // var empresasRouter = require("./src/routes/empresas");
 var relatoriosRouter = require("./src/routes/relatorios");
 var dashboardRouter = require("./src/routes/dashboard");
+var contatoRouter = require("./src/routes/contato");
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/contato", contatoRouter);
 
 app.use(cors());
 
