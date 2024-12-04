@@ -61,7 +61,7 @@
     text-align: center;
     height: 70%;
     width: 20%;
-    font-size: 25px;
+    font-size: 20px;
     padding: 10px;
 }
 .kpi1{
@@ -170,4 +170,9 @@
 
 .avisoKPI{
     font-size: 30px;
+}
+
+.clique{
+    font-size: 15px;
+    text-decoration: underline;
 }

@@ -101,15 +101,24 @@ const getGrafico2 = async (idSetor) => {
 
 const getKPI1 = async (idEmpresa) => {
   try {
-    const [aquecimento] = await database.executar(`SELECT COUNT(máquina) AS total_maquinas 
-                                                FROM RegistroMaquina 
-                                                JOIN setor ON fkSetor = idSetor 
-                                                WHERE fkEmpresa = ${idEmpresa} 
-                                                  AND horário >= NOW() - INTERVAL 10 MINUTE 
-                                                  AND stats = 'Superaquecimento' 
-                                                GROUP BY máquina, temperatura, nome, stats;
+    const [aquecimento] = await database.executar(`SELECT 
+    COUNT(máquina) AS total_maquinas 
+FROM 
+    RegistroMaquina 
+JOIN 
+    setor 
+ON 
+    fkSetor = idSetor 
+WHERE 
+    fkEmpresa = ${idEmpresa}
+    AND horário >= NOW() - INTERVAL 5 MINUTE 
+    AND stats COLLATE utf8mb4_unicode_ci = 'Superaquecimento' 
+GROUP BY 
+    máquina, temperatura, nome, stats;
 `);
     const qtd = aquecimento.total_maquinas
+    console.log(qtd)
+
     return qtd;
   } catch (error) {
     return error;
@@ -118,8 +127,23 @@ const getKPI1 = async (idEmpresa) => {
 
 const getKPI2 = async (idEmpresa) => {
     try {
-        const [resfriar] = await database.executar(`SELECT COUNT(máquina) AS total_maquinas FROM RegistroMaquina JOIN setor ON fkSetor = idSetor WHERE fkEmpresa = ${idEmpresa} AND horário >= NOW() - INTERVAL 10 MINUTE AND stats = 'Resfriamento' GROUP BY máquina, temperatura, nome, stats;`);
+        const [resfriar] = await database.executar(`SELECT 
+    COUNT(máquina) AS total_maquinas 
+FROM 
+    RegistroMaquina 
+JOIN 
+    setor 
+ON 
+    fkSetor = idSetor 
+WHERE 
+    fkEmpresa = ${idEmpresa}
+    AND horário >= NOW() - INTERVAL 5 MINUTE 
+    AND stats COLLATE utf8mb4_unicode_ci = 'Resfriamento' 
+GROUP BY 
+    máquina, temperatura, nome, stats;
+`);
         const qtd = resfriar.total_maquinas;
+        console.log(qtd)
         return qtd;
     } catch (error) {
         return error;
@@ -128,7 +152,39 @@ const getKPI2 = async (idEmpresa) => {
 
 const getDataKPI1 = async (idEmpresa) => {
     try {
-        const aquecimento = await database.executar(`SELECT máquina, temperatura, nome, stats FROM RegistroMaquina JOIN setor ON fkSetor = idSetor WHERE fkEmpresa = ${idEmpresa} AND horário >= NOW() - INTERVAL 10 MINUTE AND stats = 'Superaquecimento' GROUP BY máquina, temperatura, nome, stats;`);
+        const aquecimento = await database.executar(`WITH RankedTemperatures AS (
+    SELECT 
+        rm.máquina, 
+        rm.temperatura, 
+        s.nome, 
+        rm.stats,
+        ROW_NUMBER() OVER (
+            PARTITION BY rm.máquina 
+            ORDER BY rm.temperatura DESC
+        ) AS row_num
+    FROM 
+        RegistroMaquina rm
+    JOIN 
+        setor s 
+    ON 
+        rm.fkSetor = s.idSetor
+    WHERE 
+        fkEmpresa = ${idEmpresa}
+        AND rm.horário >= NOW() - INTERVAL 10 MINUTE
+        AND rm.stats COLLATE utf8mb4_unicode_ci = 'Superaquecimento'
+)
+SELECT 
+    máquina, 
+    temperatura, 
+    nome, 
+    stats
+FROM 
+    RankedTemperatures
+WHERE 
+    row_num = 1;
+
+
+`);
         return aquecimento;
     } catch (error) {
         return error;
@@ -137,7 +193,36 @@ const getDataKPI1 = async (idEmpresa) => {
 
 const getDataKPI2 = async (idEmpresa) => {
     try {
-        const resfriar = await database.executar(`SELECT máquina, temperatura, nome, stats FROM RegistroMaquina JOIN setor ON fkSetor = idSetor WHERE fkEmpresa = ${idEmpresa} AND horário >= NOW() - INTERVAL 10 MINUTE AND stats = 'Resfriamento' GROUP BY máquina, temperatura, nome, stats;`);
+        const resfriar = await database.executar(`WITH RankedTemperatures AS (
+    SELECT 
+        rm.máquina, 
+        rm.temperatura, 
+        s.nome, 
+        rm.stats,
+        ROW_NUMBER() OVER (
+            PARTITION BY rm.máquina 
+            ORDER BY rm.temperatura DESC
+        ) AS row_num
+    FROM 
+        RegistroMaquina rm
+    JOIN 
+        setor s 
+    ON 
+        rm.fkSetor = s.idSetor
+    WHERE 
+        fkEmpresa = ${idEmpresa}
+        AND rm.horário >= NOW() - INTERVAL 10 MINUTE
+        AND rm.stats COLLATE utf8mb4_unicode_ci = 'Resfriamento'
+)
+SELECT 
+    máquina, 
+    temperatura, 
+    nome, 
+    stats
+FROM 
+    RankedTemperatures
+WHERE 
+    row_num = 1;`);
         return resfriar;
     } catch (error) {
         return error;

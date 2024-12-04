@@ -476,7 +476,7 @@ async function grafico2(idSetor) {
       // Realiza a requisição para a API
       const response = await fetch(`/dashboard/grafico2/${idSetor}`);
       const data = await response.json();
-      console.log("Temperatura: ",data.data)
+      // console.log("Temperatura: ",data.data)
 
       // Extraindo os nomes das máquinas e as temperaturas
       const labels = data.data.map(item => item.nome);  // Nomes das máquinas
@@ -545,6 +545,8 @@ async function getKPIS(idEmpresa) {
     const data2 = await response2.json();
 
     // console.log("passei")
+    // console.log(data1.data)
+    // console.log(data2.data)
     return {
       KPI1: typeof data1.data === 'number' ? data1.data : 0,
       KPI2: typeof data2.data === 'number' ? data2.data : 0
@@ -582,59 +584,83 @@ window.addEventListener("load", () => {
 });
 
 async function openKPI(kpiID) {
+  const idEmpresa = sessionStorage.ID_EMPRESA || 'defaultID';
+  const modal = document.querySelector('.kpiModal');
+  const kpiMain = document.querySelector('.kpiMain');
 
-  const idEmpresa = sessionStorage.ID_EMPRESA;
+  // Validação dos elementos do DOM
+  if (!modal || !kpiMain) {
+    console.error("Elementos do modal ou kpiMain não encontrados.");
+    return;
+  }
+
   try {
-    const modal = document.querySelector('.kpiModal');
-    const kpiMain = document.querySelector('.kpiMain');
-
-    if (!modal || !kpiMain) {
-      console.error("Elementos do modal ou kpiMain não encontrados.");
-      return;
-    }
-
+    // Exibir modal e indicador de carregamento
     modal.style.display = 'flex';
-    kpiMain.innerHTML = ''; // Limpa o container
+    kpiMain.innerHTML = '<div class="spinner">Carregando...</div>';
 
-    // Consulta na rota correspondente
+    // Chamar API
     const response = await fetch(`/dashboard/${kpiID}/${idEmpresa}`);
     if (!response.ok) {
-      throw new Error(`Erro ao buscar dados do ${kpiID}: ${response.statusText}`);
+      throw new Error(`Erro ao buscar dados do KPI (${kpiID}): ${response.status} ${response.statusText}`);
     }
 
-    const data = await response.json();
+    const result = await response.json();
+    const { data } = result || {};
 
-    console.log(data);
+    console.log(result)
 
-    // Verifica se há dados
-    if (!data.data || data.data.length === 0) {
-      const emptyMessage = document.createElement('span');
-      emptyMessage.classList.add('msmVazio');
-      emptyMessage.textContent = 'Não há nenhuma máquina com ocorrências no momento!';
-      kpiMain.appendChild(emptyMessage);
+    // Remover spinner
+    kpiMain.innerHTML = '';
+
+    // Validar se há dados
+    if (!data || data.length === 0) {
+      exibirMensagemVazia(kpiMain);
       return;
     }
 
-    // Itera sobre os dados e cria os componentes
-    data.data.forEach(item => {
-      const component = document.createElement('div');
-      component.classList.add('componentKPI');
-
-      component.innerHTML = `
-        <span class="status">${item.stats.toUpperCase()}</span>
-        <div class="details">
-          <div class="infoLine"><span class="detailTitle">Setor:</span><span class="detailInfo">${item.nome}</span></div>
-          <div class="infoLine"><span class="detailTitle">Máquina:</span><span class="detailInfo">${item.máquina}</span></div>
-          <div class="infoLine"><span class="detailTitle">Temperatura:</span><span class="detailInfo">${item.temperatura}</span></div>
-        </div>
-      `;
-
+    // Gerar componentes para cada item
+    data.forEach(item => {
+      const component = criarComponenteKPI(item);
       kpiMain.appendChild(component);
     });
   } catch (error) {
+    // Exibir erro no console e no modal
     console.error("Erro ao carregar os dados do KPI:", error);
+    kpiMain.innerHTML = '<span class="error">Erro ao carregar os dados. Tente novamente mais tarde.</span>';
   }
 }
+
+// Função para exibir mensagem de dados ausentes
+function exibirMensagemVazia(container) {
+  const emptyMessage = document.createElement('span');
+  emptyMessage.classList.add('msmVazio');
+  emptyMessage.textContent = 'Não há nenhuma máquina com ocorrências no momento!';
+  container.appendChild(emptyMessage);
+}
+
+// Função para criar um componente KPI
+function criarComponenteKPI(item) {
+  const { stats = 'Desconhecido', nome = 'Indefinido', máquina = 'N/A', temperatura = 'N/A' } = item;
+
+  // Criação do componente
+  const component = document.createElement('div');
+  component.classList.add('componentKPI');
+
+  // Conteúdo do componente
+  component.innerHTML = `
+    <span class="status">${stats.toUpperCase()}</span>
+    <div class="details">
+      <div class="infoLine"><span class="detailTitle">Setor:</span><span class="detailInfo">${nome}</span></div>
+      <div class="infoLine"><span class="detailTitle">Máquina:</span><span class="detailInfo">${máquina}</span></div>
+      <div class="infoLine"><span class="detailTitle">Temperatura:</span><span class="detailInfo">${temperatura}</span></div>
+    </div>
+  `;
+
+  return component;
+}
+
+
 
 function fecharKPI(){
   const modal = document.querySelector('.kpiModal');
