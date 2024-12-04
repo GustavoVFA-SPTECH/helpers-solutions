@@ -106,7 +106,7 @@ const getKPI1 = async (idEmpresa) => {
 FROM 
     RegistroMaquina 
 JOIN 
-    setor 
+    Setor 
 ON 
     fkSetor = idSetor 
 WHERE 
@@ -132,7 +132,7 @@ const getKPI2 = async (idEmpresa) => {
 FROM 
     RegistroMaquina 
 JOIN 
-    setor 
+    Setor 
 ON 
     fkSetor = idSetor 
 WHERE 
@@ -165,7 +165,7 @@ const getDataKPI1 = async (idEmpresa) => {
     FROM 
         RegistroMaquina rm
     JOIN 
-        setor s 
+        Setor s 
     ON 
         rm.fkSetor = s.idSetor
     WHERE 
@@ -204,7 +204,7 @@ const getDataKPI2 = async (idEmpresa) => {
     FROM 
         RegistroMaquina rm
     JOIN 
-        setor s 
+        Setor s 
     ON 
         rm.fkSetor = s.idSetor
     WHERE 
