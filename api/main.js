@@ -15,11 +15,11 @@ const serial = async (valoresSensorAnalogico) => {
   // conexão com o banco de dados MySQL
   let poolBancoDados = mysql
     .createPool({
-      host: "localhost",
+      host: "10.18.34.120",
       user: "Inserir",
       password: "Inserir#DB2024",
       database: "Helpers",
-      port: 3306,
+      port: 3307,
     })
     .promise();
 

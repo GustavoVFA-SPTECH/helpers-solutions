@@ -22,7 +22,7 @@ const grafico1 = async (opcao, setor) => {
                                                         on fkMaquina = idMaquina
                                                         join Setor
                                                         on fkSetor = idSetor
-                                                        where Setor.Nome = "${setor}"
+                                                        where Setor.Nome COLLATE utf8mb4_bin = "${setor}"
                                                         group by Data 
                                                         order by Data desc 
                                                         limit 7;`);
@@ -34,7 +34,7 @@ const grafico1 = async (opcao, setor) => {
                                                         on fkMaquina = idMaquina
                                                         join Setor
                                                         on fkSetor = idSetor
-                                                        where Setor.Nome = "${setor}" and datahora >= '2024-01-01'
+                                                        where Setor.Nome COLLATE utf8mb4_bin = "${setor}" and datahora >= '2024-01-01'
                                                         group by Data order by Data asc limit 12;`);
       return registros;
     } else if (opcao == 3) {
@@ -44,8 +44,8 @@ const grafico1 = async (opcao, setor) => {
                                                         on fkMaquina = idMaquina
                                                         join Setor
                                                         on fkSetor = idSetor
-                                                        where Setor.Nome = "${setor}"
-                                                        group by Data order by Data ASC limit 12;    `);
+                                                        where Setor.Nome COLLATE utf8mb4_bin = "${setor}"
+                                                        group by Data order by Data ASC limit 12;`);
       return registros;
     }
   } catch (error) {
@@ -112,12 +112,12 @@ ON
 WHERE 
     fkEmpresa = ${idEmpresa}
     AND horário >= NOW() - INTERVAL 5 MINUTE 
-    AND stats COLLATE utf8mb4_unicode_ci = 'Superaquecimento' 
+    AND stats COLLATE utf8mb4_bin = 'Superaquecimento' 
 GROUP BY 
     máquina, temperatura, nome, stats;
 `);
-    const qtd = aquecimento.total_maquinas
-    console.log(qtd)
+    const qtd = aquecimento.total_maquinas;
+    console.log(qtd);
 
     return qtd;
   } catch (error) {
@@ -126,8 +126,8 @@ GROUP BY
 };
 
 const getKPI2 = async (idEmpresa) => {
-    try {
-        const [resfriar] = await database.executar(`SELECT 
+  try {
+    const [resfriar] = await database.executar(`SELECT 
     COUNT(máquina) AS total_maquinas 
 FROM 
     RegistroMaquina 
@@ -138,21 +138,21 @@ ON
 WHERE 
     fkEmpresa = ${idEmpresa}
     AND horário >= NOW() - INTERVAL 5 MINUTE 
-    AND stats COLLATE utf8mb4_unicode_ci = 'Resfriamento' 
+    AND stats COLLATE utf8mb4_bin = 'Resfriamento' 
 GROUP BY 
     máquina, temperatura, nome, stats;
 `);
-        const qtd = resfriar.total_maquinas;
-        console.log(qtd)
-        return qtd;
-    } catch (error) {
-        return error;
-    }
+    const qtd = resfriar.total_maquinas;
+    console.log(qtd);
+    return qtd;
+  } catch (error) {
+    return error;
+  }
 };
 
 const getDataKPI1 = async (idEmpresa) => {
-    try {
-        const aquecimento = await database.executar(`WITH RankedTemperatures AS (
+  try {
+    const aquecimento = await database.executar(`WITH RankedTemperatures AS (
     SELECT 
         rm.máquina, 
         rm.temperatura, 
@@ -171,7 +171,7 @@ const getDataKPI1 = async (idEmpresa) => {
     WHERE 
         fkEmpresa = ${idEmpresa}
         AND rm.horário >= NOW() - INTERVAL 10 MINUTE
-        AND rm.stats COLLATE utf8mb4_unicode_ci = 'Superaquecimento'
+        AND rm.stats COLLATE utf8mb4_bin = 'Superaquecimento'
 )
 SELECT 
     máquina, 
@@ -182,18 +182,16 @@ FROM
     RankedTemperatures
 WHERE 
     row_num = 1;
-
-
 `);
-        return aquecimento;
-    } catch (error) {
-        return error;
-    }
+    return aquecimento;
+  } catch (error) {
+    return error;
+  }
 };
 
 const getDataKPI2 = async (idEmpresa) => {
-    try {
-        const resfriar = await database.executar(`WITH RankedTemperatures AS (
+  try {
+    const resfriar = await database.executar(`WITH RankedTemperatures AS (
     SELECT 
         rm.máquina, 
         rm.temperatura, 
@@ -212,7 +210,7 @@ const getDataKPI2 = async (idEmpresa) => {
     WHERE 
         fkEmpresa = ${idEmpresa}
         AND rm.horário >= NOW() - INTERVAL 10 MINUTE
-        AND rm.stats COLLATE utf8mb4_unicode_ci = 'Resfriamento'
+        AND rm.stats COLLATE utf8mb4_bin = 'Resfriamento'
 )
 SELECT 
     máquina, 
@@ -223,11 +221,12 @@ FROM
     RankedTemperatures
 WHERE 
     row_num = 1;`);
-        return resfriar;
-    } catch (error) {
-        return error;
-    }
+    return resfriar;
+  } catch (error) {
+    return error;
+  }
 };
+
 
 module.exports = {
   getMaquinas,

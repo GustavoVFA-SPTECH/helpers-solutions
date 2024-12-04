@@ -20,31 +20,6 @@ fkEmpresa INT,
 CONSTRAINT fkUsuarioEmpresa FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
-INSERT INTO Empresa (razaoSocial, CNPJ, telefone, responsavel
-) VALUES
-('Empresa A', '12345678000195', '1234567890',  'João Silva'),
-('Empresa B', '98765432000198', '0987654321',  'Maria Oliveira'),
-('Empresa C', '11223344000199', '1122334455', 'Carlos Pereira'),
-('Empresa D', '22334455000188', '2233445566', 'Ana Souza'),
-('Empresa E', '33445566000177', '3344556677', 'Roberto Lima'),
-('Empresa F', '44556677000166', '4455667788', 'Fernanda Alves'),
-('Empresa G', '55667788000155', '5566778899', 'Paulo Santos');
-
-INSERT INTO Usuario (email, userName, senha, fkEmpresa) VALUES
-('contato@empresaa.com', 'Usuario1', 'Urubu@100',1),
-('contato@empresab.com', 'Usuario2', 'Urubu@200',2),
-('contato@empresac.com', 'Usuario3', 'Urubu@300', 3),
-('contato@empresad.com', 'Usuario4', 'Urubu@400', 4),
-('contato@empresae.com', 'Usuario5', 'Urubu@500', 5),
-('contato@empresaf.com', 'Usuario6', 'Urubu@600', 6),
-('contato@empresag.com', 'Usuario7', 'Urubu@700', 7);
-
-
-SELECT idUsuario, email, userName, razaoSocial FROM Usuario
-        JOIN Empresa
-        ON fkEmpresa = idEmpresa
-        WHERE email = 'contato@empresab.com' AND senha = 'Urubu@200';
-
 CREATE TABLE Endereco (
     idEndereco INT PRIMARY KEY AUTO_INCREMENT,
     CEP CHAR(8),
@@ -57,16 +32,6 @@ CREATE TABLE Endereco (
     fkEmpresaEnd INT,
     CONSTRAINT fkEmpresaEnd FOREIGN KEY (fkEmpresaEnd) REFERENCES Empresa (idEmpresa)
 );
-
-INSERT INTO Endereco (CEP, Logradouro, Numero, Complemento, Bairro, Cidade, Estado, fkEmpresaEnd) VALUES
-('12345678', 'Rua A', '100', 'Apto 101', 'Bairro A', 'Cidade A', 'Estado A', 1),
-('87654321', 'Rua B', '200', '', 'Bairro B', 'Cidade B', 'Estado B', 2),
-('11223344', 'Travessa C', '300', 'Casa 3', 'Bela Vista', 'Belo Horizonte', 'MG', 3),
-('44332211', 'Alameda D', '400', 'Sala 4', 'Copacabana', 'Curitiba', 'PR', 4),
-('55667788', 'Praça E', '500', 'Loja 5', 'Liberdade', 'Porto Alegre', 'RS', 5),
-('99887766', 'Estrada F', '600', 'Galpão 6', 'Moema', 'Florianópolis', 'SC', 6),
-('66778899', 'Rodovia G', '700', 'Km 7', 'Pinheiros', 'Salvador', 'BA', 7);
-
 
 CREATE TABLE Acesso (
     idAcesso INT PRIMARY KEY AUTO_INCREMENT,
@@ -93,8 +58,6 @@ CREATE TABLE Maquina (
     CONSTRAINT fkMaquinaSetor FOREIGN KEY (fkSetor) REFERENCES Setor(idSetor)
 );
 
-select * from acesso;
-
 CREATE TABLE Registro (
     idRegistro INT PRIMARY KEY AUTO_INCREMENT,
     dataHora DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -110,6 +73,60 @@ Nome VARCHAR(45),
 Email VARCHAR(100),
 Mensagem VARCHAR(240)
 );
+
+CREATE VIEW RegistroMaquina
+as
+SELECT r.temperatura as Temperatura, r.dataHora as Horário, m.nome as Máquina, fkMaquina, fkSetor,
+CASE
+WHEN Temperatura < 100
+THEN 'Resfriamento'
+WHEN Temperatura < 140
+THEN 'OK'
+ELSE 'Superaquecimento'
+END AS Stats
+FROM Registro as r
+JOIN Maquina as m
+ON r.fkMaquina = m.idMaquina;
+
+
+INSERT INTO Empresa (razaoSocial, CNPJ, telefone, responsavel
+) VALUES
+('Empresa A', '12345678000195', '1234567890',  'João Silva'),
+('Empresa B', '98765432000198', '0987654321',  'Maria Oliveira'),
+('Empresa C', '11223344000199', '1122334455', 'Carlos Pereira'),
+('Empresa D', '22334455000188', '2233445566', 'Ana Souza'),
+('Empresa E', '33445566000177', '3344556677', 'Roberto Lima'),
+('Empresa F', '44556677000166', '4455667788', 'Fernanda Alves'),
+('Empresa G', '55667788000155', '5566778899', 'Paulo Santos');
+
+INSERT INTO Usuario (email, userName, senha, fkEmpresa) VALUES
+('contato@empresaa.com', 'Usuario1', 'Urubu@100',1),
+('contato@empresab.com', 'Usuario2', 'Urubu@200',2),
+('contato@empresac.com', 'Usuario3', 'Urubu@300', 3),
+('contato@empresad.com', 'Usuario4', 'Urubu@400', 4),
+('contato@empresae.com', 'Usuario5', 'Urubu@500', 5),
+('contato@empresaf.com', 'Usuario6', 'Urubu@600', 6),
+('contato@empresag.com', 'Usuario7', 'Urubu@700', 7);
+
+
+SELECT idUsuario, email, userName, razaoSocial FROM Usuario
+        JOIN Empresa
+        ON fkEmpresa = idEmpresa
+        WHERE email = 'contato@empresab.com' AND senha = 'Urubu@200';
+
+
+
+INSERT INTO Endereco (CEP, Logradouro, Numero, Complemento, Bairro, Cidade, Estado, fkEmpresaEnd) VALUES
+('12345678', 'Rua A', '100', 'Apto 101', 'Bairro A', 'Cidade A', 'Estado A', 1),
+('87654321', 'Rua B', '200', '', 'Bairro B', 'Cidade B', 'Estado B', 2),
+('11223344', 'Travessa C', '300', 'Casa 3', 'Bela Vista', 'Belo Horizonte', 'MG', 3),
+('44332211', 'Alameda D', '400', 'Sala 4', 'Copacabana', 'Curitiba', 'PR', 4),
+('55667788', 'Praça E', '500', 'Loja 5', 'Liberdade', 'Porto Alegre', 'RS', 5),
+('99887766', 'Estrada F', '600', 'Galpão 6', 'Moema', 'Florianópolis', 'SC', 6),
+('66778899', 'Rodovia G', '700', 'Km 7', 'Pinheiros', 'Salvador', 'BA', 7);
+
+
+select * from acesso;
 
 INSERT INTO Setor (Nome, fkEmpresa) VALUES
 ('Setor A', 1),
@@ -667,18 +684,3 @@ JOIN Maquina as m
 ON r.fkMaquina = m.idMaquina;
 
 -- VIEW
-CREATE VIEW RegistroMaquina
-as
-SELECT r.temperatura as Temperatura, r.dataHora as Horário, m.nome as Máquina, fkMaquina, fkSetor,
-CASE
-WHEN Temperatura < 100
-THEN 'Resfriamento'
-WHEN Temperatura < 140
-THEN 'OK'
-ELSE 'Superaquecimento'
-END AS Stats
-FROM Registro as r
-JOIN Maquina as m
-ON r.fkMaquina = m.idMaquina;
-
-select Horário, Máquina, Temperatura, stats from RegistroMaquina;
