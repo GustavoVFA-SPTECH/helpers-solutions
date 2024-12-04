@@ -98,6 +98,7 @@ const chart2 = new Chart(ctx2, {
             size: 15,  // Aumenta o tamanho das labels no eixo X
           },
         },
+        max: 200,
         title: {
           display: true,
           text: "Temperatura (ºC)", 
@@ -244,12 +245,12 @@ async function grafico1 (opcao) {
 
         // Obtém os dados do JSON
         const data = await resposta.json();
-        console.log("Dados recebidos da média:", data); 
+        // console.log("Dados recebidos da média:", data); 
          // Log dos dados recebidos para depuração
          var lista_x=[]
          var lista_y=[]
          var lista_meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro', 'Novembro','Dezembro']
-         console.log("Tamanho do array:", data.data.length);
+        //  console.log("Tamanho do array:", data.data.length);
 
          for (let cont = 0; cont < data.data.length; cont++) {
            const elemento = data.data[cont];
@@ -466,10 +467,7 @@ document.getElementById('slc_setor').addEventListener('change', async (event) =>
   await grafico1(opcao_global);
 });
 
-
 let intervalo; // Variável para armazenar o ID do intervalo e limpar se necessário
-
-// Função que será chamada ao carregar a página para inicializar o gráfico 2
 
 async function grafico2(idSetor) {
   try {
@@ -527,3 +525,57 @@ async function grafico2(idSetor) {
     console.error("Erro ao carregar ou atualizar o gráfico:", error);
   }
 }
+
+async function getKPIS(idEmpresa) {
+  try {
+    // Faz a consulta na rota KPI1
+    const response1 = await fetch(`/dashboard/KPI1/${idEmpresa}`);
+    if (!response1.ok) {
+      throw new Error(`Erro ao buscar KPI1: ${response1.statusText}`);
+    }
+    const data1 = await response1.json();
+
+    // Faz a consulta na rota KPI2
+    const response2 = await fetch(`/dashboard/KPI2/${idEmpresa}`);
+    if (!response2.ok) {
+      throw new Error(`Erro ao buscar KPI2: ${response2.statusText}`);
+    }
+    const data2 = await response2.json();
+
+    // console.log("passei")
+    return {
+      KPI1: typeof data1.data === 'number' ? data1.data : 0,
+      KPI2: typeof data2.data === 'number' ? data2.data : 0
+    };
+  } catch (error) {
+    console.error('Erro ao buscar os KPIs:', error);
+    throw error;
+  }
+}
+
+function startKPIUpdates(idEmpresa) {
+  const valueKPI1 = document.getElementById("valueKPI1");
+  const valueKPI2 = document.getElementById("valueKPI2");
+
+  if (!valueKPI1 || !valueKPI2) {
+    console.error("Elementos com os IDs valueKPI1 e valueKPI2 não foram encontrados.");
+    return;
+  }
+
+  setInterval(async () => {
+    try {
+      const kpis = await getKPIS(idEmpresa);
+      valueKPI1.textContent = kpis.KPI1;
+      valueKPI2.textContent = kpis.KPI2;
+    } catch (error) {
+      console.error("Erro ao atualizar os KPIs:", error);
+    }
+  }, 1000);
+}
+
+// Inicia a atualização dos KPIs quando a página carregar
+window.addEventListener("load", () => {
+  const idEmpresa = sessionStorage.ID_EMPRESA; // Substituir pelo valor correto de idEmpresa
+  startKPIUpdates(idEmpresa);
+});
+

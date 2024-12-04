@@ -67,7 +67,7 @@
     color: red;
 }
 .kpi2{
-    color: var(--azul2);
+    color: #006eff;
 }
 .kpi3{
     color: var(--verdeDash);
@@ -161,7 +161,12 @@
 
 .navBar a{
     transition: 0.3s;
-  }
+}
+
 .navBar a:hover{
     color:#dd5a02
-  }
+}
+
+.avisoKPI{
+    font-size: 30px;
+}

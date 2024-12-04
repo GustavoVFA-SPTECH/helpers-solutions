@@ -1,3 +1,4 @@
+
 DROP DATABASE IF EXISTS Helpers;
 CREATE DATABASE Helpers;
 USE Helpers;

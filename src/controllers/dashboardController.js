@@ -121,11 +121,33 @@ const getKPI1 = async (req, res) => {
         return error
     }
 }
+
+const getKPI2 = async (req, res) => {
+    const {idEmpresa} = req.params;
+
+    try {
+        const resfriado = await dashboardModel.getKPI2(idEmpresa)
+
+        if(!resfriado){
+            res.status(404).json({
+                message: "Nenhum evento encontrado"
+            })
+        }else{
+            res.status(200).json({
+                data: resfriado
+            })
+        }
+    } catch (error) {
+        return error
+    }
+}
+
 module.exports = {
     criarGrafico1,
     criarGrafico3,
     criarGrafico2,
     getMaquina,
     getSetores,
-    getKPI1
+    getKPI1,
+    getKPI2
 }

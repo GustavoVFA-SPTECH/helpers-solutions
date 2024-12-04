@@ -23,5 +23,13 @@ router.get("/grafico2/:idSetor", function (req, res) {
     dashboardController.criarGrafico2(req, res)
 })
 
+router.get("/KPI1/:idEmpresa", function (req,res) {
+    dashboardController.getKPI1(req, res)
+})
+
+router.get("/KPI2/:idEmpresa", function (req,res) {
+    dashboardController.getKPI2(req, res)
+})
+
 
 module.exports = router;
