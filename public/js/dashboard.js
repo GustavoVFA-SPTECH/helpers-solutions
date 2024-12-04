@@ -473,48 +473,50 @@ async function grafico2(idSetor) {
   try {
     // Função para fazer a requisição e atualizar o gráfico
     const fetchDataAndUpdateChart = async () => {
-      // Realiza a requisição para a API
-      const response = await fetch(`/dashboard/grafico2/${idSetor}`);
-      const data = await response.json();
-      // console.log("Temperatura: ",data.data)
-
-      // Extraindo os nomes das máquinas e as temperaturas
-      const labels = data.data.map(item => item.nome);  // Nomes das máquinas
-      const temperaturas = data.data.map(item => item.temperatura);  // Temperaturas das máquinas
-
-      // Função para gerar a cor com base na temperatura
-      
-      const generateColor = (temperatura) => {
-        if (temperatura > 140) {
-          return "rgba(255, 0, 0, 1)";  // Vermelho para temperaturas maiores que 140
-        } else if (temperatura < 100) {
-          return "rgba(78, 150, 255, 1)";  // Azul para temperaturas menores que 100
-        } else {
-          return "rgb(149, 245, 154)";  // Laranja para temperaturas entre 100 e 140
+      try {
+        const response = await fetch(`/dashboard/grafico2/${idSetor}`);
+        if (!response.ok) {
+          console.error(`Erro na requisição: ${response.statusText}`);
+          return;
         }
-      };
-
-      // Verificando se chart2 e datasets estão definidos
-      if (!chart2.data.datasets || chart2.data.datasets.length === 0) {
-        // Inicializa o dataset caso não esteja definido
-        chart2.data.datasets = [{
-          label: "Temperaturas das Máquinas", 
-          data: temperaturas,  // Temperaturas associadas a cada máquina
-          borderWidth: 1,
-          backgroundColor: temperaturas.map(generateColor),  // Atribui cor com base na temperatura
-        }];
-      } else {
-        // Atualizando os datasets com as novas temperaturas e cores
-        chart2.data.datasets[0].data = temperaturas;  // Temperaturas associadas a cada máquina
-        chart2.data.datasets[0].backgroundColor = temperaturas.map(generateColor);  // Atribui cor com base na temperatura
+    
+        const data = await response.json();
+        console.log("Resposta da API:", data);
+    
+        // Verifica se data.data é um array
+        if (!Array.isArray(data.data)) {
+          console.error("data.data não é um array:", data.data);
+          return;
+        }
+    
+        const labels = data.data.map(item => item.nome);
+        const temperaturas = data.data.map(item => item.temperatura);
+    
+        const generateColor = (temperatura) => {
+          if (temperatura > 140) return "rgba(255, 0, 0, 1)";
+          if (temperatura < 100) return "rgba(78, 150, 255, 1)";
+          return "rgb(149, 245, 154)";
+        };
+    
+        if (!chart2.data.datasets || chart2.data.datasets.length === 0) {
+          chart2.data.datasets = [{
+            label: "Temperaturas das Máquinas",
+            data: temperaturas,
+            borderWidth: 1,
+            backgroundColor: temperaturas.map(generateColor),
+          }];
+        } else {
+          chart2.data.datasets[0].data = temperaturas;
+          chart2.data.datasets[0].backgroundColor = temperaturas.map(generateColor);
+        }
+    
+        chart2.data.labels = labels;
+        chart2.update();
+    
+      } catch (error) {
+        console.error("Erro ao carregar ou atualizar o gráfico:", error);
       }
-
-      // Atualizando as labels do gráfico
-      chart2.data.labels = labels;  // Nomes das máquinas no eixo Y
-
-      // Atualiza o gráfico sem recriar a estrutura
-      chart2.update();
-    };
+    };    
 
     // Atualiza o gráfico inicialmente
     await fetchDataAndUpdateChart();
