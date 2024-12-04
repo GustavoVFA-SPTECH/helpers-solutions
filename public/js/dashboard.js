@@ -476,12 +476,14 @@ async function grafico2(idSetor) {
       // Realiza a requisição para a API
       const response = await fetch(`/dashboard/grafico2/${idSetor}`);
       const data = await response.json();
+      console.log("Temperatura: ",data.data)
 
       // Extraindo os nomes das máquinas e as temperaturas
       const labels = data.data.map(item => item.nome);  // Nomes das máquinas
       const temperaturas = data.data.map(item => item.temperatura);  // Temperaturas das máquinas
 
       // Função para gerar a cor com base na temperatura
+      
       const generateColor = (temperatura) => {
         if (temperatura > 140) {
           return "rgba(255, 0, 0, 1)";  // Vermelho para temperaturas maiores que 140

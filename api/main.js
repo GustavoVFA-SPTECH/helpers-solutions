@@ -51,20 +51,20 @@ const serial = async (valoresSensorAnalogico) => {
     .on("data", async (data) => {
       console.log(data);
       const valores = data.split(";");
-      const aleatorio = parseInt(Math.random() * 20 - 10);
-      const aleatorio2 = parseInt(Math.random() * 30 - 10);
-      const aleatorio3 = parseInt(Math.random() * 10 - 5);
-      const aleatorio4 = parseInt(Math.random() * 50 - 20);
-      const aleatorio5 = parseInt(Math.random() * 40 - 15);
-      const aleatorio6 = parseInt(Math.random() * 25 - 10);
-      const aleatorio7 = parseInt(Math.random() * 35 - 15);
-      const aleatorio8 = parseInt(Math.random() * 45 - 20);
-      const aleatorio9 = parseInt(Math.random() * 30 - 10);
-      const aleatorio10 = parseInt(Math.random() * 20 - 5);
-      const aleatorio11 = parseInt(Math.random() * 50 - 25);
-      const aleatorio12 = parseInt(Math.random() * 40 - 20);
-      const aleatorio13 = parseInt(Math.random() * 30 - 15);
-      const aleatorio14 = parseInt(Math.random() * 35 - 10);
+      const aleatorio = parseInt(Math.random() * 10 - 10);
+      const aleatorio2 = parseInt(Math.random() * 10 - 10);
+      const aleatorio3 = parseInt(Math.random() * 10 - 10);
+      const aleatorio4 = parseInt(Math.random() * 10 - 20);
+      const aleatorio5 = parseInt(Math.random() * 20 - 10);
+      const aleatorio6 = parseInt(Math.random() * 15 - 10);
+      const aleatorio7 = parseInt(Math.random() * 25 - 15);
+      const aleatorio8 = parseInt(Math.random() * 20 - 15);
+      const aleatorio9 = parseInt(Math.random() * 20 - 10);
+      const aleatorio10 = parseInt(Math.random() * 10 - 5);
+      const aleatorio11 = parseInt(Math.random() * 40 - 25);
+      const aleatorio12 = parseInt(Math.random() * 30 - 20);
+      const aleatorio13 = parseInt(Math.random() * 20 - 15);
+      const aleatorio14 = parseInt(Math.random() * 25 - 10);
 
       const sensorAnalogico = parseFloat(valores[0]);
       const sensorAnalogico2 = sensorAnalogico + aleatorio;
