@@ -414,6 +414,57 @@ function cadastrarMaquina(){
     })
   }
 
+  lista_setores = []
+async function carregarSetores() {
+  try {
+    // Obtém o idEmpresa do sessionStorage
+    const idEmpresa = sessionStorage.getItem('ID_EMPRESA');
+
+    // Verifica se o idEmpresa está presente no sessionStorage
+    if (!idEmpresa) {
+        console.error('ID da empresa não encontrado no sessionStorage');
+        return;
+    }
+
+    // Faz a requisição para a rota que retorna os setores
+    const response = await fetch(`/dashboard/setores/${idEmpresa}`);
+    
+    // Verifica se a resposta foi bem-sucedida
+    if (!response.ok) {
+        throw new Error('Erro ao obter setores');
+    }
+
+    // Converte a resposta para JSON
+    const data = await response.json();
+
+    // Verifica se há setores na resposta
+    if (data && data.data && Array.isArray(data.data) && data.data.length > 0) {
+        // Seleciona o elemento <select> pelo ID
+        const selectElement = document.getElementById('sltSetor');
+
+        // Limpa o conteúdo do <select> antes de adicionar novas opções
+        selectElement.innerHTML = '';
+
+        // Adiciona uma opção para cada setor
+        data.data.forEach(setor => {
+            const option = document.createElement('option');
+            option.value = setor.idSetor;  // O valor da opção é o id do setor
+            option.textContent = setor.Nome;  // O texto da opção é o nome do setor
+            lista_setores.push(setor.Nome)
+            selectElement.appendChild(option);
+        });
+
+        // Chama a função para preencher as máquinas e carregar o gráfico com o setor selecionado
+        const idSetor = selectElement.value; // Pegue o valor do setor selecionado
+
+    } else {
+        
+    }
+  } catch (error) {
+    console.error('Erro ao carregar setores:', error);
+  }
+}
+
 
 
 
