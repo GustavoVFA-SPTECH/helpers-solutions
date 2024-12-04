@@ -80,7 +80,7 @@ idSetor INT PRIMARY KEY AUTO_INCREMENT,
 Nome VARCHAR(45),
 fkEmpresa INT,
 CONSTRAINT fkSetorEmpresa FOREIGN KEY (fkEmpresa)
-	REFERENCES empresa(idEmpresa)
+	REFERENCES Empresa(idEmpresa)
 );
 
 CREATE TABLE Maquina (
@@ -93,8 +93,6 @@ CREATE TABLE Maquina (
     CONSTRAINT fkMaquinaSetor FOREIGN KEY (fkSetor) REFERENCES Setor(idSetor)
 );
 
-select * from acesso;
-
 CREATE TABLE Registro (
     idRegistro INT PRIMARY KEY AUTO_INCREMENT,
     dataHora DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -102,8 +100,6 @@ CREATE TABLE Registro (
     fkMaquina INT,
     CONSTRAINT fkRegistroMaquina FOREIGN KEY (fkMaquina) REFERENCES Maquina(idMaquina)
 );
-select * from setor;
-
 CREATE TABLE Contato (
 idContato INT PRIMARY KEY AUTO_INCREMENT,
 Nome VARCHAR(45),
@@ -133,8 +129,6 @@ INSERT INTO Setor (Nome, fkEmpresa) VALUES
 ('Setor S', 7),
 ('Setor T', 7),
 ('Setor U', 7);
-
-select * from Maquina;
 
 INSERT INTO Maquina (Nome, Tipo, tempMax, tempMinima, fkSetor) VALUES
 ('Máquina 1', 'Tipo A', 150.00, 100.00, 1),
@@ -609,63 +603,6 @@ INSERT INTO Registro (dataHora, Temperatura, fkMaquina) VALUES
 ('2023-04-08 12:40:00', 128.3, 4),
 ('2023-09-30 16:25:00', 135.1, 17);
 
-select datahora, temperatura,fkmaquina from Registro where datahora > '2024-11-27';
-
-select DATE_FORMAT(datahora, '%d/%m') as Dia, truncate(avg(temperatura),0) as Média 
-from Registro 
-join Maquina 
-on fkMaquina = idMaquina
-join Setor
-on fkSetor = idSetor
-where Setor.Nome = "Setor A"
-group by Dia 
-order by Dia desc 
-limit 7;
-
-select month(datahora) as Mes, truncate(avg(temperatura),0) as Média from Registro 
-join Maquina 
-on fkMaquina = idMaquina
-join Setor
-on fkSetor = idSetor
-where Setor.Nome = "Setor B" and datahora >= '2024-01-01'
-group by Mes order by Mes desc limit 12;
-
-select year(datahora) as Ano, truncate(avg(temperatura),0) as Média from Registro 
-join Maquina 
-on fkMaquina = idMaquina
-join Setor
-on fkSetor = idSetor
-where Setor.Nome = "Setor A"
-group by Ano order by Ano desc limit 12;
-
-
-
-
-
-SELECT * FROM Registro;
-
--- Select do registro com maquina
-SELECT r.temperatura as Temperatura, r.dataHora as "Horario Registro", m.nome as Maquina
-FROM Registro as r
-JOIN Maquina as m
-JOIN Setor
-ON m.fkSetor = setor.idSetor;
-
--- Select do registro com maquina e empresa dona
-SELECT r.temperatura as Temperatura, r.dataHora as "Horario Registro", m.nome as Maquina, e.razaoSocial as Empresa
-FROM Registro as r
-JOIN Maquina as m
-JOIN Setor
-ON m.fkSetor = setor.idSetor
-JOIN Empresa as e
-ON setor.fkEmpresa = e.idEmpresa;
-
--- Select com concat e formatação de data
-SELECT CONCAT('A ', m.nome, ' atingiu: ', r.temperatura, 'ºC às: ', DATE_FORMAT(r.dataHora, '%H:%i:%s'), ' do dia: ', DATE_FORMAT(r.dataHora, '%d/%m/%Y')) AS Mensagem
-FROM Registro as r
-JOIN Maquina as m
-ON r.fkMaquina = m.idMaquina;
-
 -- VIEW
 CREATE VIEW RegistroMaquina
 as
@@ -680,5 +617,3 @@ END AS Stats
 FROM Registro as r
 JOIN Maquina as m
 ON r.fkMaquina = m.idMaquina;
-
-select Horário, Máquina, Temperatura, stats from RegistroMaquina;

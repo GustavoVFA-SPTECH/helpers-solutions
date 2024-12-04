@@ -86,8 +86,8 @@ const getGrafico2 = async (idSetor) => {
     if (!cont) {
     } else {
       const maquinas =
-        await database.executar(`SELECT nome, temperatura, dataHora FROM registro
-                    JOIN maquina ON fkMaquina = idMaquina
+        await database.executar(`SELECT nome, temperatura, dataHora FROM Registro
+                    JOIN Maquina ON fkMaquina = idMaquina
                     WHERE fkSetor = ${idSetor}
                     GROUP BY nome, temperatura, dataHora
                     ORDER BY dataHora DESC
