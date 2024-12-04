@@ -590,18 +590,15 @@ async function openKPI(kpiID) {
   const modal = document.querySelector('.kpiModal');
   const kpiMain = document.querySelector('.kpiMain');
 
-  // Validação dos elementos do DOM
   if (!modal || !kpiMain) {
     console.error("Elementos do modal ou kpiMain não encontrados.");
     return;
   }
 
   try {
-    // Exibir modal e indicador de carregamento
     modal.style.display = 'flex';
     kpiMain.innerHTML = '<div class="spinner">Carregando...</div>';
 
-    // Chamar API
     const response = await fetch(`/dashboard/${kpiID}/${idEmpresa}`);
     if (!response.ok) {
       throw new Error(`Erro ao buscar dados do KPI (${kpiID}): ${response.status} ${response.statusText}`);
@@ -610,28 +607,27 @@ async function openKPI(kpiID) {
     const result = await response.json();
     const { data } = result || {};
 
-    console.log(result)
+    console.log("Resultado da API:", result);
 
-    // Remover spinner
     kpiMain.innerHTML = '';
 
-    // Validar se há dados
-    if (!data || data.length === 0) {
-      exibirMensagemVazia(kpiMain);
+    if (!Array.isArray(data) || data.length === 0) {
+      console.error("Nenhum dado disponível:", data);
+      kpiMain.innerHTML = '<span class="error">Nenhum dado disponível para exibir.</span>';
       return;
     }
 
-    // Gerar componentes para cada item
     data.forEach(item => {
       const component = criarComponenteKPI(item);
       kpiMain.appendChild(component);
     });
+
   } catch (error) {
-    // Exibir erro no console e no modal
     console.error("Erro ao carregar os dados do KPI:", error);
     kpiMain.innerHTML = '<span class="error">Erro ao carregar os dados. Tente novamente mais tarde.</span>';
   }
 }
+
 
 // Função para exibir mensagem de dados ausentes
 function exibirMensagemVazia(container) {
