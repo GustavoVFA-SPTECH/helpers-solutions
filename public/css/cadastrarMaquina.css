@@ -3,15 +3,16 @@
 .main{
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-.box_cadastroMaquina{
+/* .box_cadastroMaquina{
     width: 1000px;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
 
 .span_tituloPrincipal{
     font-family: Archivo, Arial, Helvetica, sans-serif;
@@ -22,10 +23,13 @@
 
 .box_inputs{
     display: flex;
+    /* border: red 1px solid; */
     justify-content: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    flex-direction: column;
     width: 100%;
-    gap: 10px;
+    gap: 5px;
 }
 .span_titulos{
     width: auto;
@@ -35,10 +39,12 @@
     font-family: Archivo, Arial, Helvetica, sans-serif;
     color: black;
     width: 40%;
+    text-align: center;
     display: flex;
-    justify-content: end;
+    /* border: solid 1px black; */
+    justify-content: center;
     align-items: center;
-    margin: 5px 0;    
+    /* margin: 5px 0;     */
     
 }
 
@@ -47,15 +53,15 @@
     height: 45px;
     font-family: Archivo, Arial, Helvetica, sans-serif;
     font-size: 20px;
-    margin: 5px 0;       
+    /* margin: 5px 0;        */
     border-radius: 8px;
+    margin-bottom: 1%;
     border: none;
     background-color: #efefef;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-    /* text-align: center; */
+    text-align: center;
     outline-color: #f66b0e;
-
-    width: 58%;
+    width: 38%;
     box-sizing: border-box;
 
 }

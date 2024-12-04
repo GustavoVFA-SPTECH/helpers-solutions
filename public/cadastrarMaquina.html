@@ -30,12 +30,12 @@
       </div>
     </div>
       <div class="main">
-        <div class="box_cadastroMaquina">
+        <!-- <div class="box_cadastroMaquina"> -->
             <span class="span_tituloPrincipal">Cadastrar Máquina</span>
 
             <div class="box_inputs">
                 <span class="span_titulos">Nome:</span>
-                <input type="text" id="iptNomeMaquina" class="input_valores">
+                <input type="text" id="iptNomeMaquina" class="input_valores" placeholder="Insira o nome de identificação da maquina">
                 
                 <span class="span_titulos">Escolha o Setor:</span>
                 <select id="sltSetor" class="slt_tpMaquina">
@@ -50,15 +50,13 @@
                 </select><br>
                 
                 <span class="span_titulos">Temperatura Máxima de Operação:</span>
-                <input type="number" id="iptTempMaxima" class="input_valores">
+                <input type="number" id="iptTempMaxima" class="input_valores" placeholder="ex. 150ºC">
     
                 <span class="span_titulos">Temperatura Mínima de Operação:</span>
-                <input type="number" id="iptTempMinima" class="input_valores">
+                <input type="number" id="iptTempMinima" class="input_valores" placeholder="ex. 100ºC">
 
                 <button onclick="cadastrarMaquina()" class="btn_cadastrar" id="btn_cadastrar">Cadastrar</a>
             </div>
-        </div>
-
       </div>
 </body>
 </html>
