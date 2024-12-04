@@ -182,12 +182,13 @@ body{
     z-index: 3;
     width: 100vw;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     height: 100vh;
     background-color: rgba(56, 54, 54, 0.653);
 }
 
 .kpiMain{
+    margin-top: 1%;
     border: var(--laranjaEscuro) 2px solid;
     background-color: var(--azulEscuro);
     width: 35%;
@@ -265,5 +266,42 @@ body{
     width: 50%;
     color: white;
     text-align: center;
+}
 
+.btnsKPI{
+    /* border: red 1px solid; */
+    position: fixed;
+    top: 92%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    height: 4%;
+}
+
+.buttonFechar{
+    border-radius: 12px;
+    background-color: var(--laranjaClaro);
+    color: white;
+    width: 90%;
+    border: 0;
+    font-size: 20px;
+    box-shadow: 0 4px 0 var(--marrom);
+    cursor: pointer;  
+    transition: 0.5s ease all;
+}
+
+.buttonFechar:hover{
+    background-color: var(--laranjaEscuro);
+}
+
+.msmVazio{
+    color: white;
+    font-size: 35px;
+    /* border: red 1px solid; */
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }

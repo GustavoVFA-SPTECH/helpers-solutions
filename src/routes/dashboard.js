@@ -31,5 +31,13 @@ router.get("/KPI2/:idEmpresa", function (req,res) {
     dashboardController.getKPI2(req, res)
 })
 
+router.get("/KPI1data/:idEmpresa", function (req, res) {
+    dashboardController.getKPI1data(req, res)
+})
+
+router.get("/KPI2data/:idEmpresa", function (req, res) {
+    dashboardController.getKPI2data(req, res)
+})
+
 
 module.exports = router;

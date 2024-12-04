@@ -137,7 +137,6 @@ const getDataKPI2 = async (idEmpresa) => {
     }
 };
 
-
 module.exports = {
   getMaquinas,
   grafico1,

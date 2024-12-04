@@ -142,6 +142,46 @@ const getKPI2 = async (req, res) => {
     }
 }
 
+const getKPI1data = async (req, res) => {
+    const {idEmpresa} = req.params;
+
+    try {
+        const aquecido = await dashboardModel.getDataKPI1(idEmpresa)
+
+        if(!aquecido){
+            res.status(404).json({
+                message: "Nenhum evento encontrado"
+            })
+        }else{
+            res.status(200).json({
+                data: aquecido
+            })
+        }
+    } catch (error) {
+        return error
+    }
+}
+
+const getKPI2data = async (req, res) => {
+    const {idEmpresa} = req.params;
+
+    try {
+        const aquecido = await dashboardModel.getDataKPI2(idEmpresa)
+
+        if(!aquecido){
+            res.status(404).json({
+                message: "Nenhum evento encontrado"
+            })
+        }else{
+            res.status(200).json({
+                data: aquecido
+            })
+        }
+    } catch (error) {
+        return error
+    }
+}
+
 module.exports = {
     criarGrafico1,
     criarGrafico3,
@@ -149,5 +189,7 @@ module.exports = {
     getMaquina,
     getSetores,
     getKPI1,
+    getKPI1data,
+    getKPI2data,
     getKPI2
 }

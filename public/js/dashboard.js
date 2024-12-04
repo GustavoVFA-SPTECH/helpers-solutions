@@ -579,3 +579,62 @@ window.addEventListener("load", () => {
   startKPIUpdates(idEmpresa);
 });
 
+async function openKPI(kpiID) {
+
+  const idEmpresa = sessionStorage.ID_EMPRESA;
+  try {
+    const modal = document.querySelector('.kpiModal');
+    const kpiMain = document.querySelector('.kpiMain');
+
+    if (!modal || !kpiMain) {
+      console.error("Elementos do modal ou kpiMain não encontrados.");
+      return;
+    }
+
+    modal.style.display = 'flex';
+    kpiMain.innerHTML = ''; // Limpa o container
+
+    // Consulta na rota correspondente
+    const response = await fetch(`/dashboard/${kpiID}/${idEmpresa}`);
+    if (!response.ok) {
+      throw new Error(`Erro ao buscar dados do ${kpiID}: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+
+    console.log(data);
+
+    // Verifica se há dados
+    if (!data.data || data.data.length === 0) {
+      const emptyMessage = document.createElement('span');
+      emptyMessage.classList.add('msmVazio');
+      emptyMessage.textContent = 'Não há nenhuma máquina com ocorrências no momento!';
+      kpiMain.appendChild(emptyMessage);
+      return;
+    }
+
+    // Itera sobre os dados e cria os componentes
+    data.data.forEach(item => {
+      const component = document.createElement('div');
+      component.classList.add('componentKPI');
+
+      component.innerHTML = `
+        <span class="status">${item.stats.toUpperCase()}</span>
+        <div class="details">
+          <div class="infoLine"><span class="detailTitle">Setor:</span><span class="detailInfo">${item.nome}</span></div>
+          <div class="infoLine"><span class="detailTitle">Máquina:</span><span class="detailInfo">${item.máquina}</span></div>
+          <div class="infoLine"><span class="detailTitle">Temperatura:</span><span class="detailInfo">${item.temperatura}</span></div>
+        </div>
+      `;
+
+      kpiMain.appendChild(component);
+    });
+  } catch (error) {
+    console.error("Erro ao carregar os dados do KPI:", error);
+  }
+}
+
+function fecharKPI(){
+  const modal = document.querySelector('.kpiModal');
+  modal.style.display = 'none';
+}

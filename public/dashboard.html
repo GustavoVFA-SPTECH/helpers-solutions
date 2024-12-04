@@ -12,15 +12,17 @@
   <body onload="menuLateral()">
     <div class="kpiModal">
       <div class="kpiMain">
-        <div class="componentKPI">
+        <!-- <span class="msmVazio">Não há nenhuma maquina com ocorrências no momento !</span> -->
+        <!-- <div class="componentKPI">
           <span class="status">SUPERAQUECIMENTO</span>
           <div class="details">
             <div class="infoLine"><span class="detailTitle">Setor:</span><span class="detailInfo">Setor A</span></div>
             <div class="infoLine"><span class="detailTitle">Maquina:</span><span class="detailInfo">Maquina 3</span></div>
             <div class="infoLine"><span class="detailTitle">Temperatura:</span><span class="detailInfo">190.0</span></div>
           </div>
-        </div>
+        </div> -->
       </div>
+      <div class="btnsKPI"><button class="buttonFechar" onclick="fecharKPI()">Fechar</button></div>
     </div>
     <!-- BOBIA -->
     <div onclick="aparecer_ia()" id="div_icone_ia"></div>
@@ -61,19 +63,19 @@
     <div class="main">
       <h1 class="tituloKPIS">Informações Gerais</h1>
       <div class="kpis">
-        <div class="kpi">
+        <div class="kpi" onclick="openKPI('KPI1data')">
             <span> <span class="avisoKPI" id="valueKPI1"></span> Maquinas estão</span>
             <span class="kpi1">SUPERAQUECENDO!</span>
         </div>
-        <div class="kpi">
+        <div class="kpi" onclick="openKPI('KPI2data')">
             <span> <span class="avisoKPI" id="valueKPI2"></span> Maquinas estão</span>
             <span class="kpi2">RESFRIANDO!</span>
         </div>
         <div class="kpi">
             <span>Média de Temperatura Recomendada</span>
-            <span class="kpi3">110 - 140ºC</span>
+            <span class="kpi3">100 - 140&#176C</span>
         </div>
-        <div class="kpi">
+        <div class="kpi" onclick="openKPI(3)">
             <span>Recomenda-se manutenção</span>
             <span class="kpi4">MÁQUINA 2 | MÁQUINA 5</span>
         </div>

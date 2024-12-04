@@ -50,6 +50,7 @@
 }
 .kpi{
     display: flex;
+    cursor: pointer;
     justify-content: center;
     align-items: center;
     border-radius: 12px;
