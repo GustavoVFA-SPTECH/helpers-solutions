@@ -9,7 +9,7 @@
     <script src="js/script.js" defer></script>
     <script src="js/validacao.js" defer></script>
   </head>
-  <body onload="menuLateral()">
+  <body onload="menuLateral(), carregarSetores()">
     <div class="sideBar">
       <div class="sidebarTop">
         <h1 class="title">Helpers</h1>
@@ -37,8 +37,9 @@
                 <span class="span_titulos">Nome:</span>
                 <input type="text" id="iptNomeMaquina" class="input_valores">
                 
-                <span class="span_titulos">Número do Setor:</span>
-                <input type="number" id="iptSetor" class="input_valores">
+                <span class="span_titulos">Escolha o Setor:</span>
+                <select id="sltSetor" class="slt_tpMaquina">
+                </select>
     
                 <span class="span_titulos">Tipo da Máquina:</span>
                 <select class="slt_tpMaquina" id="sltMaquina">
@@ -49,10 +50,10 @@
                 </select><br>
                 
                 <span class="span_titulos">Temperatura Máxima de Operação:</span>
-                <input type="text" id="iptTempMaxima" class="input_valores">
+                <input type="number" id="iptTempMaxima" class="input_valores">
     
                 <span class="span_titulos">Temperatura Mínima de Operação:</span>
-                <input type="text" id="iptTempMinima" class="input_valores">
+                <input type="number" id="iptTempMinima" class="input_valores">
 
                 <button onclick="cadastrarMaquina()" class="btn_cadastrar" id="btn_cadastrar">Cadastrar</a>
             </div>
