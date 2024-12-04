@@ -101,7 +101,14 @@ const getGrafico2 = async (idSetor) => {
 
 const getKPI1 = async (idEmpresa) => {
   try {
-    const [aquecimento] = await database.executar(`SELECT COUNT(máquina) AS total_maquinas FROM RegistroMaquina JOIN setor ON fkSetor = idSetor WHERE fkEmpresa = ${idEmpresa} AND horário >= NOW() AND stats = 'Superaquecimento' GROUP BY máquina, temperatura, nome, stats;`);
+    const [aquecimento] = await database.executar(`SELECT COUNT(máquina) AS total_maquinas 
+                                                FROM RegistroMaquina 
+                                                JOIN setor ON fkSetor = idSetor 
+                                                WHERE fkEmpresa = ${idEmpresa} 
+                                                  AND horário >= NOW() - INTERVAL 10 MINUTE 
+                                                  AND stats = 'Superaquecimento' 
+                                                GROUP BY máquina, temperatura, nome, stats;
+`);
     const qtd = aquecimento.total_maquinas
     return qtd;
   } catch (error) {
@@ -111,7 +118,7 @@ const getKPI1 = async (idEmpresa) => {
 
 const getKPI2 = async (idEmpresa) => {
     try {
-        const [resfriar] = await database.executar(`SELECT COUNT(máquina) AS total_maquinas FROM RegistroMaquina JOIN setor ON fkSetor = idSetor WHERE fkEmpresa = ${idEmpresa} AND horário >= NOW() AND stats = 'Resfriamento' GROUP BY máquina, temperatura, nome, stats;`);
+        const [resfriar] = await database.executar(`SELECT COUNT(máquina) AS total_maquinas FROM RegistroMaquina JOIN setor ON fkSetor = idSetor WHERE fkEmpresa = ${idEmpresa} AND horário >= NOW() - INTERVAL 10 MINUTE AND stats = 'Resfriamento' GROUP BY máquina, temperatura, nome, stats;`);
         const qtd = resfriar.total_maquinas;
         return qtd;
     } catch (error) {
@@ -121,7 +128,7 @@ const getKPI2 = async (idEmpresa) => {
 
 const getDataKPI1 = async (idEmpresa) => {
     try {
-        const aquecimento = await database.executar(`SELECT máquina, temperatura, nome, stats FROM RegistroMaquina JOIN setor ON fkSetor = idSetor WHERE fkEmpresa = ${idEmpresa} AND horário >= NOW() AND stats = 'Superaquecimento' GROUP BY máquina, temperatura, nome, stats;`);
+        const aquecimento = await database.executar(`SELECT máquina, temperatura, nome, stats FROM RegistroMaquina JOIN setor ON fkSetor = idSetor WHERE fkEmpresa = ${idEmpresa} AND horário >= NOW() - INTERVAL 10 MINUTE AND stats = 'Superaquecimento' GROUP BY máquina, temperatura, nome, stats;`);
         return aquecimento;
     } catch (error) {
         return error;
@@ -130,7 +137,7 @@ const getDataKPI1 = async (idEmpresa) => {
 
 const getDataKPI2 = async (idEmpresa) => {
     try {
-        const resfriar = await database.executar(`SELECT máquina, temperatura, nome, stats FROM RegistroMaquina JOIN setor ON fkSetor = idSetor WHERE fkEmpresa = ${idEmpresa} AND horário >= NOW() AND stats = 'Resfriamento' GROUP BY máquina, temperatura, nome, stats;`);
+        const resfriar = await database.executar(`SELECT máquina, temperatura, nome, stats FROM RegistroMaquina JOIN setor ON fkSetor = idSetor WHERE fkEmpresa = ${idEmpresa} AND horário >= NOW() - INTERVAL 10 MINUTE AND stats = 'Resfriamento' GROUP BY máquina, temperatura, nome, stats;`);
         return resfriar;
     } catch (error) {
         return error;
